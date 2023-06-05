@@ -1,8 +1,12 @@
+/** @jsxImportSource @emotion/react */
+
+import { Global, css } from "@emotion/react";
+import emotionReset from "emotion-reset";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home } from "./Home";
+import { Home } from "pages/Home";
 
 const App = () => {
   return (
@@ -10,6 +14,11 @@ const App = () => {
       <Helmet>
         <meta name="theme-color" content="#131619" />
       </Helmet>
+      <Global
+        styles={css`
+          ${emotionReset}
+        `}
+      />
       <Router />
     </React.Fragment>
   );
