@@ -6,7 +6,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home } from "pages/Home";
+import { Login } from "pages/Login";
 
 const App = () => {
   return (
@@ -28,7 +28,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Home />} path="/" />
+        <Route element={<Login />} path="/login" />
       </Routes>
     </BrowserRouter>
   );
