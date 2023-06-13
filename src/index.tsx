@@ -7,6 +7,7 @@ import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "pages/Login";
+import Card from "components/Shared/Card";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<Login />} path="/login" />
+        <Route element={<Card />} path="/card" />
       </Routes>
     </BrowserRouter>
   );
