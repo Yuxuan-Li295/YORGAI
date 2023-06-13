@@ -1,11 +1,6 @@
 import { css } from "@emotion/css";
 import React from "react";
 
-interface ButtonProps {
-  text: string;
-  onClick: () => void;
-}
-
 const BorderlessButton = ({
   onClick,
   children,
