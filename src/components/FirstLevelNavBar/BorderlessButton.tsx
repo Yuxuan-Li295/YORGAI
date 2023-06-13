@@ -33,8 +33,3 @@ const BorderlessButton = ({
 };
 
 export { BorderlessButton };
-
-interface ButtonProps {
-  text: string;
-  onClick: () => void;
-}
