@@ -1,33 +1,48 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import React from "react";
+import { css } from "@emotion/css";
+import Yumiaos from "../../resource/img/YumiaosLogo.svg";
 
 const LeftIcon = () => {
-    const outerContainerStyle = css`
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        position: absolute;
-        width: 237px;
-        height: 32px;
-        left: 0.5px;
-        top: 16px;
-    `;
-
-    const innerContainerStyle = css`
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start; /* Changed from center to flex-start */
-        gap: 8px;
-        width: 201px;
-        height: 20px;
-        padding: 4px 12px 8px 12px; /* Adjust padding as needed */
-    `;
-
     return (
-        <div css={outerContainerStyle}>
-            <div css={innerContainerStyle}>
-                <img src="/logosmallfish.svg" alt="icon1" />
+        <div
+            className={css`
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                position: absolute;
+                width: 237px;
+                height: 32px;
+                left: 0.5px;
+                top: 16px;
+            `}
+        >
+            <div
+                className={css`
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center; 
+                    gap: 10px;
+                    width: 201px;
+                    height: 20px;
+                    padding: 4px 12px 8px 12px;
+                `}
+            >
+                <img src={Yumiaos} alt="Yumiaos Logo" />
+                <div
+                    className={css`
+                        font-family: 'PingFang SC';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 24px;
+                        display: flex;
+                        align-items: center;
+                        letter-spacing: 0.15px;
+                        color: #707480;
+                        order: 1;
+                    `}
+                >
+                    小鱼厂
+                </div>
             </div>
         </div>
     );
