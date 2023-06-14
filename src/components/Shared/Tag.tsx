@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 
 // We define our styled component here
-const StyledTag = styled.div`
+const tagStyles = css`
   display: inline-block;
   background: #007bff;
   color: #fff;
@@ -17,6 +17,6 @@ interface TagProps {
 }
 
 // Our Tag component receives 'text' as a prop and renders it inside the StyledTag
-const Tag: React.FC<TagProps> = ({ text }) => <StyledTag>{text}</StyledTag>;
+const Tag = ({ text }: TagProps) => <div css={tagStyles}>{text}</div>;
 
 export default Tag;
