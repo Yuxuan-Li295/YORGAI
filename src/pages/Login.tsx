@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { zincs } from "components/constants/colors";
+import Button from "components/Button";
 
 const Login = () => {
   return (
@@ -11,6 +12,11 @@ const Login = () => {
         font-family: "PingFang SC", sans-serif;
       `}
     >
+      <div>
+        <Button icon={<i className="fa fa-home" />} text="按钮" />
+        <Button icon={<i className="fa fa-bell" />} text="Notifications" />
+      </div>
+
       <div
         className={css`
           display: flex;
