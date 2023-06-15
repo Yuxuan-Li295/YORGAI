@@ -1,12 +1,12 @@
 import React from "react";
-import Tag from "./Tag";
+import { Tag } from "./Tag";
 
 function Card() {
   return (
     <div>
-      <Tag text="写作" />
-      <Tag text="文案" />
-      <Tag text="办公" />
+      <Tag>写作</Tag>
+      <Tag>文案</Tag>
+      <Tag>办公</Tag>
     </div>
   );
 }
