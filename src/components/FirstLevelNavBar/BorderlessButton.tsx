@@ -1,12 +1,12 @@
 import { css } from "@emotion/css";
-import React from "react";
+import { basis } from "components/constants/colors";
 
 const BorderlessButton = ({
   onClick,
   children,
 }: {
-  onClick?: () => void,
-  children: string,
+  onClick?: () => void;
+  children: string;
 }) => {
   return (
     <button
@@ -20,7 +20,7 @@ const BorderlessButton = ({
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #18181b;
+        color: ${basis["text"]};
         background-color: transparent;
         border: none;
         cursor: pointer;
