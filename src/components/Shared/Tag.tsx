@@ -4,11 +4,11 @@ import { css } from "@emotion/react";
 // We define our styled component here
 const tagStyles = css`
   display: inline-block;
-  background: #007bff;
-  color: #fff;
+  background: #f8f8f8;
+  color: #707480;
   font-size: 0.875rem;
   padding: 2px 8px;
-  border-radius: 2px;
+  border-radius: 50px;
   margin: 2px;
 `;
 
