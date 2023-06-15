@@ -1,22 +1,10 @@
 import { css } from "@emotion/css";
-import Yumiaos from "../../resource/img/YumiaosLogo.svg";
+import Yumiaos from "resource/img/YumiaosLogo.svg";
 
 const LeftIcon = () => {
     return (
         <div
             className={css`
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                position: absolute;
-                width: 237px;
-                height: 32px;
-                left: 0.5px;
-                top: 16px;
-            `}
-        >
-            <div
-                className={css`
                     display: flex;
                     flex-direction: row;
                     align-items: center; 
@@ -25,10 +13,10 @@ const LeftIcon = () => {
                     height: 20px;
                     padding: 4px 12px 8px 12px;
                 `}
-            >
-                <img src={Yumiaos} alt="Yumiaos Logo" />
-                <div
-                    className={css`
+        >
+            <img src={Yumiaos} alt="Yumiaos Logo" />
+            <div
+                className={css`
                         font-family: 'PingFang SC';
                         font-style: normal;
                         font-weight: 600;
@@ -40,12 +28,11 @@ const LeftIcon = () => {
                         color: #707480;
                         order: 1;
                     `}
-                >
-                    小鱼厂
-                </div>
+            >
+                小鱼厂
             </div>
         </div>
     );
 };
 
-export default LeftIcon;
+export { LeftIcon };
