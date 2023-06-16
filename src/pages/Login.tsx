@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
-import { zincs } from "components/constants/colors";
 import { ButtonTextIcon } from "components/ButtonTextIcon";
 import ButtonIcon from "resources/img/leadIcon.svg";
+import { basis, zincs } from "components/constants/colors";
 
 const Login = () => {
   return (
@@ -49,7 +49,7 @@ const Login = () => {
               font-weight: 600;
               font-size: 16px;
               line-height: 24px;
-              color: ${zincs[500]};
+              color: ${basis["text"]};
             `}
           >
             AI + 人才 = 无限可能
@@ -82,7 +82,7 @@ const Login = () => {
               line-height: 12px;
             }
             & a {
-              color: ${zincs[400]};
+              color: ${basis["text-subtle"]};
               text-decoration: inherit;
             }
           `}
