@@ -1,6 +1,7 @@
 import { css } from "@emotion/css";
 import { zincs } from "components/constants/colors";
-import Button from "components/Button";
+import { ButtonTextIcon } from "components/ButtonTextIcon";
+import ButtonIcon from "resources/img/leadIcon.svg";
 
 const Login = () => {
   return (
@@ -13,8 +14,10 @@ const Login = () => {
       `}
     >
       <div>
-        <Button icon={<i className="fa fa-home" />} text="按钮" />
-        <Button icon={<i className="fa fa-bell" />} text="Notifications" />
+        <ButtonTextIcon
+          text="按钮"
+          icon={<img src={ButtonIcon} alt="Icon" />}
+        />
       </div>
 
       <div
