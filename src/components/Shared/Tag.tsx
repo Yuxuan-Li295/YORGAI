@@ -1,12 +1,12 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { css } from "@emotion/css";
+import { basis, basisAlt } from "components/constants/colors";
 
 const Tag = ({ children }: { children: string }) => (
   <div
-    css={css`
+    className={css`
       display: inline-block;
-      background: #f8f8f8;
-      color: #707480;
+      background: ${basisAlt["bg-subtle"]};
+      color: ${basis["text"]};
       font-size: 0.875rem;
       padding: 2px 8px;
       border-radius: 50px;

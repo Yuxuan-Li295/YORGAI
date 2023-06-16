@@ -1,6 +1,4 @@
 import { css } from "@emotion/css";
-import { ButtonTextIcon } from "components/ButtonTextIcon";
-import ButtonIcon from "resources/img/leadIcon.svg";
 import { basis, zincs } from "components/constants/colors";
 
 const Login = () => {
@@ -13,13 +11,6 @@ const Login = () => {
         font-family: "PingFang SC", sans-serif;
       `}
     >
-      <div>
-        <ButtonTextIcon
-          text="按钮"
-          icon={<img src={ButtonIcon} alt="Icon" />}
-        />
-      </div>
-
       <div
         className={css`
           display: flex;

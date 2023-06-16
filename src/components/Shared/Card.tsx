@@ -1,7 +1,6 @@
-import React from "react";
 import { Tag } from "./Tag";
 
-function Card() {
+const Card = () => {
   return (
     <div>
       <Tag>写作</Tag>
@@ -9,6 +8,6 @@ function Card() {
       <Tag>办公</Tag>
     </div>
   );
-}
+};
 
-export default Card;
+export { Card };

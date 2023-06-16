@@ -1,6 +1,9 @@
 import { css } from "@emotion/css";
 import { zincs } from "components/constants/colors";
 import { SectionTitle } from "components/promptTrending/SectionTitle";
+import { Button } from "components/shared/Button";
+import { Card } from "components/shared/Card";
+import ButtonIcon from "resources/img/leadIcon.svg";
 
 const PromptTrending = () => {
   return (
@@ -57,6 +60,16 @@ const PromptTrending = () => {
           `}
         >
           search
+          <div>
+            <Button icon={<img src={ButtonIcon} alt="Icon" />}>按钮</Button>
+          </div>
+          <div
+            className={css`
+              background-color: black;
+            `}
+          >
+            <Button icon={<img src={ButtonIcon} alt="Icon" />}>按钮</Button>
+          </div>
         </div>
         <div
           className={css`
@@ -86,7 +99,7 @@ const PromptTrending = () => {
             <SectionTitle subTitle="小鱼厂专家们都在用他们">
               热门文字提示词
             </SectionTitle>
-            body
+            <Card />
           </div>
           <div
             className={css`
