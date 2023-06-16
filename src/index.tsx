@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "pages/Login";
 import Card from "components/Shared/Card";
+import { PromptTrending } from "pages/PromptTrending";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const Router = () => {
       <Routes>
         <Route element={<Login />} path="/login" />
         <Route element={<Card />} path="/card" />
+        <Route element={<PromptTrending />} path="/prompt/trending" />
       </Routes>
     </BrowserRouter>
   );
