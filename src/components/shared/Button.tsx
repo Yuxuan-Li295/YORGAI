@@ -7,7 +7,7 @@ const Button = ({ children, icon }: { children: string; icon?: ReactNode }) => {
     <button
       className={css`
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background-color: #67cdbc;
@@ -20,23 +20,26 @@ const Button = ({ children, icon }: { children: string; icon?: ReactNode }) => {
         &:hover {
           background-color: #57c4b1;
         }
+
+        &:hover > div {
+          background: linear-gradient(#57c4b1, #57c4b1) padding-box,
+            linear-gradient(to bottom, #ffffff52, #ffffff00 60%) border-box;
+        }
       `}
     >
       <div
         className={css`
+          flex: 1;
           display: flex;
           flex-direction: row;
+          justify-content: center;
+          align-items: center;
           gap: 10px;
           background: linear-gradient(#67cdbc, #67cdbc) padding-box,
             linear-gradient(to bottom, #ffffff52, #ffffff00 60%) border-box;
           padding: 5px 11px;
           border: 1px solid transparent;
           border-radius: 6px;
-
-          &:hover {
-            background: linear-gradient(#57c4b1, #57c4b1) padding-box,
-              linear-gradient(to bottom, #ffffff52, #ffffff00 60%) border-box;
-          }
         `}
       >
         {icon && (
@@ -53,7 +56,6 @@ const Button = ({ children, icon }: { children: string; icon?: ReactNode }) => {
         )}
         <div
           className={css`
-            font-style: normal;
             font-weight: 500;
             font-size: 12px;
             line-height: 16px;

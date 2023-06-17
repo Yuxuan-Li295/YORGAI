@@ -17,8 +17,6 @@ const LeftIcon = () => {
       <img src={Yumiaos} alt="Yumiaos Logo" />
       <div
         className={css`
-          font-family: "PingFang SC";
-          font-style: normal;
           font-weight: 600;
           font-size: 14px;
           line-height: 24px;
