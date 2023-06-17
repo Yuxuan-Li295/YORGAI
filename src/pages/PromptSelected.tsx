@@ -22,7 +22,6 @@ const PromptSelected = () => {
         font-style: normal;
       `}
     >
-      <FirstLevelNavBar />
       <div
         className={css`
           display: flex;
@@ -36,7 +35,7 @@ const PromptSelected = () => {
             align-items: center;
           `}
         >
-          header1
+          <FirstLevelNavBar />
         </div>
         <div
           className={css`

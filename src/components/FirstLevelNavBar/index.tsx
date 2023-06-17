@@ -20,6 +20,11 @@ const FirstLevelNavBar = () => {
             `}
         >
             <LeftIcon />
+            <div
+                className={css`
+                    width: 290.5px;
+                `}
+            />
             <MiddlebuttonSection />
             <div
                 className={css`
