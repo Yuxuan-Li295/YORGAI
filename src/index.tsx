@@ -3,7 +3,9 @@
 import { Global, css } from "@emotion/react";
 import emotionReset from "emotion-reset";
 import { Login } from "pages/Login";
-import { PromptTrending } from "pages/PromptTrending";
+import { PromptSelected } from "pages/PromptSelected";
+import { PromptText } from "pages/PromptText";
+import { PromptImage } from "pages/PromptImage";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
@@ -30,7 +32,9 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<Login />} path="/login" />
-        <Route element={<PromptTrending />} path="/prompt/trending" />
+        <Route element={<PromptSelected />} path="/prompt/selected" />
+        <Route element={<PromptText />} path="/prompt/complete/text" />
+        <Route element={<PromptImage />} path="/prompt/complete/image" />
       </Routes>
     </BrowserRouter>
   );

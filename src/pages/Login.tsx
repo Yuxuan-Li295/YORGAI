@@ -9,6 +9,7 @@ const Login = () => {
         flex-direction: row;
         height: 100vh;
         font-family: "PingFang SC", sans-serif;
+        font-style: normal;
       `}
     >
       <div
@@ -36,7 +37,6 @@ const Login = () => {
               display: flex;
               justify-content: center;
               align-items: center;
-              font-style: normal;
               font-weight: 600;
               font-size: 16px;
               line-height: 24px;
@@ -67,7 +67,6 @@ const Login = () => {
               justify-content: center;
               width: 140px;
               height: 100px;
-              font-style: normal;
               font-weight: 500;
               font-size: 11px;
               line-height: 12px;

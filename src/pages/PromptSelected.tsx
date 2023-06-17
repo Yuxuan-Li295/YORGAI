@@ -1,11 +1,14 @@
 import { css } from "@emotion/css";
-import { zincs } from "components/constants/colors";
+import { basis, zincs } from "components/constants/colors";
 import { SectionTitle } from "components/promptTrending/SectionTitle";
 import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
-import ButtonIcon from "resources/img/leadIcon.svg";
+import { Footer } from "components/shared/Footer";
+import MagicWand from "resources/img/MagicWand.svg";
+import More from "resources/img/More.svg";
+import Refresh from "resources/img/Refresh.svg";
 
-const PromptTrending = () => {
+const PromptSelected = () => {
   return (
     <div
       className={css`
@@ -15,6 +18,7 @@ const PromptTrending = () => {
         gap: 107px;
         background: ${zincs[25]};
         font-family: "PingFang SC", sans-serif;
+        font-style: normal;
       `}
     >
       <div
@@ -57,18 +61,40 @@ const PromptTrending = () => {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            gap: 27px;
           `}
         >
-          search
-          <div>
-            <Button icon={<img src={ButtonIcon} alt="Icon" />}>按钮</Button>
+          <div
+            className={css`
+              font-weight: 500;
+              font-size: 48px;
+              line-height: 38px;
+            `}
+          >
+            <span
+              className={css`
+                color: #67cdbc;
+              `}
+            >
+              4865
+            </span>
+            {" 条提示词"}
           </div>
           <div
             className={css`
-              background-color: black;
+              font-weight: 400;
+              font-size: 20px;
+              line-height: 30px;
+              color: ${basis["text"]};
             `}
           >
-            <Button icon={<img src={ButtonIcon} alt="Icon" />}>按钮</Button>
+            小鱼厂收集了大量高质量提示词，并根据功能和内容进行分类
+          </div>
+          <div>search bar</div>
+          <div>
+            <Button icon={<img src={MagicWand} alt="Magic wand icon" />}>
+              AI 提示词优化
+            </Button>
           </div>
         </div>
         <div
@@ -83,70 +109,66 @@ const PromptTrending = () => {
             className={css`
               display: flex;
               flex-direction: column;
+              gap: 26px;
               width: 1196px;
             `}
           >
             <SectionTitle>热门分类</SectionTitle>
-            body
+            <div>cards</div>
           </div>
           <div
             className={css`
               display: flex;
               flex-direction: column;
+              gap: 26px;
               width: 1196px;
             `}
           >
-            <SectionTitle subTitle="小鱼厂专家们都在用他们">
-              热门文字提示词
-            </SectionTitle>
+            <div
+              className={css`
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+              `}
+            >
+              <SectionTitle subTitle="小鱼厂专家们都在用他们">
+                热门文字提示词
+              </SectionTitle>
+              <div
+                className={css`
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  gap: 21px;
+                `}
+              >
+                <Button icon={<img src={Refresh} alt="Refresh icon" />}>
+                  换一批
+                </Button>
+                <Button icon={<img src={More} alt="More icon" />}>
+                  查看更多
+                </Button>
+              </div>
+            </div>
             <Card />
+            <div>cards</div>
           </div>
           <div
             className={css`
               display: flex;
               flex-direction: column;
+              gap: 26px;
               width: 1196px;
             `}
           >
             <SectionTitle>榜单</SectionTitle>
-            body
+            <div>cards</div>
           </div>
         </div>
       </div>
-      <div
-        className={css`
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          & > div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 140px;
-            height: 100px;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 11px;
-            line-height: 12px;
-          }
-          & a {
-            color: ${zincs[400]};
-            text-decoration: inherit;
-          }
-        `}
-      >
-        <div>
-          <a href="/about">关于小鱼厂</a>
-        </div>
-        <div>
-          <a href="/terms">小鱼厂协议</a>
-        </div>
-        <div>
-          <a href="/privacy">隐私保护指引</a>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };
 
-export { PromptTrending };
+export { PromptSelected };
