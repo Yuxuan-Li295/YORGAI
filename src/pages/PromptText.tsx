@@ -1,8 +1,11 @@
 import { css } from "@emotion/css";
 import { zincs } from "components/constants/colors";
-import { SectionTitle } from "components/promptTrending/SectionTitle";
+import { Button } from "components/shared/Button";
+import { Footer } from "components/shared/Footer";
+import Lightbulb from "resources/img/Lightbulb.svg";
+import MagicWand from "resources/img/MagicWand.svg";
 
-const PromptTrending = () => {
+const PromptText = () => {
   return (
     <div
       className={css`
@@ -12,6 +15,7 @@ const PromptTrending = () => {
         gap: 107px;
         background: ${zincs[25]};
         font-family: "PingFang SC", sans-serif;
+        font-style: normal;
       `}
     >
       <div
@@ -54,86 +58,53 @@ const PromptTrending = () => {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-          `}
-        >
-          search
-        </div>
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 80px;
+            gap: 27px;
           `}
         >
           <div
             className={css`
               display: flex;
               flex-direction: column;
-              width: 1196px;
+              align-items: center;
+              font-weight: 500;
+              font-size: 48px;
+              line-height: 60px;
             `}
           >
-            <SectionTitle>热门分类</SectionTitle>
-            body
+            <span>快速开启创作之旅</span>
+            <span>我们为您的创意需求提供了各种灵感提示</span>
+          </div>
+          <div
+            className={css`
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 21px;
+            `}
+          >
+            <Button icon={<img src={Lightbulb} alt="Lightbulb icon" />}>
+              AI 工具推荐
+            </Button>
+            <Button icon={<img src={MagicWand} alt="Magic wand icon" />}>
+              AI 提示词学习
+            </Button>
           </div>
           <div
             className={css`
               display: flex;
               flex-direction: column;
+              align-items: center;
+              gap: 13px;
               width: 1196px;
             `}
           >
-            <SectionTitle subTitle="小鱼厂专家们都在用他们">
-              热门文字提示词
-            </SectionTitle>
-            body
-          </div>
-          <div
-            className={css`
-              display: flex;
-              flex-direction: column;
-              width: 1196px;
-            `}
-          >
-            <SectionTitle>榜单</SectionTitle>
-            body
+            filter & body
           </div>
         </div>
       </div>
-      <div
-        className={css`
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          & > div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 140px;
-            height: 100px;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 11px;
-            line-height: 12px;
-          }
-          & a {
-            color: ${zincs[400]};
-            text-decoration: inherit;
-          }
-        `}
-      >
-        <div>
-          <a href="/about">关于小鱼厂</a>
-        </div>
-        <div>
-          <a href="/terms">小鱼厂协议</a>
-        </div>
-        <div>
-          <a href="/privacy">隐私保护指引</a>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };
 
-export { PromptTrending };
+export { PromptText };

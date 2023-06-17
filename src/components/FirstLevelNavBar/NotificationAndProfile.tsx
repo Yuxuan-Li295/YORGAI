@@ -12,18 +12,15 @@ const NotificationAndProfile = () => {
                 justify-content: flex-end;
                 gap: 33px;
                 padding: 4px 0;
-                position: absolute;
-                right: 15px;
-                top: 16px;
             `}
         >
-            <img src={Notification} alt="Notification Icon" 
+            <img src={Notification} alt="Notification Icon"
                 className={css`
                     width: 32px;
                     height: 32px;
                 `}
             />
-            <img src={UserAvatar} alt="User Icon" 
+            <img src={UserAvatar} alt="User Icon"
                 className={css`
                     width: 32px;
                     height: 32px;
