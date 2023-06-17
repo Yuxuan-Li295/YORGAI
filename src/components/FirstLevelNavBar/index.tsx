@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
+import { zincs } from "components/constants/colors";
 import { LeftIcon } from "./LeftIcon";
 import { MiddlebuttonSection } from "./MiddlebuttonSection";
 import { NotificationAndProfile } from "./NotificationAndProfile";
-import { zincs } from "components/constants/colors";
 
 const FirstLevelNavBar = () => {
     return (
@@ -16,7 +16,7 @@ const FirstLevelNavBar = () => {
                 height: 64px;
                 padding: 0 24px;
                 background: ${zincs[25]}; 
-                border-bottom: 1px solid #E9E9EC;
+                border-bottom: 1px solid ${zincs[200]};
             `}
         >
             <LeftIcon />
