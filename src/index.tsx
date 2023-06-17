@@ -3,13 +3,13 @@
 import { Global, css } from "@emotion/react";
 import emotionReset from "emotion-reset";
 import { Login } from "pages/Login";
+import { PromptImage } from "pages/PromptImage";
 import { PromptSelected } from "pages/PromptSelected";
 import { PromptText } from "pages/PromptText";
-import { PromptImage } from "pages/PromptImage";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
@@ -31,10 +31,16 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Login />} path="/login" />
-        <Route element={<PromptSelected />} path="/prompt/selected" />
-        <Route element={<PromptText />} path="/prompt/complete/text" />
-        <Route element={<PromptImage />} path="/prompt/complete/image" />
+        <Route path="/" element={<Navigate to="prompt/selected" replace />} />
+        <Route path="login" element={<Login />} />
+        <Route path="prompt">
+          <Route path="selected" element={<PromptSelected />} />
+          <Route path="complete">
+            <Route path="text" element={<PromptText />} />
+            <Route path="image" element={<PromptImage />} />
+          </Route>
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
