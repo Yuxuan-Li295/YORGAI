@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import Yumiaos from "resource/img/YumiaosLogo.svg";
+import Yumiaos from "resources/img/YumiaosLogo.svg";
 
 const LeftIcon = () => {
   return (
