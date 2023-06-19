@@ -5,7 +5,7 @@ const Tag = ({ children }: { children: string }) => (
   <div
     css={css`
       display: inline-block;
-      background: #f8f8f8;
+      background: ${children === "+2" ? "#e9e9eb" : "#f9f9f9"};
       color: #707480;
       font-size: 0.875rem;
       padding: 2px 8px;
