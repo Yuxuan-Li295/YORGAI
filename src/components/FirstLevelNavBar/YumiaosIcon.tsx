@@ -1,7 +1,8 @@
 import { css } from "@emotion/css";
-import Yumiaos from "resources/img/YumiaosLogo.svg";
+import { basis } from "components/constants/colors";
+import Yumiaos from "resources/img/YumiaosLogo.png";
 
-const LeftIcon = () => {
+const YumiaosIcon = () => {
   return (
     <div
       className={css`
@@ -9,12 +10,17 @@ const LeftIcon = () => {
         flex-direction: row;
         align-items: center;
         gap: 10px;
-        width: 201px;
-        height: 20px;
-        padding: 4px 12px 8px 12px;
+        width: 100px;
       `}
     >
-      <img src={Yumiaos} alt="Yumiaos Logo" />
+      <img
+        className={css`
+          width: 20px;
+          height: 20px;
+        `}
+        src={Yumiaos}
+        alt="Yumiaos Logo"
+      />
       <div
         className={css`
           font-weight: 600;
@@ -23,8 +29,8 @@ const LeftIcon = () => {
           display: flex;
           align-items: center;
           letter-spacing: 0.15px;
-          color: #707480;
-          order: 1;
+          color: ${basis["text"]};
+          white-space: nowrap;
         `}
       >
         小鱼厂
@@ -33,4 +39,4 @@ const LeftIcon = () => {
   );
 };
 
-export { LeftIcon };
+export { YumiaosIcon };

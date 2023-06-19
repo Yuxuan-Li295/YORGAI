@@ -1,10 +1,10 @@
 import { css } from "@emotion/css";
+import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { basis, zincs } from "components/constants/colors";
 import { SectionTitle } from "components/promptTrending/SectionTitle";
 import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
-import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import MagicWand from "resources/img/MagicWand.svg";
 import More from "resources/img/More.svg";
 import Refresh from "resources/img/Refresh.svg";
@@ -28,15 +28,7 @@ const PromptSelected = () => {
           flex-direction: column;
         `}
       >
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          `}
-        >
-          <FirstLevelNavBar />
-        </div>
+        <FirstLevelNavBar />
         <div
           className={css`
             display: flex;

@@ -32,7 +32,7 @@ const SectionTitle = ({
             font-weight: 500;
             font-size: 20px;
             line-height: 30px;
-            color: ${basis["text-load"]};
+            color: ${basis["text-loud"]};
           `}
         >
           {children}
