@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import Yumiaos from "resources/img/YumiaosLogo.svg";
+import Yumiaos from "resources/img/YumiaosLogo.png";
 
 const YumiaosIcon = () => {
   return (
@@ -13,7 +13,14 @@ const YumiaosIcon = () => {
         width: 100px;
       `}
     >
-      <img src={Yumiaos} alt="Yumiaos Logo" />
+      <img
+        className={css`
+          width: 20px;
+          height: 20px;
+        `}
+        src={Yumiaos}
+        alt="Yumiaos Logo"
+      />
       <div
         className={css`
           font-weight: 600;
