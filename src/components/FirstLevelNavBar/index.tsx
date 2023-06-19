@@ -1,39 +1,27 @@
 import { css } from "@emotion/css";
-import { zincs } from "components/constants/colors";
-import { LeftIcon } from "./LeftIcon";
-import { MiddlebuttonSection } from "./MiddlebuttonSection";
+import { white, zincs } from "components/constants/colors";
+import { ButtonSection } from "./ButtonSection";
 import { NotificationAndProfile } from "./NotificationAndProfile";
+import { YumiaosIcon } from "./YumiaosIcon";
 
 const FirstLevelNavBar = () => {
-    return (
-        <div
-            className={css`
-                box-sizing: border-box;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 1440px;
-                height: 64px;
-                padding: 0 24px;
-                background: ${zincs[25]}; 
-                border-bottom: 1px solid ${zincs[200]};
-            `}
-        >
-            <LeftIcon />
-            <div
-                className={css`
-                    width: 290.5px;
-                `}
-            />
-            <MiddlebuttonSection />
-            <div
-                className={css`
-                    width: 285.5px;
-                `}
-            />
-            <NotificationAndProfile />
-        </div>
-    );
+  return (
+    <div
+      className={css`
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        height: 64px;
+        padding: 0 24px;
+        background: ${white};
+        border-bottom: 1px solid ${zincs[200]};
+      `}
+    >
+      <YumiaosIcon />
+      <ButtonSection />
+      <NotificationAndProfile />
+    </div>
+  );
 };
 
 export { FirstLevelNavBar };

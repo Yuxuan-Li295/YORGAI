@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { Global, css } from "@emotion/react";
+import { white } from "components/constants/colors";
 import emotionReset from "emotion-reset";
 import { Login } from "pages/Login";
 import { PromptImage } from "pages/PromptImage";
@@ -15,7 +16,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <meta name="theme-color" content="#131619" />
+        <meta name="theme-color" content={white} />
       </Helmet>
       <Global
         styles={css`

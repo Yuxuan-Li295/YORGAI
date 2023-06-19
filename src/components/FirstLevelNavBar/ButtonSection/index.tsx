@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
-import { BorderlessButton } from "./Button/BorderlessButton";
+import { BorderlessButton } from "./BorderlessButton";
 
-const MiddlebuttonSection = () => {
+const ButtonSection = () => {
   const buttonClickHandler = (buttonName: string) => {
     console.log(`${buttonName} button clicked!`);
   };
@@ -9,7 +9,7 @@ const MiddlebuttonSection = () => {
   const buttonNames = [
     "需求大厅",
     "作品社区",
-    "AI工具",
+    "AI 工具",
     "提示词库",
     "数字中控",
   ];
@@ -18,9 +18,7 @@ const MiddlebuttonSection = () => {
     <div
       className={css`
         display: flex;
-        justify-content: center;
-        gap: 20px;
-        padding: 4px 0;
+        gap: 36px;
       `}
     >
       {buttonNames.map((buttonName) => (
@@ -35,4 +33,4 @@ const MiddlebuttonSection = () => {
   );
 };
 
-export { MiddlebuttonSection };
+export { ButtonSection };

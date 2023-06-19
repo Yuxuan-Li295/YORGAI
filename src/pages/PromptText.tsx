@@ -1,4 +1,5 @@
 import { css } from "@emotion/css";
+import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
@@ -24,15 +25,7 @@ const PromptText = () => {
           flex-direction: column;
         `}
       >
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          `}
-        >
-          header1
-        </div>
+        <FirstLevelNavBar />
         <div
           className={css`
             display: flex;
