@@ -5,9 +5,11 @@ import { SectionTitle } from "components/promptTrending/SectionTitle";
 import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
+import { SearchCateButton } from "components/shared/SearchCateButton";
 import MagicWand from "resources/img/MagicWand.svg";
 import More from "resources/img/More.svg";
 import Refresh from "resources/img/Refresh.svg";
+import Search from "resources/img/Search.svg";
 
 const PromptSelected = () => {
   return (
@@ -84,6 +86,31 @@ const PromptSelected = () => {
             小鱼厂收集了大量高质量提示词，并根据功能和内容进行分类
           </div>
           <div>search bar</div>
+          <div
+            className={css`
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 21px;
+            `}
+          >
+            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
+              ChatGPT
+            </SearchCateButton>
+            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
+              MidJourney
+            </SearchCateButton>
+            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
+              GPT4
+            </SearchCateButton>
+            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
+              DALL-E
+            </SearchCateButton>
+            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
+              Stable Diffusion
+            </SearchCateButton>
+          </div>
+
           <div>
             <Button icon={<img src={MagicWand} alt="Magic wand icon" />}>
               AI 提示词优化
