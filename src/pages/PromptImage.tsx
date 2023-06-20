@@ -1,10 +1,11 @@
 import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
+import { PromptImageCard } from "components/Prompt/PromptImageCard";
 import { zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
-import Lightbulb from "resources/img/Lightbulb.svg";
-import MagicWand from "resources/img/MagicWand.svg";
+import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
+import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 
 const PromptImage = () => {
   return (
@@ -75,12 +76,8 @@ const PromptImage = () => {
               gap: 21px;
             `}
           >
-            <Button icon={<img src={Lightbulb} alt="Lightbulb icon" />}>
-              AI 工具推荐
-            </Button>
-            <Button icon={<img src={MagicWand} alt="Magic wand icon" />}>
-              AI 提示词学习
-            </Button>
+            <Button Icon={Lightbulb}>AI 工具推荐</Button>
+            <Button Icon={MagicWand}>AI 提示词学习</Button>
           </div>
           <div
             className={css`

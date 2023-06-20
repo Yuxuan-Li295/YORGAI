@@ -5,9 +5,9 @@ import { SectionTitle } from "components/Prompt/SectionTitle";
 import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
-import MagicWand from "resources/img/MagicWand.svg";
-import More from "resources/img/More.svg";
-import Refresh from "resources/img/Refresh.svg";
+import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
+import { ReactComponent as More } from "resources/img/More.svg";
+import { ReactComponent as Refresh } from "resources/img/Refresh.svg";
 
 const PromptSelected = () => {
   return (
@@ -85,9 +85,7 @@ const PromptSelected = () => {
           </div>
           <div>search bar</div>
           <div>
-            <Button icon={<img src={MagicWand} alt="Magic wand icon" />}>
-              AI 提示词优化
-            </Button>
+            <Button Icon={MagicWand}>AI 提示词优化</Button>
           </div>
         </div>
         <div
@@ -135,12 +133,8 @@ const PromptSelected = () => {
                   gap: 21px;
                 `}
               >
-                <Button icon={<img src={Refresh} alt="Refresh icon" />}>
-                  换一批
-                </Button>
-                <Button icon={<img src={More} alt="More icon" />}>
-                  查看更多
-                </Button>
+                <Button Icon={Refresh}>换一批</Button>
+                <Button Icon={More}>查看更多</Button>
               </div>
             </div>
             <Card />
