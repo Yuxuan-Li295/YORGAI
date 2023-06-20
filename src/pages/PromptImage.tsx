@@ -6,6 +6,8 @@ import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
+import Bird from "resources/img/bird.jpg";
+import View from "resources/img/view.jpeg";
 
 const PromptImage = () => {
   return (
@@ -88,7 +90,21 @@ const PromptImage = () => {
               width: 1196px;
             `}
           >
-            filter & body
+            <div>filter</div>
+            <div
+              className={css`
+                width: 100%;
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+              `}
+            >
+              <PromptImageCard image={Bird} />
+              <PromptImageCard image={View} />
+              <PromptImageCard image={Bird} />
+              <PromptImageCard image={View} />
+            </div>
           </div>
         </div>
       </div>
