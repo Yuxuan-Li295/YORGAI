@@ -5,11 +5,10 @@ import { SectionTitle } from "components/promptTrending/SectionTitle";
 import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
-import { SearchCateButton } from "components/shared/SearchCateButton";
+import { FastSearchButton } from "components/shared/FastSearchButton";
 import MagicWand from "resources/img/MagicWand.svg";
 import More from "resources/img/More.svg";
 import Refresh from "resources/img/Refresh.svg";
-import Search from "resources/img/Search.svg";
 
 const PromptSelected = () => {
   return (
@@ -94,21 +93,11 @@ const PromptSelected = () => {
               gap: 21px;
             `}
           >
-            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
-              ChatGPT
-            </SearchCateButton>
-            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
-              MidJourney
-            </SearchCateButton>
-            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
-              GPT4
-            </SearchCateButton>
-            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
-              DALL-E
-            </SearchCateButton>
-            <SearchCateButton icon={<img src={Search} alt="Search Icon" />}>
-              Stable Diffusion
-            </SearchCateButton>
+            <FastSearchButton>ChatGPT</FastSearchButton>
+            <FastSearchButton>MidJourney</FastSearchButton>
+            <FastSearchButton>GPT4</FastSearchButton>
+            <FastSearchButton>DALL-E</FastSearchButton>
+            <FastSearchButton>Stable Diffusion</FastSearchButton>
           </div>
 
           <div>
