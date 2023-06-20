@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import PromptTrendingSectionTitleIcon from "resources/img/PromptTrendingSectionTitleIcon.svg";
+import PromptSectionTitleIcon from "resources/img/PromptSectionTitleIcon.svg";
 
 const SectionTitle = ({
   children,
@@ -17,10 +17,7 @@ const SectionTitle = ({
         gap: 15px;
       `}
     >
-      <img
-        src={PromptTrendingSectionTitleIcon}
-        alt="Prompt trending section title icon"
-      />
+      <img src={PromptSectionTitleIcon} alt="Prompt section title icon" />
       <div
         className={css`
           display: flex;
