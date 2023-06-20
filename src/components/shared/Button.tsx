@@ -22,6 +22,7 @@ const Button = ({
         border: none;
         box-shadow: 0px 0px 0px 1px #74b6a9;
         margin: 1px;
+        font-family: inherit;
 
         &:hover {
           background-color: #57c4b1;
