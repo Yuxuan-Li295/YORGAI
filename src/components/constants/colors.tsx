@@ -40,7 +40,14 @@ const basis: Readonly<Record<BasisKey, string>> = {
   "text-foreground": white,
 };
 
-const basisAltKeys = ["bg-subtle", "bg", "bg-muted"] as const;
+const basisAltKeys = [
+  "bg-subtle",
+  "bg",
+  "bg-muted",
+  "border-subtle",
+  "border",
+  "border-muted",
+] as const;
 
 type BasisAltKey = (typeof basisAltKeys)[number];
 
@@ -48,6 +55,9 @@ const basisAlt: Readonly<Record<BasisAltKey, string>> = {
   "bg-subtle": "#BCBDC21A",
   bg: "#BCBDC226",
   "bg-muted": "#BCBDC233",
+  "border-subtle": "#E9E9EC",
+  border: "#D7D7DB",
+  "border-muted": "#BCBDC2",
 };
 
 export { zincs, white, black, basis, basisAlt };

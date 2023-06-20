@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { basis, zincs } from "components/constants/colors";
-import { SectionTitle } from "components/promptTrending/SectionTitle";
+import { SectionTitle } from "components/Prompt/SectionTitle";
 import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
