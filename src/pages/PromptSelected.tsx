@@ -3,6 +3,7 @@ import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { basis, zincs } from "components/constants/colors";
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { Button } from "components/shared/Button";
+import {ButtonIconSection} from "components/SecondLevelNavBar/ButtonIconSection";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
@@ -36,7 +37,7 @@ const PromptSelected = () => {
             align-items: center;
           `}
         >
-          header2
+          <ButtonIconSection />
         </div>
       </div>
       <div
