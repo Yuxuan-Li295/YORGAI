@@ -1,10 +1,13 @@
 import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
+import { PromptImageCard } from "components/Prompt/PromptImageCard";
 import { zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
-import Lightbulb from "resources/img/Lightbulb.svg";
-import MagicWand from "resources/img/MagicWand.svg";
+import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
+import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
+import Bird from "resources/img/bird.jpg";
+import View from "resources/img/view.jpeg";
 
 const PromptImage = () => {
   return (
@@ -75,12 +78,8 @@ const PromptImage = () => {
               gap: 21px;
             `}
           >
-            <Button icon={<img src={Lightbulb} alt="Lightbulb icon" />}>
-              AI 工具推荐
-            </Button>
-            <Button icon={<img src={MagicWand} alt="Magic wand icon" />}>
-              AI 提示词学习
-            </Button>
+            <Button Icon={Lightbulb}>AI 工具推荐</Button>
+            <Button Icon={MagicWand}>AI 提示词学习</Button>
           </div>
           <div
             className={css`
@@ -91,7 +90,21 @@ const PromptImage = () => {
               width: 1196px;
             `}
           >
-            filter & body
+            <div>filter</div>
+            <div
+              className={css`
+                width: 100%;
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+              `}
+            >
+              <PromptImageCard image={Bird} />
+              <PromptImageCard image={View} />
+              <PromptImageCard image={Bird} />
+              <PromptImageCard image={View} />
+            </div>
           </div>
         </div>
       </div>
