@@ -1,12 +1,11 @@
 import { css } from "@emotion/css";
 import { ButtonIcon } from "./ButtonIcon";
 
-import AIApplication from '../../../resources/img/AIApplication.svg';
-import ApplicationIcon from '../../../resources/img/ApplicationIcon.svg';
-import Bulb from '../../../resources/img/Bulb.svg';
-import Star from '../../../resources/img/Star.svg';
-import UserDouble from '../../../resources/img/UserDouble.svg';
-
+import { ReactComponent as AIApplication } from 'resources/img/AIApplication.svg';
+import { ReactComponent as ApplicationIcon } from 'resources/img/ApplicationIcon.svg';
+import { ReactComponent as Bulb } from 'resources/img/Bulb.svg';
+import { ReactComponent as Star } from 'resources/img/Star.svg';
+import { ReactComponent as UserDouble } from 'resources/img/UserDouble.svg';
 
 const ButtonIconSection = () => {
   const buttonClickHandler = (buttonName: string) => {
@@ -14,13 +13,12 @@ const ButtonIconSection = () => {
   };
 
   const buttons = [
-    { icon: UserDouble, label: "社区热门" },
-    { icon: ApplicationIcon, label: "在线应用" },
-    { icon: AIApplication, label: "AI应用大全", width: '98px' }, 
-    { icon: Bulb, label: "为你选应用", width: '94px' },  
-    { icon: Star, label: "我的收藏" },
+    { Icon: UserDouble, label: "社区热门" },
+    { Icon: ApplicationIcon, label: "在线应用" },
+    { Icon: AIApplication, label: "AI应用大全" },
+    { Icon: Bulb, label: "为你选应用" },
+    { Icon: Star, label: "我的收藏" },
   ];
-  
 
   return (
     <div
@@ -31,14 +29,13 @@ const ButtonIconSection = () => {
         padding: 0px;
         gap: 24px;
         width: 528px;
-        margin: 0 auto;  // 添加这一行可以让组件在水平方向上居中
+        justify-content: center;
       `}
     >
-      {buttons.map(({ icon, label, width }) => (
+      {buttons.map(({ Icon, label }) => (
         <ButtonIcon
-          icon={icon}
+          Icon={Icon}
           label={label}
-          width = {width}
           onClick={() => buttonClickHandler(label)}
           key={label}
         />
@@ -46,6 +43,5 @@ const ButtonIconSection = () => {
     </div>
   );
 };
-
 
 export { ButtonIconSection };
