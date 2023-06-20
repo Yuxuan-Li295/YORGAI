@@ -1,13 +1,12 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { ReactElement } from "react";
 
 const Button = ({
   children,
-  icon,
+  Icon,
 }: {
   children: string;
-  icon?: ReactElement;
+  Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }) => {
   return (
     <button
@@ -56,26 +55,15 @@ const Button = ({
           padding: 5px 11px;
           border: 1px solid transparent;
           border-radius: 6px;
+          color: ${basis["text-foreground"]};
         `}
       >
-        {icon && (
-          <div
-            className={css`
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              align-items: center;
-            `}
-          >
-            {icon}
-          </div>
-        )}
+        {Icon && <Icon />}
         <div
           className={css`
             font-weight: 500;
             font-size: 12px;
             line-height: 16px;
-            color: ${basis["text-foreground"]};
           `}
         >
           {children}
