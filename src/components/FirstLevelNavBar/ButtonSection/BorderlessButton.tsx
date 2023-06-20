@@ -12,17 +12,16 @@ const BorderlessButton = ({
     <button
       className={css`
         width: 120px;
-        height: 24px;
-        font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: ${basis["text"]};
+        color: ${basis["text-loud"]};
         background-color: transparent;
         border: none;
+        padding: 0;
         cursor: pointer;
       `}
       onClick={onClick}

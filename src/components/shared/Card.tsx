@@ -7,7 +7,7 @@ import { AppName } from "./AppName";
 import { AppIntro } from "./AppIntro";
 import NotionAppIcon from "../../resource/img/NotionAppIcon.svg";
 
-function Card() {
+const Card = () => {
   return (
     <div
       css={css`
@@ -77,6 +77,6 @@ function Card() {
       </div>
     </div>
   );
-}
+};
 
-export default Card;
+export { Card };

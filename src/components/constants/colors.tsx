@@ -1,3 +1,6 @@
+const white = "#FFFFFF";
+const black = "#000000";
+
 const colorKeys = [
   25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
 ] as const;
@@ -19,7 +22,13 @@ const zincs: Readonly<Record<ColorKey, string>> = {
   950: "#09090B",
 };
 
-const basisKeys = ["text-subtle", "text", "text-muted", "text-load"] as const;
+const basisKeys = [
+  "text-subtle",
+  "text",
+  "text-muted",
+  "text-loud",
+  "text-foreground",
+] as const;
 
 type BasisKey = (typeof basisKeys)[number];
 
@@ -27,7 +36,18 @@ const basis: Readonly<Record<BasisKey, string>> = {
   "text-subtle": "#BCBDC2",
   text: "#707480",
   "text-muted": "#4F5159",
-  "text-load": "#18181B",
+  "text-loud": "#18181B",
+  "text-foreground": white,
 };
 
-export { zincs, basis };
+const basisAltKeys = ["bg-subtle", "bg", "bg-muted"] as const;
+
+type BasisAltKey = (typeof basisAltKeys)[number];
+
+const basisAlt: Readonly<Record<BasisAltKey, string>> = {
+  "bg-subtle": "#BCBDC21A",
+  bg: "#BCBDC226",
+  "bg-muted": "#BCBDC233",
+};
+
+export { zincs, white, black, basis, basisAlt };
