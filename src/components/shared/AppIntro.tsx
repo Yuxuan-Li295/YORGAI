@@ -8,7 +8,7 @@ function AppIntro({ children }: { children: string }) {
     // currently default app name is Notion AI
     <div
       css={css`
-        font-size: 11px;
+        font-size: 12px;
       `}
     >
       {children}

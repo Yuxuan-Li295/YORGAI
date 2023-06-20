@@ -143,7 +143,7 @@ const PromptSelected = () => {
                 </Button>
               </div>
             </div>
-            <Card />
+            <Card tags={["写作", "文案", "作文", "办公", "效率"]} />
             <div>cards</div>
           </div>
           <div
