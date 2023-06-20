@@ -1,9 +1,9 @@
 import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
-import { basis, zincs } from "components/constants/colors";
 import { SectionTitle } from "components/Prompt/SectionTitle";
+import { SecondLevelNavBar } from "components/SecondLevelNavBar";
+import { basis, zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
-import {ButtonIconSection} from "components/SecondLevelNavBar/ButtonIconSection";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
@@ -34,10 +34,10 @@ const PromptSelected = () => {
           className={css`
             display: flex;
             flex-direction: column;
-            align-items: center;
+            flex-grow: 1;
           `}
         >
-          <ButtonIconSection />
+          <SecondLevelNavBar />
         </div>
       </div>
       <div
