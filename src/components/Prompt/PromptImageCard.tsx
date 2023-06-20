@@ -32,7 +32,7 @@ const PromptImageCard = ({
           position: absolute;
         `}
       >
-        ddddd
+        what the heck
       </div>
     </div>
   );
