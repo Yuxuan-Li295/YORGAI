@@ -4,11 +4,11 @@ import { basis, white } from "components/constants/colors";
 const Button = ({
   children,
   variant = "primary",
-  icon,
+  Icon,
 }: {
   children: string;
   variant?: "primary" | "secondary";
-  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }) => {
   // FIXME: the last variant of button
   const primary = (

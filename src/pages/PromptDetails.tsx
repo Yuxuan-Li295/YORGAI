@@ -186,10 +186,10 @@ export const PromptDetails = () => {
               gap: 32px;
             `}
           >
-            <Button variant="secondary" icon={<CopySvg />}>
+            <Button variant="secondary" Icon={CopySvg}>
               复制到剪贴板
             </Button>
-            <Button icon={<ExecSvg />}>立即运行</Button>
+            <Button Icon={ExecSvg}>立即运行</Button>
           </div>
         </div>
       </div>
