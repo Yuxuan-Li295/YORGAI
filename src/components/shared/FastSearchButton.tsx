@@ -1,35 +1,26 @@
 import { css } from "@emotion/css";
-import { basis } from "components/constants/colors";
+import { basis, basisAlt } from "components/constants/colors";
 import Search from "resources/img/Search.svg";
 
 const FastSearchButton = ({ children }: { children: string }) => {
   return (
     <button
       className={css`
-        /* badge */
-        box-sizing: border-box;
-
-        /* Auto layout */
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
 
         background-color: white;
-        padding: 1px 8px;
-        gap: 8px;
+        padding: 0 8px 0 4px;
+        gap: 3px;
+        font-family: inherit;
 
-        border: 1.5px solid #bcbdc240;
-        border-radius: 108px;
-        margin: 1px;
-
-        /* Inside auto layout */
-        flex: none;
-        order: 0;
-        flex-grow: 0;
+        border: 1px solid ${basisAlt["border"]};
+        border-radius: 13px;
 
         &:hover {
-          background-color: #f5f5f5;
+          background-color: ${basisAlt["bg-muted"]};
         }
       `}
     >
@@ -40,11 +31,6 @@ const FastSearchButton = ({ children }: { children: string }) => {
           justify-content: center;
           align-items: center;
           padding: 0px;
-
-          /* Inside auto layout */
-          flex: none;
-          order: 1;
-          flex-grow: 0;
         `}
       >
         <img src={Search} alt="Search Icon" />
@@ -52,25 +38,20 @@ const FastSearchButton = ({ children }: { children: string }) => {
 
       <div
         className={css`
-          // /* Pingfang SC/body/sm/500 - medium */
-          // font-family: 'PingFang SC';
-          // font-style: normal;
           font-weight: 500;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-smooth: never;
+          -webkit-text-stroke: 0.3px;
           font-size: 14px;
           line-height: 20px;
           color: ${basis["text-loud"]};
 
-          /* Auto layout */
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-items: center;
-          padding: 0px 2px;
-
-          /* Inside auto layout */
-          flex: none;
-          order: 2;
-          flex-grow: 0;
+          padding: 2px;
         `}
       >
         {children}
