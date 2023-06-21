@@ -42,7 +42,6 @@ const FastSearchButton = ({ children }: { children: string }) => {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           font-smooth: never;
-          -webkit-text-stroke: 0.3px;
           font-size: 14px;
           line-height: 20px;
           color: ${basis["text-loud"]};
