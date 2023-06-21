@@ -3,8 +3,6 @@
 import React from "react";
 import { Tag } from "./Tag";
 import { css } from "@emotion/react";
-import { AppName } from "./AppName";
-import { AppIntro } from "./AppIntro";
 import NotionAppIcon from "../../resource/img/NotionAppIcon.svg";
 import ArrowChevronRight from "../../resources/img/ArrowChevronRight.svg";
 import RunIcon from "../../resources/img/RunIcon.svg";
@@ -71,7 +69,7 @@ const CardType2 = ({ tags }: CardProps) => {
               width: 100%;
             `}
           >
-            <AppName>Notion AI</AppName>
+            <h1>Notion AI</h1>
             <button
               css={css`
                 background-color: #34d393;
@@ -100,7 +98,9 @@ const CardType2 = ({ tags }: CardProps) => {
               立即运行
             </button>
           </div>
-          <AppIntro>对接GPT3， 200万人在用的写作助手...</AppIntro>
+          <p style={{ fontSize: "11px" }}>
+            对接GPT3， 200万人在用的写作助手...
+          </p>
         </div>
       </div>
 
