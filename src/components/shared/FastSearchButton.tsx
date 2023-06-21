@@ -11,7 +11,7 @@ const FastSearchButton = ({ children }: { children: string }) => {
         justify-content: center;
         align-items: center;
 
-        background-color: white;
+        background-color: transparent;
         padding: 0 8px 0 4px;
         gap: 3px;
         font-family: inherit;
