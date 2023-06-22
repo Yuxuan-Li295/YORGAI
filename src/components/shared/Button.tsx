@@ -91,6 +91,8 @@ const Button = ({
           0px 4px 4px -4px rgba(79, 81, 89, 0.32);
         border-radius: 6px;
         border: none;
+        margin: 1px;
+        font-family: inherit;
 
         &:hover {
           color: ${basis["text-muted"]};
