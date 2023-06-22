@@ -112,6 +112,8 @@ const PromptSelected = () => {
               showExecute={false}
               showRanking={false}
               notificationNumber={2}
+              appName="NotionAI"
+              appIntro="Notion是一款集成了笔记、知识库、数据表格、看板、日历等多种能力于一体的应用程序，它支持个人用户单独使用，也可以与他人进行跨平台协作"
             ></Card>
           </div>
           <div
@@ -160,6 +162,8 @@ const PromptSelected = () => {
                 showExecute={true}
                 showRanking={false}
                 notificationNumber={1}
+                appName="NotionAI"
+                appIntro="Notion是一款集成了笔记、知识库、数据表格、看板、日历等多种能力于一体的应用程序，它支持个人用户单独使用，也可以与他人进行跨平台协作"
               />
             </div>
           </div>
@@ -185,6 +189,8 @@ const PromptSelected = () => {
                 showExecute={false}
                 showRanking={true}
                 notificationNumber={1}
+                appName="NotionAI"
+                appIntro="Notion是一款集成了笔记、知识库、数据表格、看板、日历等多种能力于一体的应用程序，它支持个人用户单独使用，也可以与他人进行跨平台协作"
               />
             </div>
           </div>

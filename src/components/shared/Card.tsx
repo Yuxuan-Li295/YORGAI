@@ -10,6 +10,8 @@ type CardProps = {
   showExecute?: boolean;
   notificationNumber?: number;
   showRanking?: boolean;
+  appName?: string;
+  appIntro?: string;
 };
 
 const Card = ({
@@ -17,6 +19,8 @@ const Card = ({
   showExecute,
   showRanking,
   notificationNumber,
+  appName,
+  appIntro,
 }: CardProps) => {
   return (
     <div
@@ -75,7 +79,7 @@ const Card = ({
               width: 100%;
             `}
           >
-            <h1>Notion AI</h1>
+            <h1>{appName}</h1>
             {showExecute && (
               <button
                 className={css`
@@ -123,7 +127,7 @@ const Card = ({
             )}
           </div>
           <p style={{ fontSize: "11px" }}>
-            对接GPT3， 200万人在用的写作助手...
+            {appIntro!.length > 20 ? `${appIntro!.slice(0, 20)}...` : appIntro}
           </p>
         </div>
       </div>
