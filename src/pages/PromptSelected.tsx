@@ -4,7 +4,6 @@ import { SectionTitle } from "components/Prompt/SectionTitle";
 import { SecondLevelNavBar } from "components/SecondLevelNavBar";
 import { basis, zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
-import { ButtonIconSection } from "components/SecondLevelNavBar/ButtonIconSection";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
 import { FastSearchButton } from "components/shared/FastSearchButton";
