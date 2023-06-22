@@ -1,11 +1,12 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import PromptSectionTitleIcon from "resources/img/PromptSectionTitleIcon.svg";
 
 const SectionTitle = ({
+  Icon,
   children,
   subTitle,
 }: {
+  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
   children: string;
   subTitle?: string;
 }) => {
@@ -14,10 +15,11 @@ const SectionTitle = ({
       className={css`
         display: flex;
         flex-direction: row;
+        align-items: center;
         gap: 15px;
       `}
     >
-      <img src={PromptSectionTitleIcon} alt="Prompt section title icon" />
+      <Icon />
       <div
         className={css`
           display: flex;
