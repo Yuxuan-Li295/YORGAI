@@ -3,10 +3,25 @@ import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
+import { SecondLevelNavBar } from "components/SecondLevelNavBar";
 import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
+import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as Star } from "resources/img/Star.svg";
+import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
 const PromptText = () => {
+  const buttonClickHandler = (buttonName: string) => {
+    console.log(`${buttonName} button clicked!`);
+  };
+
+  const buttons = [
+    { Icon: UserDouble, label: "社区热门", onClick: () => buttonClickHandler("社区热门") },
+    { Icon: AIApplication, label: "提示词大全", onClick: () => buttonClickHandler("提示词大全") },
+    { Icon: MagicWand, label: "提示词优化器", onClick: () => buttonClickHandler("提示词优化器") },
+    { Icon: Star, label: "我的收藏", onClick: () => buttonClickHandler("我的收藏") },
+  ];
+
   return (
     <div
       className={css`
@@ -29,15 +44,7 @@ const PromptText = () => {
         `}
       >
         <FirstLevelNavBar />
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          `}
-        >
-          header2
-        </div>
+        <SecondLevelNavBar buttons={buttons} />
       </div>
       <div
         className={css`
