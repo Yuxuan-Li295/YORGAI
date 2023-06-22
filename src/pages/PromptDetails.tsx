@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
-import { zincs } from "components/constants/colors";
+import { basis, zincs } from "components/constants/colors";
 import { Avatar } from "components/shared/Avatar";
 import { Tag } from "components/shared/Tag";
 import { Button } from "components/shared/Button";
@@ -144,7 +144,7 @@ export const PromptDetails = () => {
                 font-size: 12px;
                 line-height: 16px;
                 text-align: center;
-                color: #707480;
+                color: ${basis.text};
               `}
             >
               {rate} ({commentCount} 评论)
@@ -173,7 +173,7 @@ export const PromptDetails = () => {
               font-weight: 400;
               font-size: 12px;
               line-height: 16px;
-              color: #18181b;
+              color: ${basis["text-loud"]};
             `}
           >
             {text}
