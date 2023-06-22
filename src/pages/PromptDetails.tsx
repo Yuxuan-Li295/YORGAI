@@ -7,6 +7,7 @@ import { Button } from "components/shared/Button";
 import { Star } from "components/shared/Star";
 import { ReactComponent as CopySvg } from "resources/img/copy.svg";
 import { ReactComponent as ExecSvg } from "resources/img/arrow-circle-broken-up-right.svg";
+import { Badge } from "components/shared/Badge";
 
 export const PromptDetails = () => {
   // FIXME: request data
@@ -110,7 +111,7 @@ export const PromptDetails = () => {
               <Tag>{tag}</Tag>
             ))}
           </div>
-          <Tag avatar={userIcon}>{userName}</Tag>
+          <Badge avatar={userIcon}>{userName}</Badge>
           <div
             className={css`
               display: flex;
