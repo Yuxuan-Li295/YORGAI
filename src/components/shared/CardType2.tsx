@@ -1,6 +1,4 @@
 /** @jsxImportSource @emotion/react */
-
-import React from "react";
 import { Tag } from "./Tag";
 import { css } from "@emotion/react";
 import NotionAppIcon from "../../resource/img/NotionAppIcon.svg";
