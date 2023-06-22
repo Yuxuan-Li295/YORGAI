@@ -25,9 +25,10 @@ const ButtonIcon = ({
         padding: 0;
         cursor: pointer;
         color: ${basis["text"]};
+        font-family: inherit;
 
         &:hover {
-          color: #67CDBC;  
+          color: #67cdbc;
         }
       `}
       onClick={onClick}
