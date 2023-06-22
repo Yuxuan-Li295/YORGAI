@@ -1,19 +1,26 @@
-/** @jsxImportSource @emotion/react */
-
 import React from "react";
 import { Tag } from "./Tag";
-import { css } from "@emotion/react";
+import { css } from "@emotion/css";
 import NotionAppIcon from "../../resource/img/NotionAppIcon.svg";
 import ArrowChevronRight from "../../resources/img/ArrowChevronRight.svg";
+import RunIcon from "../../resources/img/RunIcon.svg";
 
 type CardProps = {
   tags: string[];
+  showExecute?: boolean;
+  notificationNumber?: number;
+  showRanking?: boolean;
 };
 
-const Card = ({ tags }: CardProps) => {
+const Card = ({
+  tags,
+  showExecute,
+  showRanking,
+  notificationNumber,
+}: CardProps) => {
   return (
     <div
-      css={css`
+      className={css`
         width: 330px;
         height: 100px;
         padding: 20px;
@@ -30,14 +37,14 @@ const Card = ({ tags }: CardProps) => {
       `}
     >
       <div
-        css={css`
+        className={css`
           display: flex;
           align-items: center;
           margin-bottom: 10px;
         `}
       >
         <div
-          css={css`
+          className={css`
             border: 1px solid #e9e9ec;
             margin-right: 8px;
             border-radius: 10px;
@@ -53,14 +60,68 @@ const Card = ({ tags }: CardProps) => {
           />
         </div>
         <div
-          css={css`
+          className={css`
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             height: 40px;
           `}
         >
-          <h1>Notion AI</h1>
+          <div
+            className={css`
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+            `}
+          >
+            <h1>Notion AI</h1>
+            {showExecute && (
+              <button
+                className={css`
+                  background-color: #34d393;
+                  height: 20px;
+                  border: none;
+                  color: white;
+                  padding: 5px 10px;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 14px;
+                  margin: 2px 2px;
+                  cursor: pointer;
+                  border-radius: 8px;
+                `}
+              >
+                <img
+                  src={RunIcon}
+                  alt=""
+                  style={{
+                    height: "13px",
+                    width: "13px",
+                  }}
+                />
+                立即运行
+              </button>
+            )}
+            {showRanking && (
+              <div
+                className={css`
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: #fbcc0d;
+                  color: white;
+                  height: 40px;
+                  width: 40px;
+                  border-radius: 8px;
+                `}
+              >
+                {notificationNumber}
+              </div>
+            )}
+          </div>
           <p style={{ fontSize: "11px" }}>
             对接GPT3， 200万人在用的写作助手...
           </p>
@@ -68,7 +129,7 @@ const Card = ({ tags }: CardProps) => {
       </div>
 
       <div
-        css={css`
+        className={css`
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -76,7 +137,7 @@ const Card = ({ tags }: CardProps) => {
         `}
       >
         <div
-          css={css`
+          className={css`
             display: flex;
             flex-wrap: wrap;
             margin-left: 8px;

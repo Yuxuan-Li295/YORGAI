@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { useState } from "react";
 import { Tag } from "./Tag";
 import { css } from "@emotion/react";
 import NotionAppIcon from "../../resource/img/NotionAppIcon.svg";
@@ -10,6 +11,9 @@ type CardProps = {
 };
 
 const CardType2 = ({ tags }: CardProps) => {
+  // showExecute: 控制是否显示运行button
+  // notificationNumber: 排名tag
+  const [showExecute, notificationNumber] = useState(false);
   return (
     <div
       css={css`

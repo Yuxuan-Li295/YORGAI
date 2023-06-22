@@ -4,8 +4,6 @@ import { basis, zincs } from "components/constants/colors";
 import { SectionTitle } from "components/promptTrending/SectionTitle";
 import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
-import { CardType2 } from "components/shared/CardType2";
-import { CardType3 } from "components/shared/CardType3";
 import { Footer } from "components/shared/Footer";
 import MagicWand from "resources/img/MagicWand.svg";
 import More from "resources/img/More.svg";
@@ -109,7 +107,12 @@ const PromptSelected = () => {
             `}
           >
             <SectionTitle>热门分类</SectionTitle>
-            <div>cards</div>
+            <Card
+              tags={["写作", "文案", "作文", "办公", "效率"]}
+              showExecute={false}
+              showRanking={false}
+              notificationNumber={2}
+            ></Card>
           </div>
           <div
             className={css`
@@ -152,12 +155,13 @@ const PromptSelected = () => {
                 width: 100%;
               `}
             >
-              <Card tags={["写作", "文案", "作文", "办公", "效率"]} />
-              <CardType2 tags={["写作", "文案", "作文", "办公", "效率"]} />
-              <CardType3 tags={["写作", "文案", "作文", "办公", "效率"]} />
+              <Card
+                tags={["写作", "文案", "作文", "办公", "效率"]}
+                showExecute={true}
+                showRanking={false}
+                notificationNumber={1}
+              />
             </div>
-
-            <div>cards</div>
           </div>
           <div
             className={css`
@@ -168,7 +172,21 @@ const PromptSelected = () => {
             `}
           >
             <SectionTitle>榜单</SectionTitle>
-            <div>cards</div>
+            <div
+              className={css`
+                display: flex;
+                justify-content: space-between; // adds space between the cards
+                width: 100%;
+              `}
+            >
+              {/* added new card with required properties */}
+              <Card
+                tags={["写作", "文案", "作文", "办公", "效率"]}
+                showExecute={false}
+                showRanking={true}
+                notificationNumber={1}
+              />
+            </div>
           </div>
         </div>
       </div>
