@@ -1,11 +1,11 @@
 import { css } from "@emotion/css";
 import { ButtonIcon } from "./ButtonIcon";
 
-import { ReactComponent as AIApplication } from 'resources/img/AIApplication.svg';
-import { ReactComponent as ApplicationIcon } from 'resources/img/ApplicationIcon.svg';
-import { ReactComponent as Bulb } from 'resources/img/Bulb.svg';
-import { ReactComponent as Star } from 'resources/img/Star.svg';
-import { ReactComponent as UserDouble } from 'resources/img/UserDouble.svg';
+import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as ApplicationIcon } from "resources/img/ApplicationIcon.svg";
+import { ReactComponent as Bulb } from "resources/img/Bulb.svg";
+import { ReactComponent as Star } from "resources/img/Star.svg";
+import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
 const ButtonIconSection = () => {
   const buttonClickHandler = (buttonName: string) => {

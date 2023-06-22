@@ -6,6 +6,7 @@ import { Button } from "components/shared/Button";
 import { ButtonIconSection } from "components/SecondLevelNavBar/ButtonIconSection";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
+import { FastSearchButton } from "components/shared/FastSearchButton";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
@@ -91,6 +92,21 @@ const PromptSelected = () => {
             小鱼厂收集了大量高质量提示词，并根据功能和内容进行分类
           </div>
           <div>search bar</div>
+          <div
+            className={css`
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 21px;
+            `}
+          >
+            <FastSearchButton>ChatGPT</FastSearchButton>
+            <FastSearchButton>MidJourney</FastSearchButton>
+            <FastSearchButton>GPT4</FastSearchButton>
+            <FastSearchButton>DALL-E</FastSearchButton>
+            <FastSearchButton>Stable Diffusion</FastSearchButton>
+          </div>
+
           <div>
             <Button Icon={MagicWand}>AI 提示词优化</Button>
           </div>
