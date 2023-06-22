@@ -2,7 +2,7 @@ import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { zincs } from "components/constants/colors";
 import { Avatar } from "components/shared/Avatar";
-import { Badge } from "components/shared/Badge";
+import { Tag } from "components/shared/Tag";
 import { Button } from "components/shared/Button";
 import { Star } from "components/shared/Star";
 import { ReactComponent as CopySvg } from "resources/img/copy.svg";
@@ -107,10 +107,10 @@ export const PromptDetails = () => {
             `}
           >
             {tags.map((tag) => (
-              <Badge text={tag} />
+              <Tag>{tag}</Tag>
             ))}
           </div>
-          <Badge text={userName} avatar={userIcon} />
+          <Tag avatar={userIcon}>{userName}</Tag>
           <div
             className={css`
               display: flex;
