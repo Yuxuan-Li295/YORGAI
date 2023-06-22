@@ -3,12 +3,15 @@ import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { basis, zincs } from "components/constants/colors";
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { Button } from "components/shared/Button";
-import {ButtonIconSection} from "components/SecondLevelNavBar/ButtonIconSection";
+import { ButtonIconSection } from "components/SecondLevelNavBar/ButtonIconSection";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
+import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
+import { ReactComponent as Prompt } from "resources/img/Prompt.svg";
 import { ReactComponent as Refresh } from "resources/img/Refresh.svg";
+import { ReactComponent as Toolbox } from "resources/img/Toolbox.svg";
 
 const PromptSelected = () => {
   return (
@@ -21,6 +24,9 @@ const PromptSelected = () => {
         background: ${zincs[25]};
         font-family: "PingFang SC", sans-serif;
         font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-smooth: never;
       `}
     >
       <div
@@ -105,7 +111,7 @@ const PromptSelected = () => {
               width: 1196px;
             `}
           >
-            <SectionTitle>热门分类</SectionTitle>
+            <SectionTitle Icon={Toolbox}>热门工具</SectionTitle>
             <div>cards</div>
           </div>
           <div
@@ -123,9 +129,7 @@ const PromptSelected = () => {
                 justify-content: space-between;
               `}
             >
-              <SectionTitle subTitle="小鱼厂专家们都在用他们">
-                热门文字提示词
-              </SectionTitle>
+              <SectionTitle Icon={Prompt}>热门提示词</SectionTitle>
               <div
                 className={css`
                   display: flex;
@@ -149,7 +153,7 @@ const PromptSelected = () => {
               width: 1196px;
             `}
           >
-            <SectionTitle>榜单</SectionTitle>
+            <SectionTitle Icon={Chart}>榜单</SectionTitle>
             <div>cards</div>
           </div>
         </div>
