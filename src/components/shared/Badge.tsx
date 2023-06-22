@@ -10,7 +10,9 @@ const Badge = ({
 }) => (
   <div
     className={css`
-      display: inline-block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: ${basisAlt["bg-subtle"]};
       color: ${basis["text-loud"]};
       font-size: 0.875rem;
@@ -19,7 +21,13 @@ const Badge = ({
     `}
   >
     {avatar}
-    <span className={css`2px 8px 2px 4px`}>{children}</span>
+    <span
+      className={css`
+        padding: 2px 8px 2px 4px;
+      `}
+    >
+      {children}
+    </span>
   </div>
 );
 
