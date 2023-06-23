@@ -1,9 +1,8 @@
-import React from "react";
 import { Tag } from "./Tag";
 import { css } from "@emotion/css";
-import NotionAppIcon from "../../resource/img/NotionAppIcon.svg";
-import ArrowChevronRight from "../../resources/img/ArrowChevronRight.svg";
-import RunIcon from "../../resources/img/RunIcon.svg";
+import { ReactComponent as NotionAppIcon } from "resources/img/NotionAppIcon.svg";
+import { ReactComponent as ArrowChevronRight } from "resources/img/ArrowChevronRight.svg";
+import { ReactComponent as RunIcon } from "resources/img/RunIcon.svg";
 
 type CardProps = {
   tags: string[];
@@ -25,16 +24,17 @@ const Card = ({
   return (
     <div
       className={css`
-        width: 330px;
+        width: 316px;
         height: 100px;
-        padding: 20px;
+        padding: 16px;
         margin: 0 auto;
         box-sizing: border-box;
         background-color: #fff;
-        border: 2px solid #e9e9ec;
-        border-radius: 10px;
+        border: 1px solid #e9e9ec;
+        border-radius: 8px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         display: flex;
+        padding: 16px;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
@@ -50,9 +50,7 @@ const Card = ({
             height: 40px;
           `}
         >
-          <img
-            src={NotionAppIcon}
-            alt="Notion App Icon"
+          <NotionAppIcon
             style={{
               width: "40px",
               height: "40px",
@@ -92,9 +90,7 @@ const Card = ({
                     border-radius: 8px;
                   `}
                 >
-                  <img
-                    src={RunIcon}
-                    alt=""
+                  <RunIcon
                     style={{
                       height: "13px",
                       width: "13px",
@@ -115,11 +111,15 @@ const Card = ({
               display: flex;
               align-items: center;
               justify-content: center;
-              background-color: #fbcc0d;
+              background-color: #fdcc0d;
               color: white;
-              height: 40px;
-              width: 40px;
-              border-radius: 8px;
+              height: 34px;
+              width: 45px;
+              border-radius: 6px;
+              border: 1px solid #feef81;
+              overflow: hidden;
+              font-size: 14px;
+              line-height: 20px;
             `}
           >
             {notificationNumber}
@@ -140,9 +140,7 @@ const Card = ({
               border-radius: 10px;
             `}
           >
-            <img
-              src={NotionAppIcon}
-              alt="Notion App Icon"
+            <NotionAppIcon
               style={{
                 width: "40px",
                 height: "40px",
@@ -184,9 +182,7 @@ const Card = ({
                     border-radius: 8px;
                   `}
                 >
-                  <img
-                    src={RunIcon}
-                    alt=""
+                  <RunIcon
                     style={{
                       height: "13px",
                       width: "13px",
@@ -226,9 +222,7 @@ const Card = ({
             <Tag isDarker={true}>{`+${tags.length - 4}`}</Tag>
           )}{" "}
         </div>
-        <img
-          src={ArrowChevronRight}
-          alt=""
+        <ArrowChevronRight
           style={{
             width: "16px",
             height: "16px",
