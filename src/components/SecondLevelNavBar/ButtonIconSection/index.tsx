@@ -1,25 +1,15 @@
 import { css } from "@emotion/css";
 import { ButtonIcon } from "./ButtonIcon";
 
-import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
-import { ReactComponent as ApplicationIcon } from "resources/img/ApplicationIcon.svg";
-import { ReactComponent as Bulb } from "resources/img/Bulb.svg";
-import { ReactComponent as Star } from "resources/img/Star.svg";
-import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
-
-const ButtonIconSection = () => {
-  const buttonClickHandler = (buttonName: string) => {
-    console.log(`${buttonName} button clicked!`);
-  };
-
-  const buttons = [
-    { Icon: UserDouble, label: "社区热门" },
-    { Icon: ApplicationIcon, label: "在线应用" },
-    { Icon: AIApplication, label: "AI应用大全" },
-    { Icon: Bulb, label: "为你选应用" },
-    { Icon: Star, label: "我的收藏" },
-  ];
-
+const ButtonIconSection = ({
+  buttons,
+}: {
+  buttons: {
+    Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+    label: string;
+    onClick: () => void;
+  }[];
+}) => {
   return (
     <div
       className={css`
@@ -32,11 +22,11 @@ const ButtonIconSection = () => {
         justify-content: center;
       `}
     >
-      {buttons.map(({ Icon, label }) => (
+      {buttons.map(({ Icon, label, onClick }) => (
         <ButtonIcon
           Icon={Icon}
           label={label}
-          onClick={() => buttonClickHandler(label)}
+          onClick={onClick}
           key={label}
         />
       ))}
