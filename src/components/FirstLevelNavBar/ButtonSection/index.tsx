@@ -1,17 +1,19 @@
 import { css } from "@emotion/css";
 import { BorderlessButton } from "./BorderlessButton";
+import { useNavigate } from "react-router-dom";
 
 const ButtonSection = () => {
-  const buttonClickHandler = (buttonName: string) => {
-    console.log(`${buttonName} button clicked!`);
-  };
+  const navigate = useNavigate();
 
-  const buttonNames = [
-    "需求大厅",
-    "作品社区",
-    "AI 工具",
-    "提示词库",
-    "数字中控",
+  const buttonClickHandler = (url?: string) => url && navigate(url);
+
+  // FIXME: fill this list up here or lift it as a context
+  const buttonNames: [string, string?][] = [
+    ["需求大厅"],
+    ["作品社区"],
+    ["AI 工具"],
+    ["提示词库", "/prompt/selected"],
+    ["数字中控"],
   ];
 
   return (
@@ -21,9 +23,9 @@ const ButtonSection = () => {
         gap: 36px;
       `}
     >
-      {buttonNames.map((buttonName) => (
+      {buttonNames.map(([buttonName, url]) => (
         <BorderlessButton
-          onClick={() => buttonClickHandler(buttonName)}
+          onClick={() => buttonClickHandler(url)}
           key={buttonName}
         >
           {buttonName}

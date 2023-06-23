@@ -1,19 +1,63 @@
 import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
-import { basis, zincs } from "components/constants/colors";
 import { SectionTitle } from "components/Prompt/SectionTitle";
+import { SecondLevelNavBar } from "components/SecondLevelNavBar";
+import { basis, zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { ButtonIconSection } from "components/SecondLevelNavBar/ButtonIconSection";
 import { Card } from "components/shared/Card";
+import { FastSearchButton } from "components/shared/FastSearchButton";
 import { Footer } from "components/shared/Footer";
+import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as ApplicationIcon } from "resources/img/ApplicationIcon.svg";
+import { ReactComponent as Bulb } from "resources/img/Bulb.svg";
+import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
+import { ReactComponent as Prompt } from "resources/img/Prompt.svg";
 import { ReactComponent as Refresh } from "resources/img/Refresh.svg";
+
 import Input from "components/PromptSearchBar";
 import Premenu from "components/PromptSearchBar/MenuSection/premenu";
 import Append from "components/PromptSearchBar/AppendSection/append";
 
+import { ReactComponent as Star } from "resources/img/Star.svg";
+import { ReactComponent as Toolbox } from "resources/img/Toolbox.svg";
+import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
+
 const PromptSelected = () => {
+  const buttonClickHandler = (buttonName: string) => {
+    console.log(`${buttonName} button clicked!`);
+  };
+
+  const buttons = [
+    {
+      Icon: UserDouble,
+      label: "社区热门",
+      onClick: () => buttonClickHandler("社区热门"),
+    },
+    {
+      Icon: ApplicationIcon,
+      label: "在线应用",
+      onClick: () => buttonClickHandler("在线应用"),
+    },
+    {
+      Icon: AIApplication,
+      label: "AI应用大全",
+      onClick: () => buttonClickHandler("AI应用大全"),
+    },
+    {
+      Icon: Bulb,
+      label: "为你选应用",
+      onClick: () => buttonClickHandler("为你选应用"),
+    },
+    {
+      Icon: Star,
+      label: "我的收藏",
+      onClick: () => buttonClickHandler("我的收藏"),
+    },
+  ];
+
   return (
     <div
       className={css`
@@ -24,6 +68,9 @@ const PromptSelected = () => {
         background: ${zincs[25]};
         font-family: "PingFang SC", sans-serif;
         font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-smooth: never;
       `}
     >
       <div
@@ -33,15 +80,7 @@ const PromptSelected = () => {
         `}
       >
         <FirstLevelNavBar />
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          `}
-        >
-          <ButtonIconSection />
-        </div>
+        <SecondLevelNavBar buttons={buttons} />
       </div>
       <div
         className={css`
@@ -82,7 +121,7 @@ const PromptSelected = () => {
               font-weight: 400;
               font-size: 20px;
               line-height: 30px;
-              color: ${basis["text"]};
+              color: ${basis.text};
             `}
           >
             小鱼厂收集了大量高质量提示词，并根据功能和内容进行分类
@@ -110,7 +149,7 @@ const PromptSelected = () => {
               width: 1196px;
             `}
           >
-            <SectionTitle>热门分类</SectionTitle>
+            <SectionTitle Icon={Toolbox}>热门工具</SectionTitle>
             <div>cards</div>
           </div>
           <div
@@ -128,9 +167,7 @@ const PromptSelected = () => {
                 justify-content: space-between;
               `}
             >
-              <SectionTitle subTitle="小鱼厂专家们都在用他们">
-                热门文字提示词
-              </SectionTitle>
+              <SectionTitle Icon={Prompt}>热门提示词</SectionTitle>
               <div
                 className={css`
                   display: flex;
@@ -154,7 +191,7 @@ const PromptSelected = () => {
               width: 1196px;
             `}
           >
-            <SectionTitle>榜单</SectionTitle>
+            <SectionTitle Icon={Chart}>榜单</SectionTitle>
             <div>cards</div>
           </div>
         </div>
