@@ -9,7 +9,7 @@ const Append = ({ onClick }: { onClick?: () => void }) => {
       className={css`
         line-height: 48px;
         height: 48px;
-        width: 50px;
+        width: 45px;
         background-color: rgb(103, 205, 188);
         padding: 5px;
         padding-left: 15px;
@@ -17,6 +17,7 @@ const Append = ({ onClick }: { onClick?: () => void }) => {
         border-bottom-right-radius: 8px;
         text-align: center;
         position: relative;
+        border: 1.33px solid #e9e9ec;
         /* float: left; */
         cursor: pointer;
       `}
@@ -24,7 +25,7 @@ const Append = ({ onClick }: { onClick?: () => void }) => {
       <img
         className={css`
           position: relative;
-          left: -7px;
+          left: -9px;
         `}
         src={addpendIcon}
         alt=""

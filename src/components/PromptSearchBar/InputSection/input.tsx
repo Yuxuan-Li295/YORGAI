@@ -29,10 +29,12 @@ const Input: FC<InputProps> = (props) => {
           ::-webkit-input-placeholder {
             position: relative;
             top: 2px;
-            left: 20px;
+
             color: rgb(188, 189, 194);
           }
+
           outline: none;
+          text-indent: 25px;
         `}
         placeholder="请输入关键词"
       />
