@@ -37,10 +37,8 @@ const Router = () => {
         <Route path="login" element={<Login />} />
         <Route path="prompt/selected" element={<PromptSelected />} />
         <Route path="prompt/details" element={<PromptDetails />} />
-        <Route path="prompt/complete">
-          <Route path="text" element={<PromptText />} />
-          <Route path="image" element={<PromptImage />} />
-        </Route>
+        <Route path="prompt/complete/text" element={<PromptText />} />
+        <Route path="prompt/complete/image" element={<PromptImage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

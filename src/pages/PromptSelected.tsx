@@ -8,8 +8,6 @@ import { Card } from "components/shared/Card";
 import { FastSearchButton } from "components/shared/FastSearchButton";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
-import { ReactComponent as ApplicationIcon } from "resources/img/ApplicationIcon.svg";
-import { ReactComponent as Bulb } from "resources/img/Bulb.svg";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
@@ -31,19 +29,14 @@ const PromptSelected = () => {
       onClick: () => buttonClickHandler("社区热门"),
     },
     {
-      icon: <ApplicationIcon />,
-      label: "在线应用",
-      onClick: () => buttonClickHandler("在线应用"),
-    },
-    {
       icon: <AIApplication />,
-      label: "AI应用大全",
-      onClick: () => buttonClickHandler("AI应用大全"),
+      label: "提示词大全",
+      onClick: () => buttonClickHandler("提示词大全"),
     },
     {
-      icon: <Bulb />,
-      label: "为你选应用",
-      onClick: () => buttonClickHandler("为你选应用"),
+      icon: <MagicWand />,
+      label: "提示词优化器",
+      onClick: () => buttonClickHandler("提示词优化器"),
     },
     {
       icon: <Star />,

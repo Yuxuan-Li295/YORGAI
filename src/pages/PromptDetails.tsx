@@ -10,8 +10,7 @@ import { Badge } from "components/shared/Badge";
 import { ReactComponent as CopySvg } from "resources/img/copy.svg";
 import { ReactComponent as ExecSvg } from "resources/img/arrow-circle-broken-up-right.svg";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
-import { ReactComponent as ApplicationIcon } from "resources/img/ApplicationIcon.svg";
-import { ReactComponent as Bulb } from "resources/img/Bulb.svg";
+import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as StarSvg } from "resources/img/Star.svg";
 import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
@@ -42,19 +41,14 @@ export const PromptDetails = () => {
       onClick: () => buttonClickHandler("社区热门"),
     },
     {
-      icon: <ApplicationIcon />,
-      label: "在线应用",
-      onClick: () => buttonClickHandler("在线应用"),
-    },
-    {
       icon: <AIApplication />,
-      label: "AI应用大全",
-      onClick: () => buttonClickHandler("AI应用大全"),
+      label: "提示词大全",
+      onClick: () => buttonClickHandler("提示词大全"),
     },
     {
-      icon: <Bulb />,
-      label: "为你选应用",
-      onClick: () => buttonClickHandler("为你选应用"),
+      icon: <MagicWand />,
+      label: "提示词优化器",
+      onClick: () => buttonClickHandler("提示词优化器"),
     },
     {
       icon: <StarSvg />,
