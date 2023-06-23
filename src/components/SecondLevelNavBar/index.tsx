@@ -1,7 +1,7 @@
-import { css } from '@emotion/css';
-import { ButtonIconSection } from './ButtonIconSection';
-import { SearchButton } from './SearchButton';
-import { basisAlt, zincs } from 'components/constants/colors';
+import { css } from "@emotion/css";
+import { ButtonIconSection } from "./ButtonIconSection";
+import { SearchButton } from "./SearchButton";
+import { basisAlt, zincs } from "components/constants/colors";
 
 const SecondLevelNavBar = ({
   buttons,
@@ -21,7 +21,7 @@ const SecondLevelNavBar = ({
         left: 20px;
         top: 20px;
         background: ${zincs[25]};
-        border-bottom: 1px solid ${basisAlt["border-subtle"]};
+        border-bottom: 1px solid ${basisAlt.border_subtle};
         display: flex;
         align-items: center;
         padding-left: 456px;

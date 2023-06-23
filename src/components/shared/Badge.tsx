@@ -13,8 +13,8 @@ const Badge = ({
       display: flex;
       justify-content: center;
       align-items: center;
-      background: ${basisAlt["bg-subtle"]};
-      color: ${basis["text-loud"]};
+      background: ${basisAlt.bg_subtle};
+      color: ${basis.text_loud};
       font-size: 0.875rem;
       border-radius: 50px;
       margin: 2px;

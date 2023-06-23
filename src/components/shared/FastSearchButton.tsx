@@ -16,11 +16,11 @@ const FastSearchButton = ({ children }: { children: string }) => {
         gap: 3px;
         font-family: inherit;
 
-        border: 1px solid ${basisAlt["border"]};
+        border: 1px solid ${basisAlt.border};
         border-radius: 13px;
 
         &:hover {
-          background-color: ${basisAlt["bg-muted"]};
+          background-color: ${basisAlt.bg_muted};
         }
       `}
     >
@@ -44,7 +44,7 @@ const FastSearchButton = ({ children }: { children: string }) => {
           font-smooth: never;
           font-size: 14px;
           line-height: 20px;
-          color: ${basis["text-loud"]};
+          color: ${basis.text_loud};
 
           display: flex;
           flex-direction: row;

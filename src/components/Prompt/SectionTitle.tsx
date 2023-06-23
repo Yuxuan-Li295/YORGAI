@@ -31,7 +31,7 @@ const SectionTitle = ({
             font-weight: 500;
             font-size: 20px;
             line-height: 30px;
-            color: ${basis["text-loud"]};
+            color: ${basis.text_loud};
           `}
         >
           {children}
@@ -41,7 +41,7 @@ const SectionTitle = ({
             font-weight: 400;
             font-size: 12px;
             line-height: 16px;
-            color: ${basis["text"]};
+            color: ${basis.text};
           `}
         >
           {subTitle}
