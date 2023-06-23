@@ -40,18 +40,14 @@ const Card = ({
         align-items: center;
       `}
     >
-      <div
-        className={css`
-          display: flex;
-          align-items: center;
-          margin-bottom: 10px;
-        `}
-      >
+      {showRanking ? (
         <div
           className={css`
-            border: 1px solid #e9e9ec;
-            margin-right: 8px;
-            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 40px;
           `}
         >
           <img
@@ -62,76 +58,152 @@ const Card = ({
               height: "40px",
             }}
           />
+          <div
+            className={css`
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              width: 100%;
+            `}
+          >
+            <div
+              className={css`
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              `}
+            >
+              <h1>{appName}</h1>
+              {showExecute && (
+                <button
+                  className={css`
+                    background-color: #34d393;
+                    height: 20px;
+                    border: none;
+                    color: white;
+                    padding: 5px 10px;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 14px;
+                    margin: 2px 2px;
+                    cursor: pointer;
+                    border-radius: 8px;
+                  `}
+                >
+                  <img
+                    src={RunIcon}
+                    alt=""
+                    style={{
+                      height: "13px",
+                      width: "13px",
+                    }}
+                  />
+                  立即运行
+                </button>
+              )}
+            </div>
+            <p style={{ fontSize: "11px" }}>
+              {appIntro!.length > 20
+                ? `${appIntro!.slice(0, 20)}...`
+                : appIntro}
+            </p>
+          </div>
+          <div
+            className={css`
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: #fbcc0d;
+              color: white;
+              height: 40px;
+              width: 40px;
+              border-radius: 8px;
+            `}
+          >
+            {notificationNumber}
+          </div>
         </div>
+      ) : (
         <div
           className={css`
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 40px;
+            align-items: center;
+            margin-bottom: 10px;
           `}
         >
           <div
             className={css`
+              border: 1px solid #e9e9ec;
+              margin-right: 8px;
+              border-radius: 10px;
+            `}
+          >
+            <img
+              src={NotionAppIcon}
+              alt="Notion App Icon"
+              style={{
+                width: "40px",
+                height: "40px",
+              }}
+            />
+          </div>
+          <div
+            className={css`
               display: flex;
+              flex-direction: column;
               justify-content: space-between;
-              align-items: center;
+              height: 40px;
               width: 100%;
             `}
           >
-            <h1>{appName}</h1>
-            {showExecute && (
-              <button
-                className={css`
-                  background-color: #34d393;
-                  height: 20px;
-                  border: none;
-                  color: white;
-                  padding: 5px 10px;
-                  text-decoration: none;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-size: 14px;
-                  margin: 2px 2px;
-                  cursor: pointer;
-                  border-radius: 8px;
-                `}
-              >
-                <img
-                  src={RunIcon}
-                  alt=""
-                  style={{
-                    height: "13px",
-                    width: "13px",
-                  }}
-                />
-                立即运行
-              </button>
-            )}
-            {showRanking && (
-              <div
-                className={css`
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  background-color: #fbcc0d;
-                  color: white;
-                  height: 40px;
-                  width: 40px;
-                  border-radius: 8px;
-                `}
-              >
-                {notificationNumber}
-              </div>
-            )}
+            <div
+              className={css`
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              `}
+            >
+              <h1>{appName}</h1>
+              {showExecute && (
+                <button
+                  className={css`
+                    background-color: #34d393;
+                    height: 20px;
+                    border: none;
+                    color: white;
+                    padding: 5px 10px;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 14px;
+                    margin: 2px 2px;
+                    cursor: pointer;
+                    border-radius: 8px;
+                  `}
+                >
+                  <img
+                    src={RunIcon}
+                    alt=""
+                    style={{
+                      height: "13px",
+                      width: "13px",
+                    }}
+                  />
+                  立即运行
+                </button>
+              )}
+            </div>
+            <p style={{ fontSize: "11px" }}>
+              {appIntro!.length > 20
+                ? `${appIntro!.slice(0, 20)}...`
+                : appIntro}
+            </p>
           </div>
-          <p style={{ fontSize: "11px" }}>
-            {appIntro!.length > 20 ? `${appIntro!.slice(0, 20)}...` : appIntro}
-          </p>
         </div>
-      </div>
-
+      )}
       <div
         className={css`
           display: flex;
@@ -154,7 +226,6 @@ const Card = ({
             <Tag isDarker={true}>{`+${tags.length - 4}`}</Tag>
           )}{" "}
         </div>
-
         <img
           src={ArrowChevronRight}
           alt=""
