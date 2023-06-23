@@ -6,11 +6,14 @@ const SearchButton = () => {
   return (
     <div
       className={css`
+        position: absolute;
+        right: 0;
         display: flex;
         align-items: center;
         gap: 11px;
         width: 251px;
         height: 32px;
+        margin: 10px;
       `}
     >
       <div

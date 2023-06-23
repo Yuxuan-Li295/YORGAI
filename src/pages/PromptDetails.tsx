@@ -1,13 +1,19 @@
 import { css } from "@emotion/css";
-import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { basis, zincs } from "components/constants/colors";
+import { FirstLevelNavBar } from "components/FirstLevelNavBar";
+import { SecondLevelNavBar } from "components/SecondLevelNavBar";
 import { Avatar } from "components/shared/Avatar";
 import { Tag } from "components/shared/Tag";
 import { Button } from "components/shared/Button";
 import { Star } from "components/shared/Star";
+import { Badge } from "components/shared/Badge";
 import { ReactComponent as CopySvg } from "resources/img/copy.svg";
 import { ReactComponent as ExecSvg } from "resources/img/arrow-circle-broken-up-right.svg";
-import { Badge } from "components/shared/Badge";
+import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as ApplicationIcon } from "resources/img/ApplicationIcon.svg";
+import { ReactComponent as Bulb } from "resources/img/Bulb.svg";
+import { ReactComponent as StarSvg } from "resources/img/Star.svg";
+import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
 export const PromptDetails = () => {
   // FIXME: request data
@@ -24,6 +30,38 @@ export const PromptDetails = () => {
   在你的回答中，请问我一个问题。\
   现在我们开始练习，你可以先问我一个问题。\
   记住，我希望你严格纠正我的语法错误、打字错误和事实错误。";
+
+  const buttonClickHandler = (buttonName: string) => {
+    console.log(`${buttonName} button clicked!`);
+  };
+
+  const buttons = [
+    {
+      Icon: UserDouble,
+      label: "社区热门",
+      onClick: () => buttonClickHandler("社区热门"),
+    },
+    {
+      Icon: ApplicationIcon,
+      label: "在线应用",
+      onClick: () => buttonClickHandler("在线应用"),
+    },
+    {
+      Icon: AIApplication,
+      label: "AI应用大全",
+      onClick: () => buttonClickHandler("AI应用大全"),
+    },
+    {
+      Icon: Bulb,
+      label: "为你选应用",
+      onClick: () => buttonClickHandler("为你选应用"),
+    },
+    {
+      Icon: StarSvg,
+      label: "我的收藏",
+      onClick: () => buttonClickHandler("我的收藏"),
+    },
+  ];
 
   return (
     <div
@@ -42,18 +80,11 @@ export const PromptDetails = () => {
         className={css`
           display: flex;
           flex-direction: column;
+          position: relative;
         `}
       >
         <FirstLevelNavBar />
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          `}
-        >
-          header2
-        </div>
+        <SecondLevelNavBar buttons={buttons} />
       </div>
       <div
         className={css`

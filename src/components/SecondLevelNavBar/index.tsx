@@ -16,15 +16,11 @@ const SecondLevelNavBar = ({
     <div
       className={css`
         box-sizing: border-box;
-        width: 1440px;
-        height: 48px;
-        left: 20px;
-        top: 20px;
         background: ${zincs[25]};
         border-bottom: 1px solid ${basisAlt.border_subtle};
         display: flex;
         align-items: center;
-        padding-left: 456px;
+        justify-content: center;
         gap: 195px;
       `}
     >

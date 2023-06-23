@@ -71,6 +71,7 @@ const PromptSelected = () => {
         className={css`
           display: flex;
           flex-direction: column;
+          position: relative;
         `}
       >
         <FirstLevelNavBar />
