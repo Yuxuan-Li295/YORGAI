@@ -25,11 +25,31 @@ const PromptSelected = () => {
   };
 
   const buttons = [
-    { Icon: UserDouble, label: "社区热门", onClick: () => buttonClickHandler("社区热门") },
-    { Icon: ApplicationIcon, label: "在线应用", onClick: () => buttonClickHandler("在线应用") },
-    { Icon: AIApplication, label: "AI应用大全", onClick: () => buttonClickHandler("AI应用大全") },
-    { Icon: Bulb, label: "为你选应用", onClick: () => buttonClickHandler("为你选应用") },
-    { Icon: Star, label: "我的收藏", onClick: () => buttonClickHandler("我的收藏") },
+    {
+      Icon: UserDouble,
+      label: "社区热门",
+      onClick: () => buttonClickHandler("社区热门"),
+    },
+    {
+      Icon: ApplicationIcon,
+      label: "在线应用",
+      onClick: () => buttonClickHandler("在线应用"),
+    },
+    {
+      Icon: AIApplication,
+      label: "AI应用大全",
+      onClick: () => buttonClickHandler("AI应用大全"),
+    },
+    {
+      Icon: Bulb,
+      label: "为你选应用",
+      onClick: () => buttonClickHandler("为你选应用"),
+    },
+    {
+      Icon: Star,
+      label: "我的收藏",
+      onClick: () => buttonClickHandler("我的收藏"),
+    },
   ];
 
   return (
@@ -54,15 +74,7 @@ const PromptSelected = () => {
         `}
       >
         <FirstLevelNavBar />
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-          `}
-        >
-          <SecondLevelNavBar buttons={buttons} />
-        </div>
+        <SecondLevelNavBar buttons={buttons} />
       </div>
       <div
         className={css`
@@ -103,7 +115,7 @@ const PromptSelected = () => {
               font-weight: 400;
               font-size: 20px;
               line-height: 30px;
-              color: ${basis["text"]};
+              color: ${basis.text};
             `}
           >
             小鱼厂收集了大量高质量提示词，并根据功能和内容进行分类

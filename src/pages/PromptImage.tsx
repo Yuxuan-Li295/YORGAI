@@ -1,13 +1,11 @@
 import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
-import { PromptImageCard } from "components/Prompt/PromptImageCard";
+import { PromptImageFlowContainer } from "components/Prompt/PromptImageFlowContainer";
 import { zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
-import Bird from "resources/img/bird.jpg";
-import View from "resources/img/view.jpeg";
 
 const PromptImage = () => {
   return (
@@ -94,20 +92,7 @@ const PromptImage = () => {
             `}
           >
             <div>filter</div>
-            <div
-              className={css`
-                width: 100%;
-                flex: 1;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-              `}
-            >
-              <PromptImageCard image={Bird} />
-              <PromptImageCard image={View} />
-              <PromptImageCard image={Bird} />
-              <PromptImageCard image={View} />
-            </div>
+            <PromptImageFlowContainer />
           </div>
         </div>
       </div>

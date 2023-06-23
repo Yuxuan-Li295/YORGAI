@@ -18,7 +18,7 @@ const BorderlessButton = ({
         display: flex;
         align-items: center;
         justify-content: center;
-        color: ${basis["text-loud"]};
+        color: ${basis.text_loud};
         background-color: transparent;
         border: none;
         padding: 0;

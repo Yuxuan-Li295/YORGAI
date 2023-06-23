@@ -173,7 +173,7 @@ export const PromptDetails = () => {
               font-weight: 400;
               font-size: 12px;
               line-height: 16px;
-              color: ${basis["text-loud"]};
+              color: ${basis.text_loud};
             `}
           >
             {text}

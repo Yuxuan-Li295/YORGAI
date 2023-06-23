@@ -58,7 +58,7 @@ const Button = ({
           padding: 5px 11px;
           border: 1px solid transparent;
           border-radius: 6px;
-          color: ${basis["text-foreground"]};
+          color: ${white};
         `}
       >
         {Icon && <Icon />}
@@ -95,7 +95,7 @@ const Button = ({
         font-family: inherit;
 
         &:hover {
-          color: ${basis["text-muted"]};
+          color: ${basis.text_muted};
           border: none;
           box-shadow: 0px 1px 1px rgba(188, 189, 194, 0.2),
             0px 0px 0px 1px rgba(188, 189, 194, 0.22),
@@ -105,7 +105,7 @@ const Button = ({
         }
 
         &:active {
-          color: ${basis["text-loud"]};
+          color: ${basis.text_loud};
           border: none;
           box-shadow: 0px 1px 1px rgba(188, 189, 194, 0.2),
             0px 0px 0px 1px rgba(188, 189, 194, 0.25),
