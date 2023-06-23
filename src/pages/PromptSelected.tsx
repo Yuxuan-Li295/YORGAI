@@ -26,27 +26,27 @@ const PromptSelected = () => {
 
   const buttons = [
     {
-      Icon: UserDouble,
+      icon: <UserDouble />,
       label: "社区热门",
       onClick: () => buttonClickHandler("社区热门"),
     },
     {
-      Icon: ApplicationIcon,
+      icon: <ApplicationIcon />,
       label: "在线应用",
       onClick: () => buttonClickHandler("在线应用"),
     },
     {
-      Icon: AIApplication,
+      icon: <AIApplication />,
       label: "AI应用大全",
       onClick: () => buttonClickHandler("AI应用大全"),
     },
     {
-      Icon: Bulb,
+      icon: <Bulb />,
       label: "为你选应用",
       onClick: () => buttonClickHandler("为你选应用"),
     },
     {
-      Icon: Star,
+      icon: <Star />,
       label: "我的收藏",
       onClick: () => buttonClickHandler("我的收藏"),
     },

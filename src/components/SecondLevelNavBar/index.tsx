@@ -7,7 +7,7 @@ const SecondLevelNavBar = ({
   buttons,
 }: {
   buttons: {
-    Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+    icon: React.ReactElement;
     label: string;
     onClick: () => void;
   }[];

@@ -7,6 +7,8 @@ import { SecondLevelNavBar } from "components/SecondLevelNavBar";
 import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as ApplicationIcon } from "resources/img/AIApplication.svg";
+import { ReactComponent as Bulb } from "resources/img/Bulb.svg";
 import { ReactComponent as Star } from "resources/img/Star.svg";
 import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
@@ -16,10 +18,31 @@ const PromptText = () => {
   };
 
   const buttons = [
-    { Icon: UserDouble, label: "社区热门", onClick: () => buttonClickHandler("社区热门") },
-    { Icon: AIApplication, label: "提示词大全", onClick: () => buttonClickHandler("提示词大全") },
-    { Icon: MagicWand, label: "提示词优化器", onClick: () => buttonClickHandler("提示词优化器") },
-    { Icon: Star, label: "我的收藏", onClick: () => buttonClickHandler("我的收藏") },
+    {
+      icon: <UserDouble />,
+      label: "社区热门",
+      onClick: () => buttonClickHandler("社区热门"),
+    },
+    {
+      icon: <ApplicationIcon />,
+      label: "在线应用",
+      onClick: () => buttonClickHandler("在线应用"),
+    },
+    {
+      icon: <AIApplication />,
+      label: "AI应用大全",
+      onClick: () => buttonClickHandler("AI应用大全"),
+    },
+    {
+      icon: <Bulb />,
+      label: "为你选应用",
+      onClick: () => buttonClickHandler("为你选应用"),
+    },
+    {
+      icon: <Star />,
+      label: "我的收藏",
+      onClick: () => buttonClickHandler("我的收藏"),
+    },
   ];
 
   return (
