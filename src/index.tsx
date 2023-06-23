@@ -22,6 +22,9 @@ const App = () => {
       <Global
         styles={css`
           ${emotionReset}
+          html {
+            font-family: "PingFang SC", sans-serif;
+          }
         `}
       />
       <Router />
@@ -33,12 +36,16 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="prompt/selected" replace />} />
         <Route path="login" element={<Login />} />
         <Route path="prompt/selected" element={<PromptSelected />} />
-        <Route path="prompt/details" element={<PromptDetails />} />
+        <Route path="prompt/complete/details" element={<PromptDetails />} />
         <Route path="prompt/complete/text" element={<PromptText />} />
         <Route path="prompt/complete/image" element={<PromptImage />} />
+        <Route
+          path="prompt"
+          element={<Navigate to="prompt/selected" replace />}
+        />
+        <Route path="" element={<Navigate to="prompt/selected" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

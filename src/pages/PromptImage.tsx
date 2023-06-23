@@ -45,7 +45,7 @@ const PromptImage = () => {
         width: 100vw;
         gap: 107px;
         background: ${zincs[25]};
-        font-family: "PingFang SC", sans-serif;
+        font-family: inherit;
         font-style: normal;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;

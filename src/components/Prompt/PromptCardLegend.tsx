@@ -11,15 +11,17 @@ import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRig
 import { ReactComponent as Confetti } from "resources/img/Confetti.svg";
 import { ReactComponent as Play } from "resources/img/Play.svg";
 
+export type PromptCardLegendProps = {
+  darkMode?: boolean;
+  likeCount: number;
+  runCount: number;
+};
+
 const PromptCardLegend = ({
   darkMode = false,
   likeCount,
   runCount,
-}: {
-  darkMode?: boolean;
-  likeCount: number;
-  runCount: number;
-}) => {
+}: PromptCardLegendProps) => {
   return (
     <div
       className={css`

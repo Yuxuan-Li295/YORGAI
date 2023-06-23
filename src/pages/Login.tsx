@@ -8,7 +8,7 @@ const Login = () => {
         display: flex;
         flex-direction: row;
         height: 100vh;
-        font-family: "PingFang SC", sans-serif;
+        font-family: inherit;
         font-style: normal;
       `}
     >

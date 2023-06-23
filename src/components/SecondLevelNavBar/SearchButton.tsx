@@ -41,7 +41,6 @@ const SearchButton = () => {
             text-overflow: ellipsis;
             white-space: nowrap;
             font-size: 14px;
-            font-family: "PingFang SC";
             background: transparent;
             border: none;
             outline: none;
