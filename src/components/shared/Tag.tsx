@@ -8,9 +8,9 @@ const Tag = ({ children }: { children: string }) => (
       background: ${basisAlt["bg-subtle"]};
       color: ${basis["text"]};
       font-size: 0.875rem;
-      padding: 2px 8px;
       border-radius: 50px;
       margin: 2px;
+      padding: 2px 8px;
     `}
   >
     {children}

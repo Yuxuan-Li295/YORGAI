@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import Notification from "resources/img/Notification.svg";
-import UserAvatar from "resources/img/UserAvatar.svg";
 import { zincs } from "components/constants/colors";
+import { Avatar } from "components/shared/Avatar";
 
 const NotificationAndProfile = () => {
   return (
@@ -22,7 +22,7 @@ const NotificationAndProfile = () => {
           background-color: ${zincs[200]};
         `}
       />
-      <img src={UserAvatar} alt="User Icon" />
+      <Avatar />
     </div>
   );
 };

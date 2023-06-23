@@ -4,6 +4,7 @@ import { Global, css } from "@emotion/react";
 import { white } from "components/constants/colors";
 import emotionReset from "emotion-reset";
 import { Login } from "pages/Login";
+import { PromptDetails } from "pages/PromptDetails";
 import { PromptImage } from "pages/PromptImage";
 import { PromptSelected } from "pages/PromptSelected";
 import { PromptText } from "pages/PromptText";
@@ -34,12 +35,11 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Navigate to="prompt/selected" replace />} />
         <Route path="login" element={<Login />} />
-        <Route path="prompt">
-          <Route path="selected" element={<PromptSelected />} />
-          <Route path="complete">
-            <Route path="text" element={<PromptText />} />
-            <Route path="image" element={<PromptImage />} />
-          </Route>
+        <Route path="prompt/selected" element={<PromptSelected />} />
+        <Route path="prompt/details" element={<PromptDetails />} />
+        <Route path="prompt/complete">
+          <Route path="text" element={<PromptText />} />
+          <Route path="image" element={<PromptImage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
