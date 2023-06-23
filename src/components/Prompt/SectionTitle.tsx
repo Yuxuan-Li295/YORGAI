@@ -1,11 +1,12 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import PromptTrendingSectionTitleIcon from "resources/img/PromptTrendingSectionTitleIcon.svg";
 
 const SectionTitle = ({
+  Icon,
   children,
   subTitle,
 }: {
+  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
   children: string;
   subTitle?: string;
 }) => {
@@ -14,13 +15,11 @@ const SectionTitle = ({
       className={css`
         display: flex;
         flex-direction: row;
+        align-items: center;
         gap: 15px;
       `}
     >
-      <img
-        src={PromptTrendingSectionTitleIcon}
-        alt="Prompt trending section title icon"
-      />
+      <Icon />
       <div
         className={css`
           display: flex;
@@ -32,7 +31,7 @@ const SectionTitle = ({
             font-weight: 500;
             font-size: 20px;
             line-height: 30px;
-            color: ${basis["text-loud"]};
+            color: ${basis.text_loud};
           `}
         >
           {children}
@@ -42,7 +41,7 @@ const SectionTitle = ({
             font-weight: 400;
             font-size: 12px;
             line-height: 16px;
-            color: ${basis["text"]};
+            color: ${basis.text};
           `}
         >
           {subTitle}
