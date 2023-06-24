@@ -1,15 +1,18 @@
 import { css } from "@emotion/css";
 import { basis, white } from "components/constants/colors";
+import React from "react";
 
 const Button = ({
   children,
   variant = "primary",
+  size = "xs",
   Icon,
 }: {
   children: string;
   variant?: "primary" | "secondary";
+  size?: "xs" | "sm";
   Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
-}) => {
+} & React.ButtonHTMLAttributes<{}>) => {
   // FIXME: the last variant of button
   const primary = (
     <button
@@ -25,6 +28,7 @@ const Button = ({
         box-shadow: 0px 0px 0px 1px #74b6a9;
         margin: 1px;
         font-family: inherit;
+        white-space: nowrap;
 
         &:hover {
           background-color: #57c4b1;
@@ -44,6 +48,7 @@ const Button = ({
             linear-gradient(to bottom, #ffffff52, #ffffff00 60%) border-box;
         }
       `}
+      style={{ height: size == "sm" ? 32 : undefined }}
     >
       <div
         className={css`

@@ -8,8 +8,6 @@ import { Card } from "components/shared/Card";
 import { FastSearchButton } from "components/shared/FastSearchButton";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
-import { ReactComponent as ApplicationIcon } from "resources/img/ApplicationIcon.svg";
-import { ReactComponent as Bulb } from "resources/img/Bulb.svg";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
@@ -26,27 +24,22 @@ const PromptSelected = () => {
 
   const buttons = [
     {
-      Icon: UserDouble,
+      icon: <UserDouble />,
       label: "社区热门",
       onClick: () => buttonClickHandler("社区热门"),
     },
     {
-      Icon: ApplicationIcon,
-      label: "在线应用",
-      onClick: () => buttonClickHandler("在线应用"),
+      icon: <AIApplication />,
+      label: "提示词大全",
+      onClick: () => buttonClickHandler("提示词大全"),
     },
     {
-      Icon: AIApplication,
-      label: "AI应用大全",
-      onClick: () => buttonClickHandler("AI应用大全"),
+      icon: <MagicWand />,
+      label: "提示词优化器",
+      onClick: () => buttonClickHandler("提示词优化器"),
     },
     {
-      Icon: Bulb,
-      label: "为你选应用",
-      onClick: () => buttonClickHandler("为你选应用"),
-    },
-    {
-      Icon: Star,
+      icon: <Star />,
       label: "我的收藏",
       onClick: () => buttonClickHandler("我的收藏"),
     },
@@ -60,7 +53,7 @@ const PromptSelected = () => {
         width: 100vw;
         gap: 107px;
         background: ${zincs[25]};
-        font-family: "PingFang SC", sans-serif;
+        font-family: inherit;
         font-style: normal;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -71,6 +64,7 @@ const PromptSelected = () => {
         className={css`
           display: flex;
           flex-direction: column;
+          position: relative;
         `}
       >
         <FirstLevelNavBar />
