@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
-import { ButtonIconSection } from "./ButtonIconSection";
-import { SearchButton } from "./SearchButton";
-import { basisAlt, zincs } from "components/constants/colors";
+import { basis } from "components/constants/colors";
+import { ButtonSection } from "./ButtonSection";
+import { SearchBar } from "./SearchBar";
 
 const SecondLevelNavBar = ({
   buttons,
@@ -9,23 +9,30 @@ const SecondLevelNavBar = ({
   buttons: {
     icon: React.ReactElement;
     label: string;
-    onClick: () => void;
+    url?: string;
   }[];
 }) => {
   return (
     <div
       className={css`
         box-sizing: border-box;
-        background: ${zincs[25]};
-        border-bottom: 1px solid ${basisAlt.border_subtle};
+        background: ${basis.bg_subtle};
+        border-bottom: 1px solid ${basis.border_subtle};
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 195px;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 0 10px;
       `}
     >
-      <ButtonIconSection buttons={buttons} />
-      <SearchButton />
+      <div
+        className={css`
+          width: 251px;
+          min-width: 251px;
+        `}
+      />
+      <ButtonSection buttons={buttons} />
+      <SearchBar />
     </div>
   );
 };

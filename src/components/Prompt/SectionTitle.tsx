@@ -1,14 +1,13 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
+import { ReactElement } from "react";
 
 const SectionTitle = ({
-  Icon,
+  icon,
   children,
-  subTitle,
 }: {
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  icon: ReactElement;
   children: string;
-  subTitle?: string;
 }) => {
   return (
     <div
@@ -19,7 +18,7 @@ const SectionTitle = ({
         gap: 15px;
       `}
     >
-      <Icon />
+      {icon}
       <div
         className={css`
           display: flex;
@@ -35,16 +34,6 @@ const SectionTitle = ({
           `}
         >
           {children}
-        </div>
-        <div
-          className={css`
-            font-weight: 400;
-            font-size: 12px;
-            line-height: 16px;
-            color: ${basis.text};
-          `}
-        >
-          {subTitle}
         </div>
       </div>
     </div>

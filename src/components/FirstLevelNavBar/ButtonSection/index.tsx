@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { BorderlessButton } from "./BorderlessButton";
+import { PrimaryNavBarButton } from "./PrimaryNavBarButton";
 import { useNavigate } from "react-router-dom";
 
 const ButtonSection = () => {
@@ -24,12 +24,12 @@ const ButtonSection = () => {
       `}
     >
       {buttonNames.map(([buttonName, url]) => (
-        <BorderlessButton
+        <PrimaryNavBarButton
           onClick={() => buttonClickHandler(url)}
           key={buttonName}
         >
           {buttonName}
-        </BorderlessButton>
+        </PrimaryNavBarButton>
       ))}
     </div>
   );

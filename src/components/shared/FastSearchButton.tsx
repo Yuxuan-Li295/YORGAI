@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
-import { basis, basisAlt } from "components/constants/colors";
-import Search from "resources/img/Search.svg";
+import { basis } from "components/constants/colors";
+import { ReactComponent as Search } from "resources/img/Search.svg";
 
 const FastSearchButton = ({ children }: { children: string }) => {
   return (
@@ -16,11 +16,11 @@ const FastSearchButton = ({ children }: { children: string }) => {
         gap: 3px;
         font-family: inherit;
 
-        border: 1px solid ${basisAlt.border};
+        border: 1px solid ${basis.alt.border};
         border-radius: 13px;
 
         &:hover {
-          background-color: ${basisAlt.bg_muted};
+          background-color: ${basis.alt.bg_muted};
         }
       `}
     >
@@ -33,19 +33,15 @@ const FastSearchButton = ({ children }: { children: string }) => {
           padding: 0px;
         `}
       >
-        <img src={Search} alt="Search Icon" />
+        <Search />
       </div>
 
       <div
         className={css`
           font-weight: 500;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          font-smooth: never;
           font-size: 14px;
           line-height: 20px;
           color: ${basis.text_loud};
-
           display: flex;
           flex-direction: row;
           justify-content: center;

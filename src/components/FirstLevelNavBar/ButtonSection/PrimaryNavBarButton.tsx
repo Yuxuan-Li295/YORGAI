@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
 
-const BorderlessButton = ({
+const PrimaryNavBarButton = ({
   onClick,
   children,
 }: {
@@ -31,4 +31,4 @@ const BorderlessButton = ({
   );
 };
 
-export { BorderlessButton };
+export { PrimaryNavBarButton };

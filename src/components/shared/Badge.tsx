@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { basis, basisAlt } from "components/constants/colors";
+import { basis } from "components/constants/colors";
 
 const Badge = ({
   avatar,
@@ -13,11 +13,14 @@ const Badge = ({
       display: flex;
       justify-content: center;
       align-items: center;
-      background: ${basisAlt.bg_subtle};
+      background: ${basis.alt.bg};
       color: ${basis.text_loud};
-      font-size: 0.875rem;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
       border-radius: 50px;
       margin: 2px;
+      white-space: nowrap;
     `}
   >
     {avatar}

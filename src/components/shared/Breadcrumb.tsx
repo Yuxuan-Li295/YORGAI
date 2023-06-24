@@ -21,7 +21,7 @@ export const Breadcrumb: React.FC<{ items: BreadcrumbItem[] }> = ({
       font-family: inherit;
       font-weight: 500;
       line-height: 16px;
-      color: ${basis.text};
+      white-space: nowrap;
     `}
   >
     {items.map(({ name, link }, index) => (
@@ -47,7 +47,15 @@ export const Breadcrumb: React.FC<{ items: BreadcrumbItem[] }> = ({
             </Link>
           )}
         </span>
-        {index < items.length - 1 && <span>/</span>}
+        {index < items.length - 1 && (
+          <span
+            className={css`
+              color: ${basis.text_subtle};
+            `}
+          >
+            /
+          </span>
+        )}
       </>
     ))}
   </div>
