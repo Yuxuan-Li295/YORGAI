@@ -4,14 +4,10 @@ import preIcon from "../../../resources/img/precion.svg";
 
 const fadeIn = keyframes`
   from {
-    
     opacity: 0;
-
   }
   to {
-
-    opacity: 100;
-    
+    opacity: 100;  
   }
   
 `;

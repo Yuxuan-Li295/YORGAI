@@ -16,7 +16,6 @@ const Input: FC<InputProps> = (props) => {
     <div
       className={css`
         display: flex;
-        /* width: 100px; */
       `}
     >
       {prepend && <div>{prepend}</div>}
