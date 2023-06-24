@@ -24,6 +24,10 @@ const App = () => {
           ${emotionReset}
           html {
             font-family: "PingFang SC", sans-serif;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-smooth: never;
           }
         `}
       />

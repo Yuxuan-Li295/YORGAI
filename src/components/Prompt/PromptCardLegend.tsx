@@ -1,27 +1,23 @@
 import { css } from "@emotion/css";
 import {
   basis,
-  blacks,
   fill,
+  overlays,
   transparent,
-  white,
-  zincs,
 } from "components/constants/colors";
 import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRightMd.svg";
 import { ReactComponent as Confetti } from "resources/img/Confetti.svg";
 import { ReactComponent as Play } from "resources/img/Play.svg";
 
-export type PromptCardLegendProps = {
-  darkMode?: boolean;
-  likeCount: number;
-  runCount: number;
-};
-
 const PromptCardLegend = ({
   darkMode = false,
   likeCount,
   runCount,
-}: PromptCardLegendProps) => {
+}: {
+  darkMode?: boolean;
+  likeCount: number;
+  runCount: number;
+}) => {
   return (
     <div
       className={css`
@@ -31,7 +27,8 @@ const PromptCardLegend = ({
         height: 32px;
         padding: 10px 12px;
         background: ${darkMode ? fill.base.mask : transparent};
-        border-top: 1px solid ${darkMode ? blacks.bg_vibrant : zincs[200]};
+        border-top: 1px solid
+          ${darkMode ? overlays.black.bg_vibrant : basis.border_subtle};
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
       `}
@@ -40,7 +37,7 @@ const PromptCardLegend = ({
         className={css`
           display: flex;
           align-items: center;
-          color: ${darkMode ? white : basis.text_loud};
+          color: ${darkMode ? basis.text_foreground : basis.text_loud};
           gap: 12px;
 
           & div {
@@ -56,7 +53,9 @@ const PromptCardLegend = ({
         <div>
           <Confetti
             className={css`
-              color: ${darkMode ? white : blacks.icon};
+              color: ${darkMode
+                ? overlays.black.icon_foreground
+                : overlays.black.icon};
             `}
           />
           <span>{likeCount}</span>
@@ -64,7 +63,9 @@ const PromptCardLegend = ({
         <div>
           <Play
             className={css`
-              color: ${darkMode ? white : blacks.icon};
+              color: ${darkMode
+                ? overlays.black.icon_foreground
+                : overlays.black.icon};
             `}
           />
           <span>{runCount}</span>
@@ -77,7 +78,7 @@ const PromptCardLegend = ({
           align-items: center;
           width: 32px;
           height: 32px;
-          color: ${darkMode ? white : blacks.icon};
+          color: ${darkMode ? basis.icon_foreground : basis.icon};
         `}
       >
         <ArrowAngleRightMd />

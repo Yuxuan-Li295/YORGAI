@@ -2,72 +2,52 @@ import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { PromptImageFlowContainer } from "components/Prompt/PromptImageFlowContainer";
 import { SecondLevelNavBar } from "components/SecondLevelNavBar";
-import { zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
-import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as Star } from "resources/img/Star.svg";
 import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
 const PromptImage = () => {
-  const buttonClickHandler = (buttonName: string) => {
-    console.log(`${buttonName} button clicked!`);
-  };
   const buttons = [
     {
       icon: <UserDouble />,
       label: "社区热门",
-      onClick: () => buttonClickHandler("社区热门"),
     },
     {
       icon: <AIApplication />,
       label: "提示词大全",
-      onClick: () => buttonClickHandler("提示词大全"),
     },
     {
       icon: <MagicWand />,
       label: "提示词优化器",
-      onClick: () => buttonClickHandler("提示词优化器"),
     },
     {
       icon: <Star />,
       label: "我的收藏",
-      onClick: () => buttonClickHandler("我的收藏"),
     },
   ];
+
   return (
     <div
       className={css`
         display: flex;
         flex-direction: column;
         width: 100vw;
-        gap: 107px;
-        background: ${zincs[25]};
-        font-family: inherit;
-        font-style: normal;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        font-smooth: never;
+        background: white;
       `}
     >
       <div
         className={css`
           display: flex;
           flex-direction: column;
+          margin-bottom: 97px;
         `}
       >
         <FirstLevelNavBar />
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          `}
-        >
-          <SecondLevelNavBar buttons={buttons} />
-        </div>
+        <SecondLevelNavBar buttons={buttons} />
       </div>
       <div
         className={css`
@@ -84,7 +64,7 @@ const PromptImage = () => {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 27px;
+            gap: 36px;
           `}
         >
           <div
@@ -108,8 +88,8 @@ const PromptImage = () => {
               gap: 21px;
             `}
           >
-            <Button Icon={Lightbulb}>AI 工具推荐</Button>
-            <Button Icon={MagicWand}>AI 提示词学习</Button>
+            <Button icon={<Lightbulb />}>AI 工具推荐</Button>
+            <Button icon={<MagicWand />}>AI 提示词学习</Button>
           </div>
           <div
             className={css`

@@ -1,37 +1,37 @@
 import { css } from "@emotion/css";
-import { basis, basisAlt, black, zincs } from "components/constants/colors";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
+import { PromptCard } from "components/Prompt/PromptCard";
 import { SecondLevelNavBar } from "components/SecondLevelNavBar";
+import { basis, black } from "components/constants/colors";
 import { Avatar } from "components/shared/Avatar";
-import { Tag } from "components/shared/Tag";
-import { Button } from "components/shared/Button";
-import { Star } from "components/shared/Star";
 import { Badge } from "components/shared/Badge";
-import { ReactComponent as CopySvg } from "resources/img/copy.svg";
-import { ReactComponent as ExecSvg } from "resources/img/arrow-circle-broken-up-right.svg";
+import { Breadcrumb } from "components/shared/Breadcrumb";
+import { Button } from "components/shared/Button";
+import { Footer } from "components/shared/Footer";
+import { Star } from "components/shared/Star";
+import { Tag } from "components/shared/Tag";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as Copy } from "resources/img/Copy.svg";
+import { ReactComponent as Execute } from "resources/img/Execute.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as StarSvg } from "resources/img/Star.svg";
 import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
-import { PromptCard } from "components/Prompt/PromptCard";
-import { Breadcrumb } from "components/shared/Breadcrumb";
 
 export const PromptDetails = () => {
   // FIXME: request data
   const tags = ["写作", "文案", "作文", "办公"];
   const title = "角色扮演生成器";
   const userName = "Dennis";
-  const userIcon = <Avatar />;
+  const userIcon = <Avatar size={24} />;
   const rate = 4.9;
   const commentCount = 2140;
 
-  const text =
-    "我希望你扮演一位英语口语教师和提高者。\n" +
-    "我会用英语与你交流，你将用英语回答我，以练习我的口语能力。\n" +
-    "我希望你的回答整洁，字数限制在100字以内。我希望你严格纠正我的语法错误、打字错误和事实错误。\n" +
-    "在你的回答中，请问我一个问题。\n" +
-    "现在我们开始练习，你可以先问我一个问题。\n" +
-    "记住，我希望你严格纠正我的语法错误、打字错误和事实错误。";
+  const text = `我希望你扮演一位英语口语教师和提高者。\
+  我会用英语与你交流，你将用英语回答我，以练习我的口语能力。\
+  我希望你的回答整洁，字数限制在100字以内。我希望你严格纠正我的语法错误、打字错误和事实错误。\
+  在你的回答中，请问我一个问题。\
+  现在我们开始练习，你可以先问我一个问题。\
+  记住，我希望你严格纠正我的语法错误、打字错误和事实错误。`;
 
   const buttonClickHandler = (buttonName: string) => {
     console.log(`${buttonName} button clicked!`);
@@ -70,26 +70,23 @@ export const PromptDetails = () => {
   const cards = [
     {
       title: "角色扮演生成器",
-      intro:
-        "对接GPT3，200万人在用的写作助手。\
+      intro: `对接GPT3，200万人在用的写作助手。\
         对接GPT3，200万人在用的写作助手。\
-        对接GPT3，200万人在用的写作助手。",
+        对接GPT3，200万人在用的写作助手。`,
       tags: ["写作", "文案", "作文", "办公"],
     },
     {
       title: "角色扮演生成器",
-      intro:
-        "对接GPT3，200万人在用的写作助手。\
-        对接GPT3，200万人在用的写作助手。\
-        对接GPT3，200万人在用的写作助手。",
+      intro: `对接GPT3，200万人在用的写作助手。\
+      对接GPT3，200万人在用的写作助手。\
+      对接GPT3，200万人在用的写作助手。`,
       tags: ["写作", "文案", "作文", "办公"],
     },
     {
       title: "角色扮演生成器",
-      intro:
-        "对接GPT3，200万人在用的写作助手。\
-        对接GPT3，200万人在用的写作助手。\
-        对接GPT3，200万人在用的写作助手。",
+      intro: `对接GPT3，200万人在用的写作助手。\
+      对接GPT3，200万人在用的写作助手。\
+      对接GPT3，200万人在用的写作助手。`,
       tags: ["写作", "文案", "作文", "办公"],
     },
   ];
@@ -101,17 +98,14 @@ export const PromptDetails = () => {
         flex-direction: column;
         width: 100vw;
         height: 100vh;
-        gap: 42px;
-        background: ${zincs[25]};
-        font-family: inherit;
-        font-style: normal;
+        background: white;
       `}
     >
       <div
         className={css`
           display: flex;
           flex-direction: column;
-          position: relative;
+          margin-bottom: 42px;
         `}
       >
         <FirstLevelNavBar />
@@ -121,9 +115,7 @@ export const PromptDetails = () => {
         className={css`
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: start;
-          margin: 0 370.5px;
+          align-items: center;
           gap: 48px;
         `}
       >
@@ -133,6 +125,8 @@ export const PromptDetails = () => {
             flex-direction: column;
             align-items: flex-start;
             gap: 30px;
+            max-width: 707px;
+            width: 100%;
           `}
         >
           <Breadcrumb items={breadcrumbs} />
@@ -167,7 +161,6 @@ export const PromptDetails = () => {
                 align-items: flex-start;
                 padding: 0px;
                 gap: 10px;
-                color: ${basisAlt.bg};
               `}
             >
               {tags.map((tag) => (
@@ -226,9 +219,8 @@ export const PromptDetails = () => {
             background: #f9f9fa;
             border: 1px solid #d7d7db;
             border-radius: 8px;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
+            max-width: 663px;
+            width: 100%;
           `}
         >
           <p
@@ -252,59 +244,78 @@ export const PromptDetails = () => {
               gap: 32px;
             `}
           >
-            <Button variant="secondary" Icon={CopySvg}>
+            <Button variant="secondary" icon={<Copy />}>
               复制到剪贴板
             </Button>
-            <Button Icon={ExecSvg}>立即运行</Button>
+            <Button icon={<Execute />}>立即运行</Button>
+          </div>
+        </div>
+        <div
+          className={css`
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: ${basis.bg};
+            padding: 40px 0 60px 0;
+          `}
+        >
+          <div
+            className={css`
+              display: flex;
+              justify-content: center;
+              font-size: 20px;
+              font-weight: 500;
+              line-height: 30px;
+              color: ${basis.text_loud};
+            `}
+          >
+            同类提示词
+          </div>
+          <div
+            className={css`
+              display: flex;
+              justify-content: center;
+              gap: 16px;
+            `}
+          >
+            {cards.map(({ title, intro, tags }) => (
+              <PromptCard likeCount={255} runCount={16}>
+                <h3
+                  className={css`
+                    color: ${basis.text_loud};
+                    font-size: 14px;
+                    font-family: inherit;
+                    font-weight: 500;
+                    line-height: 20px;
+                  `}
+                >
+                  {title}
+                </h3>
+                <p
+                  className={css`
+                    flex-grow: 1;
+                    color: ${basis.text};
+                    font-size: 12px;
+                    font-family: inherit;
+                    line-height: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    align-content: start;
+                  `}
+                >
+                  {intro}
+                </p>
+                <div>
+                  {tags.map((tag) => (
+                    <Tag>{tag}</Tag>
+                  ))}
+                </div>
+              </PromptCard>
+            ))}
           </div>
         </div>
       </div>
-      <div
-        className={css`
-          display: flex;
-          padding: 40px 10px 60px 10px;
-          flex-direction: row;
-          justify-content: center;
-          align-items: stretch;
-          gap: 16px;
-          background: ${basisAlt.bg};
-        `}
-      >
-        {cards.map(({ title, intro, tags }) => (
-          <PromptCard likeCount={255} runCount={16}>
-            <h3
-              className={css`
-                color: ${basis.text_loud};
-                font-size: 14px;
-                font-family: inherit;
-                font-weight: 500;
-                line-height: 20px;
-              `}
-            >
-              {title}
-            </h3>
-            <p
-              className={css`
-                flex-grow: 1;
-                color: ${basis.text};
-                font-size: 12px;
-                font-family: inherit;
-                line-height: 16px;
-                display: flex;
-                flex-direction: column;
-                align-content: start;
-              `}
-            >
-              {intro}
-            </p>
-            <div>
-              {tags.map((tag) => (
-                <Tag>{tag}</Tag>
-              ))}
-            </div>
-          </PromptCard>
-        ))}
-      </div>
+      <Footer />
     </div>
   );
 };

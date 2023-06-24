@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { white, zincs } from "components/constants/colors";
+import { basis, white } from "components/constants/colors";
 import { ButtonSection } from "./ButtonSection";
 import { NotificationAndProfile } from "./NotificationAndProfile";
 import { YumiaosIcon } from "./YumiaosIcon";
@@ -14,7 +14,7 @@ const FirstLevelNavBar = () => {
         height: 64px;
         padding: 0 24px;
         background: ${white};
-        border-bottom: 1px solid ${zincs[200]};
+        border-bottom: 1px solid ${basis.border_subtle};
       `}
     >
       <YumiaosIcon />

@@ -1,8 +1,7 @@
-import React from "react";
 import { css } from "@emotion/css";
-import { ReactComponent as UserAvatar } from "resources/img/UserAvatar.svg";
-import { PromptCardLegend, PromptCardLegendProps } from "./PromptCardLegend";
-import { white } from "components/constants/colors";
+import { basis } from "components/constants/colors";
+import React from "react";
+import { PromptCardLegend } from "./PromptCardLegend";
 
 export const PromptCard: React.FC<
   React.PropsWithChildren<{ likeCount: number; runCount: number }>
@@ -19,7 +18,8 @@ export const PromptCard: React.FC<
       border-radius: 8px;
       cursor: pointer;
       height: 206px;
-      background-color: ${white};
+      background-color: white;
+      border: 1px solid ${basis.border_subtle};
     `}
   >
     <div

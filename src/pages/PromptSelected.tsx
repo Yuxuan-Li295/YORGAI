@@ -2,8 +2,7 @@ import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { SecondLevelNavBar } from "components/SecondLevelNavBar";
-import { PromptSearchBar } from "components/PromptSearchBar";
-import { basis, zincs } from "components/constants/colors";
+import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 // import { ButtonIconSection } from "components/SecondLevelNavBar/ButtonIconSection";
 import { Card } from "components/shared/Card";
@@ -21,30 +20,22 @@ import { ReactComponent as Toolbox } from "resources/img/Toolbox.svg";
 import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
 const PromptSelected = () => {
-  const buttonClickHandler = (buttonName: string) => {
-    console.log(`${buttonName} button clicked!`);
-  };
-
   const buttons = [
     {
       icon: <UserDouble />,
       label: "社区热门",
-      onClick: () => buttonClickHandler("社区热门"),
     },
     {
       icon: <AIApplication />,
       label: "提示词大全",
-      onClick: () => buttonClickHandler("提示词大全"),
     },
     {
       icon: <MagicWand />,
       label: "提示词优化器",
-      onClick: () => buttonClickHandler("提示词优化器"),
     },
     {
       icon: <Star />,
       label: "我的收藏",
-      onClick: () => buttonClickHandler("我的收藏"),
     },
   ];
 
@@ -54,20 +45,14 @@ const PromptSelected = () => {
         display: flex;
         flex-direction: column;
         width: 100vw;
-        gap: 107px;
-        background: ${zincs[25]};
-        font-family: inherit;
-        font-style: normal;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        font-smooth: never;
+        background: white;
       `}
     >
       <div
         className={css`
           display: flex;
           flex-direction: column;
-          position: relative;
+          margin-bottom: 97px;
         `}
       >
         <FirstLevelNavBar />
@@ -121,7 +106,7 @@ const PromptSelected = () => {
             <PromptSearchBar />
           </div>
           <div>
-            <Button Icon={MagicWand}>AI 提示词优化</Button>
+            <Button icon={<MagicWand />}>AI 提示词优化</Button>
           </div>
         </div>
         <div
@@ -140,7 +125,7 @@ const PromptSelected = () => {
               width: 1196px;
             `}
           >
-            <SectionTitle Icon={Toolbox}>热门工具</SectionTitle>
+            <SectionTitle icon={<Toolbox />}>热门工具</SectionTitle>
             <div>cards</div>
           </div>
           <div
@@ -158,7 +143,7 @@ const PromptSelected = () => {
                 justify-content: space-between;
               `}
             >
-              <SectionTitle Icon={Prompt}>热门提示词</SectionTitle>
+              <SectionTitle icon={<Prompt />}>热门提示词</SectionTitle>
               <div
                 className={css`
                   display: flex;
@@ -167,8 +152,8 @@ const PromptSelected = () => {
                   gap: 21px;
                 `}
               >
-                <Button Icon={Refresh}>换一批</Button>
-                <Button Icon={More}>查看更多</Button>
+                <Button icon={<Refresh />}>换一批</Button>
+                <Button icon={<More />}>查看更多</Button>
               </div>
             </div>
             <Card />
@@ -182,7 +167,7 @@ const PromptSelected = () => {
               width: 1196px;
             `}
           >
-            <SectionTitle Icon={Chart}>榜单</SectionTitle>
+            <SectionTitle icon={<Chart />}>榜单</SectionTitle>
             <div>cards</div>
           </div>
         </div>
