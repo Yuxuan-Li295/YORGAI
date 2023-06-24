@@ -10,7 +10,7 @@ const Tag = ({ children }: { children: string }) => (
       font-size: 0.875rem;
       border-radius: 50px;
       margin: 2px;
-      padding: 2px 8px;
+      padding: 5px 8px;
     `}
   >
     {children}

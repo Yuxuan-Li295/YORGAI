@@ -1,11 +1,12 @@
 import { css } from "@emotion/css";
 import { ButtonIcon } from "./ButtonIcon";
+import React from "react";
 
 const ButtonIconSection = ({
   buttons,
 }: {
   buttons: {
-    Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+    icon: React.ReactElement;
     label: string;
     onClick: () => void;
   }[];
@@ -22,8 +23,8 @@ const ButtonIconSection = ({
         justify-content: center;
       `}
     >
-      {buttons.map(({ Icon, label, onClick }) => (
-        <ButtonIcon Icon={Icon} label={label} onClick={onClick} key={label} />
+      {buttons.map(({ icon: Icon, label, onClick }) => (
+        <ButtonIcon icon={Icon} label={label} onClick={onClick} key={label} />
       ))}
     </div>
   );

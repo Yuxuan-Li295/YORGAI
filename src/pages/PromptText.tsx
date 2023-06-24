@@ -17,22 +17,23 @@ const PromptText = () => {
 
   const buttons = [
     {
-      Icon: UserDouble,
+      icon: <UserDouble />,
+
       label: "社区热门",
       onClick: () => buttonClickHandler("社区热门"),
     },
     {
-      Icon: AIApplication,
+      icon: <AIApplication />,
       label: "提示词大全",
       onClick: () => buttonClickHandler("提示词大全"),
     },
     {
-      Icon: MagicWand,
+      icon: <MagicWand />,
       label: "提示词优化器",
       onClick: () => buttonClickHandler("提示词优化器"),
     },
     {
-      Icon: Star,
+      icon: <Star />,
       label: "我的收藏",
       onClick: () => buttonClickHandler("我的收藏"),
     },
@@ -46,7 +47,7 @@ const PromptText = () => {
         width: 100vw;
         gap: 107px;
         background: ${zincs[25]};
-        font-family: "PingFang SC", sans-serif;
+        font-family: inherit;
         font-style: normal;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;

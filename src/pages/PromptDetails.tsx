@@ -1,13 +1,20 @@
 import { css } from "@emotion/css";
+import { basis, basisAlt, black, zincs } from "components/constants/colors";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
-import { basis, zincs } from "components/constants/colors";
+import { SecondLevelNavBar } from "components/SecondLevelNavBar";
 import { Avatar } from "components/shared/Avatar";
 import { Tag } from "components/shared/Tag";
 import { Button } from "components/shared/Button";
 import { Star } from "components/shared/Star";
+import { Badge } from "components/shared/Badge";
 import { ReactComponent as CopySvg } from "resources/img/copy.svg";
 import { ReactComponent as ExecSvg } from "resources/img/arrow-circle-broken-up-right.svg";
-import { Badge } from "components/shared/Badge";
+import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
+import { ReactComponent as StarSvg } from "resources/img/Star.svg";
+import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
+import { PromptCard } from "components/Prompt/PromptCard";
+import { Breadcrumb } from "components/shared/Breadcrumb";
 
 export const PromptDetails = () => {
   // FIXME: request data
@@ -26,6 +33,67 @@ export const PromptDetails = () => {
     "现在我们开始练习，你可以先问我一个问题。\n" +
     "记住，我希望你严格纠正我的语法错误、打字错误和事实错误。";
 
+  const buttonClickHandler = (buttonName: string) => {
+    console.log(`${buttonName} button clicked!`);
+  };
+
+  const buttons = [
+    {
+      icon: <UserDouble />,
+      label: "社区热门",
+      onClick: () => buttonClickHandler("社区热门"),
+    },
+    {
+      icon: <AIApplication />,
+      label: "提示词大全",
+      onClick: () => buttonClickHandler("提示词大全"),
+    },
+    {
+      icon: <MagicWand />,
+      label: "提示词优化器",
+      onClick: () => buttonClickHandler("提示词优化器"),
+    },
+    {
+      icon: <StarSvg />,
+      label: "我的收藏",
+      onClick: () => buttonClickHandler("我的收藏"),
+    },
+  ];
+
+  const breadcrumbs = [
+    { name: "首页", link: "/" },
+    { name: "提示词库", link: "/prompt" },
+    { name: "提示词大全", link: "/prompt/complete" },
+    { name: title, link: "/prompt/complete/details" },
+  ];
+
+  const cards = [
+    {
+      title: "角色扮演生成器",
+      intro:
+        "对接GPT3，200万人在用的写作助手。\
+        对接GPT3，200万人在用的写作助手。\
+        对接GPT3，200万人在用的写作助手。",
+      tags: ["写作", "文案", "作文", "办公"],
+    },
+    {
+      title: "角色扮演生成器",
+      intro:
+        "对接GPT3，200万人在用的写作助手。\
+        对接GPT3，200万人在用的写作助手。\
+        对接GPT3，200万人在用的写作助手。",
+      tags: ["写作", "文案", "作文", "办公"],
+    },
+    {
+      title: "角色扮演生成器",
+      intro:
+        "对接GPT3，200万人在用的写作助手。\
+        对接GPT3，200万人在用的写作助手。\
+        对接GPT3，200万人在用的写作助手。",
+      tags: ["写作", "文案", "作文", "办公"],
+    },
+  ];
+
   return (
     <div
       className={css`
@@ -35,7 +103,7 @@ export const PromptDetails = () => {
         height: 100vh;
         gap: 42px;
         background: ${zincs[25]};
-        font-family: "PingFang SC", sans-serif;
+        font-family: inherit;
         font-style: normal;
       `}
     >
@@ -43,18 +111,11 @@ export const PromptDetails = () => {
         className={css`
           display: flex;
           flex-direction: column;
+          position: relative;
         `}
       >
         <FirstLevelNavBar />
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          `}
-        >
-          header2
-        </div>
+        <SecondLevelNavBar buttons={buttons} />
       </div>
       <div
         className={css`
@@ -63,93 +124,96 @@ export const PromptDetails = () => {
           justify-content: center;
           align-items: start;
           margin: 0 370.5px;
-          gap: 32px;
+          gap: 48px;
         `}
       >
         <div
           className={css`
             display: flex;
             flex-direction: column;
-            align-items: center;
-          `}
-        >
-          breadcrumbs
-        </div>
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
             align-items: flex-start;
-            padding: 0px;
-            gap: 10px;
-            flex: none;
-            order: 0;
-            flex-grow: 0;
+            gap: 30px;
           `}
         >
-          <h1
-            className={css`
-              font-family: "PingFang SC";
-              font-style: normal;
-              font-weight: 600;
-              font-size: 24px;
-              line-height: 32px;
-              color: #000000;
-            `}
-          >
-            {title}
-          </h1>
+          <Breadcrumb items={breadcrumbs} />
           <div
             className={css`
               display: flex;
-              flex-direction: row;
+              flex-direction: column;
               align-items: flex-start;
               padding: 0px;
               gap: 10px;
+              flex: none;
+              order: 0;
+              flex-grow: 0;
             `}
           >
-            {tags.map((tag) => (
-              <Tag>{tag}</Tag>
-            ))}
-          </div>
-          <Badge avatar={userIcon}>{userName}</Badge>
-          <div
-            className={css`
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              padding: 0px;
-              gap: 12px;
-            `}
-          >
+            <h1
+              className={css`
+                font-family: inherit;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 32px;
+                color: ${black};
+              `}
+            >
+              {title}
+            </h1>
             <div
               className={css`
                 display: flex;
                 flex-direction: row;
                 align-items: flex-start;
                 padding: 0px;
-                gap: 7px;
+                gap: 10px;
+                color: ${basisAlt.bg};
               `}
             >
-              {Array(5)
-                .fill(0)
-                .map((_, i) => (
-                  <Star key={i} selected={i < Math.round(rate)} />
-                ))}
+              {tags.map((tag) => (
+                <Tag>{tag}</Tag>
+              ))}
             </div>
-            <span
+            <Badge avatar={userIcon}>{userName}</Badge>
+            <div
               className={css`
-                font-family: "PingFang SC";
-                font-style: normal;
-                font-weight: 500;
-                font-size: 12px;
-                line-height: 16px;
-                text-align: center;
-                color: ${basis.text};
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 0px;
+                gap: 12px;
               `}
             >
-              {rate} ({commentCount} 评论)
-            </span>
+              <div
+                className={css`
+                  display: flex;
+                  flex-direction: row;
+                  align-items: flex-start;
+                  padding: 0px;
+                  gap: 7px;
+                  color: #f7bb00;
+                `}
+              >
+                {Array(5)
+                  .fill(0)
+                  .map((_, i) => (
+                    <Star key={i} selected={i < Math.round(rate)} />
+                  ))}
+              </div>
+              <span
+                className={css`
+                  font-family: inherit;
+                  font-style: normal;
+                  font-weight: 500;
+                  font-size: 12px;
+                  line-height: 16px;
+                  text-align: center;
+                  color: ${basis.text};
+                `}
+              >
+                {rate} ({commentCount} 评论)
+              </span>
+            </div>
           </div>
         </div>
         <div
@@ -169,7 +233,7 @@ export const PromptDetails = () => {
         >
           <p
             className={css`
-              font-family: "PingFang SC";
+              font-family: inherit;
               font-style: normal;
               font-weight: 400;
               font-size: 12px;
@@ -194,6 +258,52 @@ export const PromptDetails = () => {
             <Button Icon={ExecSvg}>立即运行</Button>
           </div>
         </div>
+      </div>
+      <div
+        className={css`
+          display: flex;
+          padding: 40px 10px 60px 10px;
+          flex-direction: row;
+          justify-content: center;
+          align-items: stretch;
+          gap: 16px;
+          background: ${basisAlt.bg};
+        `}
+      >
+        {cards.map(({ title, intro, tags }) => (
+          <PromptCard likeCount={255} runCount={16}>
+            <h3
+              className={css`
+                color: ${basis.text_loud};
+                font-size: 14px;
+                font-family: inherit;
+                font-weight: 500;
+                line-height: 20px;
+              `}
+            >
+              {title}
+            </h3>
+            <p
+              className={css`
+                flex-grow: 1;
+                color: ${basis.text};
+                font-size: 12px;
+                font-family: inherit;
+                line-height: 16px;
+                display: flex;
+                flex-direction: column;
+                align-content: start;
+              `}
+            >
+              {intro}
+            </p>
+            <div>
+              {tags.map((tag) => (
+                <Tag>{tag}</Tag>
+              ))}
+            </div>
+          </PromptCard>
+        ))}
       </div>
     </div>
   );
