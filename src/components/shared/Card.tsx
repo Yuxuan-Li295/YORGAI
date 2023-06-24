@@ -45,17 +45,33 @@ const Card = ({
           className={css`
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start; // original code is center
+            gap: 11px; // added code
+            align-self: stretch; //added code
             width: 100%;
             height: 40px;
+            margin-bottom: 10px;
           `}
         >
-          <NotionAppIcon
-            style={{
-              width: "40px",
-              height: "40px",
-            }}
-          />
+          <div // this div is added; originally there is no such div, only NotionAppIcon
+            className={css`
+              width: 42px;
+              height: 42px;
+              flex-shrink: 0;
+              border-radius: 10px;
+              border: 1px solid #e9e9ec;
+              background: #fff;
+            `}
+          >
+            <NotionAppIcon
+              style={{
+                width: "41px",
+                height: "41px",
+                flexShrink: "0", // added code
+              }}
+            />
+          </div>
+
           <div
             className={css`
               display: flex;
@@ -71,8 +87,17 @@ const Card = ({
                 align-items: center;
               `}
             >
-              <h1>{appName}</h1>
-              {showExecute && (
+              <h1
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  lineHeight: "20px",
+                  marginBottom: "6px",
+                }}
+              >
+                {appName}
+              </h1>
+              {/* {showExecute && (
                 <button
                   className={css`
                     background-color: #34d393;
@@ -98,11 +123,17 @@ const Card = ({
                   />
                   立即运行
                 </button>
-              )}
+              )} */}
             </div>
-            <p style={{ fontSize: "11px" }}>
-              {appIntro!.length > 20
-                ? `${appIntro!.slice(0, 20)}...`
+            <p
+              style={{
+                fontSize: "12px",
+                lineHeight: "16px",
+                color: "#707480",
+              }}
+            >
+              {appIntro!.length > 17
+                ? `${appIntro!.slice(0, 17)}...`
                 : appIntro}
             </p>
           </div>
@@ -113,8 +144,8 @@ const Card = ({
               justify-content: center;
               background-color: #fdcc0d;
               color: white;
-              height: 34px;
-              width: 45px;
+              height: 40px;
+              width: 56px;
               border-radius: 6px;
               border: 1px solid #feef81;
               overflow: hidden;
@@ -129,8 +160,9 @@ const Card = ({
         <div
           className={css`
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 10px;
+            gap: 11px;
           `}
         >
           <div
@@ -142,8 +174,8 @@ const Card = ({
           >
             <NotionAppIcon
               style={{
-                width: "40px",
-                height: "40px",
+                width: "42px",
+                height: "42px",
               }}
             />
           </div>
@@ -160,18 +192,26 @@ const Card = ({
               className={css`
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
+                align-items: flex-start;
+                gap: 20px;
               `}
             >
-              <h1>{appName}</h1>
+              <h1
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  lineHeight: "20px",
+                }}
+              >
+                {appName}
+              </h1>
               {showExecute && (
                 <button
                   className={css`
                     background-color: #34d393;
                     height: 20px;
-                    border: none;
+                    border: 1px solid #6ee7b3;
                     color: white;
-                    padding: 5px 10px;
                     text-decoration: none;
                     display: flex;
                     align-items: center;
@@ -179,20 +219,31 @@ const Card = ({
                     font-size: 14px;
                     margin: 2px 2px;
                     cursor: pointer;
-                    border-radius: 8px;
+                    border-radius: 4px;
+                    padding: 0px 6px;
                   `}
                 >
                   <RunIcon
                     style={{
-                      height: "13px",
-                      width: "13px",
+                      height: "16px",
+                      width: "16px",
+                      fontSize: "12px",
+                      fontWeight: "500",
+                      lineHeight: "16px",
                     }}
                   />
                   立即运行
                 </button>
               )}
             </div>
-            <p style={{ fontSize: "11px" }}>
+            <p
+              style={{
+                fontSize: "12px",
+                lineHeight: "16px",
+                color: "#707480",
+                textOverflow: "ellipsis",
+              }}
+            >
               {appIntro!.length > 20
                 ? `${appIntro!.slice(0, 20)}...`
                 : appIntro}
@@ -204,15 +255,19 @@ const Card = ({
         className={css`
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-start;
           width: 100%;
+          gap: 6px;
+          flex: 1 0 0;
         `}
       >
         <div
           className={css`
             display: flex;
             flex-wrap: wrap;
-            margin-left: 8px;
+            padding: 0px 6px;
+            justify-content: center;
+            align-items: center;
           `}
         >
           {tags.slice(0, 4).map((tag, index) => (
