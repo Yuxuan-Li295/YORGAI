@@ -2,11 +2,12 @@ import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { SecondLevelNavBar } from "components/SecondLevelNavBar";
+import { PromptSearchBar } from "components/PromptSearchBar";
 import { basis, zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
-import { ButtonIconSection } from "components/SecondLevelNavBar/ButtonIconSection";
+// import { ButtonIconSection } from "components/SecondLevelNavBar/ButtonIconSection";
 import { Card } from "components/shared/Card";
-import { FastSearchButton } from "components/shared/FastSearchButton";
+// import { FastSearchButton } from "components/shared/FastSearchButton";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
 import { ReactComponent as ApplicationIcon } from "resources/img/ApplicationIcon.svg";
@@ -16,10 +17,6 @@ import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
 import { ReactComponent as Prompt } from "resources/img/Prompt.svg";
 import { ReactComponent as Refresh } from "resources/img/Refresh.svg";
-
-import Input from "components/PromptSearchBar";
-import Premenu from "components/PromptSearchBar/MenuSection/premenu";
-import Append from "components/PromptSearchBar/AppendSection/append";
 
 import { ReactComponent as Star } from "resources/img/Star.svg";
 import { ReactComponent as Toolbox } from "resources/img/Toolbox.svg";
@@ -126,8 +123,8 @@ const PromptSelected = () => {
           >
             小鱼厂收集了大量高质量提示词，并根据功能和内容进行分类
           </div>
-          <div className={css``} onClick={() => {}}>
-            <Input prepend={<Premenu />} append={<Append />}></Input>
+          <div>
+            <PromptSearchBar />
           </div>
           <div>
             <Button Icon={MagicWand}>AI 提示词优化</Button>

@@ -40,19 +40,21 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
   return (
     <div
       className={css`
-        line-height: 48px;
+        line-height: 32px;
         height: 48px;
-        width: 100px;
-        /* background-color: rgb(242, 242, 243); */
-        padding: 5px;
-        padding-left: 15px;
+        box-sizing: border-box;
+        width: 125px;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 8px 16px;
+        padding-left: 18px;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
         border: 1px solid rgba(233, 233, 236, 1);
+        border-right: 0px;
         &:hover {
           background-color: rgb(242, 242, 243);
         }
-        /* float: left; */
       `}
     >
       <div
@@ -65,18 +67,27 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
           color: rgba(112, 116, 128);
           font-size: 16px;
           font-family: "PingFang SC";
-          /* background-color: rgb(249, 249, 249); */
         `}
       >
-        {" "}
-        <div>所有分类</div>
+        <div
+          className={css`
+            display: flex;
+            cursor: pointer;
+            color: rgba(112, 116, 128);
+            font-size: 16px;
+            font-family: "PingFang SC";
+            font-weight: 500;
+          `}
+        >
+          所有分类
+        </div>
         <img
           className={css`
             margin-left: 5px;
           `}
           src={preIcon}
           alt=""
-        />{" "}
+        />
       </div>
 
       {isPreShow && (
@@ -87,25 +98,22 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
           className={css`
             animation: ${fadeIn} 0.3s ease-in-out;
             box-shadow: 0 8px 12px -6px rgba(79, 81, 89, 0.16);
+            margin-left: -17.5px;
           `}
         >
           <div
             onClick={onClick}
             className={css`
-              line-height: 36px;
-              height: 36px;
-              width: 100px;
+              line-height: 34px;
+              height: 40px;
+              box-sizing: border-box;
+              width: 125px;
               background-color: #fff;
-              padding: 5px;
-              padding-left: 15px;
-              border-top-left-radius: 8px;
-              border-top-right-radius: 8px;
-              /* border-bottom-left-radius: 8px; */
-              /* float: left; */
-              margin-left: -15px;
+              padding: 4px 4px 0px 13px;
+              border-top-left-radius: 6px;
+              border-top-right-radius: 6px;
               margin-top: 10px;
               border: 1px solid rgba(188, 189, 194, 0.2);
-
               color: rgba(112, 116, 128, 1);
               cursor: pointer;
             `}
@@ -116,15 +124,14 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
             onClick={onClick}
             className={css`
               background-color: #fff;
-              line-height: 36px;
-              height: 36px;
-              width: 100px;
+              line-height: 34px;
+              height: 41px;
+              box-sizing: border-box;
+              width: 125px;
               background-color: #fff;
-              padding: 5px;
-              padding-left: 15px;
-
-              border-bottom-left-radius: 8px;
-              margin-left: -15px;
+              padding: 4px 4px 0px 13px;
+              border-bottom-left-radius: 6px;
+              border-bottom-right-radius: 6px;
               border: 1px solid rgba(188, 189, 194, 0.2);
               border-top: 1px solid rgba(188, 189, 194, 0);
               color: rgba(112, 116, 128, 1);

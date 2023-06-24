@@ -25,11 +25,17 @@ const Input: FC<InputProps> = (props) => {
           width: 650px;
           border: 1px solid #ecebeb;
           background-color: #fff;
-          font-size: 19px;
+          font-size: 18px;
+          height: 48px;
+          box-sizing: border-box;
           ::-webkit-input-placeholder {
             position: relative;
             top: 2px;
-
+            font-family: "PingFang SC";
+            font-weight: 400;
+            font-size: 18px;
+            height: 26.67px;
+            line-height: 26.67px;
             color: rgb(188, 189, 194);
           }
 

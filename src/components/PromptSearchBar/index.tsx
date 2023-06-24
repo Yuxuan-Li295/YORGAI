@@ -1,3 +1,7 @@
 import Input from "./InputSection/input";
+import Premenu from "./MenuSection/premenu";
+import Append from "./AppendSection/append";
 
-export default Input;
+export const PromptSearchBar = () => (
+  <Input prepend={<Premenu />} append={<Append />}></Input>
+);

@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/css";
-import addpendIcon from "../../../resources/img/appendIcon.svg";
+import trailIcon from "../../../resources/img/trailIcon.svg";
 
 const Append = ({ onClick }: { onClick?: () => void }) => {
   return (
@@ -9,25 +9,36 @@ const Append = ({ onClick }: { onClick?: () => void }) => {
       className={css`
         line-height: 48px;
         height: 48px;
-        width: 45px;
+        width: 52px;
         background-color: rgb(103, 205, 188);
-        padding: 5px;
-        padding-left: 15px;
+        padding: 8px 16px 8px 16px;
+        /* padding-left: 15px; */
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
         text-align: center;
         position: relative;
-        border: 1.33px solid #e9e9ec;
+        border: 1px solid #e9e9ec;
+        border-left: 0px;
+        box-sizing: border-box;
+        /* gap: 3px; */
         /* float: left; */
         cursor: pointer;
       `}
     >
-      <img
+      {/* <img
         className={css`
           position: relative;
           left: -9px;
         `}
         src={addpendIcon}
+        alt=""
+      /> */}
+      <img
+        className={css`
+          position: relative;
+          left: -4px;
+        `}
+        src={trailIcon}
         alt=""
       />
     </div>
