@@ -40,7 +40,7 @@ const Login = () => {
               font-weight: 600;
               font-size: 16px;
               line-height: 24px;
-              color: ${basis["text"]};
+              color: ${basis.text};
             `}
           >
             AI + 人才 = 无限可能
@@ -72,7 +72,7 @@ const Login = () => {
               line-height: 12px;
             }
             & a {
-              color: ${basis["text-subtle"]};
+              color: ${basis.text_subtle};
               text-decoration: inherit;
             }
           `}

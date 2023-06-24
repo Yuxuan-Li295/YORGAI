@@ -29,7 +29,7 @@ const YumiaosIcon = () => {
           display: flex;
           align-items: center;
           letter-spacing: 0.15px;
-          color: ${basis["text"]};
+          color: ${basis.text};
           white-space: nowrap;
         `}
       >

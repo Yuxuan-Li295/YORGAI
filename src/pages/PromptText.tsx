@@ -3,10 +3,41 @@ import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { zincs } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
-import Lightbulb from "resources/img/Lightbulb.svg";
-import MagicWand from "resources/img/MagicWand.svg";
+import { SecondLevelNavBar } from "components/SecondLevelNavBar";
+import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
+import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
+import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as Star } from "resources/img/Star.svg";
+import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
 const PromptText = () => {
+  const buttonClickHandler = (buttonName: string) => {
+    console.log(`${buttonName} button clicked!`);
+  };
+
+  const buttons = [
+    {
+      Icon: UserDouble,
+      label: "社区热门",
+      onClick: () => buttonClickHandler("社区热门"),
+    },
+    {
+      Icon: AIApplication,
+      label: "提示词大全",
+      onClick: () => buttonClickHandler("提示词大全"),
+    },
+    {
+      Icon: MagicWand,
+      label: "提示词优化器",
+      onClick: () => buttonClickHandler("提示词优化器"),
+    },
+    {
+      Icon: Star,
+      label: "我的收藏",
+      onClick: () => buttonClickHandler("我的收藏"),
+    },
+  ];
+
   return (
     <div
       className={css`
@@ -17,6 +48,9 @@ const PromptText = () => {
         background: ${zincs[25]};
         font-family: "PingFang SC", sans-serif;
         font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-smooth: never;
       `}
     >
       <div
@@ -26,15 +60,7 @@ const PromptText = () => {
         `}
       >
         <FirstLevelNavBar />
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          `}
-        >
-          header2
-        </div>
+        <SecondLevelNavBar buttons={buttons} />
       </div>
       <div
         className={css`
@@ -75,12 +101,8 @@ const PromptText = () => {
               gap: 21px;
             `}
           >
-            <Button icon={<img src={Lightbulb} alt="Lightbulb icon" />}>
-              AI 工具推荐
-            </Button>
-            <Button icon={<img src={MagicWand} alt="Magic wand icon" />}>
-              AI 提示词学习
-            </Button>
+            <Button Icon={Lightbulb}>AI 工具推荐</Button>
+            <Button Icon={MagicWand}>AI 提示词学习</Button>
           </div>
           <div
             className={css`

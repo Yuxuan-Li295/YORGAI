@@ -9,11 +9,10 @@ type TagProps = {
 const Tag = ({ children, isDarker = false }: TagProps) => (
   <div
     className={css`
-      // display: inline-block;
-      background: ${isDarker ? "#e9e9eb" : basisAlt["bg-subtle"]};
+      //display: inline-block;
+      background: ${isDarker ? "#e9e9eb" : basisAlt.bg_subtle};
       color: ${basis["text"]};
       font-size: 0.875rem;
-      padding: 2px 8px;
       border-radius: 50px;
       margin: 2px;
       border-radius: 108px;
@@ -23,6 +22,7 @@ const Tag = ({ children, isDarker = false }: TagProps) => (
       font-size: 12px;
       font-weight: 500;
       line-height: 16px;
+      padding: 2px 8px;
     `}
   >
     {children}
