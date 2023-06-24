@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
-import Notification from "resources/img/Notification.svg";
-import { zincs } from "components/constants/colors";
+import { basis } from "components/constants/colors";
 import { Avatar } from "components/shared/Avatar";
+import { ReactComponent as Notification } from "resources/img/Notification.svg";
 
 const NotificationAndProfile = () => {
   return (
@@ -14,15 +14,15 @@ const NotificationAndProfile = () => {
         width: 100px;
       `}
     >
-      <img src={Notification} alt="Notification Icon" />
+      <Notification />
       <div
         className={css`
           height: 16px;
           width: 1px;
-          background-color: ${zincs[200]};
+          background-color: ${basis.border_subtle};
         `}
       />
-      <Avatar />
+      <Avatar size={32} />
     </div>
   );
 };
