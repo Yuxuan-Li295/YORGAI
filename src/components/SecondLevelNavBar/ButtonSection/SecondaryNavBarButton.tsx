@@ -33,10 +33,6 @@ export const SecondaryNavBarButton = ({
         font-family: inherit;
         position: relative; 
         color: ${isActive ? "#67cdbc" : basis.text};
-        &:hover:after {
-          background-color: ${isActive ? "#67cdbc" : "transparent"}; 
-        }
-
         &:hover {
           color: #67cdbc;
         }
@@ -48,7 +44,7 @@ export const SecondaryNavBarButton = ({
           transform: translateX(-50%);
           height: 2px;
           width: 94px;
-          background-color: transparent;
+          background-color: ${isActive ? "#67cdbc" : "transparent"};
         }
 
         &:hover:after {
@@ -70,4 +66,4 @@ export const SecondaryNavBarButton = ({
       </div>
     </button>
   );
-};
+}; 

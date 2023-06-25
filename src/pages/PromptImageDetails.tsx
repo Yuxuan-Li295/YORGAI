@@ -13,7 +13,6 @@ import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg
 import { ReactComponent as Execute } from "resources/img/Execute.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as PromptImage } from "resources/img/PromptImage.svg";
-import { ReactComponent as PromptImageDetail } from "resources/img/PromptImageDetail.svg";
 import { ReactComponent as StarSvg } from "resources/img/Star.svg";
 import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 import { ReactComponent as Copy } from "resources/img/copy.svg";
@@ -246,7 +245,6 @@ export const PromptImageDetails = () => {
           max-width: 1440px;
         `}
           >
-            {/* “同类提示词”文本 */}
             <p
               className={css`
             color: var(--basis-text-loud, #18181B);
