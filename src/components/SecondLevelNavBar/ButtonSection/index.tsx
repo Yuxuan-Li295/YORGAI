@@ -33,6 +33,7 @@ const ButtonSection = ({
           onClick={() => {
             url && navigate(url);
           }}
+          url={url}
           key={label}
         />
       ))}

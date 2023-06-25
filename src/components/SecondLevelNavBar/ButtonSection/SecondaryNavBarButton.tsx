@@ -1,16 +1,21 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
 import React from "react";
+import { useMatch } from "react-router-dom";
 
-const SecondaryNavBarButton = ({
+export const SecondaryNavBarButton = ({
   icon,
   label,
   onClick,
+  url,
 }: {
   icon: React.ReactElement;
   label: string;
   onClick?: () => void;
+  url?: string;
 }) => {
+  const match = useMatch(url || "");
+  const isActive = match;
   return (
     <button
       className={css`
@@ -26,9 +31,28 @@ const SecondaryNavBarButton = ({
         cursor: pointer;
         color: ${basis.text};
         font-family: inherit;
+        position: relative; 
+        color: ${isActive ? "#67cdbc" : basis.text};
+        &:hover:after {
+          background-color: ${isActive ? "#67cdbc" : "transparent"}; 
+        }
 
         &:hover {
           color: #67cdbc;
+        }
+        &:after {
+          content: ""; 
+          position: absolute; 
+          bottom: 0; 
+          left: 50%;
+          transform: translateX(-50%);
+          height: 2px;
+          width: 94px;
+          background-color: transparent;
+        }
+
+        &:hover:after {
+          background-color: #67cdbc; 
         }
       `}
       onClick={onClick}
@@ -47,5 +71,3 @@ const SecondaryNavBarButton = ({
     </button>
   );
 };
-
-export { SecondaryNavBarButton };

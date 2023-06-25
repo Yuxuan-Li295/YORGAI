@@ -11,7 +11,7 @@ import { Footer } from "components/shared/Footer";
 import { Star } from "components/shared/Star";
 import { Tag } from "components/shared/Tag";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
-import { ReactComponent as Copy } from "resources/img/Copy.svg";
+import { ReactComponent as Copy } from "resources/img/copy.svg";
 import { ReactComponent as Execute } from "resources/img/Execute.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as StarSvg } from "resources/img/Star.svg";

@@ -5,6 +5,7 @@ import { white } from "components/constants/colors";
 import emotionReset from "emotion-reset";
 import { Login } from "pages/Login";
 import { PromptDetails } from "pages/PromptDetails";
+import { PromptImageDetails } from "pages/PromptImageDetails";
 import { PromptImage } from "pages/PromptImage";
 import { PromptSelected } from "pages/PromptSelected";
 import { PromptText } from "pages/PromptText";
@@ -45,6 +46,7 @@ const Router = () => {
         <Route path="prompt/complete/details" element={<PromptDetails />} />
         <Route path="prompt/complete/text" element={<PromptText />} />
         <Route path="prompt/complete/image" element={<PromptImage />} />
+        <Route path="prompt/complete/image/details" element={<PromptImageDetails />} />
         <Route
           path="prompt"
           element={<Navigate to="prompt/selected" replace />}
