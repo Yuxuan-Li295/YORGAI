@@ -1,4 +1,5 @@
 import { css } from "@emotion/css";
+import { ChatInputBar } from "components/ChatInputBar";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { SecondLevelNavBar } from "components/SecondLevelNavBar";
@@ -128,6 +129,7 @@ const PromptSelected = () => {
             gap: 80px;
           `}
         >
+          {/* test: delete this <ChatInputBar /> */}
           <div
             className={css`
               display: flex;
