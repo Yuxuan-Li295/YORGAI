@@ -18,7 +18,7 @@ const Login = () => {
           align-items: center;
           gap: 205px;
           width: 720px;
-          background: ${zinc[100]};
+          background: ${basis.bg_muted};
         `}
       >
         <div

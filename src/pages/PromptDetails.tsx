@@ -2,7 +2,7 @@ import { css } from "@emotion/css";
 import { FirstLevelNavBar } from "components/FirstLevelNavBar";
 import { PromptCard } from "components/Prompt/PromptCard";
 import { SecondLevelNavBar } from "components/SecondLevelNavBar";
-import { basis, black } from "components/constants/colors";
+import { basis, primary } from "components/constants/colors";
 import { Avatar } from "components/shared/Avatar";
 import { Badge } from "components/shared/Badge";
 import { Breadcrumb } from "components/shared/Breadcrumb";
@@ -96,7 +96,7 @@ export const PromptDetails = () => {
         display: flex;
         flex-direction: column;
         width: 100vw;
-        height: 100vh;
+        min-width: 1200px;
         background: white;
       `}
     >
@@ -148,7 +148,7 @@ export const PromptDetails = () => {
                 font-weight: 600;
                 font-size: 24px;
                 line-height: 32px;
-                color: ${black};
+                color: black;
               `}
             >
               {title}
@@ -183,7 +183,7 @@ export const PromptDetails = () => {
                   align-items: flex-start;
                   padding: 0px;
                   gap: 7px;
-                  color: #f7bb00;
+                  color: ${primary.icon};
                 `}
               >
                 {Array(5)
@@ -215,8 +215,8 @@ export const PromptDetails = () => {
             align-items: center;
             padding: 18px 18px 14px;
             gap: 18px;
-            background: #f9f9fa;
-            border: 1px solid #d7d7db;
+            background: ${basis.bg};
+            border: 1px solid ${basis.border};
             border-radius: 8px;
             max-width: 663px;
             width: 100%;
