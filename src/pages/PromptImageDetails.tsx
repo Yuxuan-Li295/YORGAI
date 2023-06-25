@@ -270,30 +270,6 @@ export const PromptImageDetails = () => {
           ></div>
         </div>
       </div>
-      <div
-        className={css`
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-left: 122px; 
-    margin-top: -70px;
-  `}
-      >
-        {["Image1", "Image2", "Image3"].map((img, i) => (
-          <PromptImageDetail
-            key={i}
-            style={{
-              display: "flex",
-              height: "206px",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              alignItems: "flex-start",
-              flex: "1 0 0",
-              marginRight: i !== 2 ? "16px" : "0px",
-            }}
-          />
-        ))}
-      </div>
       <Footer />
     </div>
   );
