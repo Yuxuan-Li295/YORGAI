@@ -10,32 +10,20 @@ const FastSearchButton = ({ children }: { children: string }) => {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-
         background-color: transparent;
         padding: 0 8px 0 4px;
         gap: 3px;
         font-family: inherit;
-
         border: 1px solid ${basis.alt.border};
         border-radius: 13px;
+        cursor: pointer;
 
         &:hover {
           background-color: ${basis.alt.bg_muted};
         }
       `}
     >
-      <div
-        className={css`
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          padding: 0px;
-        `}
-      >
-        <Search />
-      </div>
-
+      <Search />
       <div
         className={css`
           font-weight: 500;

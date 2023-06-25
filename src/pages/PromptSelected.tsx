@@ -43,6 +43,7 @@ const PromptSelected = () => {
         display: flex;
         flex-direction: column;
         width: 100vw;
+        min-width: 1200px;
         background: white;
       `}
     >
@@ -92,7 +93,7 @@ const PromptSelected = () => {
           </div>
           <div
             className={css`
-              font-weight: 400;
+              font-weight: 500;
               font-size: 20px;
               line-height: 30px;
               color: ${basis.text};

@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { zinc } from "components/constants/colors";
+import { basis } from "components/constants/colors";
 
 const Footer = () => (
   <div
@@ -18,7 +18,7 @@ const Footer = () => (
         line-height: 12px;
       }
       & a {
-        color: ${zinc[400]};
+        color: ${basis.text_subtle};
         text-decoration: inherit;
       }
     `}
