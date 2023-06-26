@@ -7,7 +7,7 @@ import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
 import { FastSearchButton } from "components/shared/FastSearchButton";
 import { Footer } from "components/shared/Footer";
-import { ToolCategoryCard } from "components/components/ToolCategoryCard";
+import { ToolCategoryCard } from "components/ToolCategoryCard";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
