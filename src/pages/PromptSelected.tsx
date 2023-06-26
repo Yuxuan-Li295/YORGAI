@@ -7,6 +7,7 @@ import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
 import { FastSearchButton } from "components/shared/FastSearchButton";
 import { Footer } from "components/shared/Footer";
+import { ToolCategoryCard } from "components/components/ToolCategoryCard";
 import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
@@ -151,7 +152,9 @@ const PromptSelected = () => {
             `}
           >
             <SectionTitle Icon={Toolbox}>热门工具</SectionTitle>
-            <div>cards</div>
+            <div>
+              <ToolCategoryCard />
+            </div>
           </div>
           <div
             className={css`
