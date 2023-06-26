@@ -1,4 +1,6 @@
 import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
+import { basis } from "components/constants/colors";
+import { basisAlt } from "components/constants/colors";
 
 const ToolCategoryCard = () => (
 
