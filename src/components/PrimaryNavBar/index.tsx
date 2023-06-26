@@ -4,7 +4,7 @@ import { ButtonSection } from "./ButtonSection";
 import { NotificationAndProfile } from "./NotificationAndProfile";
 import { YumiaosIcon } from "./YumiaosIcon";
 
-const FirstLevelNavBar = () => {
+const PrimaryNavBar = () => {
   return (
     <div
       className={css`
@@ -24,4 +24,4 @@ const FirstLevelNavBar = () => {
   );
 };
 
-export { FirstLevelNavBar };
+export { PrimaryNavBar };

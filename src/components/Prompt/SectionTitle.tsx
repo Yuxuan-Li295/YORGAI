@@ -21,20 +21,13 @@ const SectionTitle = ({
       {icon}
       <div
         className={css`
-          display: flex;
-          flex-direction: column;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 30px;
+          color: ${basis.text_loud};
         `}
       >
-        <div
-          className={css`
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 30px;
-            color: ${basis.text_loud};
-          `}
-        >
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   );

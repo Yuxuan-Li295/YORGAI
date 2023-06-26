@@ -11,7 +11,7 @@ const ButtonSection = () => {
   const buttonNames: [string, string?][] = [
     ["需求大厅"],
     ["作品社区"],
-    ["AI 工具"],
+    ["AI 工具", "/tool"],
     ["提示词库", "/prompt/selected"],
     ["数字中控"],
   ];

@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { basis } from "components/constants/colors";
+import { basis, fill } from "components/constants/colors";
 import React, { ReactElement } from "react";
 
 const Button = ({
@@ -88,7 +88,7 @@ const Button = ({
         padding: 6px 12px;
         color: ${basis.text};
         gap: 10px;
-        background: white; // TODO: fill.base.layer_chrome
+        background: ${fill.base.layer_chrome};
         box-shadow: 0px 1px 1px rgba(188, 189, 194, 0.2),
           0px 0px 0px 1px rgba(188, 189, 194, 0.25),
           0px 2px 5px -2px rgba(79, 81, 89, 0.03),

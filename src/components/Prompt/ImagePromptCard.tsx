@@ -3,7 +3,7 @@ import { basis } from "components/constants/colors";
 import { PromptCardLegend } from "./PromptCardLegend";
 import { Avatar } from "components/shared/Avatar";
 
-const PromptImageCard = ({
+const ImagePromptCard = ({
   image,
   prompt,
   likeCount,
@@ -119,4 +119,4 @@ const PromptImageCard = ({
   );
 };
 
-export { PromptImageCard };
+export { ImagePromptCard };
