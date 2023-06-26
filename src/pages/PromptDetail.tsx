@@ -101,9 +101,11 @@ export const PromptDetail = () => {
           className={css`
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 20px;
             background: ${basis.bg};
             padding: 40px 10px 60px 10px;
+            width: 100%;
           `}
         >
           <div
@@ -123,6 +125,7 @@ export const PromptDetail = () => {
               display: flex;
               justify-content: center;
               gap: 16px;
+              max-width: 1200px;
             `}
           >
             {cards.map(({ title, intro, tags }, i) => (

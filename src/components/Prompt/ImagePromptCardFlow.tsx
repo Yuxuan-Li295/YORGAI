@@ -13,6 +13,7 @@ const ImagePromptCardFlow = () => {
         flex-direction: row;
         justify-content: space-between;
         gap: 21px;
+        max-width: 1200px;
       `}
     >
       {[1, 2, 3, 4].map((index) => {

@@ -115,6 +115,8 @@ const PopularPrompts = () => {
             display: flex;
             flex-direction: column;
             gap: 80px;
+            width: 100%;
+            max-width: 1200px;
           `}
         >
           <div
@@ -124,6 +126,7 @@ const PopularPrompts = () => {
               align-items: center;
               gap: 26px;
               padding: 0 10px;
+              max-width: 1200px;
             `}
           >
             <div
@@ -144,6 +147,7 @@ const PopularPrompts = () => {
               align-items: center;
               gap: 26px;
               padding: 0 10px;
+              max-width: 1200px;
             `}
           >
             <div
@@ -171,8 +175,9 @@ const PopularPrompts = () => {
               className={css`
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                row-gap: 26px;
+                row-gap: 16px;
                 column-gap: 16px;
+                width: 100%;
               `}
             >
               {cards(9).map(({ title, intro, tags }, i) => (
@@ -194,6 +199,7 @@ const PopularPrompts = () => {
               align-items: center;
               gap: 26px;
               padding: 0 10px;
+              max-width: 1200px;
             `}
           >
             <div
@@ -209,6 +215,7 @@ const PopularPrompts = () => {
               className={css`
                 display: flex;
                 gap: 16px;
+                width: 100%;
               `}
             >
               {Array(3)
@@ -219,6 +226,7 @@ const PopularPrompts = () => {
                       display: flex;
                       flex-direction: column;
                       gap: 16px;
+                      width: 100%;
                     `}
                     key={i}
                   >
