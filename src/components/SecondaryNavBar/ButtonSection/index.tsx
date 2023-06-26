@@ -26,14 +26,14 @@ const ButtonSection = ({
         justify-content: center;
       `}
     >
-      {buttons.map(({ icon, label, url }) => (
+      {buttons.map(({ icon, label, url }, i) => (
         <SecondaryNavBarButton
           icon={icon}
           label={label}
           onClick={() => {
             url && navigate(url);
           }}
-          key={label}
+          key={i}
         />
       ))}
     </div>
