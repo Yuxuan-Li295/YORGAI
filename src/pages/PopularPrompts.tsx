@@ -2,6 +2,7 @@ import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
+import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
