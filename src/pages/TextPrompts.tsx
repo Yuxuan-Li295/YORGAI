@@ -1,34 +1,24 @@
 import { css } from "@emotion/css";
-import { FirstLevelNavBar } from "components/FirstLevelNavBar";
-import { PromptImageFlowContainer } from "components/Prompt/PromptImageFlowContainer";
-import { SecondLevelNavBar } from "components/SecondLevelNavBar";
+import { PrimaryNavBar } from "components/PrimaryNavBar";
+import { TextPromptCard } from "components/Prompt/TextPromptCard";
+import {
+  PromptNavBarButtons,
+  SecondaryNavBar,
+} from "components/SecondaryNavBar";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
-import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
 import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
-import { ReactComponent as Star } from "resources/img/Star.svg";
-import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
-const PromptImage = () => {
-  const buttons = [
-    {
-      icon: <UserDouble />,
-      label: "社区热门",
-    },
-    {
-      icon: <AIApplication />,
-      label: "提示词大全",
-    },
-    {
-      icon: <MagicWand />,
-      label: "提示词优化器",
-    },
-    {
-      icon: <Star />,
-      label: "我的收藏",
-    },
-  ];
+const TextPrompts = () => {
+  const cards = (length: number) =>
+    Array(length).fill({
+      title: "角色扮演生成器",
+      intro: `对接GPT3，200万人在用的写作助手。\
+      对接GPT3，200万人在用的写作助手。\
+      对接GPT3，200万人在用的写作助手。`,
+      tags: ["写作", "文案", "作文", "办公"],
+    });
 
   return (
     <div
@@ -47,8 +37,8 @@ const PromptImage = () => {
           margin-bottom: 97px;
         `}
       >
-        <FirstLevelNavBar />
-        <SecondLevelNavBar buttons={buttons} />
+        <PrimaryNavBar />
+        <SecondaryNavBar buttons={PromptNavBarButtons} />
       </div>
       <div
         className={css`
@@ -92,18 +82,37 @@ const PromptImage = () => {
             <Button icon={<Lightbulb />}>AI 工具推荐</Button>
             <Button icon={<MagicWand />}>AI 提示词学习</Button>
           </div>
-          <div
-            className={css`
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              gap: 13px;
-              width: 1196px;
-            `}
-          >
-            <div>filter</div>
-            <PromptImageFlowContainer />
-          </div>
+        </div>
+      </div>
+      <div
+        className={css`
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 13px;
+          padding: 0 10px;
+          margin-top: 85px;
+        `}
+      >
+        <div>filter</div>
+        <div
+          className={css`
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 26px;
+            column-gap: 16px;
+          `}
+        >
+          {cards(9).map(({ title, intro, tags }, i) => (
+            <TextPromptCard
+              likeCount={255}
+              runCount={16}
+              title={title}
+              intro={intro}
+              tags={tags}
+              key={i}
+            />
+          ))}
         </div>
       </div>
       <Footer />
@@ -111,4 +120,4 @@ const PromptImage = () => {
   );
 };
 
-export { PromptImage };
+export { TextPrompts };

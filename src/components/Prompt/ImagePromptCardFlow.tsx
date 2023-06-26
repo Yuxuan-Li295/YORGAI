@@ -1,9 +1,9 @@
 import { css } from "@emotion/css";
-import { PromptImageCard } from "components/Prompt/PromptImageCard";
+import { ImagePromptCard } from "components/Prompt/ImagePromptCard";
 import Bird from "resources/img/bird.jpg";
 import View from "resources/img/view.jpeg";
 
-const PromptImageFlowContainer = () => {
+const ImagePromptCardFlow = () => {
   return (
     <div
       className={css`
@@ -27,7 +27,7 @@ const PromptImageFlowContainer = () => {
             key={index}
           >
             {!!(index % 2) && (
-              <PromptImageCard
+              <ImagePromptCard
                 image={Bird}
                 prompt={
                   "walking on the starlight, dreamy ultra wide shot, atmospheric, hyper realistic, epic composition, cinematic, octane render, artstation landscape vista photography by Carr Clifton & Galen Rowell, 16K resolution, Landscape veduta photo by Dustin Lefevre & tdraw"
@@ -37,7 +37,7 @@ const PromptImageFlowContainer = () => {
               />
             )}
             {!(index % 2) && (
-              <PromptImageCard
+              <ImagePromptCard
                 image={View}
                 prompt={
                   "walking on the starlight, dreamy ultra wide shot, atmospheric, hyper realistic, epic composition, cinematic, octane render, artstation landscape vista photography by Carr Clifton & Galen Rowell, 16K resolution, Landscape veduta photo by Dustin Lefevre & tdraw"
@@ -46,7 +46,7 @@ const PromptImageFlowContainer = () => {
                 runCount={13}
               />
             )}
-            <PromptImageCard
+            <ImagePromptCard
               image={View}
               prompt={
                 "walking on the starlight, dreamy ultra wide shot, atmospheric, hyper realistic, epic composition, cinematic, octane render, artstation landscape vista photography by Carr Clifton & Galen Rowell, 16K resolution, Landscape veduta photo by Dustin Lefevre & tdraw"
@@ -54,7 +54,7 @@ const PromptImageFlowContainer = () => {
               likeCount={249}
               runCount={13}
             />
-            <PromptImageCard
+            <ImagePromptCard
               image={Bird}
               prompt={
                 "walking on the starlight, dreamy ultra wide shot, atmospheric, hyper realistic, epic composition, cinematic, octane render, artstation landscape vista photography by Carr Clifton & Galen Rowell, 16K resolution, Landscape veduta photo by Dustin Lefevre & tdraw"
@@ -69,4 +69,4 @@ const PromptImageFlowContainer = () => {
   );
 };
 
-export { PromptImageFlowContainer };
+export { ImagePromptCardFlow };
