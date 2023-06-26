@@ -1,4 +1,4 @@
-import pencil from "pencil.png";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
 
 const ToolCategoryCard = () => (
 
@@ -12,21 +12,16 @@ const ToolCategoryCard = () => (
             flex: "1 0 0",
             borderRadius: "8px",
             border: "1px solid var(--basis-border-subtle, #E9E9EC)",
-            background: "#FFF",
-
-            // added this
-            width:"355px",
+            background: "white",
+            width: "355px",
             height: "42px",
         }}
     >
-        {/*enable texts and logos be displayed side-by-side*/}
         <div
             style={{
                 display: "flex",
             }}
         >
-        
-            {/*box with pencil icon*/}
             <div
                 style={{
                     width: "42px",
@@ -34,9 +29,7 @@ const ToolCategoryCard = () => (
                     flexShrink: "0",
                     borderRadius: "10px",
                     border: "1px solid var(--basis-border-subtle, #E9E9EC)",
-                    background: "#FFF",
-
-                    // added this 
+                    background: "white",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -44,55 +37,45 @@ const ToolCategoryCard = () => (
                 }}
             >
                 <img
-                    src={pencil} alt="pencil icon"
+                    src={Pencil} alt="pencil icon"
                     style={{
                         width: "20px",
                         height: "20px",
                         flexShrink: "0",
                     }}
-                />            
+                />
             </div>
-
             <div
                 style={{
                     display: "flex",
                     flexDirection: "column",
                 }}
             >
-                {/*title*/}
                 <h2
                     style={{
                         display: "flex",
                         flexDirection: "column",
                         alignSelf: "stretch",
                         color: "var(--basis-text-loud, #18181B)",
-                        /* inter/body/sm/500 - medium */
                         fontSize: "14px",
                         fontFamily: "PingFang SC",
                         fontWeight: "500",
                         lineHeight: "20px",
-
-                        // added this
-                        marginBottom:"6px",
+                        marginBottom: "6px",
                         marginTop: "0px",
                     }}
                 >
                     生产力工具
                 </h2>
-
-                {/*description*/}
                 <p
                     style={{
                         display: "flex",
                         flexDirection: "column",
                         alignSelf: "stretch",
                         color: "var(--basis-text, #707480)",
-                        /* inter/body/xs/400 - regular */
                         fontSize: "12px",
                         fontFamily: "PingFang SC",
                         lineHeight: "16px",
-
-                        // added this
                         marginTop: "0px",
                     }}
                 >
