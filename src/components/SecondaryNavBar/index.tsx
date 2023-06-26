@@ -1,9 +1,36 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
+import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
+import { ReactComponent as Star } from "resources/img/Star.svg";
+import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 import { ButtonSection } from "./ButtonSection";
 import { SearchBar } from "./SearchBar";
 
-const SecondLevelNavBar = ({
+const PromptNavBarButtons = [
+  // TODO: use context
+  {
+    icon: <UserDouble />,
+    label: "社区热门",
+    url: "/prompt/popular",
+  },
+  {
+    icon: <AIApplication />,
+    label: "提示词大全",
+    url: "/prompt/text",
+  },
+  {
+    icon: <MagicWand />,
+    label: "提示词优化器",
+    url: "/prompt/image",
+  },
+  {
+    icon: <Star />,
+    label: "我的收藏",
+  },
+];
+
+const SecondaryNavBar = ({
   buttons,
 }: {
   buttons: {
@@ -37,4 +64,4 @@ const SecondLevelNavBar = ({
   );
 };
 
-export { SecondLevelNavBar };
+export { PromptNavBarButtons, SecondaryNavBar };

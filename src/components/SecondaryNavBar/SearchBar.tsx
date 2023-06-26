@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { basis } from "components/constants/colors";
+import { basis, fill } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { ReactComponent as Magnifier } from "resources/img/Magnifier.svg";
 
@@ -20,9 +20,9 @@ const SearchBar = () => {
           align-items: center;
           padding: 6px 12px;
           width: 160px;
-          background: ${basis.alt.bg_muted};
+          background: ${fill.base.layer_overlay_subtle};
           border-radius: 6px;
-          box-shadow: 0px -1px 0px 0px #bcbdc233 inset;
+          box-shadow: 0px -1px 0px 0px ${basis.alt.border} inset;
         `}
       >
         <Magnifier

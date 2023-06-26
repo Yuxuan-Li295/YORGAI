@@ -1,41 +1,32 @@
 import { css } from "@emotion/css";
-import { FirstLevelNavBar } from "components/FirstLevelNavBar";
+import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SectionTitle } from "components/Prompt/SectionTitle";
-import { SecondLevelNavBar } from "components/SecondLevelNavBar";
+import { TextPromptCard } from "components/Prompt/TextPromptCard";
+import {
+  PromptNavBarButtons,
+  SecondaryNavBar,
+} from "components/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
-import { Card } from "components/shared/Card";
 import { FastSearchButton } from "components/shared/FastSearchButton";
 import { Footer } from "components/shared/Footer";
-import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
+import { ReactComponent as PencilLine } from "resources/img/PencilLine.svg";
 import { ReactComponent as Prompt } from "resources/img/Prompt.svg";
 import { ReactComponent as Refresh } from "resources/img/Refresh.svg";
-import { ReactComponent as Star } from "resources/img/Star.svg";
 import { ReactComponent as Toolbox } from "resources/img/Toolbox.svg";
-import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 
-const PromptSelected = () => {
-  const buttons = [
-    {
-      icon: <UserDouble />,
-      label: "社区热门",
-    },
-    {
-      icon: <AIApplication />,
-      label: "提示词大全",
-    },
-    {
-      icon: <MagicWand />,
-      label: "提示词优化器",
-    },
-    {
-      icon: <Star />,
-      label: "我的收藏",
-    },
-  ];
+const PopularPrompts = () => {
+  const cards = (length: number) =>
+    Array(length).fill({
+      title: "角色扮演生成器",
+      intro: `对接GPT3，200万人在用的写作助手。\
+      对接GPT3，200万人在用的写作助手。\
+      对接GPT3，200万人在用的写作助手。`,
+      tags: ["写作", "文案", "作文", "办公"],
+    });
 
   return (
     <div
@@ -43,6 +34,7 @@ const PromptSelected = () => {
         display: flex;
         flex-direction: column;
         width: 100vw;
+        min-width: 1200px;
         background: white;
       `}
     >
@@ -53,8 +45,8 @@ const PromptSelected = () => {
           margin-bottom: 97px;
         `}
       >
-        <FirstLevelNavBar />
-        <SecondLevelNavBar buttons={buttons} />
+        <PrimaryNavBar />
+        <SecondaryNavBar buttons={PromptNavBarButtons} />
       </div>
       <div
         className={css`
@@ -78,7 +70,6 @@ const PromptSelected = () => {
             className={css`
               font-weight: 500;
               font-size: 48px;
-              line-height: 38px;
             `}
           >
             <span
@@ -92,7 +83,7 @@ const PromptSelected = () => {
           </div>
           <div
             className={css`
-              font-weight: 400;
+              font-weight: 500;
               font-size: 20px;
               line-height: 30px;
               color: ${basis.text};
@@ -123,7 +114,6 @@ const PromptSelected = () => {
           className={css`
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 80px;
           `}
         >
@@ -131,23 +121,34 @@ const PromptSelected = () => {
             className={css`
               display: flex;
               flex-direction: column;
+              align-items: center;
               gap: 26px;
-              width: 1196px;
+              padding: 0 10px;
             `}
           >
-            <SectionTitle icon={<Toolbox />}>热门工具</SectionTitle>
+            <div
+              className={css`
+                width: 100%;
+                display: flex;
+                justify-content: start;
+              `}
+            >
+              <SectionTitle icon={<Toolbox />}>热门工具</SectionTitle>
+            </div>
             <div>cards</div>
           </div>
           <div
             className={css`
               display: flex;
               flex-direction: column;
+              align-items: center;
               gap: 26px;
-              width: 1196px;
+              padding: 0 10px;
             `}
           >
             <div
               className={css`
+                width: 100%;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
@@ -166,19 +167,85 @@ const PromptSelected = () => {
                 <Button icon={<More />}>查看更多</Button>
               </div>
             </div>
-            <Card />
-            <div>cards</div>
+            <div
+              className={css`
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 26px;
+                column-gap: 16px;
+              `}
+            >
+              {cards(9).map(({ title, intro, tags }, i) => (
+                <TextPromptCard
+                  likeCount={255}
+                  runCount={16}
+                  title={title}
+                  intro={intro}
+                  tags={tags}
+                  key={i}
+                />
+              ))}
+            </div>
           </div>
           <div
             className={css`
               display: flex;
               flex-direction: column;
+              align-items: center;
               gap: 26px;
-              width: 1196px;
+              padding: 0 10px;
             `}
           >
-            <SectionTitle icon={<Chart />}>榜单</SectionTitle>
-            <div>cards</div>
+            <div
+              className={css`
+                width: 100%;
+                display: flex;
+                justify-content: start;
+              `}
+            >
+              <SectionTitle icon={<Chart />}>榜单</SectionTitle>
+            </div>
+            <div
+              className={css`
+                display: flex;
+                gap: 16px;
+              `}
+            >
+              {Array(3)
+                .fill(0)
+                .map((_, i) => (
+                  <div
+                    className={css`
+                      display: flex;
+                      flex-direction: column;
+                      gap: 16px;
+                    `}
+                    key={i}
+                  >
+                    <div
+                      className={css`
+                        display: flex;
+                        justify-content: center;
+                        height: 56px;
+                      `}
+                    >
+                      <SectionTitle icon={<PencilLine />}>
+                        生产力工具
+                      </SectionTitle>
+                    </div>
+                    {cards(3).map(({ title, intro, tags }, j) => (
+                      <TextPromptCard
+                        likeCount={255}
+                        runCount={16}
+                        title={title}
+                        intro={intro}
+                        tags={tags}
+                        key={j}
+                      />
+                    ))}
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
       </div>
@@ -187,4 +254,4 @@ const PromptSelected = () => {
   );
 };
 
-export { PromptSelected };
+export { PopularPrompts };

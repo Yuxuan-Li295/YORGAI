@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 type BreadcrumbItem = {
@@ -25,7 +25,7 @@ export const Breadcrumb: React.FC<{ items: BreadcrumbItem[] }> = ({
     `}
   >
     {items.map(({ name, link }, index) => (
-      <>
+      <Fragment key={index}>
         <span>
           {link === undefined ? (
             name
@@ -56,7 +56,7 @@ export const Breadcrumb: React.FC<{ items: BreadcrumbItem[] }> = ({
             /
           </span>
         )}
-      </>
+      </Fragment>
     ))}
   </div>
 );

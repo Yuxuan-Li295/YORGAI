@@ -4,11 +4,10 @@ import { Global, css } from "@emotion/react";
 import { white } from "components/constants/colors";
 import emotionReset from "emotion-reset";
 import { Login } from "pages/Login";
-import { PromptDetails } from "pages/PromptDetails";
-import { PromptImageDetails } from "pages/PromptImageDetails";
-import { PromptImage } from "pages/PromptImage";
-import { PromptSelected } from "pages/PromptSelected";
-import { PromptText } from "pages/PromptText";
+import { PromptDetail } from "pages/PromptDetail";
+import { ImagePrompts } from "pages/ImagePrompts";
+import { PopularPrompts } from "pages/PopularPrompts";
+import { TextPrompts } from "pages/TextPrompts";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
@@ -42,16 +41,11 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="login" element={<Login />} />
-        <Route path="prompt/selected" element={<PromptSelected />} />
-        <Route path="prompt/complete/details" element={<PromptDetails />} />
-        <Route path="prompt/complete/text" element={<PromptText />} />
-        <Route path="prompt/complete/image" element={<PromptImage />} />
-        <Route path="prompt/complete/image/details" element={<PromptImageDetails />} />
-        <Route
-          path="prompt"
-          element={<Navigate to="prompt/selected" replace />}
-        />
-        <Route path="" element={<Navigate to="prompt/selected" replace />} />
+        <Route path="prompt/popular" element={<PopularPrompts />} />
+        <Route path="prompt/detail" element={<PromptDetail />} />
+        <Route path="prompt/text" element={<TextPrompts />} />
+        <Route path="prompt/image" element={<ImagePrompts />} />
+        <Route path="" element={<Navigate to="prompt/popular" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
