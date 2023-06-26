@@ -2,7 +2,7 @@ import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
 import React from "react";
 
-const ButtonIcon = ({
+const SecondaryNavBarButton = ({
   icon,
   label,
   onClick,
@@ -48,4 +48,4 @@ const ButtonIcon = ({
   );
 };
 
-export { ButtonIcon };
+export { SecondaryNavBarButton };

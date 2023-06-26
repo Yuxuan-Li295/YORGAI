@@ -1,8 +1,9 @@
 import { css } from "@emotion/css";
-import { ReactComponent as UserAvatar } from "resources/img/UserAvatar.svg";
+import { basis } from "components/constants/colors";
 import { PromptCardLegend } from "./PromptCardLegend";
+import { Avatar } from "components/shared/Avatar";
 
-const PromptImageCard = ({
+const ImagePromptCard = ({
   image,
   prompt,
   likeCount,
@@ -59,7 +60,7 @@ const PromptImageCard = ({
           right: 0;
           bottom: 0;
           left: 0;
-          color: white;
+          color: ${basis.text_foreground};
           border-radius: 8px;
         `}
       >
@@ -96,12 +97,7 @@ const PromptImageCard = ({
               gap: 8px;
             `}
           >
-            <UserAvatar
-              className={css`
-                width: 24px;
-                height: 24px;
-              `}
-            />
+            <Avatar size={24} />
             <div
               className={css`
                 overflow: hidden;
@@ -123,4 +119,4 @@ const PromptImageCard = ({
   );
 };
 
-export { PromptImageCard };
+export { ImagePromptCard };

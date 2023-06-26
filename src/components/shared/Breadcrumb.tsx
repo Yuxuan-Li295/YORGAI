@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 type BreadcrumbItem = {
@@ -21,11 +21,11 @@ export const Breadcrumb: React.FC<{ items: BreadcrumbItem[] }> = ({
       font-family: inherit;
       font-weight: 500;
       line-height: 16px;
-      color: ${basis.text};
+      white-space: nowrap;
     `}
   >
     {items.map(({ name, link }, index) => (
-      <>
+      <Fragment key={index}>
         <span>
           {link === undefined ? (
             name
@@ -47,8 +47,16 @@ export const Breadcrumb: React.FC<{ items: BreadcrumbItem[] }> = ({
             </Link>
           )}
         </span>
-        {index < items.length - 1 && <span>/</span>}
-      </>
+        {index < items.length - 1 && (
+          <span
+            className={css`
+              color: ${basis.text_subtle};
+            `}
+          >
+            /
+          </span>
+        )}
+      </Fragment>
     ))}
   </div>
 );

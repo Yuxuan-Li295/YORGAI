@@ -1,20 +1,17 @@
 import { css } from "@emotion/css";
-import { basisAlt, white, zincs } from "components/constants/colors";
+import { basis, fill } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { ReactComponent as Magnifier } from "resources/img/Magnifier.svg";
 
-const SearchButton = () => {
+const SearchBar = () => {
   return (
     <div
       className={css`
-        position: absolute;
-        right: 0;
         display: flex;
         align-items: center;
         gap: 11px;
         width: 251px;
         height: 32px;
-        margin: 10px;
       `}
     >
       <div
@@ -23,9 +20,9 @@ const SearchButton = () => {
           align-items: center;
           padding: 6px 12px;
           width: 160px;
-          background: ${basisAlt.bg_muted};
+          background: ${fill.base.layer_overlay_subtle};
           border-radius: 6px;
-          box-shadow: 0px -1px 0px 0px rgba(188, 189, 194, 0.2) inset;
+          box-shadow: 0px -1px 0px 0px ${basis.alt.border} inset;
         `}
       >
         <Magnifier
@@ -47,7 +44,7 @@ const SearchButton = () => {
             width: 100%;
 
             &::placeholder {
-              color: ${zincs[400]};
+              color: ${basis.text_subtle};
             }
           `}
         />
@@ -64,4 +61,4 @@ const SearchButton = () => {
   );
 };
 
-export { SearchButton };
+export { SearchBar };

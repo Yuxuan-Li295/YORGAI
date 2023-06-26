@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { basis, zincs } from "components/constants/colors";
+import { basis, zinc } from "components/constants/colors";
 
 const Login = () => {
   return (
@@ -8,8 +8,6 @@ const Login = () => {
         display: flex;
         flex-direction: row;
         height: 100vh;
-        font-family: inherit;
-        font-style: normal;
       `}
     >
       <div
@@ -20,7 +18,7 @@ const Login = () => {
           align-items: center;
           gap: 205px;
           width: 720px;
-          background: ${zincs[100]};
+          background: ${basis.bg_muted};
         `}
       >
         <div
@@ -91,7 +89,7 @@ const Login = () => {
       <div
         className={css`
           display: flex;
-          background: ${zincs[500]};
+          background: ${zinc[500]};
           flex: 1;
         `}
       >

@@ -1,16 +1,19 @@
 import { css } from "@emotion/css";
-import { basis, basisAlt } from "components/constants/colors";
+import { basis } from "components/constants/colors";
 
 const Tag = ({ children }: { children: string }) => (
   <div
     className={css`
       display: inline-block;
-      background: ${basisAlt.bg_subtle};
+      background: ${basis.alt.bg_subtle};
       color: ${basis.text};
-      font-size: 0.875rem;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
       border-radius: 50px;
       margin: 2px;
       padding: 5px 8px;
+      white-space: nowrap;
     `}
   >
     {children}

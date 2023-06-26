@@ -1,17 +1,17 @@
 import { css } from "@emotion/css";
-import { basis, white } from "components/constants/colors";
-import React from "react";
+import { basis, fill } from "components/constants/colors";
+import React, { ReactElement } from "react";
 
 const Button = ({
   children,
   variant = "primary",
   size = "xs",
-  Icon,
+  icon,
 }: {
   children: string;
   variant?: "primary" | "secondary";
   size?: "xs" | "sm";
-  Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  icon?: ReactElement;
 } & React.ButtonHTMLAttributes<{}>) => {
   // FIXME: the last variant of button
   const primary = (
@@ -26,9 +26,9 @@ const Button = ({
         border-radius: 6px;
         border: none;
         box-shadow: 0px 0px 0px 1px #74b6a9;
-        margin: 1px;
         font-family: inherit;
         white-space: nowrap;
+        height: ${size === "sm" ? 32 : "auto"};
 
         &:hover {
           background-color: #57c4b1;
@@ -48,7 +48,6 @@ const Button = ({
             linear-gradient(to bottom, #ffffff52, #ffffff00 60%) border-box;
         }
       `}
-      style={{ height: size == "sm" ? 32 : undefined }}
     >
       <div
         className={css`
@@ -63,15 +62,15 @@ const Button = ({
           padding: 5px 11px;
           border: 1px solid transparent;
           border-radius: 6px;
-          color: ${white};
+          color: white;
         `}
       >
-        {Icon && <Icon />}
+        {icon}
         <div
           className={css`
             font-weight: 500;
-            font-size: 12px;
-            line-height: 16px;
+            font-size: ${size === "sm" ? "14px" : "12px"};
+            line-height: ${size === "sm" ? "20px" : "16px"};
           `}
         >
           {children}
@@ -89,14 +88,14 @@ const Button = ({
         padding: 6px 12px;
         color: ${basis.text};
         gap: 10px;
-        background: #ffffff;
+        background: ${fill.base.layer_chrome};
         box-shadow: 0px 1px 1px rgba(188, 189, 194, 0.2),
           0px 0px 0px 1px rgba(188, 189, 194, 0.25),
           0px 2px 5px -2px rgba(79, 81, 89, 0.03),
           0px 4px 4px -4px rgba(79, 81, 89, 0.32);
         border-radius: 6px;
         border: none;
-        margin: 1px;
+        white-space: nowrap;
         font-family: inherit;
 
         &:hover {
@@ -119,7 +118,7 @@ const Button = ({
         }
       `}
     >
-      {Icon && (
+      {icon && (
         <div
           className={css`
             display: flex;
@@ -128,14 +127,14 @@ const Button = ({
             align-items: center;
           `}
         >
-          <Icon />
+          {icon}
         </div>
       )}
       <div
         className={css`
           font-weight: 500;
-          font-size: 12px;
-          line-height: 16px;
+          font-size: ${size === "sm" ? "14px" : "12px"};
+          line-height: ${size === "sm" ? "20px" : "16px"};
         `}
       >
         {children}
