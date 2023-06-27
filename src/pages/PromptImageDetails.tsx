@@ -194,14 +194,14 @@ export const PromptImageDetails = () => {
               justify-content: center;
               align-items: center;
               gap: 20px;
-              background: var(--basis-bg, #F9F9FA);
+              background: var(--basis-bg, zinc[50]);
               width: 100%; 
               max-width: 1440px;
             `}
           >
             <p
               className={css`
-                color: var(--basis-text-loud, #18181B);
+                color: var(--basis-text-loud, zinc[900]);
                 text-align: center;
                 font-size: 20px;
                 font-family: PingFang SC;
