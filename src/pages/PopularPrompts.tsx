@@ -133,6 +133,7 @@ const PopularPrompts = () => {
                 grid-template-columns: repeat(3, 1fr);
                 row-gap: 16px;
                 column-gap: 16px;
+                width: 100%;
               `}
             >
               {Array(6)
