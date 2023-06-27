@@ -1,4 +1,5 @@
 import { css } from "@emotion/css";
+import { basis } from "components/constants/colors";
 import React, { ChangeEvent, FC, ReactElement } from "react";
 
 export interface InputProps {
@@ -21,8 +22,8 @@ const Input: FC<InputProps> = (props) => {
       <input
         className={css`
           width: 650px;
-          border: 1px solid #ecebeb;
-          background-color: #fff;
+          border: 1px solid ${basis.border_subtle};
+          background-color: white;
           font-size: 18px;
           height: 48px;
           box-sizing: border-box;
@@ -31,12 +32,11 @@ const Input: FC<InputProps> = (props) => {
 
           ::-webkit-input-placeholder {
             position: relative;
-            font-family: "PingFang SC";
             font-weight: 400;
             font-size: 18px;
             height: 26.67px;
             line-height: 26.67px;
-            color: rgb(188, 189, 194);
+            color: ${basis.text_subtle};
           }
         `}
         placeholder="请输入关键词"

@@ -64,15 +64,13 @@ const Prepend = ({ onClick }: { onClick?: () => void }) => {
           align-items: center;
           gap: 4px;
           cursor: pointer;
-          color: rgba(112, 116, 128);
+          color: ${basis.text};
           font-size: 16px;
         `}
       >
         <div
           className={css`
             display: flex;
-            cursor: pointer;
-            color: rgba(112, 116, 128);
             font-size: 16px;
             font-weight: 500;
           `}
@@ -116,7 +114,7 @@ const Prepend = ({ onClick }: { onClick?: () => void }) => {
               margin-top: 10px;
               border-top-left-radius: 6px;
               border-top-right-radius: 6px;
-              border: 1px solid rgba(188, 189, 194, 0.2);
+              border: 1px solid ${basis.alt.border};
             `}
           >
             提示词
@@ -126,7 +124,7 @@ const Prepend = ({ onClick }: { onClick?: () => void }) => {
             className={css`
               border-bottom-left-radius: 6px;
               border-bottom-right-radius: 6px;
-              border: 1px solid rgba(188, 189, 194, 0.2);
+              border: 1px solid ${basis.alt.border};
               border-top: none;
             `}
           >

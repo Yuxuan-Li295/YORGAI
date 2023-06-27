@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import Pencil from "resources/img/Pencil.svg";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
 
 const ToolCategoryCard = () => (
   <div
@@ -37,15 +37,7 @@ const ToolCategoryCard = () => (
           margin-right: 11px;
         `}
       >
-        <img
-          src={Pencil}
-          alt="Pencil icon"
-          className={css`
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-          `}
-        />
+        <Pencil />
       </div>
       <div
         className={css`
