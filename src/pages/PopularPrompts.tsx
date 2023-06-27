@@ -2,6 +2,7 @@ import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
+import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
 import { PromptSearchBar } from "components/PromptSearchBar";
 import {
   PromptNavBarButtons,
@@ -126,7 +127,20 @@ const PopularPrompts = () => {
             >
               <SectionTitle icon={<Toolbox />}>热门工具</SectionTitle>
             </div>
-            <div>cards</div>
+            <div
+              className={css`
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 16px;
+                column-gap: 16px;
+              `}
+            >
+              {Array(6)
+                .fill(0)
+                .map((_, i) => (
+                  <ToolCategoryCard key={i} />
+                ))}
+            </div>
           </div>
           <div
             className={css`
