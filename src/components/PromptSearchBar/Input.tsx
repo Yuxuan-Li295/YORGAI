@@ -1,9 +1,8 @@
-import React, { ChangeEvent, ReactElement, FC } from "react";
 import { css } from "@emotion/css";
+import React, { ChangeEvent, FC, ReactElement } from "react";
 
 export interface InputProps {
   icon?: React.SVGProps<SVGSVGElement>;
-  //添加前缀
   prepend?: string | ReactElement;
   append?: string | ReactElement;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -27,9 +26,11 @@ const Input: FC<InputProps> = (props) => {
           font-size: 18px;
           height: 48px;
           box-sizing: border-box;
+          outline: none;
+          padding: 0 16px;
+
           ::-webkit-input-placeholder {
             position: relative;
-            top: 2px;
             font-family: "PingFang SC";
             font-weight: 400;
             font-size: 18px;
@@ -37,9 +38,6 @@ const Input: FC<InputProps> = (props) => {
             line-height: 26.67px;
             color: rgb(188, 189, 194);
           }
-
-          outline: none;
-          text-indent: 25px;
         `}
         placeholder="请输入关键词"
       />
@@ -48,4 +46,4 @@ const Input: FC<InputProps> = (props) => {
   );
 };
 
-export default Input;
+export { Input };

@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
 import { css, keyframes } from "@emotion/css";
-import preIcon from "../../../resources/img/precion.svg";
+import { basis } from "components/constants/colors";
+import { useRef, useState } from "react";
+import { ReactComponent as ArrowAngleDownLg } from "resources/img/ArrowAngleDownLg.svg";
 
 const fadeIn = keyframes`
   from {
@@ -12,7 +13,7 @@ const fadeIn = keyframes`
   
 `;
 
-const Premenu = ({ onClick }: { onClick?: () => void }) => {
+const Prepend = ({ onClick }: { onClick?: () => void }) => {
   const [isPreShow, changePre] = useState(false);
 
   const subMenuRef = useRef<HTMLDivElement>(null);
@@ -46,10 +47,10 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
         padding-left: 18px;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        border: 1px solid rgba(233, 233, 236, 1);
+        border: 1px solid ${basis.border_subtle};
         border-right: 0px;
         &:hover {
-          background-color: rgb(242, 242, 243);
+          background-color: ${basis.bg_muted};
         }
       `}
     >
@@ -59,10 +60,12 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
         onMouseLeave={handleMouseLeave}
         className={css`
           display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 4px;
           cursor: pointer;
           color: rgba(112, 116, 128);
           font-size: 16px;
-          font-family: "PingFang SC";
         `}
       >
         <div
@@ -71,19 +74,12 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
             cursor: pointer;
             color: rgba(112, 116, 128);
             font-size: 16px;
-            font-family: "PingFang SC";
             font-weight: 500;
           `}
         >
           所有分类
         </div>
-        <img
-          className={css`
-            margin-left: 5px;
-          `}
-          src={preIcon}
-          alt=""
-        />
+        <ArrowAngleDownLg />
       </div>
 
       {isPreShow && (
@@ -93,25 +89,34 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
           onMouseLeave={handleMouseLeave}
           className={css`
             animation: ${fadeIn} 0.3s ease-in-out;
-            box-shadow: 0 8px 12px -6px rgba(79, 81, 89, 0.16);
-            margin-left: -17.5px;
+            margin-left: -18px;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 400;
+            color: ${basis.text_loud};
+            width: 125px;
+            border-radius: 6px;
+            box-shadow: 0px 8px 12px -6px rgba(79, 81, 89, 0.16),
+              0px 16px 24px -8px rgba(79, 81, 89, 0.2);
+            cursor: pointer;
+
+            & div {
+              background-color: white;
+              padding: 8px 12px;
+
+              &:hover {
+                background-color: ${basis.bg_subtle};
+              }
+            }
           `}
         >
           <div
             onClick={onClick}
             className={css`
-              line-height: 34px;
-              height: 40px;
-              box-sizing: border-box;
-              width: 125px;
-              background-color: #fff;
-              padding: 4px 4px 0px 13px;
+              margin-top: 10px;
               border-top-left-radius: 6px;
               border-top-right-radius: 6px;
-              margin-top: 10px;
               border: 1px solid rgba(188, 189, 194, 0.2);
-              color: rgba(112, 116, 128, 1);
-              cursor: pointer;
             `}
           >
             提示词
@@ -119,24 +124,13 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
           <div
             onClick={onClick}
             className={css`
-              background-color: #fff;
-              line-height: 34px;
-              height: 41px;
-              box-sizing: border-box;
-              width: 125px;
-              background-color: #fff;
-              padding: 4px 4px 0px 13px;
               border-bottom-left-radius: 6px;
               border-bottom-right-radius: 6px;
               border: 1px solid rgba(188, 189, 194, 0.2);
-              border-top: 1px solid rgba(188, 189, 194, 0);
-              color: rgba(112, 116, 128, 1);
-              font-size: 16px;
-              cursor: pointer;
-              box-shadow: 0 16px 24px -8px rgba(79, 81, 89, 0.2);
+              border-top: none;
             `}
           >
-            AI工具
+            AI 工具
           </div>
         </div>
       )}
@@ -144,4 +138,4 @@ const Premenu = ({ onClick }: { onClick?: () => void }) => {
   );
 };
 
-export default Premenu;
+export { Prepend };
