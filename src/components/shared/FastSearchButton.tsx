@@ -23,7 +23,13 @@ const FastSearchButton = ({ children }: { children: string }) => {
         }
       `}
     >
-      <Search />
+      <div
+        className={css`
+          color: ${basis.icon};
+        `}
+      >
+        <Search />
+      </div>
       <div
         className={css`
           font-weight: 500;

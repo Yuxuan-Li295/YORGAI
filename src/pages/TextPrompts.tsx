@@ -101,6 +101,7 @@ const TextPrompts = () => {
             grid-template-columns: repeat(3, 1fr);
             row-gap: 26px;
             column-gap: 16px;
+            max-width: 1200px;
           `}
         >
           {cards(9).map(({ title, intro, tags }, i) => (
