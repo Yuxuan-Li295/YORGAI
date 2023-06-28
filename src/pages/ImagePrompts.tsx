@@ -1,44 +1,35 @@
 import { css } from "@emotion/css";
-import { FirstLevelNavBar } from "components/FirstLevelNavBar";
-import { PromptImageFlowContainer } from "components/Prompt/PromptImageFlowContainer";
-import { zincs } from "components/constants/colors";
+import { PrimaryNavBar } from "components/PrimaryNavBar";
+import { ImagePromptCardFlow } from "components/Prompt/ImagePromptCardFlow";
+import {
+  PromptNavBarButtons,
+  SecondaryNavBar,
+} from "components/SecondaryNavBar";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 
-const PromptImage = () => {
+const ImagePrompts = () => {
   return (
     <div
       className={css`
         display: flex;
         flex-direction: column;
         width: 100vw;
-        gap: 107px;
-        background: ${zincs[25]};
-        font-family: "PingFang SC", sans-serif;
-        font-style: normal;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        font-smooth: never;
+        min-width: 1200px;
+        background: white;
       `}
     >
       <div
         className={css`
           display: flex;
           flex-direction: column;
+          margin-bottom: 97px;
         `}
       >
-        <FirstLevelNavBar />
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          `}
-        >
-          header2
-        </div>
+        <PrimaryNavBar />
+        <SecondaryNavBar buttons={PromptNavBarButtons} />
       </div>
       <div
         className={css`
@@ -55,7 +46,7 @@ const PromptImage = () => {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 27px;
+            gap: 36px;
           `}
         >
           <div
@@ -79,26 +70,27 @@ const PromptImage = () => {
               gap: 21px;
             `}
           >
-            <Button Icon={Lightbulb}>AI 工具推荐</Button>
-            <Button Icon={MagicWand}>AI 提示词学习</Button>
-          </div>
-          <div
-            className={css`
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              gap: 13px;
-              width: 1196px;
-            `}
-          >
-            <div>filter</div>
-            <PromptImageFlowContainer />
+            <Button icon={<Lightbulb />}>AI 工具推荐</Button>
+            <Button icon={<MagicWand />}>AI 提示词学习</Button>
           </div>
         </div>
+      </div>
+      <div
+        className={css`
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 13px;
+          padding: 0 10px;
+          margin-top: 85px;
+        `}
+      >
+        <div>filter</div>
+        <ImagePromptCardFlow />
       </div>
       <Footer />
     </div>
   );
 };
 
-export { PromptImage };
+export { ImagePrompts };

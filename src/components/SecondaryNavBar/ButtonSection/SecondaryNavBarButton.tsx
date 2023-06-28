@@ -2,12 +2,12 @@ import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
 import React from "react";
 
-const ButtonIcon = ({
-  Icon,
+const SecondaryNavBarButton = ({
+  icon,
   label,
   onClick,
 }: {
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  icon: React.ReactElement;
   label: string;
   onClick?: () => void;
 }) => {
@@ -33,7 +33,7 @@ const ButtonIcon = ({
       `}
       onClick={onClick}
     >
-      <Icon />
+      {icon}
       <div
         className={css`
           font-weight: 500;
@@ -48,4 +48,4 @@ const ButtonIcon = ({
   );
 };
 
-export { ButtonIcon };
+export { SecondaryNavBarButton };

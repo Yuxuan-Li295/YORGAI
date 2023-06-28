@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { BorderlessButton } from "./BorderlessButton";
+import { PrimaryNavBarButton } from "./PrimaryNavBarButton";
 import { useNavigate } from "react-router-dom";
 
 const ButtonSection = () => {
@@ -11,7 +11,7 @@ const ButtonSection = () => {
   const buttonNames: [string, string?][] = [
     ["需求大厅"],
     ["作品社区"],
-    ["AI 工具"],
+    ["AI 工具", "/tool"],
     ["提示词库", "/prompt/selected"],
     ["数字中控"],
   ];
@@ -24,12 +24,12 @@ const ButtonSection = () => {
       `}
     >
       {buttonNames.map(([buttonName, url]) => (
-        <BorderlessButton
+        <PrimaryNavBarButton
           onClick={() => buttonClickHandler(url)}
           key={buttonName}
         >
           {buttonName}
-        </BorderlessButton>
+        </PrimaryNavBarButton>
       ))}
     </div>
   );
