@@ -12,6 +12,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ToolDetail } from "pages/ToolDetail";
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const Router = () => {
         <Route path="prompt/detail" element={<PromptDetail />} />
         <Route path="prompt/text" element={<TextPrompts />} />
         <Route path="prompt/image" element={<ImagePrompts />} />
+        <Route path="tool/detail" element={<ToolDetail />} />
         <Route path="" element={<Navigate to="prompt/popular" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

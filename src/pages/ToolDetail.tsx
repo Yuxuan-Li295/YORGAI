@@ -5,12 +5,12 @@ import {
   SecondaryNavBar,
 } from "components/SecondaryNavBar";
 import { basis } from "components/constants/colors";
-// import { Badge } from "components/shared/Badge";
 import { Breadcrumb } from "components/shared/Breadcrumb";
 import { Button } from "components/shared/Button";
 import { Card } from "components/shared/Card";
 import { Footer } from "components/shared/Footer";
 import NotionAI from "resources/img/NotionAI.png";
+import { ReactComponent as Line } from "resources/img/Line.svg";
 import { ReactComponent as Globe } from "resources/img/Globe.svg";
 import { ReactComponent as EnterAndRun } from "resources/img/EnterAndRun.svg";
 import { Star } from "components/shared/Star";
@@ -19,7 +19,7 @@ const ToolDetail = () => {
   const breadcrumbItems = [
     { name: "首页", link: "/" },
     { name: "AI工具", link: "/tools" },
-    { name: "AI应用大全", link: "" },
+    { name: "AI应用大全", link: "/tools/alltools" },
     { name: "NotionAI", link: "" },
   ];
   return (
@@ -88,10 +88,7 @@ const ToolDetail = () => {
               >
                 <div
                   className={css`
-                    color: #000;
-                    /* Pingfang SC/heading/h1/600 - semi bold */
                     font-size: 24px;
-                    font-family: PingFang SC;
                     font-weight: 600;
                     line-height: 32px;
                   `}
@@ -111,12 +108,21 @@ const ToolDetail = () => {
                   <Star selected={true} />
                   <Star selected={true} />
                   <Star selected={true} />
-                  <span> 4.9(2130评论) </span>
+                  <div
+                    className={css`
+                      color: ${basis.text};
+                      text-align: center;
+                      font-size: 12px;
+                      font-style: normal;
+                      font-weight: 500;
+                      line-height: 16px;
+                    `}
+                  >
+                    4.9 (2130评论)
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* <Badge children="写作" /> */}
           </div>
           <div
             className={css`
@@ -142,17 +148,28 @@ const ToolDetail = () => {
         >
           <div
             className={css`
-              color: ${basis.text_loud};
-              text-align: center;
-              /* Pingfang SC/heading/h2/500 - medium */
-              font-size: 20px;
-              font-family: PingFang SC;
-              font-weight: 500;
-              line-height: 30px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 16px;
             `}
           >
-            简介
+            <Line />
+            <div
+              className={css`
+                color: ${basis.text_loud};
+                text-align: center;
+                /* Pingfang SC/heading/h2/500 - medium */
+                font-size: 20px;
+                font-family: PingFang SC;
+                font-weight: 500;
+                line-height: 30px;
+              `}
+            >
+              简介
+            </div>
           </div>
+
           <div
             className={css`
               display: flex;
@@ -171,11 +188,13 @@ const ToolDetail = () => {
               是一款基于人工智能的工具，旨在帮助用户更高效地组织和管理信息。它结合了自然语言处理和机器学习技术，
               使得用户能够轻松地创建、编辑和共享各种类型的文档、笔记和项目。
             </span>
+            <br />
             <span>
               Notion AI
               提供了一个直观易用的界面，用户可以通过简单的操作方式创建自定义的工作空间和页面布局。它支持丰富
-              的内容格式，包括文本、图片、表格、嵌入式多媒体等，使得用户可以以最适合自己的方式展示和整理信息。
+              的内容格式，包括文本、图片、表格、嵌入式多媒体等，使得用户可以以最适合自己的方式展示和整理信息.
             </span>
+            <br />
             <span>
               该工具还具备强大的搜索和组织功能，使得用户可以快速找到所需的信息，并将它们归类到特定的文件夹和标签中。此外，
               Notion AI
@@ -211,9 +230,7 @@ const ToolDetail = () => {
             className={css`
               color: ${basis.text_loud};
               text-align: center;
-              /* Pingfang SC/heading/h2/500 - medium */
               font-size: 20px;
-              font-family: PingFang SC;
               font-weight: 500;
             `}
           >
