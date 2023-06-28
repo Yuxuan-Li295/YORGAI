@@ -120,10 +120,10 @@ const ToolDetail = () => {
               gap: 32px;
             `}
           >
-            <Button variant="secondary" icon={<Globe />}>
+            <Button variant="secondary" prepend={<Globe />}>
               官方网站
             </Button>
-            <Button icon={<Execute />}>立即运行</Button>
+            <Button prepend={<Execute />}>立即运行</Button>
           </div>
         </div>
         <div

@@ -40,10 +40,10 @@ const PromptTextContainer = ({ children }: { children: string }) => {
           gap: 32px;
         `}
       >
-        <Button variant="secondary" icon={<Copy />}>
+        <Button variant="secondary" prepend={<Copy />}>
           复制到剪贴板
         </Button>
-        <Button icon={<Execute />}>立即运行</Button>
+        <Button prepend={<Execute />}>立即运行</Button>
       </div>
     </div>
   );
