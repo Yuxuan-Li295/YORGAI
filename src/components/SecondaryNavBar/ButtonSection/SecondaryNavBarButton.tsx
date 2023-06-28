@@ -15,7 +15,6 @@ export const SecondaryNavBarButton = ({
   url?: string;
 }) => {
   const match = useMatch(url || "");
-  const isActive = match;
   return (
     <button
       className={css`
@@ -29,26 +28,11 @@ export const SecondaryNavBarButton = ({
         border: none;
         padding: 0;
         cursor: pointer;
-        color: ${basis.text};
         font-family: inherit;
         position: relative; 
-        color: ${isActive ? "#67cdbc" : basis.text};
+        color: ${match ? "#67cdbc" : basis.text};
         &:hover {
           color: #67cdbc;
-        }
-        &:after {
-          content: ""; 
-          position: absolute; 
-          bottom: 0; 
-          left: 50%;
-          transform: translateX(-50%);
-          height: 2px;
-          width: 94px;
-          background-color: ${isActive ? "#67cdbc" : "transparent"};
-        }
-
-        &:hover:after {
-          background-color: #67cdbc; 
         }
       `}
       onClick={onClick}
