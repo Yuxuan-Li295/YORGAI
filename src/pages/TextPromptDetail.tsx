@@ -12,7 +12,7 @@ import { Avatar } from "components/shared/Avatar";
 import { Breadcrumb } from "components/shared/Breadcrumb";
 import { Footer } from "components/shared/Footer";
 
-export const PromptDetail = () => {
+export const TextPromptDetail = () => {
   // FIXME: request data
   const tags = ["写作", "文案", "作文", "办公"];
   const title = "角色扮演生成器";
@@ -31,7 +31,7 @@ export const PromptDetail = () => {
     { name: "首页", link: "/" },
     { name: "提示词库", link: "/prompt/popular" },
     { name: "提示词大全", link: "/prompt/text" },
-    { name: title, link: "/prompt/detail" },
+    { name: title, link: "/prompt/text/detail" },
   ];
 
   const cards = Array(3).fill({
@@ -56,7 +56,7 @@ export const PromptDetail = () => {
         className={css`
           display: flex;
           flex-direction: column;
-          margin-bottom: 42px;
+          margin-bottom: 40px;
         `}
       >
         <PrimaryNavBar />
