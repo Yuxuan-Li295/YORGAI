@@ -15,6 +15,7 @@ export const SecondaryNavBarButton = ({
   url?: string;
 }) => {
   const match = useMatch(url || "");
+
   return (
     <button
       className={css`
@@ -28,9 +29,10 @@ export const SecondaryNavBarButton = ({
         border: none;
         padding: 0;
         cursor: pointer;
-        font-family: inherit;
-        position: relative; 
         color: ${match ? "#67cdbc" : basis.text};
+        font-family: inherit;
+        border-bottom: ${match ? "2px solid #67cdbc" : "none"};
+
         &:hover {
           color: #67cdbc;
         }
@@ -50,4 +52,4 @@ export const SecondaryNavBarButton = ({
       </div>
     </button>
   );
-}; 
+};
