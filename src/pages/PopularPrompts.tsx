@@ -2,13 +2,14 @@ import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
+import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
+import { PromptSearchBar } from "components/PromptSearchBar";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
 } from "components/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
-import { FastSearchButton } from "components/shared/FastSearchButton";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
@@ -54,7 +55,7 @@ const PopularPrompts = () => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 20px;
+          gap: 30px;
         `}
       >
         <div
@@ -91,20 +92,8 @@ const PopularPrompts = () => {
           >
             小鱼厂收集了大量高质量提示词，并根据功能和内容进行分类
           </div>
-          <div>search bar</div>
-          <div
-            className={css`
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              gap: 21px;
-            `}
-          >
-            <FastSearchButton>ChatGPT</FastSearchButton>
-            <FastSearchButton>MidJourney</FastSearchButton>
-            <FastSearchButton>GPT4</FastSearchButton>
-            <FastSearchButton>DALL-E</FastSearchButton>
-            <FastSearchButton>Stable Diffusion</FastSearchButton>
+          <div>
+            <PromptSearchBar />
           </div>
           <div>
             <Button icon={<MagicWand />}>AI 提示词优化</Button>
@@ -115,6 +104,8 @@ const PopularPrompts = () => {
             display: flex;
             flex-direction: column;
             gap: 80px;
+            width: 100%;
+            max-width: 1200px;
           `}
         >
           <div
@@ -124,6 +115,7 @@ const PopularPrompts = () => {
               align-items: center;
               gap: 26px;
               padding: 0 10px;
+              max-width: 1200px;
             `}
           >
             <div
@@ -135,7 +127,21 @@ const PopularPrompts = () => {
             >
               <SectionTitle icon={<Toolbox />}>热门工具</SectionTitle>
             </div>
-            <div>cards</div>
+            <div
+              className={css`
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 16px;
+                column-gap: 16px;
+                width: 100%;
+              `}
+            >
+              {Array(6)
+                .fill(0)
+                .map((_, i) => (
+                  <ToolCategoryCard key={i} />
+                ))}
+            </div>
           </div>
           <div
             className={css`
@@ -144,6 +150,7 @@ const PopularPrompts = () => {
               align-items: center;
               gap: 26px;
               padding: 0 10px;
+              max-width: 1200px;
             `}
           >
             <div
@@ -171,8 +178,9 @@ const PopularPrompts = () => {
               className={css`
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                row-gap: 26px;
+                row-gap: 16px;
                 column-gap: 16px;
+                width: 100%;
               `}
             >
               {cards(9).map(({ title, intro, tags }, i) => (
@@ -194,6 +202,7 @@ const PopularPrompts = () => {
               align-items: center;
               gap: 26px;
               padding: 0 10px;
+              max-width: 1200px;
             `}
           >
             <div
@@ -209,6 +218,7 @@ const PopularPrompts = () => {
               className={css`
                 display: flex;
                 gap: 16px;
+                width: 100%;
               `}
             >
               {Array(3)
@@ -219,6 +229,7 @@ const PopularPrompts = () => {
                       display: flex;
                       flex-direction: column;
                       gap: 16px;
+                      width: 100%;
                     `}
                     key={i}
                   >
