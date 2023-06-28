@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { basis, fill } from "components/constants/colors";
 import { Button } from "components/shared/Button";
-import { ReactComponent as Magnifier } from "resources/img/Magnifier.svg";
+import { ReactComponent as Search } from "resources/img/Search.svg";
 
 const SearchBar = () => {
   return (
@@ -25,9 +25,10 @@ const SearchBar = () => {
           box-shadow: 0px -1px 0px 0px ${basis.alt.border} inset;
         `}
       >
-        <Magnifier
+        <Search
           className={css`
             margin-right: 6px;
+            color: ${basis.text_subtle};
           `}
         />
         <input
