@@ -25,13 +25,14 @@ export const ChatInputBar: React.FC<React.TextareaHTMLAttributes<{}>> = ({
         justify-content: stretch;
         padding: 6px 12px;
         border-radius: 8px;
-        border: 1px solid ${basis.border_subtle};
+        border: 1px solid;
         background: ${fill.base.layer_chrome};
         box-shadow: 0px 2px 12px 0px rgba(79, 81, 89, 0.06),
           0px 0px 4px 0px rgba(79, 81, 89, 0.03),
           0px 1px 0px 0px rgba(255, 255, 255, 0.06) inset,
           0px 0.5px 0px 0px rgba(255, 255, 255, 0.06) inset;
       `}
+      style={{ borderColor: input !== null && input !== "" ? "#67CDBC" : basis.border_subtle }}
     >
       <textarea
         ref={ref}
@@ -73,7 +74,7 @@ export const ChatInputBar: React.FC<React.TextareaHTMLAttributes<{}>> = ({
         className={css`
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          justify-content: end;
           align-items: center;
         `}
       >
@@ -85,7 +86,6 @@ export const ChatInputBar: React.FC<React.TextareaHTMLAttributes<{}>> = ({
             justify-content: center;
             align-items: center;
             border-radius: 6px;
-            background: ${basis.border_vibrant};
             border: none;
 
             &:hover,
@@ -94,8 +94,9 @@ export const ChatInputBar: React.FC<React.TextareaHTMLAttributes<{}>> = ({
               border: none;
             }
           `}
+          style={{ background: input !== null && input !== "" ? "#67CDBC" : basis.border_vibrant }}
         >
-          <PaperPlane className={`width: 14px; height: 14px;`} />
+          <PaperPlane className={css`width: 14px; height: 14px;`} />
         </button>
       </div>
     </div>
