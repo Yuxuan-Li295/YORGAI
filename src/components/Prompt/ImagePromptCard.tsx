@@ -19,6 +19,7 @@ const ImagePromptCard = ({
       className={css`
         position: relative;
         width: 100%;
+        height: inherit;
         overflow: hidden;
         display: flex;
         flex-direction: column;
