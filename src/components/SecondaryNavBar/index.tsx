@@ -1,7 +1,9 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { ReactComponent as AIApplication } from "resources/img/AIApplication.svg";
+import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
+import { ReactComponent as List } from "resources/img/List.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
+import { ReactComponent as SquareS } from "resources/img/SquareS.svg";
 import { ReactComponent as Star } from "resources/img/Star.svg";
 import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 import { ButtonSection } from "./ButtonSection";
@@ -9,13 +11,14 @@ import { SearchBar } from "./SearchBar";
 
 const PromptNavBarButtons = [
   // TODO: use context
+  // TODO: organize svg
   {
     icon: <UserDouble />,
     label: "社区热门",
     url: "/prompt/popular",
   },
   {
-    icon: <AIApplication />,
+    icon: <List />,
     label: "提示词大全",
     url: "/prompt/text",
   },
@@ -25,7 +28,53 @@ const PromptNavBarButtons = [
     url: "/prompt/image",
   },
   {
-    icon: <Star />,
+    icon: (
+      <Star
+        className={css`
+          width: 18px;
+          height: 18px;
+        `}
+      />
+    ),
+    label: "我的收藏",
+  },
+];
+
+const ToolNavBarButtons = [
+  {
+    icon: <UserDouble />,
+    label: "社区热门",
+    url: "/tool/popular",
+  },
+  {
+    icon: <SquareS />,
+    label: "在线应用",
+  },
+  {
+    icon: <List />,
+    label: "AI 应用大全",
+    url: "/tool",
+  },
+  {
+    icon: (
+      <Lightbulb
+        className={css`
+          width: 18px;
+          height: 18px;
+        `}
+      />
+    ),
+    label: "为你选应用",
+  },
+  {
+    icon: (
+      <Star
+        className={css`
+          width: 18px;
+          height: 18px;
+        `}
+      />
+    ),
     label: "我的收藏",
   },
 ];
@@ -64,4 +113,4 @@ const SecondaryNavBar = ({
   );
 };
 
-export { PromptNavBarButtons, SecondaryNavBar };
+export { PromptNavBarButtons, SecondaryNavBar, ToolNavBarButtons };

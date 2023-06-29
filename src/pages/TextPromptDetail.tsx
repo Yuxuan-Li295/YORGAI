@@ -18,7 +18,7 @@ export const TextPromptDetail = () => {
   const title = "角色扮演生成器";
   const userName = "Dennis";
   const userAvatar = <Avatar size={24} />;
-  const rate = 4.9;
+  const rate = 3.9;
   const commentCount = 2140;
   const text = `我希望你扮演一位英语口语教师和提高者。\
   我会用英语与你交流，你将用英语回答我，以练习我的口语能力。\
