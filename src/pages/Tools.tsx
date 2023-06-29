@@ -1,23 +1,20 @@
 import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
-import { TextPromptCard } from "components/Prompt/TextPromptCard";
-import {
-  PromptNavBarButtons,
-  SecondaryNavBar,
-} from "components/SecondaryNavBar";
+import { ToolCard } from "components/Prompt/ToolCard";
+import { SecondaryNavBar, ToolNavBarButtons } from "components/SecondaryNavBar";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 
-const TextPrompts = () => {
+const Tools = () => {
   const cards = (length: number) =>
     Array(length).fill({
-      title: "角色扮演生成器",
+      name: "Notion AI",
       intro: `对接GPT3，200万人在用的写作助手。\
       对接GPT3，200万人在用的写作助手。\
       对接GPT3，200万人在用的写作助手。`,
-      tags: ["写作", "文案", "作文", "办公"],
+      tags: ["写作", "文案", "作文", "办公", "办公", "办公", "办公", "办公"],
     });
 
   return (
@@ -38,7 +35,7 @@ const TextPrompts = () => {
         `}
       >
         <PrimaryNavBar />
-        <SecondaryNavBar buttons={PromptNavBarButtons} />
+        <SecondaryNavBar buttons={ToolNavBarButtons} />
       </div>
       <div
         className={css`
@@ -103,13 +100,12 @@ const TextPrompts = () => {
             max-width: 1200px;
           `}
         >
-          {cards(9).map(({ title, intro, tags }, i) => (
-            <TextPromptCard
-              likeCount={255}
-              runCount={16}
-              title={title}
+          {cards(9).map(({ name, intro, tags }, i) => (
+            <ToolCard
+              name={name}
               intro={intro}
               tags={tags}
+              showExecute={i < 4}
               key={i}
             />
           ))}
@@ -120,4 +116,4 @@ const TextPrompts = () => {
   );
 };
 
-export { TextPrompts };
+export { Tools };

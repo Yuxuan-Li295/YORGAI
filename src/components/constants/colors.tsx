@@ -57,6 +57,21 @@ const amber: Readonly<Record<ColorKey, string>> = {
   950: "#451A03",
 };
 
+const emerald: Readonly<Record<ColorKey, string>> = {
+  25: "#F5FFFA",
+  50: "#ECFDF4",
+  100: "#D1FAE3",
+  200: "#A7F3CD",
+  300: "#6EE7B3",
+  400: "#34D393",
+  500: "#10B97B",
+  600: "#059663",
+  700: "#047853",
+  800: "#065F43",
+  900: "#064E38",
+  950: "#022C22",
+};
+
 const primary: Readonly<
   Record<PrimaryKey, string> & Record<"alt", Record<ContainerColorKey, string>>
 > = {
@@ -181,11 +196,32 @@ const fill: Readonly<
   },
 };
 
+const functional: Readonly<
+  Record<"success", Record<ContainerColorKey, string>>
+> = {
+  success: {
+    bg_subtle: emerald[25],
+    bg: emerald[50],
+    bg_muted: emerald[100],
+    bg_vibrant: emerald[200],
+    border_subtle: emerald[200],
+    border: emerald[300],
+    border_muted: emerald[400],
+    border_vibrant: emerald[400],
+    bg_emphasis_subtle: emerald[400],
+    bg_emphasis: emerald[500],
+    bg_emphasis_muted: "#059663E3",
+    bg_emphasis_vibrant: "#10B97BE3",
+  },
+};
+
 export {
   amber,
   basis,
   black,
+  emerald,
   fill,
+  functional,
   overlays,
   primary,
   transparent,

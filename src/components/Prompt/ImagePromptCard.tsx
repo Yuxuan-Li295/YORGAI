@@ -1,7 +1,8 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { PromptCardLegend } from "./PromptCardLegend";
 import { Avatar } from "components/shared/Avatar";
+import { useNavigate } from "react-router-dom";
+import { PromptCardLegend } from "./PromptCardLegend";
 
 const ImagePromptCard = ({
   image,
@@ -14,6 +15,8 @@ const ImagePromptCard = ({
   likeCount: number;
   runCount: number;
 }) => {
+  const navigate = useNavigate();
+
   return (
     <div
       className={css`
@@ -29,6 +32,7 @@ const ImagePromptCard = ({
         border-radius: 8px;
         cursor: pointer;
       `}
+      onClick={() => navigate("/prompt/image/detail")}
     >
       <img
         className={css`
