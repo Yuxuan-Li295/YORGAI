@@ -5,6 +5,7 @@ import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRig
 import Notion42 from "resources/img/Notion42.png";
 import { ExecuteButton } from "./ExecuteButton";
 import { Ranking } from "./Ranking";
+import { useNavigate } from "react-router-dom";
 
 const ToolCard = ({
   tags,
@@ -19,6 +20,7 @@ const ToolCard = ({
   name?: string;
   intro?: string;
 }) => {
+  const navigate = useNavigate();
   return (
     <div
       className={css`
@@ -33,6 +35,7 @@ const ToolCard = ({
         gap: 12px;
         cursor: pointer;
       `}
+      onClick={() => navigate("/tool/detail")}
     >
       <div
         className={css`
