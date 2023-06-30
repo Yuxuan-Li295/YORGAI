@@ -15,8 +15,8 @@ const PromptStatistics = ({
 }: {
   title?: string;
   tags: string[];
-  userAvatar: ReactElement;
-  userName: string;
+  userAvatar?: ReactElement;
+  userName?: string;
   rate: number;
   commentCount: number;
 }) => {
@@ -60,7 +60,10 @@ const PromptStatistics = ({
           <Tag key={i}>{tag}</Tag> // TODO: Tag container
         ))}
       </div>
-      <Badge avatar={userAvatar}>{userName}</Badge>
+      {userAvatar && userName ? (
+        <Badge avatar={userAvatar}>{userName}</Badge>
+      ) : null}
+
       <div
         className={css`
           display: flex;

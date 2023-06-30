@@ -7,15 +7,19 @@ import {
 import { basis } from "components/constants/colors";
 import { Breadcrumb } from "components/shared/Breadcrumb";
 import { Button } from "components/shared/Button";
-import { Card } from "components/shared/Card";
+import { PromptStatistics } from "components/Prompt/PromptStatistics";
 import { Footer } from "components/shared/Footer";
 import NotionAI from "resources/img/NotionAI.png";
 import { ReactComponent as Line } from "resources/img/Line.svg";
 import { ReactComponent as Globe } from "resources/img/Globe.svg";
 import { ReactComponent as EnterAndRun } from "resources/img/EnterAndRun.svg";
-import { Star } from "components/shared/Star";
 
 const ToolDetail = () => {
+  const tags = ["写作", "文案", "作文", "办公"];
+  const title = "NotionAI";
+  const rate = 4.9;
+  const commentCount = 2140;
+
   const breadcrumbItems = [
     { name: "首页", link: "/" },
     { name: "AI工具", link: "/tools" },
@@ -78,50 +82,12 @@ const ToolDetail = () => {
               `}
             >
               <img src={NotionAI} alt="" />
-              <div
-                className={css`
-                  display: flex;
-                  flex-direction: column;
-                  align-items: flex-start;
-                  gap: 10px;
-                `}
-              >
-                <div
-                  className={css`
-                    font-size: 24px;
-                    font-weight: 600;
-                    line-height: 32px;
-                  `}
-                >
-                  Notion AI
-                </div>
-                <Card />
-                <div
-                  className={css`
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                  `}
-                >
-                  <Star selected={true} />
-                  <Star selected={true} />
-                  <Star selected={true} />
-                  <Star selected={true} />
-                  <Star selected={true} />
-                  <div
-                    className={css`
-                      color: ${basis.text};
-                      text-align: center;
-                      font-size: 12px;
-                      font-style: normal;
-                      font-weight: 500;
-                      line-height: 16px;
-                    `}
-                  >
-                    4.9 (2130评论)
-                  </div>
-                </div>
-              </div>
+              <PromptStatistics
+                title={title}
+                tags={tags}
+                rate={rate}
+                commentCount={commentCount}
+              />
             </div>
           </div>
           <div
