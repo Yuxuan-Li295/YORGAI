@@ -3,11 +3,14 @@
 import { Global, css } from "@emotion/react";
 import { white } from "components/constants/colors";
 import emotionReset from "emotion-reset";
-import { Login } from "pages/Login";
-import { PromptDetail } from "pages/PromptDetail";
+import { ImagePromptDetail } from "pages/ImagePromptDetail";
 import { ImagePrompts } from "pages/ImagePrompts";
+import { Login } from "pages/Login";
 import { PopularPrompts } from "pages/PopularPrompts";
+import { PopularTools } from "pages/PopularTools";
+import { TextPromptDetail } from "pages/TextPromptDetail";
 import { TextPrompts } from "pages/TextPrompts";
+import { Tools } from "pages/Tools";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
@@ -43,9 +46,12 @@ const Router = () => {
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="prompt/popular" element={<PopularPrompts />} />
-        <Route path="prompt/detail" element={<PromptDetail />} />
         <Route path="prompt/text" element={<TextPrompts />} />
+        <Route path="prompt/text/detail" element={<TextPromptDetail />} />
         <Route path="prompt/image" element={<ImagePrompts />} />
+        <Route path="prompt/image/detail" element={<ImagePromptDetail />} />
+        <Route path="tool/popular" element={<PopularTools />} />
+        <Route path="tool" element={<Tools />} />
         <Route path="tool/detail" element={<ToolDetail />} />
         <Route path="" element={<Navigate to="prompt/popular" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />

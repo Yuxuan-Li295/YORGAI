@@ -1,6 +1,21 @@
 import React from "react";
-import { ReactComponent as StarSvg } from "resources/img/Star.svg";
-import { ReactComponent as FilledStarSvg } from "resources/img/FilledStar.svg";
+import { ReactComponent as StarOutline } from "resources/img/Star.svg";
+import { ReactComponent as StarFilled } from "resources/img/StarFilled.svg";
+import { css } from "@emotion/css";
 
 export const Star: React.FC<{ selected: Boolean }> = ({ selected }) =>
-  selected ? <FilledStarSvg /> : <StarSvg />;
+  selected ? (
+    <StarFilled
+      className={css`
+        width: 15px;
+        height: 15px;
+      `}
+    />
+  ) : (
+    <StarOutline
+      className={css`
+        width: 15px;
+        height: 15px;
+      `}
+    />
+  );

@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
+import { ImagePromptCard } from "components/Prompt/ImagePromptCard";
 import { PromptStatistics } from "components/Prompt/PromptStatistics";
 import { PromptTextContainer } from "components/Prompt/PromptTextContainer";
-import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
@@ -11,35 +11,36 @@ import { basis } from "components/constants/colors";
 import { Avatar } from "components/shared/Avatar";
 import { Breadcrumb } from "components/shared/Breadcrumb";
 import { Footer } from "components/shared/Footer";
+import Bird from "resources/img/bird.jpg";
 
-export const PromptDetail = () => {
+export const ImagePromptDetail = () => {
   // FIXME: request data
   const tags = ["写作", "文案", "作文", "办公"];
   const title = "角色扮演生成器";
   const userName = "Dennis";
   const userAvatar = <Avatar size={24} />;
   const rate = 4.9;
-  const commentCount = 2140;
+  const commentCount = 2130;
   const text = `我希望你扮演一位英语口语教师和提高者。\
   我会用英语与你交流，你将用英语回答我，以练习我的口语能力。\
   我希望你的回答整洁，字数限制在100字以内。我希望你严格纠正我的语法错误、打字错误和事实错误。\
   在你的回答中，请问我一个问题。\
   现在我们开始练习，你可以先问我一个问题。\
   记住，我希望你严格纠正我的语法错误、打字错误和事实错误。`;
+  const image = Bird;
 
   const breadcrumbs = [
     { name: "首页", link: "/" },
-    { name: "提示词库", link: "/prompt/popular" },
-    { name: "提示词大全", link: "/prompt/text" },
-    { name: title, link: "/prompt/detail" },
+    { name: "提示词库", link: "/prompt" },
+    { name: "提示词大全", link: "/prompt/image" },
+    { name: title, link: "/prompt/image/detail" },
   ];
 
   const cards = Array(3).fill({
-    title: "角色扮演生成器",
-    intro: `对接GPT3，200万人在用的写作助手。\
-      对接GPT3，200万人在用的写作助手。\
-      对接GPT3，200万人在用的写作助手。`,
-    tags: ["写作", "文案", "作文", "办公"],
+    image: Bird,
+    prompt: text,
+    likeCount: 245,
+    runCount: 25,
   });
 
   return (
@@ -56,7 +57,7 @@ export const PromptDetail = () => {
         className={css`
           display: flex;
           flex-direction: column;
-          margin-bottom: 42px;
+          margin-bottom: 40px;
         `}
       >
         <PrimaryNavBar />
@@ -81,29 +82,48 @@ export const PromptDetail = () => {
           `}
         >
           <Breadcrumb items={breadcrumbs} />
-          <PromptStatistics
-            title={title}
-            tags={tags}
-            userAvatar={userAvatar}
-            userName={userName}
-            rate={rate}
-            commentCount={commentCount}
-          />
         </div>
         <div
           className={css`
-            max-width: 700px;
+            display: flex;
+            gap: 48px;
           `}
         >
-          <PromptTextContainer>{text}</PromptTextContainer>
+          <img
+            className={css`
+              border-radius: 8px;
+              max-width: 500px;
+            `}
+            src={image}
+            alt={text}
+          />
+          <div
+            className={css`
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              max-width: 400px;
+            `}
+          >
+            <PromptStatistics
+              tags={tags}
+              userAvatar={userAvatar}
+              userName={userName}
+              rate={rate}
+              commentCount={commentCount}
+            />
+            <PromptTextContainer>{text}</PromptTextContainer>
+          </div>
         </div>
         <div
           className={css`
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 20px;
             background: ${basis.bg};
             padding: 40px 10px 60px 10px;
+            width: 100%;
           `}
         >
           <div
@@ -123,15 +143,16 @@ export const PromptDetail = () => {
               display: flex;
               justify-content: center;
               gap: 16px;
+              max-width: 1200px;
+              height: 206px;
             `}
           >
-            {cards.map(({ title, intro, tags }, i) => (
-              <TextPromptCard
-                likeCount={255}
-                runCount={16}
-                title={title}
-                intro={intro}
-                tags={tags}
+            {cards.map(({ image, prompt, likeCount, runCount }, i) => (
+              <ImagePromptCard
+                image={image}
+                prompt={prompt}
+                likeCount={likeCount}
+                runCount={runCount}
                 key={i}
               />
             ))}

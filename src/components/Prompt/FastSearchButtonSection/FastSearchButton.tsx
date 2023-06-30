@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { ReactComponent as Search } from "resources/img/Search.svg";
+import { ReactComponent as Search } from "resources/img/SearchMid.svg";
 
 const FastSearchButton = ({ children }: { children: string }) => {
   return (
@@ -23,7 +23,11 @@ const FastSearchButton = ({ children }: { children: string }) => {
         }
       `}
     >
-      <Search />
+      <Search
+        className={css`
+          color: ${basis.icon};
+        `}
+      />
       <div
         className={css`
           font-weight: 500;

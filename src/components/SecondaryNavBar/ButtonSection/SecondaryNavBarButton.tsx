@@ -1,16 +1,21 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
 import React from "react";
+import { useMatch } from "react-router-dom";
 
-const SecondaryNavBarButton = ({
+export const SecondaryNavBarButton = ({
   icon,
   label,
   onClick,
+  url,
 }: {
   icon: React.ReactElement;
   label: string;
   onClick?: () => void;
+  url?: string;
 }) => {
+  const match = useMatch(url || "");
+
   return (
     <button
       className={css`
@@ -24,8 +29,9 @@ const SecondaryNavBarButton = ({
         border: none;
         padding: 0;
         cursor: pointer;
-        color: ${basis.text};
+        color: ${match ? "#67cdbc" : basis.text};
         font-family: inherit;
+        border-bottom: ${match ? "2px solid #67cdbc" : "none"};
 
         &:hover {
           color: #67cdbc;
@@ -47,5 +53,3 @@ const SecondaryNavBarButton = ({
     </button>
   );
 };
-
-export { SecondaryNavBarButton };

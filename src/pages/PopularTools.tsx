@@ -2,33 +2,28 @@ import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { FastSearchButtonSection } from "components/Prompt/FastSearchButtonSection";
 import { SectionTitle } from "components/Prompt/SectionTitle";
-import { TextPromptCard } from "components/Prompt/TextPromptCard";
+import { ToolCard } from "components/Prompt/ToolCard";
 import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
 import { PromptSearchBar } from "components/PromptSearchBar";
-import {
-  PromptNavBarButtons,
-  SecondaryNavBar,
-} from "components/SecondaryNavBar";
+import { SecondaryNavBar, ToolNavBarButtons } from "components/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
-import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
 import { ReactComponent as PencilLine } from "resources/img/PencilLine.svg";
 import { ReactComponent as Prompt } from "resources/img/Prompt.svg";
 import { ReactComponent as Refresh } from "resources/img/Refresh.svg";
 import { ReactComponent as Toolbox } from "resources/img/Toolbox.svg";
 
-const PopularPrompts = () => {
+const PopularTools = () => {
   const cards = (length: number) =>
     Array(length).fill({
-      title: "角色扮演生成器",
+      name: "Notion AI",
       intro: `对接GPT3，200万人在用的写作助手。\
       对接GPT3，200万人在用的写作助手。\
-      对接GPT3，200万人在用的写作助手。\
       对接GPT3，200万人在用的写作助手。`,
-      tags: ["写作", "文案", "作文", "办公"],
+      tags: ["写作", "文案", "作文", "办公", "办公", "办公", "办公", "办公"],
     });
 
   return (
@@ -49,7 +44,7 @@ const PopularPrompts = () => {
         `}
       >
         <PrimaryNavBar />
-        <SecondaryNavBar buttons={PromptNavBarButtons} />
+        <SecondaryNavBar buttons={ToolNavBarButtons} />
       </div>
       <div
         className={css`
@@ -67,6 +62,7 @@ const PopularPrompts = () => {
             justify-content: center;
             align-items: center;
             gap: 27px;
+            white-space: break-spaces;
           `}
         >
           <div
@@ -80,9 +76,17 @@ const PopularPrompts = () => {
                 color: #67cdbc;
               `}
             >
+              68
+            </span>
+            {" 个AI应用  "}
+            <span
+              className={css`
+                color: #67cdbc;
+              `}
+            >
               4865
             </span>
-            {" 条提示词"}
+            {" 条用户体验"}
           </div>
           <div
             className={css`
@@ -104,9 +108,6 @@ const PopularPrompts = () => {
           >
             <PromptSearchBar />
             <FastSearchButtonSection />
-          </div>
-          <div>
-            <Button icon={<MagicWand />}>AI 提示词优化</Button>
           </div>
         </div>
         <div
@@ -135,7 +136,7 @@ const PopularPrompts = () => {
                 justify-content: start;
               `}
             >
-              <SectionTitle icon={<Toolbox />}>热门工具</SectionTitle>
+              <SectionTitle icon={<Toolbox />}>热门分类</SectionTitle>
             </div>
             <div
               className={css`
@@ -171,7 +172,7 @@ const PopularPrompts = () => {
                 justify-content: space-between;
               `}
             >
-              <SectionTitle icon={<Prompt />}>热门提示词</SectionTitle>
+              <SectionTitle icon={<Prompt />}>热门工具</SectionTitle>
               <div
                 className={css`
                   display: flex;
@@ -193,15 +194,17 @@ const PopularPrompts = () => {
                 width: 100%;
               `}
             >
-              {cards(9).map(({ title, intro, tags }, i) => (
-                <TextPromptCard
-                  likeCount={255}
-                  runCount={16}
-                  title={title}
+              {cards(3).map(({ name, intro, tags }, i) => (
+                <ToolCard
+                  name={name}
                   intro={intro}
                   tags={tags}
+                  showExecute
                   key={i}
                 />
+              ))}
+              {cards(6).map(({ name, intro, tags }, i) => (
+                <ToolCard name={name} intro={intro} tags={tags} key={i} />
               ))}
             </div>
           </div>
@@ -254,14 +257,14 @@ const PopularPrompts = () => {
                         生产力工具
                       </SectionTitle>
                     </div>
-                    {cards(3).map(({ title, intro, tags }, j) => (
-                      <TextPromptCard
-                        likeCount={255}
-                        runCount={16}
-                        title={title}
+
+                    {cards(3).map(({ name, intro, tags }, i) => (
+                      <ToolCard
+                        name={name}
                         intro={intro}
                         tags={tags}
-                        key={j}
+                        ranking={(i + 1) as 1 | 2 | 3}
+                        key={i}
                       />
                     ))}
                   </div>
@@ -275,4 +278,4 @@ const PopularPrompts = () => {
   );
 };
 
-export { PopularPrompts };
+export { PopularTools };
