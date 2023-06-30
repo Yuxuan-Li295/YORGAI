@@ -47,7 +47,12 @@ type BasisKey = (typeof basisKeys)[number];
 
 type BlackColorKey = (typeof basisKeys)[number];
 
-const fillBaseKey = ["layer_chrome", "layer_overlay_subtle", "mask"] as const;
+const fillBaseKey = [
+  "layer_subtle",
+  "layer_chrome",
+  "layer_overlay_subtle",
+  "mask",
+] as const;
 
 type FillBaseKey = (typeof fillBaseKey)[number];
 
