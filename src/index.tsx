@@ -15,6 +15,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ToolDetail } from "pages/ToolDetail";
 
 const App = () => {
   return (
@@ -51,6 +52,7 @@ const Router = () => {
         <Route path="prompt/image/detail" element={<ImagePromptDetail />} />
         <Route path="tool/popular" element={<PopularTools />} />
         <Route path="tool" element={<Tools />} />
+        <Route path="tool/detail" element={<ToolDetail />} />
         <Route path="" element={<Navigate to="prompt/popular" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

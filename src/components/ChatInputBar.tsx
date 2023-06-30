@@ -32,7 +32,10 @@ export const ChatInputBar: React.FC<React.TextareaHTMLAttributes<{}>> = ({
           0px 1px 0px 0px rgba(255, 255, 255, 0.06) inset,
           0px 0.5px 0px 0px rgba(255, 255, 255, 0.06) inset;
       `}
-      style={{ borderColor: input !== null && input !== "" ? "#67CDBC" : basis.border_subtle }}
+      style={{
+        borderColor:
+          input !== null && input !== "" ? "#67CDBC" : basis.border_subtle,
+      }}
     >
       <textarea
         ref={ref}
@@ -94,9 +97,17 @@ export const ChatInputBar: React.FC<React.TextareaHTMLAttributes<{}>> = ({
               border: none;
             }
           `}
-          style={{ background: input !== null && input !== "" ? "#67CDBC" : basis.border_vibrant }}
+          style={{
+            background:
+              input !== null && input !== "" ? "#67CDBC" : basis.border_vibrant,
+          }}
         >
-          <PaperPlane className={css`width: 14px; height: 14px;`} />
+          <PaperPlane
+            className={css`
+              width: 14px;
+              height: 14px;
+            `}
+          />
         </button>
       </div>
     </div>
