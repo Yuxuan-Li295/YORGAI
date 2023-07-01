@@ -186,6 +186,7 @@ const fill: Readonly<
     Record<"contrast", Record<FillContrastKey, string>>
 > = {
   base: {
+    layer_subtle: zinc[25],
     layer_chrome: white,
     layer_overlay_subtle: "#0000000D",
     mask: "#00000080",
