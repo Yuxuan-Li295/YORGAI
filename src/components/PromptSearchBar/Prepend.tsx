@@ -100,7 +100,7 @@ const Prepend = ({ onClick }: { onClick?: () => void }) => {
 
             & div {
               background-color: white;
-              padding: 8px 12px;
+              padding: 10px 12px;
 
               &:hover {
                 background-color: ${basis.bg_subtle};

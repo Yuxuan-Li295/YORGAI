@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { PromptCardLegend } from "./PromptCardLegend";
-import { Tag } from "components/shared/Tag";
+import { TagList } from "components/shared/TagList";
 import { useNavigate } from "react-router-dom";
+import { PromptCardLegend } from "./PromptCardLegend";
 
 const TextPromptCard = ({
   title,
@@ -22,7 +22,6 @@ const TextPromptCard = ({
   return (
     <div
       className={css`
-        overflow: hidden;
         display: flex;
         flex: 1;
         flex-direction: column;
@@ -35,7 +34,7 @@ const TextPromptCard = ({
         background-color: white;
         border: 1px solid ${basis.border_subtle};
       `}
-      onClick={() => navigate("/prompt/detail")}
+      onClick={() => navigate("/prompt/text/detail")}
     >
       <div
         className={css`
@@ -70,15 +69,15 @@ const TextPromptCard = ({
             display: flex;
             flex-direction: column;
             align-content: start;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
           `}
         >
           {intro}
         </p>
-        <div>
-          {tags.map((tag, i) => (
-            <Tag key={i}>{tag}</Tag>
-          ))}
-        </div>
+        <TagList tags={tags} />
       </div>
       <PromptCardLegend likeCount={likeCount} runCount={runCount} />
     </div>

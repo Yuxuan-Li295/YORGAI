@@ -2,7 +2,7 @@ import { css } from "@emotion/css";
 import { basis, primary } from "components/constants/colors";
 import { Badge } from "components/shared/Badge";
 import { Star } from "components/shared/Star";
-import { Tag } from "components/shared/Tag";
+import { TagList } from "components/shared/TagList";
 import { ReactElement } from "react";
 
 const PromptStatistics = ({
@@ -15,8 +15,8 @@ const PromptStatistics = ({
 }: {
   title?: string;
   tags: string[];
-  userAvatar: ReactElement;
-  userName: string;
+  userAvatar?: ReactElement;
+  userName?: string;
   rate: number;
   commentCount: number;
 }) => {
@@ -56,11 +56,12 @@ const PromptStatistics = ({
           gap: 10px;
         `}
       >
-        {tags.map((tag, i) => (
-          <Tag key={i}>{tag}</Tag> // TODO: Tag container
-        ))}
+        <TagList tags={tags} />
       </div>
-      <Badge avatar={userAvatar}>{userName}</Badge>
+      {userAvatar && userName ? (
+        <Badge avatar={userAvatar}>{userName}</Badge>
+      ) : null}
+
       <div
         className={css`
           display: flex;

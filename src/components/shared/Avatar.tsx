@@ -5,8 +5,8 @@ import UserAvatar from "resources/img/UserAvatar.png";
 export const Avatar = ({ size }: { size: number }) => (
   <img
     className={css`
-      width: ${size};
-      height: ${size};
+      width: ${size}px;
+      height: ${size}px;
     `}
     src={UserAvatar}
     alt="User avatar"
