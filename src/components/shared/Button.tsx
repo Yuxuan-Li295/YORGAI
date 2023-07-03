@@ -1,22 +1,18 @@
 import { css } from "@emotion/css";
-import { basis, fill, primary } from "components/constants/colors";
-import React, { ReactElement, useState } from "react";
+import { basis, fill } from "components/constants/colors";
+import React, { ReactElement } from "react";
 
 const Button = ({
   children,
-  variant = "selected",
+  variant = "primary",
   size = "xs",
   icon,
 }: {
   children: string;
-  variant?: "primary" | "secondary" | "selected";
+  variant?: "primary" | "secondary";
   size?: "xs" | "sm";
   icon?: ReactElement;
 } & React.ButtonHTMLAttributes<{}>) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const handleClick = () => {
-    setIsClicked(!isClicked);
-  };
   // FIXME: the last variant of button
   const primary = (
     <button
@@ -145,47 +141,12 @@ const Button = ({
       </div>
     </button>
   );
-  const selected = (
-    <button
-      className={css`
-        box-sizing: border-box;
-        display: flex;
-        padding: 6px 12px;
-        justify-content: center;
-        align-items: center;
-        align-self: stretch;
-        box-shadow: 0px 1px 1px rgba(188, 189, 194, 0.2),
-          0px 0px 0px 1px rgba(188, 189, 194, 0.25),
-          0px 2px 5px -2px rgba(79, 81, 89, 0.03),
-          0px 4px 4px -4px rgba(79, 81, 89, 0.32);
-        border: none;
-        width: 104px;
-        height: 28px;
-        white-space: nowrap;
-        gap: 10px;
-        flex: 1 0 0;
-        border-color: ${basis.border};
-        background: ${isClicked ? basis.bg_subtle : fill.base.layer_chrome};
-        color: ${isClicked ? primary.text : basis.text};
-        text-align: center;
-        font-size: 12px;
-        font-family: PingFang SC;
-        font-weight: 500;
-        line-height: 16px;
-      `}
-      onClick={handleClick}
-    >
-      {children}
-    </button>
-  );
   switch (variant) {
     case "primary":
       return primary;
     case "secondary":
       return secondary;
-    case "selected":
-      return selected;
   }
 };
 
-export default Button;
+export { Button };

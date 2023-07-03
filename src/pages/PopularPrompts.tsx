@@ -11,7 +11,9 @@ import {
 } from "components/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
+import { ButtonGroup, ButtonGroupCell } from "components/shared/ButtonGroup";
 import { Footer } from "components/shared/Footer";
+import { useState } from "react";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
@@ -30,6 +32,8 @@ const PopularPrompts = () => {
       对接GPT3，200万人在用的写作助手。`,
       tags: ["写作", "文案", "作文", "办公"],
     });
+
+  const [selected, setSelected] = useState<string>();
 
   return (
     <div
@@ -50,6 +54,40 @@ const PopularPrompts = () => {
       >
         <PrimaryNavBar />
         <SecondaryNavBar buttons={PromptNavBarButtons} />
+      </div>
+      <div
+        className={css`
+          display: flex;
+          margin-bottom: 97px;
+          justify-content: center;
+        `}
+      >
+        <ButtonGroup>
+          <ButtonGroupCell
+            state={selected === "refresh" ? "active" : "rest"}
+            onClick={() => {
+              setSelected("refresh");
+            }}
+          >
+            换一批
+          </ButtonGroupCell>
+          <ButtonGroupCell
+            state={selected === "more" ? "active" : "rest"}
+            onClick={() => {
+              setSelected("more");
+            }}
+          >
+            查看更多
+          </ButtonGroupCell>
+          <ButtonGroupCell
+            state={selected === "more2" ? "active" : "rest"}
+            onClick={() => {
+              setSelected("more2");
+            }}
+          >
+            查看更多
+          </ButtonGroupCell>
+        </ButtonGroup>
       </div>
       <div
         className={css`
