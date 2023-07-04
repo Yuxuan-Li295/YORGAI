@@ -4,7 +4,7 @@ import { FastSearchButtonSection } from "components/Prompt/FastSearchButtonSecti
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { ToolCard } from "components/Prompt/ToolCard";
 import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
-import { PromptSearchBar } from "components/PromptSearchBar";
+import { PromptSearchBar } from "components/Prompt/PromptSearchBar";
 import { SecondaryNavBar, ToolNavBarButtons } from "components/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
@@ -181,8 +181,8 @@ const PopularTools = () => {
                   gap: 21px;
                 `}
               >
-                <Button icon={<Refresh />}>换一批</Button>
-                <Button icon={<More />}>查看更多</Button>
+                <Button prepend={<Refresh />}>换一批</Button>
+                <Button prepend={<More />}>查看更多</Button>
               </div>
             </div>
             <div
