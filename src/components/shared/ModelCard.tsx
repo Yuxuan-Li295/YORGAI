@@ -122,6 +122,10 @@ const ModelCard = ({
                   font-style: normal;
                   font-weight: 400;
                   line-height: 16px;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 3;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
                 `}
               >
                 {description}

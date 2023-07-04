@@ -22,7 +22,7 @@ const TextPrompts = () => {
       tags: ["写作", "文案", "作文", "办公"],
     });
   const tags = ["大语言模型"];
-  const description = "官方GPT3.5, 200万人在用的写作...";
+  const description = "官方GPT3.5, 200万人在用的写作助手";
 
   return (
     <div
