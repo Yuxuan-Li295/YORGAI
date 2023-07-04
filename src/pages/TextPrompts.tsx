@@ -1,14 +1,22 @@
 import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
+import { PromptFilterBar } from "components/Prompt/PromptFilterBar";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
 } from "components/SecondaryNavBar";
 import { Button } from "components/shared/Button";
+import { Dropdown, DropdownMenu } from "components/shared/Dropdown";
 import { Footer } from "components/shared/Footer";
+import { Fragment } from "react";
+import { ReactComponent as ArrowAngleDownMd } from "resources/img/ArrowAngleDownMd.svg";
+import { ReactComponent as Calender } from "resources/img/Calender.svg";
 import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
+import { ReactComponent as Star } from "resources/img/Star.svg";
+import { ReactComponent as Stars } from "resources/img/Stars.svg";
+import { ReactComponent as TrendingUp } from "resources/img/TrendingUp.svg";
 
 const TextPrompts = () => {
   const cards = (length: number) =>
@@ -79,8 +87,8 @@ const TextPrompts = () => {
               gap: 21px;
             `}
           >
-            <Button icon={<Lightbulb />}>AI 工具推荐</Button>
-            <Button icon={<MagicWand />}>AI 提示词学习</Button>
+            <Button prepend={<Lightbulb />}>AI 工具推荐</Button>
+            <Button prepend={<MagicWand />}>AI 提示词学习</Button>
           </div>
         </div>
       </div>
@@ -94,7 +102,60 @@ const TextPrompts = () => {
           margin-top: 85px;
         `}
       >
-        <div>filter</div>
+        <PromptFilterBar
+          prepend={
+            <Fragment>
+              <Dropdown
+                menu={
+                  <DropdownMenu
+                    menuItems={["111", "111", "222"]}
+                    setValue={(item: string) => {
+                      console.log(item);
+                    }}
+                  />
+                }
+              >
+                <Button
+                  variant="tertiary"
+                  size="sm"
+                  append={<ArrowAngleDownMd />}
+                >
+                  所有类型
+                </Button>
+              </Dropdown>
+              <Button
+                variant="tertiary"
+                size="sm"
+                append={<ArrowAngleDownMd />}
+              >
+                所有语言
+              </Button>
+              <Button
+                variant="tertiary"
+                size="sm"
+                append={<ArrowAngleDownMd />}
+              >
+                适用模型
+              </Button>
+            </Fragment>
+          }
+          append={
+            <Fragment>
+              <Button variant="tertiary" size="sm" prepend={<TrendingUp />}>
+                正在流行
+              </Button>
+              <Button variant="tertiary" size="sm" prepend={<Stars />}>
+                最受欢迎
+              </Button>
+              <Button variant="tertiary" size="sm" prepend={<Star />}>
+                收藏最多
+              </Button>
+              <Button variant="tertiary" size="sm" prepend={<Calender />}>
+                最新发布
+              </Button>
+            </Fragment>
+          }
+        />
         <div
           className={css`
             display: grid;

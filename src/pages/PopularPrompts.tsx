@@ -4,7 +4,7 @@ import { FastSearchButtonSection } from "components/Prompt/FastSearchButtonSecti
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
-import { PromptSearchBar } from "components/PromptSearchBar";
+import { PromptSearchBar } from "components/Prompt/PromptSearchBar";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
@@ -106,7 +106,7 @@ const PopularPrompts = () => {
             <FastSearchButtonSection />
           </div>
           <div>
-            <Button icon={<MagicWand />}>AI 提示词优化</Button>
+            <Button prepend={<MagicWand />}>AI 提示词优化</Button>
           </div>
         </div>
         <div
@@ -180,8 +180,8 @@ const PopularPrompts = () => {
                   gap: 21px;
                 `}
               >
-                <Button icon={<Refresh />}>换一批</Button>
-                <Button icon={<More />}>查看更多</Button>
+                <Button prepend={<Refresh />}>换一批</Button>
+                <Button prepend={<More />}>查看更多</Button>
               </div>
             </div>
             <div
