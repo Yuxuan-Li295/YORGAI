@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { basis, primary, white } from "components/constants/colors";
 import React, { useState } from "react";
-import { callbackify } from "util";
+// import { callbackify } from "util";
 
 export const Switch: React.FC<{
   variant?: "thin" | "fat";
