@@ -62,32 +62,6 @@ const PopularPrompts = () => {
           justify-content: center;
         `}
       >
-        <ButtonGroup>
-          <ButtonGroupCell
-            state={selected === "refresh" ? "active" : "rest"}
-            onClick={() => {
-              setSelected("refresh");
-            }}
-          >
-            换一批
-          </ButtonGroupCell>
-          <ButtonGroupCell
-            state={selected === "more" ? "active" : "rest"}
-            onClick={() => {
-              setSelected("more");
-            }}
-          >
-            查看更多
-          </ButtonGroupCell>
-          <ButtonGroupCell
-            state={selected === "more2" ? "active" : "rest"}
-            onClick={() => {
-              setSelected("more2");
-            }}
-          >
-            查看更多
-          </ButtonGroupCell>
-        </ButtonGroup>
       </div>
       <div
         className={css`
