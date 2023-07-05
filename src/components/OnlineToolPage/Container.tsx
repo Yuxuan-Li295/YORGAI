@@ -1,40 +1,34 @@
 import { css } from "@emotion/css";
 import { basis, zinc } from "components/constants/colors";
-import { useState } from "react";
+import { ReactComponent as AddSquare } from "resources/img/AddSquare.svg";
+import { SideBarButton } from "./SideBarButton";
+import {ReactComponent as Diamond} from "resources/img/Diamond.svg";
+import {ReactComponent as Home} from "resources/img/Home.svg";
 
-const SideBarContainer = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-
-  const sidebarWidth = sidebarOpen ? "280px" : "0px";
-  const buttons = ["Button 1", "Button 2"];
+const SideBarContainer = ({
+  isSidebarOpen, 
+ }: {
+  isSidebarOpen: boolean;
+  toggleSidebar: (isSidebarOpen: boolean) => void;
+ }) => {
+  const sidebarWidth = isSidebarOpen ? "376px" : "0px";
+  const buttons = [<SideBarButton icon={<Home/>}>工具主页</SideBarButton>, <SideBarButton icon={<Diamond/>}>管理订阅</SideBarButton>];
 
   return (
-    <>
-      <button
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        className={css`
-          position: fixed;
-          top: 10px;
-          right: 10px;
-        `}
-      >
-        Toggle Sidebar
-      </button>
       <div
         className={css`
           position: relative;
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
           width: ${sidebarWidth};
           height: 960px;
           background: ${zinc[25]};
           border-right: 1px solid ${basis.border_subtle};
           overflow: hidden;
           transition: width 0.3s ease-in-out;
+          box-sizing: border-box;
         `}
       >
-        {/*chat history sections */}
         <div
           className={css`
             display: flex;
@@ -71,6 +65,12 @@ const SideBarContainer = () => {
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    color: ${basis.text_loud};
+                    font-size: 12px;
+                    font-family: 'PingFang SC', sans-serif;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 16px;
                   `}
                 >
                   {day}
@@ -84,8 +84,7 @@ const SideBarContainer = () => {
             </div>
           ))}
         </div>
-
-        {/* buttons section */}
+        
         <div
           className={css`
             display: flex;
@@ -94,14 +93,13 @@ const SideBarContainer = () => {
             align-items: flex-start;
             gap: 8px;
             align-self: stretch;
-            width: 100%;
             height: auto;
             border-top: 1px solid ${basis.border_subtle};
             border-bottom: 1px solid ${basis.border_subtle};
             box-sizing: border-box; 
           `}
         >
-          <span>SideBarButton Placeholder for New Chart</span>
+          <SideBarButton icon={<AddSquare/>}>新的会话</SideBarButton>
         </div>
 
         <div
@@ -115,14 +113,9 @@ const SideBarContainer = () => {
             width: 100%;
           `}
         >
-          {buttons.map((button) => (
-            <div key={button}>
-              <span>SideBarButton Placeholder for {button}</span>
-            </div>
-          ))}
+          {buttons}
         </div>
       </div>
-    </>
   );
 };
 
