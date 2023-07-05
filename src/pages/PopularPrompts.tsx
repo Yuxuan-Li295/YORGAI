@@ -19,6 +19,10 @@ import { ReactComponent as PencilLine } from "resources/img/PencilLine.svg";
 import { ReactComponent as Prompt } from "resources/img/Prompt.svg";
 import { ReactComponent as Refresh } from "resources/img/Refresh.svg";
 import { ReactComponent as Toolbox } from "resources/img/Toolbox.svg";
+import { ReactComponent as ChatAvatar } from "resources/img/ChatItemAvatar.svg";
+import { ReactComponent as SystemCopy } from "resources/img/SystemCopy.svg";
+import { SystemChatItem } from "components/SystemChatHistoryItem/SystemChatItem";
+import { ReactComponent as SystemChatAvatar} from "resources/img/SystemChatAvatar.svg";
 
 const PopularPrompts = () => {
   const cards = (length: number) =>
@@ -107,6 +111,15 @@ const PopularPrompts = () => {
           </div>
           <div>
             <Button prepend={<MagicWand />}>AI 提示词优化</Button>
+          </div>
+          <div>
+            <SystemChatItem prepend={<SystemChatAvatar />} append={<SystemCopy />}>
+            As a pet behaviorist, I'm here to help you address the aggression issues 
+            with your German Shepherd. Aggression in dogs can have various underlying 
+            causes, and it's important to understand the root cause before implementing 
+            a behavior modification plan. Here are the steps we can take to help manage 
+            your dog's aggressioness.
+            </SystemChatItem>
           </div>
         </div>
         <div
