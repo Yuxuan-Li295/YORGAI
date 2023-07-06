@@ -60,6 +60,19 @@ const fillContrastKey = ["layer", "layer_on"] as const;
 
 type FillContrastKey = (typeof fillContrastKey)[number];
 
+const rainbowKeys = [
+  "bg_muted",
+  "border",
+] as const;
+
+const rainbowKeys1 = [
+  "text_loud",
+] as const;
+
+type RainbowKey = (typeof rainbowKeys)[number];
+
+type RainbowKey1 = (typeof rainbowKeys1)[number];
+
 export type {
   BasisKey,
   BlackColorKey,
@@ -68,4 +81,6 @@ export type {
   FillBaseKey,
   FillContrastKey,
   PrimaryKey,
+  RainbowKey,
+  RainbowKey1,
 };
