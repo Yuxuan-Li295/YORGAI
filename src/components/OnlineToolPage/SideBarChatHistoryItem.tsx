@@ -6,10 +6,9 @@ import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
 import { ReactComponent as Trash } from "resources/img/GreyTrash.svg";
 import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
 import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
-import {
-  ChatBubbleLogo,
-  TrashLogo,
-} from "../constants/SideBarChatHistoryItemLogos";
+import WhiteChatBubble from "resources/img/ChatBubble.svg";
+import GreyChatBubble from "resources/img/GreyChatBubble.svg";
+import RedTrash from "resources/img/RedTrash.svg";
 
 const BaseStyles = css`
   display: flex;
@@ -435,10 +434,14 @@ export const SideBarChatHistoryItem = ({
   useEffect(() => {
     if (toDelete) {
       setCurrentBackground("transparent");
-      setCurrentLogo(TrashLogo.displayedLogo);
+      setCurrentLogo(RedTrash);
     } else if (isHovered || isEditing) {
       setCurrentBackground(logoBackground);
-      setCurrentLogo(ChatBubbleLogo.displayedLogo);
+      setCurrentLogo(
+        logoBackground === "#FFFFFF" || logoBackground === "transparent"
+          ? GreyChatBubble
+          : WhiteChatBubble,
+      );
     } else {
       setCurrentBackground(logoBackground);
       setCurrentLogo(displayedLogo);
@@ -474,7 +477,7 @@ export const SideBarChatHistoryItem = ({
                 handleInputChange: handleInputChange,
               })
             : MiddleTextFrame({
-                title: toDelete ? TrashLogo.title : currentTitle,
+                title: toDelete ? "删除该对话？" : currentTitle,
                 mode: mode,
                 models: models,
               })}
