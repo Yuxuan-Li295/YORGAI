@@ -58,8 +58,6 @@ const SideBarButton = ({
             color: ${zinc[500]};
             text-align: center;
             font-size: 14px;
-            font-family: PingFang SC;
-            font-style: normal;
             font-weight: 500;
             line-height: 20px;
           `}
