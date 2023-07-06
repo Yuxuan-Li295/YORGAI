@@ -216,6 +216,19 @@ const functional: Readonly<
   },
 };
 
+const rainbow: Readonly<
+Record<"blue_alt", Record<RainbowKey, string>> &
+  Record<"blue", Record<RainbowKey1, string>>
+> = {
+  blue_alt: {
+    bg_muted: 'rgba(96, 165, 250, 0.40)',
+    border: 'rgba(96, 165, 250, 0.20)',
+  },
+  blue: {
+    text_loud: '#2563EB',
+  },
+}
+
 export {
   amber,
   basis,
@@ -229,4 +242,5 @@ export {
   white,
   yellow,
   zinc,
+  rainbow,
 };
