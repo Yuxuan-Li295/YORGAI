@@ -18,7 +18,6 @@ const SideBarContainer = ({
           display: flex;
           flex-direction: column;
           width: ${isSidebarOpen ? "376px" : "0px"};
-          height: 960px;
           background: ${zinc[25]};
           border-right: 1px solid ${basis.border_subtle};
           overflow: hidden;
@@ -45,6 +44,8 @@ const SideBarContainer = ({
                 gap: 12px;
                 flex: 1 0 0;
                 align-self: stretch;
+                flex-shrink: 1;
+                overflow: auto;
               `}
           >
             <div
