@@ -1,4 +1,3 @@
-import Trashcan from "../../resources/img/RedTrash.svg";
 import chatGPT from "../../resources/img/ChatGPT.png";
 import ListTask from "../../resources/img/ListTask.svg";
 import MultiTask from "../../resources/img/MultiTask.png";

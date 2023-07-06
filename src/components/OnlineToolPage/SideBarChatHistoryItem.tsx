@@ -6,7 +6,7 @@ import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
 import { ReactComponent as Trash } from "resources/img/GreyTrash.svg";
 import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
 import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
-import WhiteChatBubble from "resources/img/ChatBubble.svg";
+import WhiteChatBubble from "resources/img/WhiteChatBubble.svg";
 import GreyChatBubble from "resources/img/GreyChatBubble.svg";
 import RedTrash from "resources/img/RedTrash.svg";
 
@@ -246,12 +246,12 @@ const InputContainer = ({
 
 const MiddleTextFrame = ({
   title,
-  mode,
-  models,
+  leftSubtitle,
+  rightSubtitle,
 }: {
   title: string;
-  mode: string;
-  models: string[];
+  leftSubtitle: string;
+  rightSubtitle: string;
 }) => {
   return (
     <div
@@ -334,7 +334,7 @@ const MiddleTextFrame = ({
                 line-height: 16px;
               `}
             >
-              {mode === "基础模式" ? "对话" : mode}
+              {leftSubtitle}
             </span>
             <Separator />
             <span
@@ -350,7 +350,7 @@ const MiddleTextFrame = ({
                 line-height: 16px;
               `}
             >
-              {models.length === 1 ? models[0] : models.length + "个应用"}
+              {rightSubtitle}
             </span>
           </div>
         </div>
@@ -359,34 +359,20 @@ const MiddleTextFrame = ({
   );
 };
 
-/**
- * Renders the chat history item in the sidebar
- * @param itemIsSelected represents whether this item is clicked or not, used to apply outer
- * yellow border
- * @param mode represents the mode this chat history, is "基础模式", "任务流模式", or "多任务模式"
- * @param displayedLogo represents the logo to display, could be an app logo if it is 基础模式, or
- * task flow icon, or multitask icon
- * @param logoBackground represents the background color of the displayed logo, should match the
- * base color of the logo, used to set the background color of the chat bubble so that color matches
- * @param title represents the chat title, is "新的会话" for a new 基础模式, or "新的任务" for a new 任务流模式
- * or 多任务模式
- * @param models represents the models/applications used in the chat
- * @constructor
- */
 export const SideBarChatHistoryItem = ({
   itemIsSelected,
-  mode,
   displayedLogo,
   logoBackground,
   title,
-  models,
+  leftSubtitle,
+  rightSubtitle,
 }: {
   itemIsSelected: boolean;
-  mode: string;
   displayedLogo: string;
   logoBackground: string;
   title: string;
-  models: string[];
+  leftSubtitle: string;
+  rightSubtitle: string;
 }) => {
   const [displayItem, setDisplayItem] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -478,8 +464,8 @@ export const SideBarChatHistoryItem = ({
               })
             : MiddleTextFrame({
                 title: toDelete ? "删除该对话？" : currentTitle,
-                mode: mode,
-                models: models,
+                leftSubtitle: leftSubtitle,
+                rightSubtitle: rightSubtitle,
               })}
 
           {/* Right container */}
