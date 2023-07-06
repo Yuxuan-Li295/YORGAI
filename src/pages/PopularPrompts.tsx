@@ -11,7 +11,6 @@ import {
 } from "components/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
-import { ButtonGroup, ButtonGroupCell } from "components/shared/ButtonGroup";
 import { Footer } from "components/shared/Footer";
 import { useState } from "react";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
@@ -61,8 +60,7 @@ const PopularPrompts = () => {
           margin-bottom: 97px;
           justify-content: center;
         `}
-      >
-      </div>
+      ></div>
       <div
         className={css`
           display: flex;
