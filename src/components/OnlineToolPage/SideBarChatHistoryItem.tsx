@@ -6,7 +6,10 @@ import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
 import { ReactComponent as Trash } from "resources/img/GreyTrash.svg";
 import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
 import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
-import { ChatBubbleLogo, TrashLogo } from "./SideBarChatHistoryItemLogos";
+import {
+  ChatBubbleLogo,
+  TrashLogo,
+} from "../constants/SideBarChatHistoryItemLogos";
 
 const BaseStyles = css`
   display: flex;
