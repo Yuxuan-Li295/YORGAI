@@ -30,7 +30,7 @@ const ModelCard = ({
         gap: 10px;
         border-radius: 8px;
         background-color: ${white};
-        border: 1px solid ${zinc[200]};
+        border: 1px solid ${basis.border_subtle};
         max-width: 100%;
       `}
     >
@@ -82,11 +82,8 @@ const ModelCard = ({
                   flex-direction: column;
                   flex: 1 0 0;
 
-                  color: var(--basis-text-loud, #18181b);
-                  /* Pingfang SC/body/sm/500 - medium */
+                  color: ${basis.text_loud};
                   font-size: 14px;
-                  font-family: PingFang SC;
-                  font-style: normal;
                   font-weight: 500;
                   line-height: 20px;
                 `}
@@ -116,14 +113,11 @@ const ModelCard = ({
                   color: ${basis.text};
                   text-overflow: ellipsis;
                   whitespace: nowrap;
-                  /* Pingfang SC/body/xs/400 - regular */
                   font-size: 12px;
-                  font-family: PingFang SC;
-                  font-style: normal;
                   font-weight: 400;
                   line-height: 16px;
                   display: -webkit-box;
-                  -webkit-line-clamp: 3;
+                  -webkit-line-clamp: 1;
                   -webkit-box-orient: vertical;
                   overflow: hidden;
                 `}
@@ -168,10 +162,7 @@ const ModelCard = ({
             <div
               className={css`
                 color: ${basis.text};
-                /* Pingfang SC/body/xs/500 - medium */
                 font-size: 12px;
-                font-family: PingFang SC;
-                font-style: normal;
                 font-weight: 500;
                 line-height: 16px;
               `}
