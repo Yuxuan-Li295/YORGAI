@@ -8,6 +8,7 @@ import { ReactComponent as Info } from "resources/img/info-01.svg";
 import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
 import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
 import { ReactComponent as SystemCopy } from "resources/img/SystemCopy.svg";
+import { SideBarContainer } from "components/OnlineToolPage/Container";
 
 const ToolsChat = () => {
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
@@ -41,6 +42,7 @@ const ToolsChat = () => {
           background-color: ${basis.bg_muted};
         `}
       >
+        <SideBarContainer isSidebarOpen={isSidebarOpened} toggleSidebar={setIsSidebarOpened} />
         {/* TODO: chat menu */}
         <div
           className={css`
