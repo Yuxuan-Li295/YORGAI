@@ -12,7 +12,6 @@ import {
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
-import { useState } from "react";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
@@ -20,9 +19,6 @@ import { ReactComponent as PencilLine } from "resources/img/PencilLine.svg";
 import { ReactComponent as Prompt } from "resources/img/Prompt.svg";
 import { ReactComponent as Refresh } from "resources/img/Refresh.svg";
 import { ReactComponent as Toolbox } from "resources/img/Toolbox.svg";
-import { ReactComponent as ChatAvatar } from "resources/img/ChatItemAvatar.svg";
-import { ReactComponent as ChatItemPencil } from "resources/img/ChatItemPencil.svg";
-import { UserChatItem } from "components/UserChatHistoryItem/UserChatItem";
 
 const PopularPrompts = () => {
   const cards = (length: number) =>
@@ -34,8 +30,6 @@ const PopularPrompts = () => {
       对接GPT3，200万人在用的写作助手。`,
       tags: ["写作", "文案", "作文", "办公"],
     });
-
-  const [selected, setSelected] = useState<string>();
 
   return (
     <div
@@ -120,18 +114,6 @@ const PopularPrompts = () => {
           </div>
           <div>
             <Button prepend={<MagicWand />}>AI 提示词优化</Button>
-          </div>
-          <div>
-            <UserChatItem prepend={<ChatAvatar />} append={<ChatItemPencil />}>
-              I want you to act as a UX/UI developer. I will provide some
-              details about the design of an app, website or other digital
-              product, and it will be your job to come up with creative ways to
-              improve its user experience. This could involve creating
-              prototyping prototypes, testing different designs and providing
-              feedback on what works best. My first request is &#34;I need help
-              designing an intuitive navigation system for my new mobile
-              application.&#34;
-            </UserChatItem>
           </div>
         </div>
         <div

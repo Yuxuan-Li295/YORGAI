@@ -2,6 +2,9 @@ import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
 import { ReactComponent as Info } from "resources/img/info-01.svg";
+import { ReactComponent as ChatAvatar } from "resources/img/ChatItemAvatar.svg";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
+import { UserChatItem } from "components/UserChatHistoryItem/UserChatItem";
 import { basis } from "components/constants/colors";
 import { Switch } from "components/shared/Switch";
 import { useCallback, useState } from "react";
@@ -94,6 +97,20 @@ const ToolsChat = () => {
           </div>
           {/* TODO: chat */ isCreativeMode.toString()}
         </div>
+      </div>
+      <div className={css``}>
+        <UserChatItem
+          prepend={<ChatAvatar />}
+          append={<Pencil style={{ width: "16px", height: "20px" }} />}
+        >
+          I want you to act as a UX/UI developer. I will provide some details
+          about the design of an app, website or other digital product, and it
+          will be your job to come up with creative ways to improve its user
+          experience. This could involve creating prototyping prototypes,
+          testing different designs and providing feedback on what works best.
+          My first request is &#34;I need help designing an intuitive navigation
+          system for my new mobile application.&#34;
+        </UserChatItem>
       </div>
     </div>
   );
