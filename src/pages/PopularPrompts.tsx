@@ -4,7 +4,7 @@ import { FastSearchButtonSection } from "components/Prompt/FastSearchButtonSecti
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
-import { PromptSearchBar } from "components/PromptSearchBar";
+import { PromptSearchBar } from "components/Prompt/PromptSearchBar";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
@@ -12,6 +12,7 @@ import {
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";
+import { useState } from "react";
 import { ReactComponent as Chart } from "resources/img/Chart.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as More } from "resources/img/More.svg";
@@ -30,6 +31,8 @@ const PopularPrompts = () => {
       对接GPT3，200万人在用的写作助手。`,
       tags: ["写作", "文案", "作文", "办公"],
     });
+
+  const [selected, setSelected] = useState<string>();
 
   return (
     <div
@@ -51,6 +54,13 @@ const PopularPrompts = () => {
         <PrimaryNavBar />
         <SecondaryNavBar buttons={PromptNavBarButtons} />
       </div>
+      <div
+        className={css`
+          display: flex;
+          margin-bottom: 97px;
+          justify-content: center;
+        `}
+      ></div>
       <div
         className={css`
           display: flex;
@@ -106,7 +116,7 @@ const PopularPrompts = () => {
             <FastSearchButtonSection />
           </div>
           <div>
-            <Button icon={<MagicWand />}>AI 提示词优化</Button>
+            <Button prepend={<MagicWand />}>AI 提示词优化</Button>
           </div>
         </div>
         <div
@@ -180,8 +190,8 @@ const PopularPrompts = () => {
                   gap: 21px;
                 `}
               >
-                <Button icon={<Refresh />}>换一批</Button>
-                <Button icon={<More />}>查看更多</Button>
+                <Button prepend={<Refresh />}>换一批</Button>
+                <Button prepend={<More />}>查看更多</Button>
               </div>
             </div>
             <div

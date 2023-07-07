@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import React, { useEffect, useRef, useState } from "react";
-import { basis, fill } from "./constants/colors";
+import { basis, fill } from "../constants/colors";
 import { ReactComponent as PaperPlane } from "resources/img/paper-plane.svg";
 
 export const ChatInputBar: React.FC<React.TextareaHTMLAttributes<{}>> = ({
