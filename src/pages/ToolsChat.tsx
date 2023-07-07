@@ -5,6 +5,7 @@ import { ReactComponent as Info } from "resources/img/info-01.svg";
 import { basis } from "components/constants/colors";
 import { Switch } from "components/shared/Switch";
 import { useCallback, useState } from "react";
+import { SideBarContainer } from "components/OnlineToolPage/Container";
 
 const ToolsChat = () => {
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
@@ -38,6 +39,7 @@ const ToolsChat = () => {
           background-color: ${basis.bg_muted};
         `}
       >
+        <SideBarContainer isSidebarOpen={isSidebarOpened} toggleSidebar={setIsSidebarOpened} />
         {/* TODO: chat menu */}
         <div
           className={css`
