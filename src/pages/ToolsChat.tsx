@@ -4,12 +4,76 @@ import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-da
 import { ReactComponent as Info } from "resources/img/info-01.svg";
 import { basis } from "components/constants/colors";
 import { Switch } from "components/shared/Switch";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useReducer, useState } from "react";
 
 const ToolsChat = () => {
+  enum ToolsMode {
+    KnowledgeBase,
+    Standard,
+    Creative,
+    Podcast,
+  }
+  type ToolsNormalModes =
+    | ToolsMode.Standard
+    | ToolsMode.Creative
+    | ToolsMode.Podcast;
+  type ToolsModeState = {
+    isKnowledgeBaseMode: boolean;
+    underlyingMode: ToolsNormalModes;
+  };
+
+  type ModeMsg =
+    | { cmd: "enableKnowledgeBaseMode" | "disableKnowledgeBaseMode" }
+    | { cmd: "changeMode"; mode: ToolsNormalModes };
+
+  const [modeState, changeModeState] = useReducer(
+    (prevState: ToolsModeState, msg: ModeMsg) => {
+      console.log(msg);
+      switch (msg.cmd) {
+        case "enableKnowledgeBaseMode":
+          return {
+            ...prevState,
+            isKnowledgeBaseMode: true,
+          };
+        case "disableKnowledgeBaseMode":
+          return {
+            ...prevState,
+            isKnowledgeBaseMode: false,
+          };
+        case "changeMode":
+          return prevState.isKnowledgeBaseMode
+            ? prevState
+            : {
+                ...prevState,
+                underlyingMode: msg.mode,
+              };
+      }
+    },
+    { isKnowledgeBaseMode: false, underlyingMode: ToolsMode.Standard },
+  );
+
+  const mode = useMemo(
+    () =>
+      modeState.isKnowledgeBaseMode
+        ? ToolsMode.KnowledgeBase
+        : modeState.underlyingMode,
+    [modeState],
+  );
+  const showNormalMode = (mode: ToolsNormalModes) =>
+    changeModeState({ cmd: "changeMode", mode });
+  const setKnowledgeBaseMode = () =>
+    changeModeState({ cmd: "enableKnowledgeBaseMode" });
+  const unsetKnowledgeBaseMode = () =>
+    changeModeState({ cmd: "disableKnowledgeBaseMode" });
+
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
-  const [isCreativeMode, setIsCreativeMode] = useState(false);
-  const switchCallback = useCallback(setIsCreativeMode, [setIsCreativeMode]);
+  const switchToggleCallback = useCallback(
+    () =>
+      mode === ToolsMode.Standard
+        ? showNormalMode(ToolsMode.Creative)
+        : showNormalMode(ToolsMode.Standard),
+    [changeModeState, mode],
+  );
 
   return (
     <div
@@ -62,37 +126,47 @@ const ToolsChat = () => {
               aria-roledescription="button"
               onClick={() => setIsSidebarOpened(!isSidebarOpened)}
             />
-            <span
-              className={css`
-                flex: 100vw 0 1;
-                text-align: center;
-                line-height: 20px;
-                font-family: inherit;
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 20px;
-                color: ${basis.text_loud};
-              `}
-            >
-              请选择一个模型
-            </span>
-            <Switch callback={switchCallback} />
-            <span
-              className={css`
-                white-space: nowrap;
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 20px;
-                color: ${basis.text};
-              `}
-            >
-              创作模式
-            </span>
-            <Info />
+            {[ToolsMode.Standard, ToolsMode.Creative].includes(mode) ? (
+              <>
+                <span
+                  className={css`
+                    flex: 100vw 0 1;
+                    text-align: center;
+                    line-height: 20px;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 20px;
+                    color: ${basis.text_loud};
+                  `}
+                >
+                  请选择一个模型
+                </span>
+                <Switch
+                  enabled={mode === ToolsMode.Creative}
+                  onToggle={switchToggleCallback}
+                />
+                <span
+                  className={css`
+                    white-space: nowrap;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 20px;
+                    color: ${basis.text};
+                  `}
+                >
+                  创作模式
+                </span>
+                <Info />
+              </>
+            ) : mode === ToolsMode.Podcast ? (
+              "podcast mode"
+            ) : (
+              "kb mode"
+            )}
           </div>
-          {/* TODO: chat */ isCreativeMode.toString()}
         </div>
       </div>
     </div>
