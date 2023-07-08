@@ -1,6 +1,11 @@
 import { css } from "@emotion/css";
 import { SideBarContainer } from "components/OnlineToolPage/Container";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
+import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
+import { ReactComponent as Info } from "resources/img/info-01.svg";
+import { ReactComponent as ChatAvatar } from "resources/img/ChatItemAvatar.svg";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
+import { UserChatItem } from "components/UserChatHistoryItem/UserChatItem";
 import { SystemChatItem } from "components/SystemChatHistoryItem/SystemChatItem";
 import { basis } from "components/constants/colors";
 import { Switch } from "components/shared/Switch";
