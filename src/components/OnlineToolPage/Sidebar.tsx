@@ -4,8 +4,9 @@ import { ReactComponent as AddSquare } from "resources/img/AddSquare.svg";
 import { ReactComponent as Diamond } from "resources/img/Diamond.svg";
 import { ReactComponent as Home } from "resources/img/Home.svg";
 import { SideBarButton } from "./SideBarButton";
+import React from "react";
 
-const SideBarContainer = ({
+const SideBar = ({
   isSidebarOpen,
 }: {
   isSidebarOpen: boolean;
@@ -17,11 +18,12 @@ const SideBarContainer = ({
         position: relative;
         display: flex;
         flex-direction: column;
-        width: ${isSidebarOpen ? "376px" : "0px"};
+        height: calc(100vh - 64px - 1px);
+        flex: ${isSidebarOpen ? "280px" : "0px"} 0 0;
         background: ${zinc[25]};
         border-right: 1px solid ${basis.border_subtle};
         overflow: hidden;
-        transition: width 0.3s ease-in-out;
+        transition: flex-basis 0.3s ease-in-out;
         box-sizing: border-box;
       `}
     >
@@ -29,31 +31,19 @@ const SideBarContainer = ({
         className={css`
           display: flex;
           flex-direction: column;
-          overflow: auto;
-          flex-grow: 1;
+          overflow: scroll;
+          flex: 100% 0 1;
+          padding: 16px 12px;
+          gap: 12px;
           align-items: flex-start;
         `}
       >
-        {["今天", "昨天", "过去七天"].map((day) => (
-          <div
-            key={day}
-            className={css`
-              display: flex;
-              flex-direction: column;
-              padding: 16px 12px;
-              align-items: flex-start;
-              gap: 12px;
-              flex: 1 0 0;
-              align-self: stretch;
-              flex-shrink: 1;
-              overflow: auto;
-            `}
-          >
+        {["今天", "昨天", "过去7天"].map((day) => (
+          <React.Fragment key={day}>
             <div
               className={css`
-                width: 100%;
                 height: auto;
-                padding: 8px 12px;
+                padding: 0px 12px;
                 display: flex;
                 align-items: center;
                 align-self: stretch;
@@ -74,16 +64,9 @@ const SideBarContainer = ({
               </span>
             </div>
             {[...Array(10).keys()].map((i) => (
-              <div
-                className={css`
-                  margin: 12px 0;
-                `}
-                key={i}
-              >
-                SideBarChatHistoryCard Placeholder {i + 1}
-              </div>
+              <div key={i}>SideBarChatHistoryCard Placeholder {i + 1}</div>
             ))}
-          </div>
+          </React.Fragment>
         ))}
       </div>
 
@@ -122,4 +105,4 @@ const SideBarContainer = ({
   );
 };
 
-export { SideBarContainer };
+export { SideBar };

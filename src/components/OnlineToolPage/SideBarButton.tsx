@@ -14,7 +14,7 @@ const SideBarButton = ({
   return (
     <button
       className={css`
-        width: 280px;
+        width: 256px;
         height: 44px;
         display: flex;
         justify-content: center;

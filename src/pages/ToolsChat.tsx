@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { SideBarContainer } from "components/OnlineToolPage/Container";
+import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SystemChatItem } from "components/SystemChatHistoryItem/SystemChatItem";
 import { basis } from "components/constants/colors";
@@ -115,7 +115,7 @@ const ToolsChat = () => {
           background-color: ${basis.bg_muted};
         `}
       >
-        <SideBarContainer
+        <SideBar
           isSidebarOpen={isSidebarOpened}
           toggleSidebar={setIsSidebarOpened}
         />
@@ -180,7 +180,7 @@ const ToolsChat = () => {
                   新的对话
                 </span>
                 <Switch
-                  enabled
+                  enabled={false}
                   // enabled={mode === ToolsMode.Compose}
                   onToggle={switchToggleCallback}
                 />
