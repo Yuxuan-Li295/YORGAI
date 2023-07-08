@@ -22,10 +22,12 @@ const containerColorKeys = [
 type ContainerColorKey = (typeof containerColorKeys)[number];
 
 const contentColorKeys = [
+  "text_subtle",
   "text",
   "text_muted",
   "text_loud",
   "text_foreground",
+  "icon_subtle",
   "icon",
   "icon_muted",
   "icon_loud",
@@ -36,12 +38,7 @@ const primaryKeys = [...containerColorKeys, ...contentColorKeys] as const;
 
 type PrimaryKey = (typeof primaryKeys)[number];
 
-const basisKeys = [
-  "text_subtle",
-  "caret",
-  "icon_subtle",
-  ...primaryKeys,
-] as const;
+const basisKeys = ["caret", ...primaryKeys] as const;
 
 type BasisKey = (typeof basisKeys)[number];
 
@@ -60,6 +57,10 @@ const fillContrastKey = ["layer", "layer_on"] as const;
 
 type FillContrastKey = (typeof fillContrastKey)[number];
 
+const rainbowKeys = ["blue", "amber"] as const;
+
+type RainbowKey = (typeof rainbowKeys)[number];
+
 export type {
   BasisKey,
   BlackColorKey,
@@ -68,4 +69,5 @@ export type {
   FillBaseKey,
   FillContrastKey,
   PrimaryKey,
+  RainbowKey,
 };
