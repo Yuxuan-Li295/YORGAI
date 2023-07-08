@@ -1,21 +1,34 @@
 import { css } from "@emotion/css";
+import { SideBarContainer } from "components/OnlineToolPage/Container";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
-import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
-import { ReactComponent as Info } from "resources/img/info-01.svg";
+import { SystemChatItem } from "components/SystemChatHistoryItem/SystemChatItem";
 import { basis } from "components/constants/colors";
 import { Switch } from "components/shared/Switch";
 import { useCallback, useMemo, useReducer, useState } from "react";
+import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
+import { ReactComponent as Info } from "resources/img/info-01.svg";
+import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
 
 const ToolsChat = () => {
   enum ToolsMode {
+    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2065-274657&mode=dev
     KnowledgeBase,
+    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=1454-279891&mode=dev
+    Home,
+    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=1401-277631&mode=dev
     Standard,
-    Creative,
+    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=1440-277813&mode=dev
+    Compose,
+    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2217-300497&mode=dev
+    Paint,
+    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2311-263056&mode=dev
     Podcast,
   }
   type ToolsNormalModes =
+    | ToolsMode.Home
     | ToolsMode.Standard
-    | ToolsMode.Creative
+    | ToolsMode.Compose
+    | ToolsMode.Paint
     | ToolsMode.Podcast;
   type ToolsModeState = {
     isKnowledgeBaseMode: boolean;
@@ -70,7 +83,7 @@ const ToolsChat = () => {
   const switchToggleCallback = useCallback(
     () =>
       mode === ToolsMode.Standard
-        ? showNormalMode(ToolsMode.Creative)
+        ? showNormalMode(ToolsMode.Compose)
         : showNormalMode(ToolsMode.Standard),
     [changeModeState, mode],
   );
@@ -102,6 +115,10 @@ const ToolsChat = () => {
           background-color: ${basis.bg_muted};
         `}
       >
+        <SideBarContainer
+          isSidebarOpen={isSidebarOpened}
+          toggleSidebar={setIsSidebarOpened}
+        />
         {/* TODO: chat menu */}
         <div
           className={css`
@@ -125,8 +142,27 @@ const ToolsChat = () => {
             <SideBarLeftDark
               aria-roledescription="button"
               onClick={() => setIsSidebarOpened(!isSidebarOpened)}
+              className={css`
+                margin-right: 101;
+              `}
             />
-            {[ToolsMode.Standard, ToolsMode.Creative].includes(mode) ? (
+            {mode === ToolsMode.Home ? (
+              <span
+                className={css`
+                  flex: 100vw 0 1;
+                  text-align: center;
+                  line-height: 20px;
+                  font-family: inherit;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: 20px;
+                  color: ${basis.text_loud};
+                `}
+              >
+                请选择一个模型
+              </span>
+            ) : mode === ToolsMode.Standard ? (
               <>
                 <span
                   className={css`
@@ -141,10 +177,11 @@ const ToolsChat = () => {
                     color: ${basis.text_loud};
                   `}
                 >
-                  请选择一个模型
+                  新的对话
                 </span>
                 <Switch
-                  enabled={mode === ToolsMode.Creative}
+                  enabled
+                  // enabled={mode === ToolsMode.Compose}
                   onToggle={switchToggleCallback}
                 />
                 <span
@@ -161,12 +198,40 @@ const ToolsChat = () => {
                 </span>
                 <Info />
               </>
+            ) : mode === ToolsMode.Compose ? (
+              <></>
+            ) : mode === ToolsMode.Paint ? (
+              <></>
             ) : mode === ToolsMode.Podcast ? (
               "podcast mode"
             ) : (
               "kb mode"
             )}
           </div>
+          {mode === ToolsMode.Home ? (
+            <>home</>
+          ) : mode === ToolsMode.Standard ? (
+            <>
+              <div>
+                <SystemChatItem prepend={<SystemChatAvatar />}>
+                  As a pet behaviorist, I'm here to help you address the
+                  aggression issues with your German Shepherd. Aggression in
+                  dogs can have various underlying causes, and it's important to
+                  understand the root cause before implementing a behavior
+                  modification plan. Here are the steps we can take to help
+                  manage your dog's aggressioness.
+                </SystemChatItem>
+              </div>
+            </>
+          ) : mode === ToolsMode.Compose ? (
+            <>compose</>
+          ) : mode === ToolsMode.Paint ? (
+            <>paint</>
+          ) : mode === ToolsMode.Podcast ? (
+            <>podcast</>
+          ) : (
+            <>knowledge base</>
+          )}
         </div>
       </div>
     </div>
