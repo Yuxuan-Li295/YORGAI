@@ -1,4 +1,5 @@
 import { css } from "@emotion/css";
+import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SideBarContainer } from "components/OnlineToolPage/Container";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SystemChatItem } from "components/SystemChatHistoryItem/SystemChatItem";
@@ -41,7 +42,10 @@ const ToolsChat = () => {
           background-color: ${basis.bg_muted};
         `}
       >
-        <SideBarContainer isSidebarOpen={isSidebarOpened} toggleSidebar={setIsSidebarOpened} />
+        <SideBarContainer
+          isSidebarOpen={isSidebarOpened}
+          toggleSidebar={setIsSidebarOpened}
+        />
         {/* TODO: chat menu */}
         <div
           className={css`
@@ -99,12 +103,15 @@ const ToolsChat = () => {
           {/* TODO: chat */ isCreativeMode.toString()}
           <div>
             <SystemChatItem prepend={<SystemChatAvatar />}>
-              As a pet behaviorist, I'm here to help you address the aggression issues
-              with your German Shepherd. Aggression in dogs can have various underlying
-              causes, and it's important to understand the root cause before implementing
-              a behavior modification plan. Here are the steps we can take to help manage
-              your dog's aggressioness.
+              As a pet behaviorist, I'm here to help you address the aggression
+              issues with your German Shepherd. Aggression in dogs can have
+              various underlying causes, and it's important to understand the
+              root cause before implementing a behavior modification plan. Here
+              are the steps we can take to help manage your dog's aggressioness.
             </SystemChatItem>
+          </div>
+          <div>
+            <DialogHeader />
           </div>
         </div>
       </div>
