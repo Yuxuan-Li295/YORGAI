@@ -1,13 +1,13 @@
 import { css } from "@emotion/css";
+import { SideBarContainer } from "components/OnlineToolPage/Container";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
-import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
-import { ReactComponent as Info } from "resources/img/info-01.svg";
-import { ReactComponent as ChatAvatar } from "resources/img/ChatItemAvatar.svg";
-import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
-import { UserChatItem } from "components/UserChatHistoryItem/UserChatItem";
+import { SystemChatItem } from "components/SystemChatHistoryItem/SystemChatItem";
 import { basis } from "components/constants/colors";
 import { Switch } from "components/shared/Switch";
 import { useCallback, useState } from "react";
+import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
+import { ReactComponent as Info } from "resources/img/info-01.svg";
+import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
 
 const ToolsChat = () => {
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
@@ -41,6 +41,7 @@ const ToolsChat = () => {
           background-color: ${basis.bg_muted};
         `}
       >
+        <SideBarContainer isSidebarOpen={isSidebarOpened} toggleSidebar={setIsSidebarOpened} />
         {/* TODO: chat menu */}
         <div
           className={css`
@@ -96,6 +97,15 @@ const ToolsChat = () => {
             <Info />
           </div>
           {/* TODO: chat */ isCreativeMode.toString()}
+          <div>
+            <SystemChatItem prepend={<SystemChatAvatar />}>
+              As a pet behaviorist, I'm here to help you address the aggression issues
+              with your German Shepherd. Aggression in dogs can have various underlying
+              causes, and it's important to understand the root cause before implementing
+              a behavior modification plan. Here are the steps we can take to help manage
+              your dog's aggressioness.
+            </SystemChatItem>
+          </div>
         </div>
       </div>
       <div className={css``}>

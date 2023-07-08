@@ -1,10 +1,10 @@
 import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { FastSearchButtonSection } from "components/Prompt/FastSearchButtonSection";
+import { PromptSearchBar } from "components/Prompt/PromptSearchBar";
 import { SectionTitle } from "components/Prompt/SectionTitle";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
-import { PromptSearchBar } from "components/Prompt/PromptSearchBar";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
