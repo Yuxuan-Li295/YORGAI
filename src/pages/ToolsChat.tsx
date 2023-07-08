@@ -11,8 +11,6 @@ import { basis } from "components/constants/colors";
 import { Switch } from "components/shared/Switch";
 import { useCallback, useState } from "react";
 import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
-import { ReactComponent as Info } from "resources/img/info-01.svg";
-import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
 
 const ToolsChat = () => {
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
