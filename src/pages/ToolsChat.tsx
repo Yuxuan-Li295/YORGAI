@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
-import { SystemChatItem } from "components/SystemChatHistoryItem/SystemChatItem";
+import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
 import { basis } from "components/constants/colors";
 import { Switch } from "components/shared/Switch";
 import { useCallback, useMemo, useReducer, useState } from "react";

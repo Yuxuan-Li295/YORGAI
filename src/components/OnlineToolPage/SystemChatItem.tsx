@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { fill, basis } from "components/constants/colors";
 import { ReactComponent as SystemCopy } from "resources/img/SystemCopy.svg";
 
@@ -11,7 +11,24 @@ const SystemChatItem = ({
   children?: string;
 }) => {
   const handleCopy = () => {
-    navigator.clipboard.writeText(children || "");
+    // In case of non-secure browser context, we can't use navigator.clipboard
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(children || "");
+    } else
+      try {
+        // Fallback to execCommand
+        const textArea = document.createElement("textarea");
+        textArea.value = children || "";
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      } catch (err) {
+        // Todo: on fail?
+      }
   };
 
   return (
@@ -56,6 +73,7 @@ const SystemChatItem = ({
         >
           {children}
         </div>
+        {/* TODO: response to success / fail */}
         <SystemCopy onClick={handleCopy} />
       </div>
     </div>
