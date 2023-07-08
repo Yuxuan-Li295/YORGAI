@@ -26,7 +26,6 @@ const SystemChatItem = ({
         gap: 8px;
         display: flex;
         overflow: hidden;
-        position: relative;
         box-sizing: border-box;
       `}
     >
@@ -35,6 +34,7 @@ const SystemChatItem = ({
           display: flex;
           padding: 0px 205px;
           align-items: flex-start;
+          justify-content: center;
           gap: 20px;
           flex: 1;
         `}
