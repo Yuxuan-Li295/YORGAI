@@ -22,7 +22,7 @@ export const ChatHistoryItemInputContainer = ({
         gap: 8px;
         flex: 1 0 0;
         border-radius: 6px;
-        background: var(${fill.base.layer_chrome}, #fff);
+        background: ${fill.base.layer_chrome};
 
         /* dp/loop/primary/3dp */
         box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32),
