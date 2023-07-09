@@ -1,6 +1,6 @@
 import chatGPT from "resources/img/ChatGPT.png";
 import ListTask from "resources/img/ListTask.svg";
-import MultiTask from "resources/img/MultiTask.png";
+import MultiTask from "resources/img/MultiTask.svg";
 import ErnieBot from "resources/img/ErnieBotLogo.png";
 
 export const ChatGPTLogo = {
