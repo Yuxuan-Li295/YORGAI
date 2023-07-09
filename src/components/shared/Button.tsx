@@ -1,21 +1,26 @@
 import { css } from "@emotion/css";
-import { basis, fill } from "components/constants/colors";
+import { basis, fill, transparent } from "components/constants/colors";
 import React, { ReactElement } from "react";
 
 const Button = ({
   children,
   variant = "primary",
+  active = false,
   size = "xs",
-  icon,
+  prepend,
+  append,
+  ...props
 }: {
   children: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "tertiary";
+  active?: boolean;
   size?: "xs" | "sm";
-  icon?: ReactElement;
+  prepend?: ReactElement;
+  append?: ReactElement;
 } & React.ButtonHTMLAttributes<{}>) => {
-  // FIXME: the last variant of button
   const primary = (
     <button
+      {...props}
       className={css`
         display: flex;
         flex-direction: column;
@@ -29,6 +34,7 @@ const Button = ({
         font-family: inherit;
         white-space: nowrap;
         height: ${size === "sm" ? 32 : "auto"};
+        cursor: pointer;
 
         &:hover {
           background-color: #57c4b1;
@@ -65,7 +71,7 @@ const Button = ({
           color: white;
         `}
       >
-        {icon}
+        {prepend}
         <div
           className={css`
             font-weight: 500;
@@ -75,11 +81,14 @@ const Button = ({
         >
           {children}
         </div>
+        {append}
       </div>
     </button>
   );
+
   const secondary = (
     <button
+      {...props}
       className={css`
         display: flex;
         flex-direction: row;
@@ -97,6 +106,7 @@ const Button = ({
         border: none;
         white-space: nowrap;
         font-family: inherit;
+        cursor: pointer;
 
         &:hover {
           color: ${basis.text_muted};
@@ -118,16 +128,17 @@ const Button = ({
         }
       `}
     >
-      {icon && (
+      {prepend && (
         <div
           className={css`
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            color: ${basis.icon};
           `}
         >
-          {icon}
+          {prepend}
         </div>
       )}
       <div
@@ -139,13 +150,98 @@ const Button = ({
       >
         {children}
       </div>
+      {append && (
+        <div
+          className={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: ${basis.icon};
+          `}
+        >
+          {append}
+        </div>
+      )}
     </button>
   );
+
+  const tertiary = (
+    <button
+      {...props}
+      className={css`
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 12px;
+        color: ${active ? basis.text_loud : basis.text};
+        background: ${active ? basis.alt.bg_vibrant : transparent};
+        gap: 10px;
+        border-radius: 6px;
+        border: none;
+        white-space: nowrap;
+        font-family: inherit;
+        cursor: pointer;
+
+        &:hover {
+          color: ${active ? basis.text_loud : basis.text_muted};
+          background: ${active ? basis.alt.bg_vibrant : basis.alt.bg_muted};
+          border: none;
+        }
+
+        &:active {
+          color: ${basis.text_loud};
+          background: ${basis.alt.bg_vibrant};
+          border: none;
+        }
+      `}
+    >
+      {prepend && (
+        <div
+          className={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: ${basis.icon};
+          `}
+        >
+          {prepend}
+        </div>
+      )}
+      <div
+        className={css`
+          font-weight: 500;
+          font-size: ${size === "sm" ? "14px" : "12px"};
+          line-height: ${size === "sm" ? "20px" : "16px"};
+        `}
+      >
+        {children}
+      </div>
+      {append && (
+        <div
+          className={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: ${basis.icon};
+          `}
+        >
+          {append}
+        </div>
+      )}
+    </button>
+  );
+
   switch (variant) {
     case "primary":
       return primary;
     case "secondary":
       return secondary;
+    case "tertiary":
+      return tertiary;
   }
 };
 
