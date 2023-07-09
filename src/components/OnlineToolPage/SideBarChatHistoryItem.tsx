@@ -19,7 +19,7 @@ const BaseStyles = css`
   padding: 8px 4px 8px 12px;
   align-items: center;
   gap: 8px;
-  background: var(${fill.base.layer_on}, #fff);
+  background: ${fill.base.layer_on};
   cursor: pointer;
 `;
 
