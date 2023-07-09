@@ -11,6 +11,7 @@ import { ChatHistoryItemTrailContainer } from "./ChatHistoryItemTrailContainer";
 import { ChatHistoryItemLogoContainer } from "./ChatHistoryItemLogoContainer";
 import { ChatHistoryItemTextFrame } from "./ChatHistoryItemTextFrame";
 import { ChatHistoryItemInputContainer } from "./ChatHistoryItemInputContainer";
+import { fill } from "../constants/colors";
 
 const BaseStyles = css`
   display: flex;
@@ -18,7 +19,7 @@ const BaseStyles = css`
   padding: 8px 4px 8px 12px;
   align-items: center;
   gap: 8px;
-  background: var(--fill-base-layer-on, #fff);
+  background: var(${fill.base.layer_on}, #fff);
   cursor: pointer;
 `;
 
