@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import { css } from "@emotion/css";
-import { TagList } from "components/shared/TagList";
-import { ReactComponent as PinFilled } from "resources/img/PinFilled.svg";
 import { basis, white } from "components/constants/colors";
-import { ReactElement } from "react";
+import { TagList } from "components/shared/TagList";
+import { ReactElement, useState } from "react";
+import { ReactComponent as PinFilled } from "resources/img/PinFilled.svg";
 
 const ModelCard = ({
   title,
@@ -18,13 +17,6 @@ const ModelCard = ({
   tags: string[];
   icon: ReactElement;
 }) => {
-  const selectedStyle = css`
-    fill: #67cdbc;
-  `;
-
-  const defaultStyle = css`
-    fill: #808080;
-  `;
   const [isSelected, setIsSelected] = useState(false);
   const handleCardClick = () => {
     setIsSelected(!isSelected);
@@ -42,11 +34,10 @@ const ModelCard = ({
         gap: 10px;
         border-radius: 8px;
         background-color: ${white};
-        // border: 1px solid ${basis.border_subtle};
         border: 1px solid ${isSelected ? "#67cdbc" : basis.border_subtle};
         max-width: 100%;
       `}
-      onClick={handleCardClick} // Attach the event handler to the div
+      onClick={handleCardClick}
     >
       <div
         className={css`
@@ -104,18 +95,13 @@ const ModelCard = ({
               >
                 {title}
               </div>
-              <div
+              <PinFilled
                 className={css`
                   width: 14px;
                   height: 14px;
-                  fill: ${isSelected ? "#67cdbc" : "black"};
-                  /* Apply different fill color for the PinFilled SVG based on isSelected state */
+                  fill: ${isSelected ? "#67cdbc" : "#808080"};
                 `}
-              >
-                <PinFilled
-                  className={isSelected ? selectedStyle : defaultStyle}
-                />
-              </div>
+              />
             </div>
             <div
               className={css`
@@ -129,8 +115,7 @@ const ModelCard = ({
                 className={css`
                   overflow: hidden;
                   color: ${basis.text};
-                  text-overflow: ellipsis;
-                  whitespace: nowrap;
+                  white-space: nowrap;
                   font-size: 12px;
                   font-weight: 400;
                   line-height: 16px;
