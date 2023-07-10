@@ -9,8 +9,6 @@ import {
 import { Button } from "components/shared/Button";
 import { Dropdown, DropdownMenu } from "components/shared/Dropdown";
 import { Footer } from "components/shared/Footer";
-import { ModelCard } from "components/shared/ModelCard";
-import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
 import { Fragment } from "react";
 import { ReactComponent as ArrowAngleDownMd } from "resources/img/ArrowAngleDownMd.svg";
 import { ReactComponent as Calender } from "resources/img/Calender.svg";
@@ -29,8 +27,6 @@ const TextPrompts = () => {
       对接GPT3，200万人在用的写作助手。`,
       tags: ["写作", "文案", "作文", "办公"],
     });
-  const tags = ["大语言模型"];
-  const description = "官方GPT3.5, 200万人在用的写作助手";
 
   return (
     <div
@@ -160,36 +156,6 @@ const TextPrompts = () => {
             </Fragment>
           }
         />
-        <div
-          className={css`
-            display: flex;
-            align-items: flex-start;
-            gap: 24px;
-          `}
-        >
-          <ModelCard
-            title="CHATGPT3.5"
-            description={description}
-            price={0.004}
-            tags={tags}
-            icon={<OpenAI />}
-          />
-          <ModelCard
-            title="CHATGPT3.5"
-            description={description}
-            price={0.004}
-            tags={tags}
-            icon={<OpenAI />}
-          />
-          <ModelCard
-            title="CHATGPT3.5"
-            description={description}
-            price={0.004}
-            tags={tags}
-            icon={<OpenAI />}
-          />
-        </div>
-
         <div
           className={css`
             display: grid;
