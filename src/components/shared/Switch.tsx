@@ -1,54 +1,79 @@
 import { css } from "@emotion/css";
 import { basis, primary, white } from "components/constants/colors";
-import React, { useState } from "react";
 
-export const Switch: React.FC<{
+export const Switch = ({
+  variant = "thin",
+  enabled,
+  onToggle,
+}: {
   variant?: "thin" | "fat";
   enabled: boolean;
   onToggle: () => void;
-}> = ({ variant = "thin", enabled, onToggle }) => {
+}) => {
   return (
-    <div
+    <label
       className={css`
-        display: flex;
-        border-radius: 100px;
+        position: relative;
+        display: inline-block;
         box-shadow: 0px 1px 1px 0px rgba(79, 81, 89, 0.12) inset,
           0px 2px 4px 0px rgba(79, 81, 89, 0.08) inset,
           0px 0px 8px 0.5px rgba(79, 81, 89, 0.04) inset,
           0px 2px 2px -2px rgba(79, 81, 89, 0.16),
           0px 2px 5px -1px rgba(79, 81, 89, 0.03);
         width: 36px;
-        flex-direction: row;
-        align-items: center;
-        flex: 36px 0 0;
+        min-width: 36px;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.3s ease;
       `}
       style={{
         ...(enabled
-          ? { background: primary.bg_emphasis, justifyContent: "end" }
-          : { background: basis.alt.bg, justifyContent: "start" }),
+          ? { background: primary.bg_emphasis }
+          : { background: basis.alt.bg }),
         ...(variant === "thin"
-          ? { height: 16, padding: "0 0" }
-          : { height: 22, padding: "0 2px" }),
+          ? { height: 16, borderRadius: 8 }
+          : { height: 22, borderRadius: 11 }),
       }}
-      onClick={onToggle}
       aria-roledescription="switch"
       aria-checked={enabled}
     >
+      <input
+        type="checkbox"
+        checked={enabled}
+        onChange={onToggle}
+        className={css`
+          display: none;
+        `}
+      />
       <div
         className={css`
-          border-radius: 108px;
-          background: ${white};
+          position: absolute;
+          background: white;
           box-shadow: 0px -1px 3px 0px #fff inset,
-            0px 0px 0px 0.75px rgba(188, 189, 194, 0.2),
+            0px 0px 0px 0.8px rgba(188, 189, 194, 0.2),
             0px 4px 4px -4px rgba(79, 81, 89, 0.32),
             0px 4px 12px -2px rgba(79, 81, 89, 0.09);
+          transition: left 0.3s ease;
+          border-radius: 50%;
         `}
         style={
           variant === "thin"
-            ? { height: 20, width: 20 }
-            : { height: 18, width: 18 }
+            ? {
+                height: 20,
+                width: 20,
+                top: -2,
+                left: enabled ? 18 : -2,
+                background: white,
+              }
+            : {
+                height: 18,
+                width: 18,
+                top: 2,
+                left: enabled ? 16 : 2,
+                background: `linear-gradient(180deg, white 0%, ${basis.bg_muted} 100%)`,
+              }
         }
       />
-    </div>
+    </label>
   );
 };
