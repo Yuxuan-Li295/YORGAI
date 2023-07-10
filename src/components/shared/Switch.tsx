@@ -4,13 +4,9 @@ import React, { useState } from "react";
 
 export const Switch: React.FC<{
   variant?: "thin" | "fat";
-  callback?: (_: boolean) => void;
-}> = ({ variant = "thin", callback }) => {
-  const [isOn, setIsOn] = useState(false);
-  const handleClick = () => {
-    callback && callback(!isOn);
-    setIsOn(!isOn);
-  };
+  enabled: boolean;
+  onToggle: () => void;
+}> = ({ variant = "thin", enabled, onToggle }) => {
   return (
     <div
       className={css`
@@ -27,16 +23,16 @@ export const Switch: React.FC<{
         flex: 36px 0 0;
       `}
       style={{
-        ...(isOn
+        ...(enabled
           ? { background: primary.bg_emphasis, justifyContent: "end" }
           : { background: basis.alt.bg, justifyContent: "start" }),
         ...(variant === "thin"
           ? { height: 16, padding: "0 0" }
           : { height: 22, padding: "0 2px" }),
       }}
-      onClick={handleClick}
+      onClick={onToggle}
       aria-roledescription="switch"
-      aria-checked={isOn}
+      aria-checked={enabled}
     >
       <div
         className={css`
