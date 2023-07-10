@@ -28,6 +28,7 @@ export const PromptSearchBar = () => (
             border-bottom-left-radius: 8px;
             border: 1px solid ${basis.border_subtle};
             border-right: 0px;
+            background-color: ${basis.alt.bg_subtle};
             &:hover {
               background-color: ${basis.bg_muted};
             }

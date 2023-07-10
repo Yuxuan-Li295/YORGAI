@@ -3,10 +3,8 @@ import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
 import { basis } from "components/constants/colors";
-import { Switch } from "components/shared/Switch";
 import { useCallback, useMemo, useReducer, useState } from "react";
 import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
-import { ReactComponent as Info } from "resources/img/info-01.svg";
 import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
 
 const ToolsChat = () => {
@@ -179,24 +177,6 @@ const ToolsChat = () => {
                 >
                   新的对话
                 </span>
-                <Switch
-                  enabled={false}
-                  // enabled={mode === ToolsMode.Compose}
-                  onToggle={switchToggleCallback}
-                />
-                <span
-                  className={css`
-                    white-space: nowrap;
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 20px;
-                    color: ${basis.text};
-                  `}
-                >
-                  创作模式
-                </span>
-                <Info />
               </>
             ) : mode === ToolsMode.Compose ? (
               <></>
