@@ -6,6 +6,7 @@ import { basis } from "components/constants/colors";
 import { useCallback, useMemo, useReducer, useState } from "react";
 import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
 import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
+import { ChatInputBar } from "components/Chat/ChatMenu/ChatInputBar";
 
 const ToolsChat = () => {
   enum ToolsMode {
@@ -202,6 +203,7 @@ const ToolsChat = () => {
                   manage your dog's aggressioness.
                 </SystemChatItem>
               </div>
+              <ChatInputBar />
             </>
           ) : mode === ToolsMode.Compose ? (
             <>compose</>

@@ -25,15 +25,13 @@ export const Switch = ({
         cursor: pointer;
         user-select: none;
         transition: background 0.3s ease;
+        background: ${enabled ? primary.bg_emphasis : basis.alt.bg};
       `}
-      style={{
-        ...(enabled
-          ? { background: primary.bg_emphasis }
-          : { background: basis.alt.bg }),
-        ...(variant === "thin"
+      style={
+        variant === "thin"
           ? { height: 16, borderRadius: 8 }
-          : { height: 22, borderRadius: 11 }),
-      }}
+          : { height: 22, borderRadius: 11 }
+      }
       aria-roledescription="switch"
       aria-checked={enabled}
     >

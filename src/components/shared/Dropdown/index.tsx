@@ -13,15 +13,27 @@ const fadeIn = keyframes`
 
 const Dropdown = ({
   children,
-  menu,
   hoverable = false,
+  above = false,
+  menuItems,
+  setValue,
 }: {
   children: ReactElement;
-  menu: ReactElement;
   hoverable?: boolean;
+  above?: boolean;
+  menuItems: string[];
+  setValue?: (item: string) => void;
 }) => {
   const [expand, setExpand] = useState(false);
+  const [offset, setOffset] = useState<number>();
+
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (dropdownRef.current !== null) {
+      setOffset(dropdownRef.current.clientHeight);
+    }
+  }, [dropdownRef]);
 
   const onMouseEnter = () => {
     if (hoverable) {
@@ -72,7 +84,9 @@ const Dropdown = ({
           onMouseLeave={onMouseLeave}
           className={css`
             position: absolute;
-            padding-top: 8px;
+            bottom: ${above ? offset + "px" : "unset"};
+            left: 1px;
+            padding: 8px 0;
             animation: ${fadeIn} 0.3s ease-in-out;
             min-width: 100%;
             z-index: 10;
@@ -81,11 +95,15 @@ const Dropdown = ({
             setExpand(false);
           }}
         >
-          {menu}
+          <DropdownMenu
+            menuItems={menuItems}
+            setValue={setValue}
+            above={above}
+          />
         </div>
       )}
     </div>
   );
 };
 
-export { Dropdown, DropdownMenu };
+export { Dropdown };
