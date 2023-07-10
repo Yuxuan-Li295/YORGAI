@@ -15,17 +15,6 @@ const DropdownMenu = ({
           0px 16px 24px -8px rgba(79, 81, 89, 0.2);
         border-radius: 6px;
 
-        & > div {
-          background-color: white;
-          padding: 10px 12px;
-          border: 1px solid ${basis.alt.border};
-          white-space: nowrap;
-
-          &:hover {
-            background-color: ${basis.bg_subtle};
-          }
-        }
-
         & > div:first-of-type {
           border-top-left-radius: 6px;
           border-top-right-radius: 6px;
@@ -43,7 +32,24 @@ const DropdownMenu = ({
       `}
     >
       {menuItems.map((item, i) => (
-        <div key={i} onClick={() => setValue && setValue(item)}>
+        <div
+          className={css`
+            background-color: white;
+            padding: 10px 12px;
+            border: 1px solid ${basis.alt.border};
+            white-space: nowrap;
+            cursor: pointer;
+            color: ${basis.text_loud};
+            font-size: 14px;
+            line-height: 20px;
+
+            &:hover {
+              background-color: ${basis.bg_subtle};
+            }
+          `}
+          key={i}
+          onClick={() => setValue && setValue(item)}
+        >
           {item}
         </div>
       ))}

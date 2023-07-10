@@ -21,20 +21,17 @@ const Dropdown = ({
   hoverable?: boolean;
 }) => {
   const [expand, setExpand] = useState(false);
-  const [selectable, setSelectable] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const onMouseEnter = () => {
     if (hoverable) {
       setExpand(true);
-      setSelectable(true);
     }
   };
 
   const onMouseLeave = () => {
     if (hoverable) {
       setExpand(false);
-      setTimeout(() => setSelectable(false), 300);
     }
   };
 
@@ -69,21 +66,24 @@ const Dropdown = ({
       >
         {children}
       </div>
-      <div
-        className={css`
-          position: absolute;
-          padding-top: 8px;
-          min-width: 100%;
-          z-index: 10;
-        `}
-        style={{
-          opacity: expand ? 1 : 0,
-          animation: expand ? `${fadeIn} 0.3s ease-in-out` : "",
-          pointerEvents: selectable ? "all" : "none",
-        }}
-      >
-        {menu}
-      </div>
+      {expand && (
+        <div
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className={css`
+            position: absolute;
+            padding-top: 8px;
+            animation: ${fadeIn} 0.3s ease-in-out;
+            min-width: 100%;
+            z-index: 10;
+          `}
+          onClick={() => {
+            setExpand(false);
+          }}
+        >
+          {menu}
+        </div>
+      )}
     </div>
   );
 };
