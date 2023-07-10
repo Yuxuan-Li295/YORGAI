@@ -1,12 +1,12 @@
 import { css } from "@emotion/css";
+import { ChatInput } from "components/Chat/ChatInput";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
-import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
+import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
 import { useCallback, useMemo, useReducer, useState } from "react";
 import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
 import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
-import { ChatInputBar } from "components/Chat/ChatMenu/ChatInputBar";
 
 const ToolsChat = () => {
   enum ToolsMode {
@@ -192,8 +192,24 @@ const ToolsChat = () => {
           {mode === ToolsMode.Home ? (
             <>home</>
           ) : mode === ToolsMode.Standard ? (
-            <>
-              <div>
+            <div
+              className={css`
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                border-radius: 8px;
+                border: 1px solid ${basis.border};
+                margin: 12px;
+              `}
+            >
+              <div
+                className={css`
+                  flex: 1;
+                  & :first-child {
+                    border-radius: 8px;
+                  }
+                `}
+              >
                 <SystemChatItem prepend={<SystemChatAvatar />}>
                   As a pet behaviorist, I'm here to help you address the
                   aggression issues with your German Shepherd. Aggression in
@@ -203,8 +219,8 @@ const ToolsChat = () => {
                   manage your dog's aggressioness.
                 </SystemChatItem>
               </div>
-              <ChatInputBar />
-            </>
+              <ChatInput />
+            </div>
           ) : mode === ToolsMode.Compose ? (
             <>compose</>
           ) : mode === ToolsMode.Paint ? (
