@@ -1,7 +1,9 @@
 import { css } from "@emotion/css";
+import { ChatInput } from "components/Chat/ChatInput";
+import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
-import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
+import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
 import { useCallback, useMemo, useReducer, useState } from "react";
 import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
@@ -191,8 +193,24 @@ const ToolsChat = () => {
           {mode === ToolsMode.Home ? (
             <>home</>
           ) : mode === ToolsMode.Standard ? (
-            <>
-              <div>
+            <div
+              className={css`
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                border-radius: 8px;
+                border: 1px solid ${basis.border};
+                margin: 12px;
+              `}
+            >
+              <div
+                className={css`
+                  flex: 1;
+                  & > :first-child {
+                    border-radius: 7px;
+                  }
+                `}
+              >
                 <SystemChatItem prepend={<SystemChatAvatar />}>
                   As a pet behaviorist, I'm here to help you address the
                   aggression issues with your German Shepherd. Aggression in
@@ -201,8 +219,10 @@ const ToolsChat = () => {
                   modification plan. Here are the steps we can take to help
                   manage your dog's aggressioness.
                 </SystemChatItem>
+                <DialogHeader />
               </div>
-            </>
+              <ChatInput />
+            </div>
           ) : mode === ToolsMode.Compose ? (
             <>compose</>
           ) : mode === ToolsMode.Paint ? (

@@ -1,6 +1,5 @@
-import React from "react";
 import { css } from "@emotion/css";
-import { basis } from "../constants/colors";
+import { basis } from "components/constants/colors";
 
 export const ChatHistoryItemLogoContainer = ({
   logoBackground,
@@ -19,7 +18,6 @@ export const ChatHistoryItemLogoContainer = ({
         align-self: stretch;
       `}
     >
-      {/* App logo container */}
       <div
         className={css`
           width: 28px;
@@ -51,7 +49,7 @@ export const ChatHistoryItemLogoContainer = ({
             `}
             src={logo}
             alt=""
-          ></img>
+          />
         </div>
       </div>
     </div>

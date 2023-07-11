@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { Dropdown, DropdownMenu } from "components/shared/Dropdown";
+import { Dropdown } from "components/shared/Dropdown";
 import { ReactComponent as ArrowAngleDownLg } from "resources/img/ArrowAngleDownLg.svg";
 import { Append } from "./Append";
 import { Input } from "./Input";
@@ -8,10 +8,7 @@ import { Input } from "./Input";
 export const PromptSearchBar = () => (
   <Input
     prepend={
-      <Dropdown
-        menu={<DropdownMenu menuItems={["提示词", "AI 工具"]} />}
-        hoverable
-      >
+      <Dropdown menuItems={["提示词", "AI 工具"]} hoverable>
         <div
           className={css`
             display: flex;

@@ -11,7 +11,7 @@ const Button = ({
   append,
   ...props
 }: {
-  children: string;
+  children: ReactElement | string;
   variant?: "primary" | "secondary" | "tertiary";
   active?: boolean;
   size?: "xs" | "sm";
@@ -65,22 +65,17 @@ const Button = ({
           gap: 10px;
           background: linear-gradient(#67cdbc, #67cdbc) padding-box,
             linear-gradient(to bottom, #ffffff52, #ffffff00 60%) border-box;
-          padding: 5px 11px;
+          padding: ${typeof children === "string" ? "5px 11px" : "5px"};
           border: 1px solid transparent;
           border-radius: 6px;
           color: white;
+          font-weight: 500;
+          font-size: ${size === "sm" ? "14px" : "12px"};
+          line-height: ${size === "sm" ? "20px" : "16px"};
         `}
       >
         {prepend}
-        <div
-          className={css`
-            font-weight: 500;
-            font-size: ${size === "sm" ? "14px" : "12px"};
-            line-height: ${size === "sm" ? "20px" : "16px"};
-          `}
-        >
-          {children}
-        </div>
+        {children}
         {append}
       </div>
     </button>
@@ -94,7 +89,7 @@ const Button = ({
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        padding: 6px 12px;
+        padding: ${typeof children === "string" ? "6px 12px" : "6px"};
         color: ${basis.text};
         gap: 10px;
         background: ${fill.base.layer_chrome};
@@ -107,6 +102,9 @@ const Button = ({
         white-space: nowrap;
         font-family: inherit;
         cursor: pointer;
+        font-weight: 500;
+        font-size: ${size === "sm" ? "14px" : "12px"};
+        line-height: ${size === "sm" ? "20px" : "16px"};
 
         &:hover {
           color: ${basis.text_muted};
@@ -141,15 +139,21 @@ const Button = ({
           {prepend}
         </div>
       )}
-      <div
-        className={css`
-          font-weight: 500;
-          font-size: ${size === "sm" ? "14px" : "12px"};
-          line-height: ${size === "sm" ? "20px" : "16px"};
-        `}
-      >
-        {children}
-      </div>
+      {typeof children === "string" ? (
+        children
+      ) : (
+        <div
+          className={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: ${basis.icon};
+          `}
+        >
+          {children}
+        </div>
+      )}
       {append && (
         <div
           className={css`
@@ -174,7 +178,7 @@ const Button = ({
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        padding: 6px 12px;
+        padding: ${typeof children === "string" ? "6px 12px" : "6px"};
         color: ${active ? basis.text_loud : basis.text};
         background: ${active ? basis.alt.bg_vibrant : transparent};
         gap: 10px;
@@ -183,6 +187,9 @@ const Button = ({
         white-space: nowrap;
         font-family: inherit;
         cursor: pointer;
+        font-weight: 500;
+        font-size: ${size === "sm" ? "14px" : "12px"};
+        line-height: ${size === "sm" ? "20px" : "16px"};
 
         &:hover {
           color: ${active ? basis.text_loud : basis.text_muted};
@@ -210,15 +217,21 @@ const Button = ({
           {prepend}
         </div>
       )}
-      <div
-        className={css`
-          font-weight: 500;
-          font-size: ${size === "sm" ? "14px" : "12px"};
-          line-height: ${size === "sm" ? "20px" : "16px"};
-        `}
-      >
-        {children}
-      </div>
+      {typeof children === "string" ? (
+        children
+      ) : (
+        <div
+          className={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: ${basis.icon};
+          `}
+        >
+          {children}
+        </div>
+      )}
       {append && (
         <div
           className={css`

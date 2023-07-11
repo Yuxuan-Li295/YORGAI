@@ -7,7 +7,7 @@ import {
   SecondaryNavBar,
 } from "components/SecondaryNavBar";
 import { Button } from "components/shared/Button";
-import { Dropdown, DropdownMenu } from "components/shared/Dropdown";
+import { Dropdown } from "components/shared/Dropdown";
 import { Footer } from "components/shared/Footer";
 import { ModelCard } from "components/shared/ModelCard";
 import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
@@ -110,14 +110,10 @@ const TextPrompts = () => {
           prepend={
             <Fragment>
               <Dropdown
-                menu={
-                  <DropdownMenu
-                    menuItems={["111", "111", "222"]}
-                    setValue={(item: string) => {
-                      console.log(item);
-                    }}
-                  />
-                }
+                menuItems={["111", "111", "222"]}
+                setValue={(item: string) => {
+                  console.log(item);
+                }}
               >
                 <Button
                   variant="tertiary"
