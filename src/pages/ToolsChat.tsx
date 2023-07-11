@@ -3,16 +3,16 @@ import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
 import { basis } from "components/constants/colors";
-import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
 import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
 import { ChatInputBar } from "components/Chat/ChatMenu/ChatInputBar";
 import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
 
-declare global {
-  var debugEnableKBMode: () => void;
-  var debugDisableKBMode: () => void;
-}
+// declare global {
+//   var debugEnableKBMode: () => void;
+//   var debugDisableKBMode: () => void;
+// }
 
 const ToolsChat = () => {
   enum ToolsMode {
@@ -83,10 +83,11 @@ const ToolsChat = () => {
   const unsetKnowledgeBaseMode = () =>
     changeModeState({ cmd: "disableKnowledgeBaseMode" });
   const [knowledgeBases, setKnowledgeBases] = useState();
-  useEffect(() => {
-    globalThis.debugEnableKBMode = setKnowledgeBaseMode;
-    globalThis.debugDisableKBMode = setKnowledgeBaseMode;
-  });
+
+  // useEffect(() => {
+  //   globalThis.debugEnableKBMode = setKnowledgeBaseMode;
+  //   globalThis.debugDisableKBMode = setKnowledgeBaseMode;
+  // });
 
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
 
