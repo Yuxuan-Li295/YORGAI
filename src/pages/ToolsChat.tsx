@@ -3,10 +3,16 @@ import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
 import { basis } from "components/constants/colors";
-import { useCallback, useMemo, useReducer, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
 import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
 import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
 import { ChatInputBar } from "components/Chat/ChatMenu/ChatInputBar";
+import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
+
+declare global {
+  var debugEnableKBMode: () => void;
+  var debugDisableKBMode: () => void;
+}
 
 const ToolsChat = () => {
   enum ToolsMode {
@@ -40,7 +46,6 @@ const ToolsChat = () => {
 
   const [modeState, changeModeState] = useReducer(
     (prevState: ToolsModeState, msg: ModeMsg) => {
-      console.log(msg);
       switch (msg.cmd) {
         case "enableKnowledgeBaseMode":
           return {
@@ -77,15 +82,13 @@ const ToolsChat = () => {
     changeModeState({ cmd: "enableKnowledgeBaseMode" });
   const unsetKnowledgeBaseMode = () =>
     changeModeState({ cmd: "disableKnowledgeBaseMode" });
+  const [knowledgeBases, setKnowledgeBases] = useState();
+  useEffect(() => {
+    globalThis.debugEnableKBMode = setKnowledgeBaseMode;
+    globalThis.debugDisableKBMode = setKnowledgeBaseMode;
+  });
 
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
-  const switchToggleCallback = useCallback(
-    () =>
-      mode === ToolsMode.Standard
-        ? showNormalMode(ToolsMode.Compose)
-        : showNormalMode(ToolsMode.Standard),
-    [changeModeState, mode],
-  );
 
   return (
     <div
@@ -94,7 +97,6 @@ const ToolsChat = () => {
         flex-direction: column;
         width: 100vw;
         height: 100vh;
-        min-width: 1200px;
         background: white;
       `}
     >
@@ -125,6 +127,7 @@ const ToolsChat = () => {
             display: flex;
             flex-direction: column;
             align-items: stretch;
+            overflow: hidden;
           `}
         >
           <div
@@ -141,9 +144,6 @@ const ToolsChat = () => {
             <SideBarLeftDark
               aria-roledescription="button"
               onClick={() => setIsSidebarOpened(!isSidebarOpened)}
-              className={css`
-                margin-right: 101;
-              `}
             />
             {mode === ToolsMode.Home ? (
               <span
@@ -186,7 +186,21 @@ const ToolsChat = () => {
             ) : mode === ToolsMode.Podcast ? (
               "podcast mode"
             ) : (
-              "kb mode"
+              <span
+                className={css`
+                  flex: 100vw 0 1;
+                  text-align: center;
+                  line-height: 20px;
+                  font-family: inherit;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: 20px;
+                  color: ${basis.text_loud};
+                `}
+              >
+                我的知识库
+              </span>
             )}
           </div>
           {mode === ToolsMode.Home ? (
@@ -212,7 +226,7 @@ const ToolsChat = () => {
           ) : mode === ToolsMode.Podcast ? (
             <>podcast</>
           ) : (
-            <>knowledge base</>
+            <KnowledgeBase />
           )}
         </div>
       </div>

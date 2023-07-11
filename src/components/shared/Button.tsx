@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis, fill, transparent } from "components/constants/colors";
-import React, { ReactElement } from "react";
+import React, { PropsWithChildren, ReactElement } from "react";
 
 const Button = ({
   children,
@@ -10,14 +10,15 @@ const Button = ({
   prepend,
   append,
   ...props
-}: {
-  children: string;
-  variant?: "primary" | "secondary" | "tertiary";
-  active?: boolean;
-  size?: "xs" | "sm";
-  prepend?: ReactElement;
-  append?: ReactElement;
-} & React.ButtonHTMLAttributes<{}>) => {
+}: PropsWithChildren<
+  {
+    variant?: "primary" | "secondary" | "tertiary";
+    active?: boolean;
+    size?: "xs" | "sm";
+    prepend?: ReactElement;
+    append?: ReactElement;
+  } & React.ButtonHTMLAttributes<HTMLButtonElement>
+>) => {
   const primary = (
     <button
       {...props}
@@ -57,7 +58,8 @@ const Button = ({
     >
       <div
         className={css`
-          flex: 1;
+          flex-grow: 0;
+          flex-shrink: 0;
           display: flex;
           flex-direction: row;
           justify-content: center;
@@ -74,8 +76,13 @@ const Button = ({
         {prepend}
         <div
           className={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
             font-weight: 500;
             font-size: ${size === "sm" ? "14px" : "12px"};
+            height: ${size === "sm" ? "20px" : "16px"};
             line-height: ${size === "sm" ? "20px" : "16px"};
           `}
         >
