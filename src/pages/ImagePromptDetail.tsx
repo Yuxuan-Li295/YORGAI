@@ -8,7 +8,7 @@ import {
   SecondaryNavBar,
 } from "components/SecondaryNavBar";
 import { basis } from "components/constants/colors";
-import { Avatar } from "components/shared/Avatar";
+import { UserAvatar } from "components/shared/UserAvatar";
 import { Breadcrumb } from "components/shared/Breadcrumb";
 import { Footer } from "components/shared/Footer";
 import Bird from "resources/img/bird.jpg";
@@ -18,7 +18,7 @@ export const ImagePromptDetail = () => {
   const tags = ["写作", "文案", "作文", "办公"];
   const title = "角色扮演生成器";
   const userName = "Dennis";
-  const userAvatar = <Avatar size={24} />;
+  const userAvatar = <UserAvatar size={24} />;
   const rate = 4.9;
   const commentCount = 2130;
   const text = `我希望你扮演一位英语口语教师和提高者。\

@@ -1,6 +1,7 @@
 import { css } from "@emotion/css";
+import { basis } from "components/constants/colors";
+import { Button } from "components/shared/Button";
 import { ReactElement } from "react";
-import { fill, basis } from "components/constants/colors";
 import { ReactComponent as SystemCopy } from "resources/img/SystemCopy.svg";
 
 const SystemChatItem = ({
@@ -34,47 +35,38 @@ const SystemChatItem = ({
   return (
     <div
       className={css`
-        border-bottom: 1px solid ${basis.alt.border_subtle};
-        background: ${fill.base.layer_chrome};
-        backdrop-filter: blur(30px);
-        padding: 20px 0px;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
         display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px 200px;
+        border-bottom: 1px solid ${basis.alt.border_subtle};
+        background: ${basis.bg};
         overflow: hidden;
         box-sizing: border-box;
       `}
     >
+      {prepend}
       <div
         className={css`
+          width: 100%;
           display: flex;
-          padding: 0px 205px;
-          align-items: flex-start;
-          justify-content: center;
-          gap: 20px;
-          flex: 1;
+          color: ${basis.text_loud};
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
         `}
       >
-        <div>{prepend}</div>
-        <div
-          className={css`
-            display: flex;
-            width: 666px;
-            align-items: flex-end;
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-            color: ${basis.text_loud};
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 20px;
-          `}
-        >
-          {children}
-        </div>
-        {/* TODO: response to success / fail */}
-        <SystemCopy onClick={handleCopy} />
+        {children}
+      </div>
+      <div
+        className={css`
+          margin-top: -4px;
+        `}
+      >
+        <Button variant="tertiary" onClick={handleCopy}>
+          <SystemCopy />
+        </Button>
       </div>
     </div>
   );
