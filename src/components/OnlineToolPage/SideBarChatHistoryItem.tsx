@@ -15,7 +15,7 @@ import { fill } from "../constants/colors";
 
 const BaseStyles = css`
   display: flex;
-  width: 256px;
+  width: 244px;
   padding: 8px 4px 8px 12px;
   align-items: center;
   gap: 8px;

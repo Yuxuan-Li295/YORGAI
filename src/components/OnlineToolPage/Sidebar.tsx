@@ -1,10 +1,37 @@
 import { css } from "@emotion/css";
 import { basis, zinc } from "components/constants/colors";
+import React from "react";
 import { ReactComponent as AddSquare } from "resources/img/AddSquare.svg";
+import ChatGPT from "resources/img/ChatGPT.png";
 import { ReactComponent as Diamond } from "resources/img/Diamond.svg";
 import { ReactComponent as Home } from "resources/img/Home.svg";
 import { SideBarButton } from "./SideBarButton";
-import React from "react";
+import { SideBarChatHistoryItem } from "./SideBarChatHistoryItem";
+
+const chatHistoryData = [
+  {
+    day: '今天',
+    items: [
+      { title: '新的会话', rightSubtitle: 'ChatGPT4.0' },
+      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5'},
+    ],
+  },
+  {
+    day: '昨天',
+    items: [
+      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5'},
+      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5'},
+    ],
+  },
+  {
+    day: '过去7天',
+    items: [
+      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5'},
+      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5'},
+      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5'},
+    ],
+  },
+];
 
 const SideBar = ({
   isSidebarOpen,
@@ -38,7 +65,7 @@ const SideBar = ({
           align-items: flex-start;
         `}
       >
-        {["今天", "昨天", "过去7天"].map((day) => (
+        {chatHistoryData.map(({day, items}) => (
           <React.Fragment key={day}>
             <div
               className={css`
@@ -63,8 +90,19 @@ const SideBar = ({
                 {day}
               </span>
             </div>
-            {[...Array(10).keys()].map((i) => (
-              <div key={i}>SideBarChatHistoryCard Placeholder {i + 1}</div>
+            {items.map((item,i) => (
+              <div 
+                key={i}
+              >
+                <SideBarChatHistoryItem
+                  itemIsSelected={false}
+                  displayedLogo={ChatGPT}
+                  logoBackground={"#80A99D"}
+                  title={item.title}
+                  leftSubtitle="对话"
+                  rightSubtitle={item.rightSubtitle}
+                />
+              </div>
             ))}
           </React.Fragment>
         ))}
