@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
+import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
 import { UserChatItem } from "components/OnlineToolPage/UserChatItem";
@@ -248,6 +249,7 @@ const ToolsChat = () => {
                   modification plan. Here are the steps we can take to help
                   manage your dog's aggressions.
                 </SystemChatItem>
+                <DialogHeader />
               </div>
               <ChatInput />
             </div>
