@@ -380,7 +380,11 @@ export const KnowledgeBase = () => {
           {selectedDir.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
-              <TableCell height={32} variant={idx % 2 === 0 ? "light" : "dark"}>
+              <TableCell
+                key={idx}
+                height={32}
+                variant={idx % 2 === 0 ? "light" : "dark"}
+              >
                 <CheckBox
                   enabled={file.selected}
                   onToggle={() => toggleFile(idx)}
@@ -395,7 +399,11 @@ export const KnowledgeBase = () => {
           {selectedDir.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
-              <TableCell height={32} variant={idx % 2 === 0 ? "light" : "dark"}>
+              <TableCell
+                key={idx}
+                height={32}
+                variant={idx % 2 === 0 ? "light" : "dark"}
+              >
                 <div
                   className={css`
                     display: flex;
@@ -434,7 +442,11 @@ export const KnowledgeBase = () => {
           {selectedDir.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
-              <TableCell height={32} variant={idx % 2 === 0 ? "light" : "dark"}>
+              <TableCell
+                key={idx}
+                height={32}
+                variant={idx % 2 === 0 ? "light" : "dark"}
+              >
                 <Tag>{file.status}</Tag>
               </TableCell>
             ))}
@@ -446,7 +458,11 @@ export const KnowledgeBase = () => {
           {selectedDir.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
-              <TableCell height={32} variant={idx % 2 === 0 ? "light" : "dark"}>
+              <TableCell
+                key={idx}
+                height={32}
+                variant={idx % 2 === 0 ? "light" : "dark"}
+              >
                 {file.uploadTime}
               </TableCell>
             ))}
@@ -458,7 +474,11 @@ export const KnowledgeBase = () => {
           {selectedDir.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
-              <TableCell height={32} variant={idx % 2 === 0 ? "light" : "dark"}>
+              <TableCell
+                key={idx}
+                height={32}
+                variant={idx % 2 === 0 ? "light" : "dark"}
+              >
                 {file.size}
               </TableCell>
             ))}
@@ -470,7 +490,11 @@ export const KnowledgeBase = () => {
           {selectedDir.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
-              <TableCell height={32} variant={idx % 2 === 0 ? "light" : "dark"}>
+              <TableCell
+                key={idx}
+                height={32}
+                variant={idx % 2 === 0 ? "light" : "dark"}
+              >
                 {file.type}
               </TableCell>
             ))}
