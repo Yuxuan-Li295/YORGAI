@@ -17,65 +17,61 @@ import { CheckBox } from "components/shared/CheckBox";
 import { Tag } from "components/shared/Tag";
 
 export const KnowledgeBase = () => {
-  enum KnowledgeBaseFileStatus {
+  enum FileStatus {
     Offline = "Offline",
     Done = "Done",
     Protect = "Protect",
     Testing = "Testing",
   }
-  type KnowledgeBaseFile = {
+  type FileMeta = {
     name: string;
     visible: boolean;
-    status: KnowledgeBaseFileStatus;
+    status: FileStatus;
     selected: boolean;
     uploadTime: string;
     size: string;
     type: string;
   };
-  type KnowledgeBaseDir = {
+  type KnowledgeBase = {
     name: string;
     selectedCount: number;
-    files: KnowledgeBaseFile[];
+    files: FileMeta[];
   };
-  type KnowledgeBaseState = {
-    dirs: KnowledgeBaseDir[];
+  type ToolState = {
+    kbList: KnowledgeBase[];
     selected: number;
     maxSelectedCount: number;
     initialized: boolean;
   };
-  type InitMsg = { cmd: "loadDir"; dirs: KnowledgeBaseDir[] };
-  type SetDirMsg = { cmd: "setDir"; idx: number };
-  type ToggleFileMsg = { cmd: "toggleFile"; dirIdx?: number; fileIdx: number };
-  type ToggleAllFilesMsg = { cmd: "toggleAllFiles"; dirIdx?: number };
-  type KnowledgeBaseMsg =
-    | InitMsg
-    | SetDirMsg
-    | ToggleFileMsg
-    | ToggleAllFilesMsg;
+  type InitMsg = { cmd: "loadKB"; kbList: KnowledgeBase[] };
+  type SetDirMsg = { cmd: "setKB"; idx: number };
+  type ToggleFileMsg = { cmd: "toggleFile"; kbIdx?: number; fileIdx: number };
+  type ToggleAllFilesMsg = { cmd: "toggleAllFiles"; kbIdx?: number };
+  type ToolMsg = InitMsg | SetDirMsg | ToggleFileMsg | ToggleAllFilesMsg;
   const [state, changeState] = useReducer(
-    (prevState: KnowledgeBaseState, msg: KnowledgeBaseMsg) => {
+    (prevState: ToolState, msg: ToolMsg) => {
       switch (msg.cmd) {
-        case "loadDir":
-          return { ...prevState, dirs: msg.dirs, initialized: true };
-        case "setDir":
+        case "loadKB":
+          return { ...prevState, kbList: msg.kbList, initialized: true };
+        case "setKB":
           return { ...prevState, selected: msg.idx };
         case "toggleFile":
-          if (msg.dirIdx === undefined) {
-            msg.dirIdx = prevState.selected;
+          if (msg.kbIdx === undefined) {
+            msg.kbIdx = prevState.selected;
           }
           if (
-            prevState.dirs
+            prevState.kbList
               .map(({ selectedCount }) => selectedCount)
               .reduce((x, y) => x + (y ?? 0), 0) >=
               prevState.maxSelectedCount &&
-            !prevState.dirs[msg.dirIdx].files[msg.fileIdx].selected
+            !prevState.kbList[msg.kbIdx].files[msg.fileIdx].selected
           ) {
             return prevState;
           }
           return {
             ...prevState,
-            dirs: prevState.dirs.map((dir, idx) =>
-              idx !== msg.dirIdx
+            kbList: prevState.kbList.map((dir, idx) =>
+              idx !== msg.kbIdx
                 ? dir
                 : {
                     ...dir,
@@ -91,14 +87,14 @@ export const KnowledgeBase = () => {
             ),
           };
         case "toggleAllFiles":
-          if (msg.dirIdx === undefined) {
-            msg.dirIdx = prevState.selected;
+          if (msg.kbIdx === undefined) {
+            msg.kbIdx = prevState.selected;
           }
           if (
-            prevState.dirs[msg.dirIdx].files.length +
-              prevState.dirs
+            prevState.kbList[msg.kbIdx].files.length +
+              prevState.kbList
                 .map(({ selectedCount }, idx) =>
-                  idx === msg.dirIdx ? 0 : selectedCount,
+                  idx === msg.kbIdx ? 0 : selectedCount,
                 )
                 .reduce((x, y) => x + (y ?? 0), 0) >
             prevState.maxSelectedCount
@@ -107,8 +103,8 @@ export const KnowledgeBase = () => {
           }
           return {
             ...prevState,
-            dirs: prevState.dirs.map((dir, idx) =>
-              idx !== msg.dirIdx
+            kbList: prevState.kbList.map((dir, idx) =>
+              idx !== msg.kbIdx
                 ? dir
                 : {
                     ...dir,
@@ -126,13 +122,13 @@ export const KnowledgeBase = () => {
       }
     },
     {
-      dirs: [
+      kbList: [
         ...Array(20).fill({
           name: "小鱼厂最新设计",
           files: Array(10).fill({
             visible: true,
             name: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            status: KnowledgeBaseFileStatus.Done,
+            status: FileStatus.Done,
             uploadTime: "2023-03-30 01:10",
             size: "1000 KB",
             type: "pdf",
@@ -145,11 +141,13 @@ export const KnowledgeBase = () => {
     },
   );
 
-  const selectedDir = state.dirs[state.selected];
-  const totSelectedCount = state.dirs
+  const selectedKB = state.kbList[state.selected];
+  const totSelectedCount = state.kbList
     .map(({ selectedCount }) => selectedCount)
     .reduce((x, y) => x + (y ?? 0), 0);
-  const setDir = (idx: number) => changeState({ cmd: "setDir", idx });
+  const loadKB = (kb: KnowledgeBase[]) =>
+    changeState({ cmd: "loadKB", kbList: kb });
+  const setKB = (idx: number) => changeState({ cmd: "setKB", idx });
   const toggleAllFiles = () => changeState({ cmd: "toggleAllFiles" });
   const toggleFile = (idx: number) =>
     changeState({ cmd: "toggleFile", fileIdx: idx });
@@ -203,10 +201,10 @@ export const KnowledgeBase = () => {
           gap: 4px;
         `}
       >
-        {state.dirs.map((dir, idx) => (
+        {state.kbList.map((dir, idx) => (
           <div
             key={idx}
-            onClick={() => setDir(idx)}
+            onClick={() => setKB(idx)}
             className={css`
               display: flex;
               height: 20px;
@@ -373,11 +371,11 @@ export const KnowledgeBase = () => {
         <TableCol>
           <TableCell variant="dark" sep>
             <CheckBox
-              enabled={selectedDir.selectedCount === selectedDir.files.length}
+              enabled={selectedKB.selectedCount === selectedKB.files.length}
               onToggle={toggleAllFiles}
             />
           </TableCell>
-          {selectedDir.files
+          {selectedKB.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
               <TableCell
@@ -396,7 +394,7 @@ export const KnowledgeBase = () => {
           <TableCell variant="dark" sep>
             <TabelLabel label="名称" />
           </TableCell>
-          {selectedDir.files
+          {selectedKB.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
               <TableCell
@@ -439,7 +437,7 @@ export const KnowledgeBase = () => {
           <TableCell variant="dark" sep>
             <TabelLabel label="名称" />
           </TableCell>
-          {selectedDir.files
+          {selectedKB.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
               <TableCell
@@ -455,7 +453,7 @@ export const KnowledgeBase = () => {
           <TableCell variant="dark" sep>
             <TabelLabel label="上传时间" />
           </TableCell>
-          {selectedDir.files
+          {selectedKB.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
               <TableCell
@@ -471,7 +469,7 @@ export const KnowledgeBase = () => {
           <TableCell variant="dark" sep>
             <TabelLabel label="文件大小" />
           </TableCell>
-          {selectedDir.files
+          {selectedKB.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
               <TableCell
@@ -487,7 +485,7 @@ export const KnowledgeBase = () => {
           <TableCell variant="dark">
             <TabelLabel label="文件类型" />
           </TableCell>
-          {selectedDir.files
+          {selectedKB.files
             .filter(({ visible }) => visible)
             .map((file, idx) => (
               <TableCell
