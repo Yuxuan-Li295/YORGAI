@@ -1,19 +1,19 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { css } from "@emotion/css";
-import { PromptSuggestionDialogItem } from "./PromptSuggestionDialogItem";
+import { PromptSuggestionItem } from "./PromptSuggestionItem";
 import { ReactComponent as ArrowAngleRightSm } from "resources/img/ArrowAngleRightSm.svg";
 import { ReactComponent as ArrowAngleLeftSm } from "resources/img/ArrowAngleLeftSm.svg";
 
 const PromptSuggestionDialogBody = () => {
   const items = [
-    <PromptSuggestionDialogItem key={1} />,
-    <PromptSuggestionDialogItem key={2} />,
-    <PromptSuggestionDialogItem key={3} />,
-    <PromptSuggestionDialogItem key={4} />,
-    <PromptSuggestionDialogItem key={5} />,
-    <PromptSuggestionDialogItem key={6} />,
-    <PromptSuggestionDialogItem key={7} />,
-    <PromptSuggestionDialogItem key={8} />,
+    <PromptSuggestionItem key={1} />,
+    <PromptSuggestionItem key={2} />,
+    <PromptSuggestionItem key={3} />,
+    <PromptSuggestionItem key={4} />,
+    <PromptSuggestionItem key={5} />,
+    <PromptSuggestionItem key={6} />,
+    <PromptSuggestionItem key={7} />,
+    <PromptSuggestionItem key={8} />,
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
