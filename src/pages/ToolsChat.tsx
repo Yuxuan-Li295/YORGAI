@@ -6,10 +6,9 @@ import { UserChatItem } from "components/OnlineToolPage/UserChatItem";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
 import { useCallback, useMemo, useReducer, useState } from "react";
-import { ReactComponent as ChatAvatar } from "resources/img/ChatItemAvatar.svg";
-import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
-import { ReactComponent as SystemChatAvatar } from "resources/img/SystemChatAvatar.svg";
-import { ReactComponent as SideBarLeftDark } from "resources/img/sidebar-left-dark.svg";
+import SystemAvatar from "resources/img/SystemAvatar.png";
+import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
+import { Button } from "components/shared/Button";
 
 const ToolsChat = () => {
   enum ToolsMode {
@@ -137,17 +136,15 @@ const ToolsChat = () => {
               border-bottom: 1px solid ${basis.alt.border};
               background-color: ${basis.bg_subtle};
               padding: 14px 24px;
-              gap: 9px;
               align-items: center;
             `}
           >
-            <SideBarLeftDark
-              aria-roledescription="button"
+            <Button
+              variant="tertiary"
               onClick={() => setIsSidebarOpened(!isSidebarOpened)}
-              className={css`
-                margin-right: 101;
-              `}
-            />
+            >
+              <SidebarLeftDark />
+            </Button>
             {mode === ToolsMode.Home ? (
               <span
                 className={css`
@@ -174,7 +171,7 @@ const ToolsChat = () => {
                     font-family: inherit;
                     font-size: 14px;
                     font-style: normal;
-                    font-weight: 500;
+                    font-weight: 400;
                     line-height: 20px;
                     color: ${basis.text_loud};
                   `}
@@ -191,6 +188,12 @@ const ToolsChat = () => {
             ) : (
               "kb mode"
             )}
+            <div
+              className={css`
+                width: 32px;
+                min-width: 32px;
+              `}
+            />
           </div>
           {mode === ToolsMode.Home ? (
             <>home</>
@@ -207,33 +210,44 @@ const ToolsChat = () => {
             >
               <div
                 className={css`
+                  display: flex;
+                  flex-direction: column;
                   flex: 1;
                   & :first-child {
-                    border-radius: 8px;
+                    border-top-right-radius: 8px;
+                    border-top-left-radius: 8px;
                   }
                 `}
               >
-                <SystemChatItem prepend={<SystemChatAvatar />}>
-                  As a pet behaviorist, I'm here to help you address the
-                  aggression issues with your German Shepherd. Aggression in
-                  dogs can have various underlying causes, and it's important to
-                  understand the root cause before implementing a behavior
-                  modification plan. Here are the steps we can take to help
-                  manage your dog's aggressioness.
-                </SystemChatItem>
-                <UserChatItem
-                  prepend={<ChatAvatar />}
-                  append={<Pencil style={{ width: "16px", height: "20px" }} />}
-                >
+                <UserChatItem>
                   I want you to act as a UX/UI developer. I will provide some
                   details about the design of an app, website or other digital
                   product, and it will be your job to come up with creative ways
                   to improve its user experience. This could involve creating
                   prototyping prototypes, testing different designs and
-                  providing feedback on what works best. My first request is
-                  &#34;I need help designing an intuitive navigation system for
-                  my new mobile application.&#34;
+                  providing feedback on what works best. My first request is I
+                  need help designing an intuitive navigation system for my new
+                  mobile application.
                 </UserChatItem>
+                <SystemChatItem
+                  prepend={
+                    <img
+                      className={css`
+                        width: 28px;
+                        height: 28px;
+                      `}
+                      src={SystemAvatar}
+                      alt="System avatar"
+                    />
+                  }
+                >
+                  As a pet behaviorist, I'm here to help you address the
+                  aggression issues with your German Shepherd. Aggression in
+                  dogs can have various underlying causes, and it's important to
+                  understand the root cause before implementing a behavior
+                  modification plan. Here are the steps we can take to help
+                  manage your dog's aggressions.
+                </SystemChatItem>
               </div>
               <ChatInput />
             </div>

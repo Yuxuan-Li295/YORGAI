@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { Avatar } from "components/shared/Avatar";
+import { UserAvatar } from "components/shared/UserAvatar";
 import { ReactComponent as Notification } from "resources/img/Notification.svg";
 
 const NotificationAndProfile = () => {
@@ -22,7 +22,7 @@ const NotificationAndProfile = () => {
           background-color: ${basis.border_subtle};
         `}
       />
-      <Avatar size={32} />
+      <UserAvatar size={32} />
     </div>
   );
 };

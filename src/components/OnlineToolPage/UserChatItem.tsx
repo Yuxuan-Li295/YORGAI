@@ -1,108 +1,107 @@
-import React, { useState, useRef } from "react";
-import { ReactElement } from "react";
 import { css } from "@emotion/css";
-import { fill, basis } from "components/constants/colors";
+import { basis, fill } from "components/constants/colors";
+import { Button } from "components/shared/Button";
+import { UserAvatar } from "components/shared/UserAvatar";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
 
-const UserChatItem = ({
-  prepend,
-  append,
-  children,
-}: {
-  prepend?: ReactElement;
-  append?: ReactElement;
-  children?: string;
-}) => {
+const UserChatItem = ({ children }: { children?: string }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(children || "");
-  const textContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleTextChange = () => {
-    if (textContainerRef.current) {
-      const updatedText = textContainerRef.current.innerText;
-      setEditedText(updatedText);
+  const ref = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (ref.current !== null) {
+      ref.current.style.height = "0px";
+      ref.current.style.height = ref.current.scrollHeight + "px";
     }
-  };
-
-  const handleSaveClick = () => {
-    // Perform save operation with editedText
-    console.log("Saving:", editedText);
-    setIsEditing(!isEditing);
-  };
+  }, [ref, editedText, isEditing]);
 
   return (
-    <div>
+    <div
+      className={css`
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px 200px;
+        border-bottom: 1px solid ${basis.alt.border_subtle};
+        background: ${fill.base.layer};
+        overflow: hidden;
+        box-sizing: border-box;
+      `}
+    >
+      <UserAvatar size={28} />
       <div
         className={css`
-          border-bottom: 1px solid ${basis.alt.border_subtle};
-          background: ${fill.base.layer_chrome};
-          backdrop-filter: blur(30px);
-          padding: 20px 0px;
-          justify-content: center;
-          align-items: center;
-          gap: 8px;
           display: flex;
-          gap: 8px;
-          overflow: hidden;
-          position: relative;
-          width: 1136px;
-          height: 140px;
-          box-sizing: border-box;
+          width: 100%;
+          color: ${basis.text_loud};
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          ${isEditing &&
+          css`
+            border: 1px solid #67cdbc;
+            padding: 10px;
+            border-radius: 8px;
+          `}
         `}
       >
-        <div
-          className={css`
-            display: flex;
-            padding: 0px 205px;
-            align-items: flex-start;
-            gap: 20px;
-            flex: 1;
-          `}
-        >
-          <div>{prepend}</div>
-          <div
+        {!isEditing ? (
+          <Fragment>{editedText}</Fragment>
+        ) : (
+          <textarea
+            ref={ref}
+            value={editedText}
+            onChange={(e) => {
+              setEditedText(e.target.value);
+            }}
             className={css`
-              display: flex;
-              width: 666px;
-              align-items: flex-end;
-              gap: 8px;
-              display: flex;
-              width: 666px;
-              flex-direction: column;
-              flex-shrink: 0;
-              color: ${basis.text_loud};
+              flex: 1;
+              background-color: none;
+              border: none;
+              padding: 0;
+              margin: 0;
+              color: ${basis.text};
+              font-family: inherit;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 500;
               line-height: 20px;
+              resize: none;
+              overflow: hidden;
+              height: 20px;
+
+              &::placeholder {
+                color: ${basis.text_subtle};
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 20px;
+              }
+
+              &:active,
+              &:focus {
+                border: none;
+                outline: none;
+              }
             `}
-          >
-            {!isEditing ? (
-              <div ref={textContainerRef}>{editedText}</div>
-            ) : (
-              <div
-                className={css`
-                  width: 666px;
-                  height: 100%;
-                  resize: none;
-                  border: none;
-                  background: transparent;
-                  color: ${basis.text_loud};
-                  font-size: 14px;
-                  font-weight: 400;
-                  line-height: 20px;
-                  outline: none; /* 移除默认的轮廓边框 */
-                  /* 添加您希望的样式 */
-                  border: 1px solid ${basis.alt.border_subtle};
-                  box-shadow: 0 0 2px ${basis.alt.border_subtle};
-                `}
-                contentEditable={true}
-                onBlur={handleTextChange}
-              >
-                {editedText}
-              </div>
-            )}
-          </div>
-          <div onClick={handleSaveClick}>{append}</div>
-        </div>
+          />
+        )}
+      </div>
+      <div
+        className={css`
+          margin-top: -4px;
+        `}
+      >
+        <Button
+          variant="tertiary"
+          onClick={() => {
+            setIsEditing(!isEditing);
+          }}
+        >
+          <Pencil />
+        </Button>
       </div>
     </div>
   );
