@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { Avatar } from "components/shared/Avatar";
+import { UserAvatar } from "components/shared/UserAvatar";
 import { useNavigate } from "react-router-dom";
 import { PromptCardLegend } from "./PromptCardLegend";
 
@@ -102,7 +102,7 @@ const ImagePromptCard = ({
               gap: 8px;
             `}
           >
-            <Avatar size={24} />
+            <UserAvatar size={24} />
             <div
               className={css`
                 overflow: hidden;
