@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
+import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
@@ -205,8 +206,8 @@ const ToolsChat = () => {
               <div
                 className={css`
                   flex: 1;
-                  & :first-child {
-                    border-radius: 8px;
+                  & > :first-child {
+                    border-radius: 7px;
                   }
                 `}
               >
@@ -218,6 +219,7 @@ const ToolsChat = () => {
                   modification plan. Here are the steps we can take to help
                   manage your dog's aggressioness.
                 </SystemChatItem>
+                <DialogHeader />
               </div>
               <ChatInput />
             </div>
