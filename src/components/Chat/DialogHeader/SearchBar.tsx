@@ -9,7 +9,6 @@ const SearchBar = () => {
         display: flex;
         align-items: center;
         gap: 11px;
-        width: 251px;
         height: 32px;
       `}
     >

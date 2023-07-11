@@ -7,7 +7,7 @@ import {
   SecondaryNavBar,
 } from "components/SecondaryNavBar";
 import { Button } from "components/shared/Button";
-import { Dropdown, DropdownMenu } from "components/shared/Dropdown";
+import { Dropdown } from "components/shared/Dropdown";
 import { Footer } from "components/shared/Footer";
 import { Fragment } from "react";
 import { ReactComponent as ArrowAngleDownMd } from "resources/img/ArrowAngleDownMd.svg";
@@ -97,14 +97,10 @@ const ImagePrompts = () => {
           prepend={
             <Fragment>
               <Dropdown
-                menu={
-                  <DropdownMenu
-                    menuItems={["111", "111", "222"]}
-                    setValue={(item: string) => {
-                      console.log(item);
-                    }}
-                  />
-                }
+                menuItems={["111", "111", "222"]}
+                setValue={(item: string) => {
+                  console.log(item);
+                }}
               >
                 <Button
                   variant="tertiary"

@@ -13,60 +13,64 @@ const SideBarButton = ({
 }) => {
   return (
     <button
-    className={css`
-      width: 280px;
-      height: 44px; 
-      display: flex;
-      justify-content: center; 
-      align-items: stretch;
-      border-radius: 12px;
-      border: 1px solid ${basis.border};
-      background: ${fill.base.layer_chrome};
-      box-shadow: 0px 2px 12px rgba(79, 81, 89, 0.06), 0px 0px 4px rgba(79, 81, 89, 0.03), 0px 0px 0px 1px ${zinc[400]}, 0px 0.5px 1px ${zinc[400]}, 0px 1px 0px rgba(255, 255, 255, 0.06) inset, 0px 0.5px 0px rgba(255, 255, 255, 0.06) inset;
-      cursor: pointer;
-      box-sizing: border-box;
-  
-      &:hover {
-        border: 1px solid #67CDBC;
-      }
-    `}
-    onClick={onClick}
-  >
-    <div
       className={css`
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 256px;
         height: 44px;
-        box-sizing: border-box; 
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        border-radius: 12px;
+        border: 1px solid ${basis.border};
+        background: ${fill.base.layer_chrome};
+        box-shadow: 0px 2px 12px rgba(79, 81, 89, 0.06),
+          0px 0px 4px rgba(79, 81, 89, 0.03), 0px 0px 0px 1px ${zinc[400]},
+          0px 0.5px 1px ${zinc[400]},
+          0px 1px 0px rgba(255, 255, 255, 0.06) inset,
+          0px 0.5px 0px rgba(255, 255, 255, 0.06) inset;
+        cursor: pointer;
+        box-sizing: border-box;
+
+        &:hover {
+          border: 1px solid #67cdbc;
+        }
       `}
+      onClick={onClick}
     >
       <div
         className={css`
           display: flex;
-          justify-content: flex-start; 
+          justify-content: center;
           align-items: center;
-          gap: 10px;
-          width: auto;
-          height: auto;
+          width: 256px;
+          height: 44px;
+          box-sizing: border-box;
         `}
       >
-        {icon}
-        <span
+        <div
           className={css`
-            color: ${zinc[500]};
-            text-align: center;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            width: auto;
+            height: auto;
           `}
         >
-          {children}
-        </span>
+          {icon}
+          <span
+            className={css`
+              color: ${zinc[500]};
+              text-align: center;
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 20px;
+            `}
+          >
+            {children}
+          </span>
+        </div>
       </div>
-    </div>
-  </button>  
+    </button>
   );
 };
 
