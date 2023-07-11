@@ -6,6 +6,7 @@ import {
   FillBaseKey,
   FillContrastKey,
   PrimaryKey,
+  RainbowKey,
 } from "./colorKeys";
 
 const white = "#FFFFFF";
@@ -72,6 +73,21 @@ const emerald: Readonly<Record<ColorKey, string>> = {
   950: "#022C22",
 };
 
+const blue: Readonly<Record<ColorKey, string>> = {
+  25: "#F7FBFF",
+  50: "#EFF6FF",
+  100: "#DBEAFE",
+  200: "#BFDBFE",
+  300: "#93C5FD",
+  400: "#60A5FA",
+  500: "#3B83F7",
+  600: "#2563EB",
+  700: "#1D4ED8",
+  800: "#1E40AF",
+  900: "#1E3A8A",
+  950: "#172554",
+};
+
 const primary: Readonly<
   Record<PrimaryKey, string> & Record<"alt", Record<ContainerColorKey, string>>
 > = {
@@ -87,10 +103,12 @@ const primary: Readonly<
   bg_emphasis: yellow[400],
   bg_emphasis_muted: "#F7BB00E3",
   bg_emphasis_vibrant: "#FDCC0DE3",
+  text_subtle: "#F7BB00E5",
   text: "#CC8B04E5",
   text_muted: yellow[600],
   text_loud: yellow[700],
   text_foreground: yellow[900],
+  icon_subtle: yellow[400],
   icon: yellow[500],
   icon_muted: yellow[600],
   icon_loud: yellow[700],
@@ -186,14 +204,19 @@ const fill: Readonly<
     Record<"contrast", Record<FillContrastKey, string>>
 > = {
   base: {
+    layer: white,
     layer_subtle: zinc[25],
+    layer_muted: "#09090B05",
+    layer_on: white,
     layer_chrome: white,
     layer_overlay_subtle: "#0000000D",
+    layer_overlay_muted: "#0000001A",
     mask: "#00000080",
   },
   contrast: {
     layer: zinc[900],
     layer_on: zinc[800],
+    layer_chrome: "#BCBDC203",
   },
 };
 
@@ -216,15 +239,102 @@ const functional: Readonly<
   },
 };
 
+const rainbow: Readonly<
+  Record<
+    RainbowKey,
+    Record<PrimaryKey, string> &
+      Record<"alt", Record<ContainerColorKey, string>>
+  >
+> = {
+  amber: {
+    bg_subtle: amber[25],
+    bg: amber[50],
+    bg_muted: amber[100],
+    bg_vibrant: amber[200],
+    border_subtle: amber[200],
+    border: amber[300],
+    border_muted: amber[400],
+    border_vibrant: amber[400],
+    bg_emphasis_subtle: amber[400],
+    bg_emphasis: amber[500],
+    bg_emphasis_muted: "#D97706E3",
+    bg_emphasis_vibrant: "#F59E0BE3",
+    text_subtle: amber[400],
+    text: amber[500],
+    text_muted: amber[600],
+    text_loud: amber[600],
+    text_foreground: white,
+    icon_subtle: amber[400],
+    icon: amber[500],
+    icon_muted: amber[600],
+    icon_loud: amber[600],
+    icon_foreground: white,
+    alt: {
+      bg_subtle: "#FBBF2412",
+      bg: "#FBBF241C",
+      bg_muted: "#FBBF2433",
+      bg_vibrant: "#FBBF245C",
+      border_subtle: "#FBBF2473",
+      border: "#FBBF2466",
+      border_muted: "#FBBF2494",
+      border_vibrant: "#FBBF24FA",
+      bg_emphasis_subtle: "#FBBF24DB",
+      bg_emphasis: "#F59E0BFA",
+      bg_emphasis_muted: "#D97706E3",
+      bg_emphasis_vibrant: "#F59E0BE3",
+    },
+  },
+  blue: {
+    bg_subtle: blue[25],
+    bg: blue[50],
+    bg_muted: blue[100],
+    bg_vibrant: blue[200],
+    border_subtle: blue[200],
+    border: blue[300],
+    border_muted: blue[400],
+    border_vibrant: blue[400],
+    bg_emphasis_subtle: zinc[400],
+    bg_emphasis: blue[500],
+    bg_emphasis_muted: "#2563EBE3",
+    bg_emphasis_vibrant: "#3B83F7E3",
+    text_subtle: blue[400],
+    text: blue[500],
+    text_muted: blue[600],
+    text_loud: blue[600],
+    text_foreground: white,
+    icon_subtle: blue[400],
+    icon: blue[500],
+    icon_muted: blue[600],
+    icon_loud: blue[600],
+    icon_foreground: white,
+    alt: {
+      bg_subtle: "#60A5FA12",
+      bg: "#60A5FA1C",
+      bg_muted: "#60A5FA33",
+      bg_vibrant: "#60A5FA5C",
+      border_subtle: "#60A5FA73",
+      border: "#60A5FA66",
+      border_muted: "#60A5FA94",
+      border_vibrant: "#60A5FAFA",
+      bg_emphasis_subtle: "#60A5FADB",
+      bg_emphasis: "#3B83F7FA",
+      bg_emphasis_muted: "#2563EBE3",
+      bg_emphasis_vibrant: "#3B83F7E3",
+    },
+  },
+};
+
 export {
   amber,
   basis,
   black,
+  blue,
   emerald,
   fill,
   functional,
   overlays,
   primary,
+  rainbow,
   transparent,
   white,
   yellow,

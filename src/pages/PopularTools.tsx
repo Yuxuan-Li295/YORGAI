@@ -96,7 +96,7 @@ const PopularTools = () => {
               color: ${basis.text};
             `}
           >
-            小鱼厂收集了大量高质量提示词，并根据功能和内容进行分类
+            小鱼厂收集了大量 AI 模型和应用的信息、使用攻略以及用户评价
           </div>
           <div
             className={css`

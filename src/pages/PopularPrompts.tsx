@@ -54,13 +54,6 @@ const PopularPrompts = () => {
       <div
         className={css`
           display: flex;
-          margin-bottom: 97px;
-          justify-content: center;
-        `}
-      ></div>
-      <div
-        className={css`
-          display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
