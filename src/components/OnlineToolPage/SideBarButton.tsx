@@ -18,7 +18,7 @@ const SideBarButton = ({
         height: 44px;
         display: flex;
         justify-content: center;
-        align-items: stretch;
+        align-items: center;
         border-radius: 12px;
         border: 1px solid ${basis.border_subtle};
         background: ${fill.base.layer_chrome};
