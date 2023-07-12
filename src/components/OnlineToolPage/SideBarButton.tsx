@@ -21,12 +21,13 @@ const SideBarButton = ({
         align-items: center;
         border-radius: 12px;
         border: 1px solid ${basis.border_subtle};
-        background: ${fill.base.layer_chrome};
-        box-shadow: 0px 2px 12px rgba(79, 81, 89, 0.06),
-          0px 0px 4px rgba(79, 81, 89, 0.03), 0px 0px 0px 1px ${zinc[400]},
-          0px 0.5px 1px ${zinc[400]},
-          0px 1px 0px rgba(255, 255, 255, 0.06) inset,
-          0px 0.5px 0px rgba(255, 255, 255, 0.06) inset;
+        background: ${fill.base.layer_on};
+        box-shadow: 0px 2px 12px 0px rgba(79, 81, 89, 0.06),
+          0px 0px 4px 0px rgba(79, 81, 89, 0.03),
+          0px 0px 0px 1px rgba(188, 189, 194, 0.2),
+          0px 0.5px 1px 0px rgba(188, 189, 194, 0.2),
+          0px 1px 0px 0px rgba(255, 255, 255, 0.06) inset,
+          0px 0.5px 0px 0px rgba(255, 255, 255, 0.06) inset;
         cursor: pointer;
         box-sizing: border-box;
 
@@ -59,7 +60,7 @@ const SideBarButton = ({
           {icon}
           <span
             className={css`
-              color: ${zinc[500]};
+              color: ${basis.text};
               text-align: center;
               font-size: 14px;
               font-weight: 500;
