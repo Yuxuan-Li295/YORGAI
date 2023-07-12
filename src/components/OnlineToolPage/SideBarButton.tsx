@@ -20,7 +20,7 @@ const SideBarButton = ({
         justify-content: center;
         align-items: stretch;
         border-radius: 12px;
-        border: 1px solid ${basis.border};
+        border: 1px solid ${basis.border_subtle};
         background: ${fill.base.layer_chrome};
         box-shadow: 0px 2px 12px rgba(79, 81, 89, 0.06),
           0px 0px 4px rgba(79, 81, 89, 0.03), 0px 0px 0px 1px ${zinc[400]},
@@ -49,7 +49,7 @@ const SideBarButton = ({
         <div
           className={css`
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             gap: 10px;
             width: auto;
