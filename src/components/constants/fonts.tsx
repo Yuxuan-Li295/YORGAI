@@ -1,9 +1,8 @@
 import {
-  BodyTypeScaleKeys,
-  CaptionTypeScaleKeys,
-  DisplayTypeScaleKeys,
-  FontWeightKeys,
-  HeadingTypeScaleKeys,
+  BodyTypeScaleKey,
+  DisplayTypeScaleKey,
+  FontWeightKey,
+  HeadingTypeScaleKey,
 } from "./fontKeys";
 import { css } from "@emotion/css";
 
@@ -22,7 +21,7 @@ const baseFontStyle = (
   letter-spacing: ${letterSpacing}px;
 `;
 
-const fontWeights: Readonly<Record<FontWeightKeys, number>> = {
+const fontWeights: Readonly<Record<FontWeightKey, number>> = {
   regular: 400,
   medium: 500,
   semiBold: 600,
@@ -66,7 +65,7 @@ const createFontStyles = (
 });
 
 const display: Readonly<
-  Record<DisplayTypeScaleKeys, Record<FontWeightKeys, string>>
+  Record<DisplayTypeScaleKey, Record<FontWeightKey, string>>
 > = {
   d1: createFontStyles("Inter", 72, 90, -1.44),
   d2: createFontStyles("Inter", 60, 72, -1.2),
@@ -76,25 +75,25 @@ const display: Readonly<
 };
 
 const heading: Readonly<
-  Record<HeadingTypeScaleKeys, Record<FontWeightKeys, string>>
+  Record<HeadingTypeScaleKey, Record<FontWeightKey, string>>
 > = {
   h1: createFontStyles("Pingfang SC", 24, 32, 0),
   h2: createFontStyles("Pingfang SC", 20, 30, 0),
   h3: createFontStyles("Pingfang SC", 18, 28, 0),
 };
 
-const body: Readonly<
-  Record<BodyTypeScaleKeys, Record<FontWeightKeys, string>>
-> = {
-  md: createFontStyles("Pingfang SC", 16, 24, 0),
-  sm: createFontStyles("Pingfang SC", 14, 20, 0),
-  xs: createFontStyles("Pingfang SC", 12, 16, 0),
-};
+const body: Readonly<Record<BodyTypeScaleKey, Record<FontWeightKey, string>>> =
+  {
+    md: createFontStyles("Pingfang SC", 16, 24, 0),
+    sm: createFontStyles("Pingfang SC", 14, 20, 0),
+    xs: createFontStyles("Pingfang SC", 12, 16, 0),
+  };
 
-const caption: Readonly<
-  Record<CaptionTypeScaleKeys, Record<FontWeightKeys, string>>
-> = {
-  caption: createFontStyles("Pingfang SC", 10, 12, 0),
-};
+const caption: Readonly<Record<FontWeightKey, string>> = createFontStyles(
+  "Pingfang SC",
+  10,
+  12,
+  0,
+);
 
 export { display, heading, body, caption };
