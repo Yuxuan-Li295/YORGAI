@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { basis } from "components/constants/colors";
+import { basis, primary } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Tag } from "components/shared/Tag";
 import { ReactComponent as CircleExportSvg } from "resources/img/CircleExport.svg";
@@ -47,7 +47,7 @@ export const FileSel: FC<{
           <CheckBoxOrRadio
             type="checkbox"
             size="sm"
-            colorPattern={basis}
+            colorPattern={primary}
             checked={selected.files.length === selected.selectedCount}
             disabled={
               selected.files.length !== selected.selectedCount &&
@@ -69,7 +69,7 @@ export const FileSel: FC<{
             >
               <CheckBoxOrRadio
                 type="checkbox"
-                colorPattern={basis}
+                colorPattern={primary}
                 size="sm"
                 checked={file.selected}
                 disabled={
