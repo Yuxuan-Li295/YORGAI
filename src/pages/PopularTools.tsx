@@ -32,6 +32,7 @@ const PopularTools = () => {
         display: flex;
         flex-direction: column;
         width: 100vw;
+        min-width: 1200px;
         background: white;
       `}
     >

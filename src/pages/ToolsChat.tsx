@@ -12,10 +12,10 @@ import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark
 import { Button } from "components/shared/Button";
 import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
 
-// declare global {
-//   var debugEnableKBMode: () => void;
-//   var debugDisableKBMode: () => void;
-// }
+declare global {
+  var debugEnableKBMode: () => void;
+  var debugDisableKBMode: () => void;
+}
 
 const ToolsChat = () => {
   enum ToolsMode {
@@ -87,10 +87,10 @@ const ToolsChat = () => {
     changeModeState({ cmd: "disableKnowledgeBaseMode" });
   const [knowledgeBases, setKnowledgeBases] = useState();
 
-  // useEffect(() => {
-  //   globalThis.debugEnableKBMode = setKnowledgeBaseMode;
-  //   globalThis.debugDisableKBMode = setKnowledgeBaseMode;
-  // });
+  useEffect(() => {
+    globalThis.debugEnableKBMode = setKnowledgeBaseMode;
+    globalThis.debugDisableKBMode = setKnowledgeBaseMode;
+  });
 
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
 
@@ -101,6 +101,7 @@ const ToolsChat = () => {
         flex-direction: column;
         width: 100vw;
         height: 100vh;
+        min-width: 1200px;
         background: white;
       `}
     >

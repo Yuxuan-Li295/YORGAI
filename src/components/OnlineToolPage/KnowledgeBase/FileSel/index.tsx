@@ -49,7 +49,13 @@ export const FileSel: FC<{
             size="sm"
             colorPattern={basis}
             checked={selected.files.length === selected.selectedCount}
-            disabled={maxSelectedCount <= totSelectedCount}
+            disabled={
+              selected.files.length !== selected.selectedCount &&
+              maxSelectedCount <
+                totSelectedCount -
+                  (selected.selectedCount ?? 0) +
+                  selected.files.length
+            }
             onChange={toggleAllFiles}
           />
         </TableCell>
@@ -63,9 +69,12 @@ export const FileSel: FC<{
             >
               <CheckBoxOrRadio
                 type="checkbox"
+                colorPattern={basis}
                 size="sm"
                 checked={file.selected}
-                disabled={maxSelectedCount <= totSelectedCount}
+                disabled={
+                  !file.selected && maxSelectedCount <= totSelectedCount
+                }
                 onChange={() => toggleFile(idx)}
               />
             </TableCell>
