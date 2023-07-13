@@ -12,6 +12,10 @@ const PromptSuggestionItem = () => (
       align-self: stretch;
       width: 222px;
       height: 68px;
+      &:hover {
+        border-radius: 6px;
+        background: ${basis.alt.bg_muted};
+      }
     `}
   >
     <div
@@ -36,6 +40,7 @@ const PromptSuggestionItem = () => (
             line-height: 20px;
             margin-right: 36px;
             margin-bottom: 16px;
+            position: relative;
           `}
         >
           品牌策划文案
@@ -52,6 +57,8 @@ const PromptSuggestionItem = () => (
             background: ${rainbow.blue.alt.bg_muted};
             width: 52px;
             height: 20px;
+            position: relative;
+            top: -7px;
           `}
         >
           <div
