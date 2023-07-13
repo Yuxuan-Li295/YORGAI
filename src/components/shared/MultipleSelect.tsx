@@ -151,7 +151,14 @@ const MultipleSelect: React.FC<MultipleSelectProps> = () => {
                 )}
               </>
             ) : (
-              <div>Select options</div>
+              <div
+                className={css`
+                  padding: 0px 12px;
+                  color: ${basis.text_subtle};
+                `}
+              >
+                Select options
+              </div>
             )}
           </div>
           <div
