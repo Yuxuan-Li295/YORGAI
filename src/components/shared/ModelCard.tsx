@@ -1,8 +1,11 @@
 import { css } from "@emotion/css";
-import { basis, white } from "components/constants/colors";
+import { CheckBoxOrRadio } from "./CheckBoxOrRadio";
+import { basis, white, primary } from "components/constants/colors";
 import { TagList } from "components/shared/TagList";
 import { ReactElement, useState } from "react";
 import { ReactComponent as PinFilled } from "resources/img/PinFilled.svg";
+import { SizeKey } from "components/constants/sizes";
+import { ContainerColorKey } from "components/constants/colorKeys";
 
 const ModelCard = ({
   title,
@@ -17,10 +20,48 @@ const ModelCard = ({
   tags: string[];
   icon: ReactElement;
 }) => {
-  const [isSelected, setIsSelected] = useState(false);
+  const [isRadioSelected, setIsRadioSelected] = useState(false);
   const handleCardClick = () => {
-    setIsSelected(!isSelected);
+    setIsRadioSelected(!isRadioSelected);
   };
+  const options: string[] = [];
+  const [selectedOptions, setSelectedOptions] = useState(options); // Track the selected option
+  const handleOptionChange = ({
+    type,
+    option,
+  }: {
+    type: "radio";
+    option: string;
+  }) => {
+    setSelectedOptions([option]);
+    setIsRadioSelected(true);
+  };
+
+  type RadioButton = {
+    label: string;
+    value: string;
+    type: "radio" | "checkbox";
+    size: SizeKey;
+    colorPattern: Record<ContainerColorKey, string>;
+    disabled: boolean;
+    name: string;
+    id: string;
+    onChange: () => void;
+  };
+
+  const radioButtonsData: RadioButton[] = [
+    {
+      label: "",
+      value: "option1",
+      type: "radio",
+      size: "xxs",
+      colorPattern: primary,
+      disabled: false,
+      name: "buttons",
+      id: "buttons",
+      onChange: () => handleOptionChange({ type: "radio", option: "option1" }),
+    },
+  ];
 
   return (
     <div
@@ -34,7 +75,7 @@ const ModelCard = ({
         gap: 10px;
         border-radius: 8px;
         background-color: ${white};
-        border: 1px solid ${isSelected ? "#67cdbc" : basis.border_subtle};
+        border: 1px solid ${isRadioSelected ? "#67cdbc" : basis.border_subtle};
         max-width: 100%;
       `}
       onClick={handleCardClick}
@@ -99,7 +140,7 @@ const ModelCard = ({
                 className={css`
                   width: 14px;
                   height: 14px;
-                  fill: ${isSelected ? "#67cdbc" : "#808080"};
+                  fill: ${isRadioSelected ? "#67cdbc" : "#808080"};
                 `}
               />
             </div>
@@ -173,7 +214,23 @@ const ModelCard = ({
               {price}元/1000字
             </div>
           </div>
-          radio
+          {radioButtonsData.map((radioButton, index) => (
+            <label key={index}>
+              &nbsp;{radioButton.label}&nbsp;
+              <CheckBoxOrRadio
+                type={radioButton.type}
+                size={"xxs"}
+                colorPattern={radioButton.colorPattern}
+                value={radioButton.value}
+                checked={selectedOptions.includes(radioButton.value)}
+                disabled={radioButton.disabled}
+                name={radioButton.name}
+                id={radioButton.id}
+                onChange={radioButton.onChange}
+              />
+            </label>
+          ))}
+          {/* <CheckBoxOrRadio type="radio" size="xs" colorPattern={primary} disabled= {true} name="buttons" id="buttons" onChange={() => handleOptionChange(radioButton.onChange)}/> */}
         </div>
       </div>
     </div>
