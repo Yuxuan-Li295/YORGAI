@@ -88,6 +88,36 @@ const blue: Readonly<Record<ColorKey, string>> = {
   950: "#172554",
 };
 
+const red: Readonly<Record<ColorKey, string>> = {
+  25: "#FEF9F9",
+  50: "#FEF2F2",
+  100: "#FEE2E2",
+  200: "#FECACA",
+  300: "#F87171",
+  400: "#FCA5A5",
+  500: "#EF4444",
+  600: "#DC2626",
+  700: "#B91C1C",
+  800: "#991B1B",
+  900: "#7F1D1D",
+  950: "#000000",
+};
+
+const green: Readonly<Record<ColorKey, string>> = {
+  25: "#F7FFF8",
+  50: "#F0FDF1",
+  100: "#DCFCE0",
+  200: "#BBF7C2",
+  300: "#86EF94",
+  400: "#4ADE5E",
+  500: "#23C939",
+  600: "#16A329",
+  700: "#158023",
+  800: "#166522",
+  900: "#14531E",
+  950: "#052E16",
+};
+
 const primary: Readonly<
   Record<PrimaryKey, string> & Record<"alt", Record<ContainerColorKey, string>>
 > = {
@@ -201,7 +231,7 @@ const overlays: Readonly<Record<"black", Record<BlackColorKey, string>>> = {
 
 const fill: Readonly<
   Record<"base", Record<FillBaseKey, string>> &
-    Record<"contrast", Record<FillContrastKey, string>>
+  Record<"contrast", Record<FillContrastKey, string>>
 > = {
   base: {
     layer: white,
@@ -243,7 +273,7 @@ const rainbow: Readonly<
   Record<
     RainbowKey,
     Record<PrimaryKey, string> &
-      Record<"alt", Record<ContainerColorKey, string>>
+    Record<"alt", Record<ContainerColorKey, string>>
   >
 > = {
   amber: {
@@ -293,7 +323,7 @@ const rainbow: Readonly<
     border: blue[300],
     border_muted: blue[400],
     border_vibrant: blue[400],
-    bg_emphasis_subtle: zinc[400],
+    bg_emphasis_subtle: blue[400],
     bg_emphasis: blue[500],
     bg_emphasis_muted: "#2563EBE3",
     bg_emphasis_vibrant: "#3B83F7E3",
@@ -322,6 +352,82 @@ const rainbow: Readonly<
       bg_emphasis_vibrant: "#3B83F7E3",
     },
   },
+  red: {
+    bg_subtle: red[25],
+    bg: red[50],
+    bg_muted: red[100],
+    bg_vibrant: red[200],
+    border_subtle: red[200],
+    border: red[300],
+    border_muted: red[400],
+    border_vibrant: red[400],
+    bg_emphasis_subtle: red[400],
+    bg_emphasis: red[500],
+    bg_emphasis_muted: "#DC2626E3",
+    bg_emphasis_vibrant: "#EF4444E3",
+    text_subtle: red[400],
+    text: red[500],
+    text_muted: red[600],
+    text_loud: red[600],
+    text_foreground: white,
+    icon_subtle: red[400],
+    icon: red[500],
+    icon_muted: red[600],
+    icon_loud: red[600],
+    icon_foreground: white,
+    alt: {
+      bg_subtle: "#F8717112",
+      bg: "#FB71711C",
+      bg_muted: "#FB717133",
+      bg_vibrant: "#FB71715C",
+      border_subtle: "#FB717173",
+      border: "#FB717166",
+      border_muted: "#FB717194",
+      border_vibrant: "#FB7171FA",
+      bg_emphasis_subtle: "#FB7171DB",
+      bg_emphasis: "#FB7171FA",
+      bg_emphasis_muted: "#DC2626E3",
+      bg_emphasis_vibrant: "#EF4444E3",
+    },
+  },
+  green: {
+    bg_subtle: green[25],
+    bg: green[50],
+    bg_muted: green[100],
+    bg_vibrant: green[200],
+    border_subtle: green[200],
+    border: green[300],
+    border_muted: green[400],
+    border_vibrant: green[400],
+    bg_emphasis_subtle: green[400],
+    bg_emphasis: green[500],
+    bg_emphasis_muted: "#16A329E3",
+    bg_emphasis_vibrant: "#23C939E3",
+    text_subtle: green[400],
+    text: green[500],
+    text_muted: green[600],
+    text_loud: green[600],
+    text_foreground: white,
+    icon_subtle: green[400],
+    icon: green[500],
+    icon_muted: green[600],
+    icon_loud: green[600],
+    icon_foreground: white,
+    alt: {
+      bg_subtle: "#4ADE5E12",
+      bg: "#4ADE5E1C",
+      bg_muted: "#4ADE5E33",
+      bg_vibrant: "#4ADE5E5C",
+      border_subtle: "#4ADE5E73",
+      border: "#4ADE5E166",
+      border_muted: "#4ADE5E94",
+      border_vibrant: "#4ADE5EFA",
+      bg_emphasis_subtle: "#4ADE5EDB",
+      bg_emphasis: "#4ADE5EFA",
+      bg_emphasis_muted: "#16A329E3",
+      bg_emphasis_vibrant: "#23C939E3",
+    },
+  }, 
 };
 
 export {

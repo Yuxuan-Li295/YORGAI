@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis, white } from "components/constants/colors";
-import { TagList } from "components/shared/TagList";
+import { TagList } from "components/Prompt/TagList";
 import { ReactElement, useState } from "react";
 import { ReactComponent as PinFilled } from "resources/img/PinFilled.svg";
 

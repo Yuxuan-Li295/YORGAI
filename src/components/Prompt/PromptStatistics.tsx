@@ -2,7 +2,7 @@ import { css } from "@emotion/css";
 import { basis, primary } from "components/constants/colors";
 import { Badge } from "components/shared/Badge";
 import { Star } from "components/shared/Star";
-import { TagList } from "components/shared/TagList";
+import { TagList } from "components/Prompt/TagList";
 import { ReactElement } from "react";
 
 const PromptStatistics = ({
@@ -59,7 +59,7 @@ const PromptStatistics = ({
         <TagList tags={tags} />
       </div>
       {userAvatar && userName ? (
-        <Badge avatar={userAvatar}>{userName}</Badge>
+        <Badge size = "sm" avatar={userAvatar}>{userName}</Badge>
       ) : null}
 
       <div

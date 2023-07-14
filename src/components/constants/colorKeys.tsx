@@ -61,7 +61,7 @@ const fillContrastKey = ["layer", "layer_on", "layer_chrome"] as const;
 
 type FillContrastKey = (typeof fillContrastKey)[number];
 
-const rainbowKeys = ["blue", "amber"] as const;
+const rainbowKeys = ["blue", "amber", "red", "green"] as const;
 
 type RainbowKey = (typeof rainbowKeys)[number];
 
