@@ -39,62 +39,28 @@ export const MultiLineInputField = ({
           flex: 1 0 0;
           border-radius: 6px;
           background: ${fill.base.layer_chrome};
-          /* dp/loop/basis/1dp */
-          box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32),
-            0px 2px 5px -2px rgba(79, 81, 89, 0.03),
-            0px 0px 0px 1px rgba(188, 189, 194, 0.25),
-            0px 1px 1px 0px rgba(188, 189, 194, 0.2);
+          border: 1px solid transparent;
 
           ${!error &&
+          !disabled &&
           `&:hover {
-                    /* dp/loop/basis/1dp-muted */
+                    /* dp/loop/basis/1dp */
                     box-shadow: 
-                        0px 4px 4px -4px rgba(79, 81, 89, 0.32), 
-                        0px 2px 5px -2px rgba(79, 81, 89, 0.03), 
-                        0px 2px 14px -2px rgba(79, 81, 89, 0.12), 
-                        0px 0px 0px 1px rgba(188, 189, 194, 0.22), 
-                        0px 1px 1px 0px rgba(188, 189, 194, 0.20);
+                            0px 4px 4px -4px rgba(79, 81, 89, 0.32),
+                            0px 2px 5px -2px rgba(79, 81, 89, 0.03),
+                            0px 0px 0px 1px rgba(188, 189, 194, 0.25),
+                            0px 1px 1px 0px rgba(188, 189, 194, 0.2);
                 }
                             
                 &:focus-within {
-                    /* dp/loop/primary/3dp */
-                    box-shadow: 
-                        0px 4px 4px -4px rgba(79, 81, 89, 0.32), 
-                        0px 2px 5px -2px rgba(79, 81, 89, 0.03), 
-                        0px 0px 0px 3px rgba(253, 204, 13, 0.45), 
-                        0px 0px 0px 1px rgba(253, 204, 13, 0.98), 
-                        0px 1px 1px 0px rgba(188, 189, 194, 0.20);
+                    border: 1px solid rgb(253, 204, 13);
                 }`}
 
           ${disabled &&
-          `
-                border-radius: 6px;
-                background: ${basis.alt.bg};
+          `border-radius: 6px;
+                background: ${basis.alt.bg};`}
                             
-                /* dp/loop/basis/1dp */
-                box-shadow:
-                    0px 4px 4px -4px rgba(79, 81, 89, 0.32), 
-                    0px 2px 5px -2px rgba(79, 81, 89, 0.03), 
-                    0px 0px 0px 1px rgba(188, 189, 194, 0.25), 
-                    0px 1px 1px 0px rgba(188, 189, 194, 0.20);
-                            
-                &:hover {
-                    box-shadow:
-                        0px 4px 4px -4px rgba(79, 81, 89, 0.32), 
-                        0px 2px 5px -2px rgba(79, 81, 89, 0.03), 
-                        0px 0px 0px 1px rgba(188, 189, 194, 0.25), 
-                        0px 1px 1px 0px rgba(188, 189, 194, 0.20);
-                }`}
-                            
-            ${error &&
-          `
-                /* dp/loop/danger/3dp */
-                box-shadow: 
-                    0px 4px 4px -4px rgba(79, 81, 89, 0.32), 
-                    0px 2px 5px -2px rgba(79, 81, 89, 0.03), 
-                    0px 0px 0px 3px rgba(248, 113, 113, 0.45), 
-                    0px 0px 0px 1px rgba(248, 113, 113, 0.98), 
-                    0px 1px 1px 0px rgba(188, 189, 194, 0.20);`}
+            ${error && `border: 1px solid rgba(248, 113, 113);`}
         `}
       >
         <div
