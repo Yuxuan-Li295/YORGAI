@@ -2,7 +2,7 @@ import { css } from "@emotion/css";
 import { CheckBoxOrRadio } from "./CheckBoxOrRadio";
 import { basis, white, primary } from "components/constants/colors";
 import { TagList } from "components/shared/TagList";
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { ReactComponent as PinFilled } from "resources/img/PinFilled.svg";
 import { SizeKey } from "components/constants/sizes";
 import { ContainerColorKey } from "components/constants/colorKeys";
@@ -23,6 +23,7 @@ const ModelCard = ({
   const [isRadioSelected, setIsRadioSelected] = useState(false);
   const handleCardClick = () => {
     setIsRadioSelected(!isRadioSelected);
+    handleOptionChange({ type: "radio", option: "option1" }); // Select the radio button
   };
   const options: string[] = [];
   const [selectedOptions, setSelectedOptions] = useState(options); // Track the selected option
@@ -40,7 +41,7 @@ const ModelCard = ({
   type RadioButton = {
     label: string;
     value: string;
-    type: "radio" | "checkbox";
+    type: "radio";
     size: SizeKey;
     colorPattern: Record<ContainerColorKey, string>;
     disabled: boolean;
@@ -55,13 +56,20 @@ const ModelCard = ({
       value: "option1",
       type: "radio",
       size: "xxs",
-      colorPattern: primary,
+      colorPattern: primary.alt,
       disabled: false,
       name: "buttons",
       id: "buttons",
       onChange: () => handleOptionChange({ type: "radio", option: "option1" }),
     },
   ];
+
+  useEffect(() => {
+    // Update the radio selection when the card selection changes
+    if (!isRadioSelected) {
+      setSelectedOptions([]);
+    }
+  }, [isRadioSelected]);
 
   return (
     <div
@@ -226,7 +234,12 @@ const ModelCard = ({
                 disabled={radioButton.disabled}
                 name={radioButton.name}
                 id={radioButton.id}
-                onChange={radioButton.onChange}
+                onChange={() =>
+                  handleOptionChange({
+                    type: "radio",
+                    option: radioButton.value,
+                  })
+                }
               />
             </label>
           ))}
