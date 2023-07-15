@@ -7,10 +7,6 @@ export const ChatHistoryItemInputContainer = ({
   handleInputChange,
 }: {
   title: string;
-  // handleInputChange: (event: {
-  //   preventDefault: () => void;
-  //   target: { value: React.SetStateAction<string> };
-  // }) => void;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
   return (
