@@ -22,8 +22,13 @@ const ModelCard = ({
 }) => {
   const [isRadioSelected, setIsRadioSelected] = useState(false);
   const handleCardClick = () => {
-    setIsRadioSelected(!isRadioSelected);
-    handleOptionChange({ type: "radio", option: "option1" }); // Select the radio button
+    if (isRadioSelected) {
+      setIsRadioSelected(false);
+      setSelectedOptions([]);
+    } else {
+      setIsRadioSelected(true);
+      handleOptionChange({ type: "radio", option: "option1" });
+    }
   };
   const options: string[] = [];
   const [selectedOptions, setSelectedOptions] = useState(options); // Track the selected option
