@@ -1,4 +1,4 @@
-import { css } from '@emotion/css';
+import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 
@@ -36,18 +36,10 @@ const DialogFooter = () => (
         gap: 12px;
       `}
     >
-      <Button
-        variant="secondary"
-      >
-        取消
-      </Button>
-      <Button
-        variant="primary"
-      >
-        切换
-      </Button>
+      <Button variant="secondary">取消</Button>
+      <Button variant="primary">切换</Button>
     </div>
   </div>
-)
+);
 
 export { DialogFooter };

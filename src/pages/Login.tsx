@@ -8,6 +8,7 @@ const Login = () => {
         display: flex;
         flex-direction: row;
         height: 100vh;
+        min-width: 1200px;
       `}
     >
       <div

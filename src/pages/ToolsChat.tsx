@@ -6,10 +6,16 @@ import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
 import { UserChatItem } from "components/OnlineToolPage/UserChatItem";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
-import { useCallback, useMemo, useReducer, useState } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import SystemAvatar from "resources/img/SystemAvatar.png";
 import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
 import { Button } from "components/shared/Button";
+import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
+
+declare global {
+  var debugEnableKBMode: () => void;
+  var debugDisableKBMode: () => void;
+}
 
 const ToolsChat = () => {
   enum ToolsMode {
@@ -43,7 +49,6 @@ const ToolsChat = () => {
 
   const [modeState, changeModeState] = useReducer(
     (prevState: ToolsModeState, msg: ModeMsg) => {
-      console.log(msg);
       switch (msg.cmd) {
         case "enableKnowledgeBaseMode":
           return {
@@ -80,15 +85,14 @@ const ToolsChat = () => {
     changeModeState({ cmd: "enableKnowledgeBaseMode" });
   const unsetKnowledgeBaseMode = () =>
     changeModeState({ cmd: "disableKnowledgeBaseMode" });
+  const [knowledgeBases, setKnowledgeBases] = useState();
+
+  useEffect(() => {
+    globalThis.debugEnableKBMode = setKnowledgeBaseMode;
+    globalThis.debugDisableKBMode = setKnowledgeBaseMode;
+  });
 
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
-  const switchToggleCallback = useCallback(
-    () =>
-      mode === ToolsMode.Standard
-        ? showNormalMode(ToolsMode.Compose)
-        : showNormalMode(ToolsMode.Standard),
-    [changeModeState, mode],
-  );
 
   return (
     <div
@@ -128,6 +132,7 @@ const ToolsChat = () => {
             display: flex;
             flex-direction: column;
             align-items: stretch;
+            overflow: hidden;
           `}
         >
           <div
@@ -187,7 +192,21 @@ const ToolsChat = () => {
             ) : mode === ToolsMode.Podcast ? (
               "podcast mode"
             ) : (
-              "kb mode"
+              <span
+                className={css`
+                  flex: 100vw 0 1;
+                  text-align: center;
+                  line-height: 20px;
+                  font-family: inherit;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: 20px;
+                  color: ${basis.text_loud};
+                `}
+              >
+                我的知识库
+              </span>
             )}
             <div
               className={css`
@@ -260,7 +279,7 @@ const ToolsChat = () => {
           ) : mode === ToolsMode.Podcast ? (
             <>podcast</>
           ) : (
-            <>knowledge base</>
+            <KnowledgeBase />
           )}
         </div>
       </div>
