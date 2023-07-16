@@ -19,8 +19,6 @@ declare global {
 
 const ToolsChat = () => {
   enum ToolsMode {
-    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2065-274657&mode=dev
-    KnowledgeBase,
     // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=1454-279891&mode=dev
     Home,
     // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=1401-277631&mode=dev
@@ -32,27 +30,32 @@ const ToolsChat = () => {
     // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2311-263056&mode=dev
     Podcast,
   }
-  type ToolsNormalModes =
-    | ToolsMode.Home
-    | ToolsMode.Standard
-    | ToolsMode.Compose
-    | ToolsMode.Paint
-    | ToolsMode.Podcast;
   type ToolsModeState = {
+    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2065-274657&mode=dev
     isKnowledgeBaseMode: boolean;
-    underlyingMode: ToolsNormalModes;
+    isSidebarOpened: boolean;
+    underlyingMode: ToolsMode;
   };
 
   type ModeMsg =
     | { cmd: "enableKnowledgeBaseMode" | "disableKnowledgeBaseMode" }
-    | { cmd: "changeMode"; mode: ToolsNormalModes };
+    | { cmd: "changeMode"; mode: ToolsMode }
+    | { cmd: "setSidebar"; on: boolean };
 
   const [modeState, changeModeState] = useReducer(
     (prevState: ToolsModeState, msg: ModeMsg) => {
       switch (msg.cmd) {
+        case "setSidebar":
+          return prevState.isKnowledgeBaseMode
+            ? prevState
+            : {
+                ...prevState,
+                isSidebarOpened: msg.on,
+              };
         case "enableKnowledgeBaseMode":
           return {
             ...prevState,
+            isSidebarOpened: false,
             isKnowledgeBaseMode: true,
           };
         case "disableKnowledgeBaseMode":
@@ -69,30 +72,28 @@ const ToolsChat = () => {
               };
       }
     },
-    { isKnowledgeBaseMode: false, underlyingMode: ToolsMode.Standard },
+    {
+      isSidebarOpened: false,
+      isKnowledgeBaseMode: false,
+      underlyingMode: ToolsMode.Standard,
+    },
   );
 
-  const mode = useMemo(
-    () =>
-      modeState.isKnowledgeBaseMode
-        ? ToolsMode.KnowledgeBase
-        : modeState.underlyingMode,
-    [modeState],
-  );
-  const showNormalMode = (mode: ToolsNormalModes) =>
+  const mode = useMemo(() => modeState.underlyingMode, [modeState]);
+  const setMode = (mode: ToolsMode) =>
     changeModeState({ cmd: "changeMode", mode });
   const setKnowledgeBaseMode = () =>
     changeModeState({ cmd: "enableKnowledgeBaseMode" });
   const unsetKnowledgeBaseMode = () =>
     changeModeState({ cmd: "disableKnowledgeBaseMode" });
-  const [knowledgeBases, setKnowledgeBases] = useState();
+  const isSidebarOpened = modeState.isSidebarOpened;
+  const setIsSidebarOpened = (on: boolean) =>
+    changeModeState({ cmd: "setSidebar", on });
 
   useEffect(() => {
     globalThis.debugEnableKBMode = setKnowledgeBaseMode;
     globalThis.debugDisableKBMode = setKnowledgeBaseMode;
   });
-
-  const [isSidebarOpened, setIsSidebarOpened] = useState(true);
 
   return (
     <div
@@ -125,7 +126,6 @@ const ToolsChat = () => {
           isSidebarOpen={isSidebarOpened}
           toggleSidebar={setIsSidebarOpened}
         />
-        {/* TODO: chat menu */}
         <div
           className={css`
             flex: 100vw 0 1;
@@ -135,40 +135,24 @@ const ToolsChat = () => {
             overflow: hidden;
           `}
         >
-          <div
-            className={css`
-              display: flex;
-              flex-direction: row;
-              border-bottom: 1px solid ${basis.alt.border};
-              background-color: ${basis.bg_subtle};
-              padding: 14px 24px;
-              align-items: center;
-            `}
-          >
-            <Button
-              variant="tertiary"
-              onClick={() => setIsSidebarOpened(!isSidebarOpened)}
+          {!modeState.isKnowledgeBaseMode && (
+            <div
+              className={css`
+                display: flex;
+                flex-direction: row;
+                border-bottom: 1px solid ${basis.alt.border};
+                background-color: ${basis.bg_subtle};
+                padding: 14px 24px;
+                align-items: center;
+              `}
             >
-              <SidebarLeftDark />
-            </Button>
-            {mode === ToolsMode.Home ? (
-              <span
-                className={css`
-                  flex: 100vw 0 1;
-                  text-align: center;
-                  line-height: 20px;
-                  font-family: inherit;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 500;
-                  line-height: 20px;
-                  color: ${basis.text_loud};
-                `}
+              <Button
+                variant="tertiary"
+                onClick={() => setIsSidebarOpened(!isSidebarOpened)}
               >
-                请选择一个模型
-              </span>
-            ) : mode === ToolsMode.Standard ? (
-              <>
+                <SidebarLeftDark />
+              </Button>
+              {mode === ToolsMode.Home ? (
                 <span
                   className={css`
                     flex: 100vw 0 1;
@@ -177,45 +161,49 @@ const ToolsChat = () => {
                     font-family: inherit;
                     font-size: 14px;
                     font-style: normal;
-                    font-weight: 400;
+                    font-weight: 500;
                     line-height: 20px;
                     color: ${basis.text_loud};
                   `}
                 >
-                  新的对话
+                  请选择一个模型
                 </span>
-              </>
-            ) : mode === ToolsMode.Compose ? (
-              <></>
-            ) : mode === ToolsMode.Paint ? (
-              <></>
-            ) : mode === ToolsMode.Podcast ? (
-              "podcast mode"
-            ) : (
-              <span
+              ) : mode === ToolsMode.Standard ? (
+                <>
+                  <span
+                    className={css`
+                      flex: 100vw 0 1;
+                      text-align: center;
+                      line-height: 20px;
+                      font-family: inherit;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 20px;
+                      color: ${basis.text_loud};
+                    `}
+                  >
+                    新的对话
+                  </span>
+                </>
+              ) : mode === ToolsMode.Compose ? (
+                <></>
+              ) : mode === ToolsMode.Paint ? (
+                <></>
+              ) : mode === ToolsMode.Podcast ? (
+                "podcast mode"
+              ) : null}
+              <div
                 className={css`
-                  flex: 100vw 0 1;
-                  text-align: center;
-                  line-height: 20px;
-                  font-family: inherit;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 500;
-                  line-height: 20px;
-                  color: ${basis.text_loud};
+                  width: 32px;
+                  min-width: 32px;
                 `}
-              >
-                我的知识库
-              </span>
-            )}
-            <div
-              className={css`
-                width: 32px;
-                min-width: 32px;
-              `}
-            />
-          </div>
-          {mode === ToolsMode.Home ? (
+              />
+            </div>
+          )}
+          {modeState.isKnowledgeBaseMode ? (
+            <KnowledgeBase />
+          ) : mode === ToolsMode.Home ? (
             <>home</>
           ) : mode === ToolsMode.Standard ? (
             <div
@@ -278,9 +266,7 @@ const ToolsChat = () => {
             <>paint</>
           ) : mode === ToolsMode.Podcast ? (
             <>podcast</>
-          ) : (
-            <KnowledgeBase />
-          )}
+          ) : null}
         </div>
       </div>
     </div>

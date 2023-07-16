@@ -112,7 +112,7 @@ export const KnowledgeBase = () => {
   return (
     <div
       className={css`
-        flex: calc(100vh - 64px - 1px - 48px - 1px - 12px * 2) 0 1;
+        flex: calc(100vh - 64px - 1px - 12px * 2) 0 1;
         display: flex;
         flex-direction: row;
         margin: 12px;
