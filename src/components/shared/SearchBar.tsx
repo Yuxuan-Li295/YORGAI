@@ -1,14 +1,26 @@
 import { css } from "@emotion/css";
 import { basis, fill } from "components/constants/colors";
+import { Button } from "components/shared/Button";
 import { ReactComponent as Search } from "resources/img/Search.svg";
 
-const SearchBar = () => {
+const SearchBar = ({
+  width,
+  hasButton,
+  buttonOnClick,
+  buttonText,
+}: {
+  width: string;
+  hasButton?: boolean;
+  buttonOnClick?: () => void;
+  buttonText?: string;
+}) => {
   return (
     <div
       className={css`
         display: flex;
         align-items: center;
         gap: 11px;
+        width: ${width};
         height: 32px;
       `}
     >
@@ -48,8 +60,18 @@ const SearchBar = () => {
           `}
         />
       </div>
+      {hasButton && (
+        <Button
+          size="sm"
+          onClick={buttonOnClick}
+        >
+          {buttonText}
+        </Button>
+      )}
     </div>
   );
 };
+
+
 
 export { SearchBar };
