@@ -93,10 +93,10 @@ const TextPrompts = () => {
             <Button prepend={<MagicWand />}>AI 提示词学习</Button>
           </div>
           <ModelCard
-            title="CHATGPT"
-            description="大家都喜欢用"
-            price={0.04}
-            tags={["写作"]}
+            title="CHATGPT 3.5"
+            description="官方GPT3.5, 200万人在用的写作助手"
+            price={0.004}
+            tags={["大语言模型"]}
             icon={<ChatGPT />}
           />
         </div>
