@@ -6,28 +6,28 @@ import DisabledCheck from "resources/img/DisabledCheck.svg";
 import { ContainerColorKey } from "../constants/colorKeys";
 import RadioPoint from "resources/img/RadioPoint.svg";
 import DisabledRadioPoint from "resources/img/DisabledRadioPoint.svg";
-import { fill } from "../constants/colors";
+import { basis, fill } from "../constants/colors";
 
 export const CheckBoxOrRadio = ({
   type,
   size,
-  colorPattern,
+  colorPattern = basis,
   value,
-  checked,
-  disabled,
+  checked = false,
+  disabled = false,
   name,
   id,
   onChange,
 }: {
   type: "checkbox" | "radio";
   size: SizeKey;
-  colorPattern: Record<ContainerColorKey, string>;
-  value: string;
-  checked: boolean;
-  disabled: boolean;
-  name: string;
-  id: string;
-  onChange: (checked: boolean) => void;
+  colorPattern?: Record<ContainerColorKey, string>;
+  value?: string;
+  checked?: boolean;
+  disabled?: boolean;
+  name?: string;
+  id?: string;
+  onChange?: (checked: boolean) => void;
 }) => {
   const bgEmphasis = colorPattern.bg_emphasis.replace("#", "");
 
@@ -39,7 +39,7 @@ export const CheckBoxOrRadio = ({
 
   const handleCheck = () => {
     const newChecked = !checked; // Toggle the checked state
-    onChange(newChecked); // Call the callback function to update the checked state
+    onChange && onChange(newChecked); // Call the callback function to update the checked state
   };
 
   return (
