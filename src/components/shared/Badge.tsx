@@ -1,8 +1,5 @@
-import { RainbowKey } from "components/constants/colorKeys";
-
 import { css } from "@emotion/css";
-import { basis, rainbow, rainbow } from "components/constants/colors";
-
+import { basis, rainbow } from "components/constants/colors";
 
 const badgeSizes = {
   xs: {
@@ -22,22 +19,36 @@ const Badge = ({
   children,
   variant = "primary",
   size = 'xs',
-  theme,
 }: {
   children: string;
   avatar: React.ReactElement;
   variant?: "primary" | "success" | "danger" | "alert";
+  size?: keyof typeof badgeSizes;
 }) => {
   let palette;
-  // switch (variant) {
-  //   case "primary": {
-  palette = basis;
-  //   break;
-  // }
-  //   case "success": {palette = rainbow.green; break}
-  //   case "danger": {palette = rainbow.red; break}
-  //   case "alert": {palette = rainbow.amber; break}
-  // }
+  switch (variant) {
+    case "primary": {
+      palette = basis;
+      break;
+    }
+    case "success": {
+      palette = rainbow.green;
+      break;
+    }
+    case "danger": {
+      palette = rainbow.red;
+      break;
+    }
+    case "alert": {
+      palette = rainbow.amber;
+      break;
+    }
+    default: {
+      palette = basis;
+      break;
+    }
+  }
+
   return (
     <div
       className={css`
@@ -46,10 +57,10 @@ const Badge = ({
         align-items: center;
         background: ${palette.alt.bg};
         color: ${palette.text_loud};
-        font-size: 14px;
+        font-size: ${badgeSizes[size].fontSize};
         font-weight: 500;
-        line-height: 20px;
-        border-radius: 50px;
+        line-height: ${badgeSizes[size].lineHeight};
+        border-radius: ${badgeSizes[size].borderRadius};
         margin: 2px;
         white-space: nowrap;
       `}
