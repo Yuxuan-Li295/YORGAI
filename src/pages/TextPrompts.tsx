@@ -9,9 +9,11 @@ import {
 import { Button } from "components/shared/Button";
 import { Dropdown } from "components/shared/Dropdown";
 import { Footer } from "components/shared/Footer";
+import { ModelCard } from "components/shared/ModelCard";
 import { Fragment } from "react";
 import { ReactComponent as ArrowAngleDownMd } from "resources/img/ArrowAngleDownMd.svg";
 import { ReactComponent as Calender } from "resources/img/Calender.svg";
+import { ReactComponent as ChatGPT } from "resources/img/OpenAI.svg";
 import { ReactComponent as Lightbulb } from "resources/img/Lightbulb.svg";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 import { ReactComponent as Star } from "resources/img/Star.svg";
@@ -90,6 +92,13 @@ const TextPrompts = () => {
             <Button prepend={<Lightbulb />}>AI 工具推荐</Button>
             <Button prepend={<MagicWand />}>AI 提示词学习</Button>
           </div>
+          <ModelCard
+            title="CHATGPT 3.5"
+            description="官方GPT3.5, 200万人在用的写作助手"
+            price={0.004}
+            tags={["大语言模型"]}
+            icon={<ChatGPT />}
+          />
         </div>
       </div>
       <div
