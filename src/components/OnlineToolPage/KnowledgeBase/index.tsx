@@ -1,7 +1,8 @@
 import { css } from "@emotion/css";
 import { fill } from "components/constants/colors";
 import { useReducer } from "react";
-import { FileStatus, ToolMsg, ToolState, KB } from "./types";
+import { FileStatus } from "contexts/UploadContext";
+import { ToolMsg, ToolState, KB } from "./types";
 import { KnowledgeBaseSel } from "./KnowledgeBaseSel";
 import { FileSel } from "./FileSel";
 

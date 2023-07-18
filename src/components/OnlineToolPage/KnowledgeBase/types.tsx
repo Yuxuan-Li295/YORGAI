@@ -1,22 +1,9 @@
-export enum FileStatus {
-  Offline = "Offline",
-  Done = "Done",
-  Protect = "Protect",
-  Testing = "Testing",
-}
-export type FileMeta = {
-  name: string;
-  visible: boolean;
-  status: FileStatus;
-  selected: boolean;
-  uploadTime: string;
-  size: string;
-  type: string;
-};
+import { FileMeta } from "contexts/UploadContext";
+
 export type KB = {
   name: string;
   selectedCount: number;
-  files: FileMeta[];
+  files: (FileMeta & { selected: boolean; visible: boolean })[];
 };
 export type ToolState = {
   kbList: KB[];
