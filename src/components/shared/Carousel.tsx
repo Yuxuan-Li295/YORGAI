@@ -106,4 +106,4 @@ const Carousel = ({ images }: { images: string[] }) => {
   );
 };
 
-export default Carousel;
+export { Carousel };
