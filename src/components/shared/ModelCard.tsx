@@ -1,11 +1,9 @@
 import { css } from "@emotion/css";
-import { CheckBoxOrRadio } from "./CheckBoxOrRadio";
-import { basis, white, primary } from "components/constants/colors";
+import { basis, rainbow } from "components/constants/colors";
 import { TagList } from "components/shared/TagList";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement } from "react";
 import { ReactComponent as PinFilled } from "resources/img/PinFilled.svg";
-import { SizeKey } from "components/constants/sizes";
-import { ContainerColorKey } from "components/constants/colorKeys";
+import { Radio } from "./CheckBoxOrRadio";
 
 const ModelCard = ({
   title,
@@ -13,69 +11,17 @@ const ModelCard = ({
   price,
   tags,
   icon,
+  selected,
+  onClick,
 }: {
   title: string;
   description: string;
   price: number;
   tags: string[];
   icon: ReactElement;
+  selected: boolean;
+  onClick: () => void;
 }) => {
-  const [isRadioSelected, setIsRadioSelected] = useState(false);
-  const handleCardClick = () => {
-    if (isRadioSelected) {
-      setIsRadioSelected(false);
-      setSelectedOptions([]);
-    } else {
-      setIsRadioSelected(true);
-      handleOptionChange({ type: "radio", option: "option1" });
-    }
-  };
-  const options: string[] = [];
-  const [selectedOptions, setSelectedOptions] = useState(options); // Track the selected option
-  const handleOptionChange = ({
-    type,
-    option,
-  }: {
-    type: "radio";
-    option: string;
-  }) => {
-    setSelectedOptions([option]);
-    setIsRadioSelected(true);
-  };
-
-  type RadioButton = {
-    label: string;
-    value: string;
-    type: "radio";
-    size: SizeKey;
-    colorPattern: Record<ContainerColorKey, string>;
-    disabled: boolean;
-    name: string;
-    id: string;
-    onChange: () => void;
-  };
-
-  const radioButtonsData: RadioButton[] = [
-    {
-      label: "",
-      value: "option1",
-      type: "radio",
-      size: "xxs",
-      colorPattern: primary.alt,
-      disabled: false,
-      name: "buttons",
-      id: "buttons",
-      onChange: () => handleOptionChange({ type: "radio", option: "option1" }),
-    },
-  ];
-
-  useEffect(() => {
-    // Update the radio selection when the card selection changes
-    if (!isRadioSelected) {
-      setSelectedOptions([]);
-    }
-  }, [isRadioSelected]);
-
   return (
     <div
       className={css`
@@ -87,11 +33,12 @@ const ModelCard = ({
         padding: 16px;
         gap: 10px;
         border-radius: 8px;
-        background-color: ${white};
-        border: 1px solid ${isRadioSelected ? "#67cdbc" : basis.border_subtle};
+        background-color: white;
+        border: 1px solid ${selected ? "#67cdbc" : basis.border_subtle};
         max-width: 100%;
+        cursor: pointer;
       `}
-      onClick={handleCardClick}
+      onClick={onClick}
     >
       <div
         className={css`
@@ -153,7 +100,7 @@ const ModelCard = ({
                 className={css`
                   width: 14px;
                   height: 14px;
-                  fill: ${isRadioSelected ? "#67cdbc" : "#808080"};
+                  color: ${basis.icon};
                 `}
               />
             </div>
@@ -227,28 +174,12 @@ const ModelCard = ({
               {price}元/1000字
             </div>
           </div>
-          {radioButtonsData.map((radioButton, index) => (
-            <label key={index}>
-              &nbsp;{radioButton.label}&nbsp;
-              <CheckBoxOrRadio
-                type={radioButton.type}
-                size={"xxs"}
-                colorPattern={radioButton.colorPattern}
-                value={radioButton.value}
-                checked={selectedOptions.includes(radioButton.value)}
-                disabled={radioButton.disabled}
-                name={radioButton.name}
-                id={radioButton.id}
-                onChange={() =>
-                  handleOptionChange({
-                    type: "radio",
-                    option: radioButton.value,
-                  })
-                }
-              />
-            </label>
-          ))}
-          {/* <CheckBoxOrRadio type="radio" size="xs" colorPattern={primary} disabled= {true} name="buttons" id="buttons" onChange={() => handleOptionChange(radioButton.onChange)}/> */}
+          <Radio
+            size="sm"
+            colorPattern={rainbow.teal}
+            value="option1"
+            checked={selected}
+          />
         </div>
       </div>
     </div>

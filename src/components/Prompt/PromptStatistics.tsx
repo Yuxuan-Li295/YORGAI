@@ -84,7 +84,7 @@ const PromptStatistics = ({
           {Array(5)
             .fill(0)
             .map((_, i) => (
-              <Star key={i} selected={i < Math.round(rate)} />
+              <Star key={i} filled={i < Math.round(rate)} />
             ))}
         </div>
         <span
