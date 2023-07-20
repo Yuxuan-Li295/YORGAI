@@ -20,8 +20,8 @@ const ComposeEditor = () => {
         height: 196px;
         box-sizing: border-box;
         border-radius: 12px;
-        border: 1px solid var(--basis-border, #d7d7db);
-        background: var(--basis-bg, #f9f9fa);
+        border: 1px solid ${basis.border};
+        background: ${basis.bg};
       `}
     >
       <div
@@ -41,23 +41,17 @@ const ComposeEditor = () => {
             align-items: flex-end;
             gap: 8px;
             flex: 1 0 0;
-            /* el/modul/card */
-            /* box-shadow: 0px 2px 12px 0px rgba(79, 81, 89, 0.06),
-              0px 0px 4px 0px rgba(79, 81, 89, 0.03),
-              0px 1px 0px 0px rgba(255, 255, 255, 0.06) inset,
-              0px 0.5px 0px 0px rgba(255, 255, 255, 0.06) inset; */
           `}
         >
           <div
             className={css`
               flex: 1 0 0;
-              color: var(--basis-text-loud, #18181b);
-              /* Pingfang SC/body/sm/400 - regular */
+              color: ${basis.text_loud};
               font-family: PingFang SC;
               font-size: 14px;
               font-style: normal;
               font-weight: 400;
-              line-height: 20px; /* 142.857% */
+              line-height: 20px;
             `}
           >
             MM智能助理是一款由MiniMax自研的，没有调用其他产品的接口的大型语言模型。MiniMax是一家中国科技公司，一直致力于进行大模型相关的研究。MM智能助理是一款由MiniMax自研的，没有调用其他产品的接口的大型语言模型。MiniMax是一家中国科技公司，一直致力于进行大模型相关的研究。MM智能助理是一款由MiniMax自研的，没有调用其他产品的接口的大型语言模型。MiniMax是一家中国科技公司，一直致力于进行大模型相关的研究。MM智能助理是一款由MiniMax自研的，没有调用其他产品的接口的大型语言模型。MiniMax是一家中国科技公司，一直致力于进行大模型相关的研究。MM智能助理是一款由MiniMax自研的，没有调用其他产品的接口的大型语言模型。MiniMax是一家中国科技公司，一直致力于进行大模型相关的研究。
