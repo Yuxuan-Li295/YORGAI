@@ -36,6 +36,20 @@ const grays: Readonly<Record<GrayKey, Record<SpectrumKey, string>>> = {
 const { zinc } = grays;
 
 const colors: Readonly<Record<ColorsKey, Record<SpectrumKey, string>>> = {
+  red: {
+    25: "#FEF9F9",
+    50: "#FEF2F2",
+    100: "#FEE2E2",
+    200: "#FECACA",
+    300: "#F87171",
+    400: "#FCA5A5",
+    500: "#EF4444",
+    600: "#DC2626",
+    700: "#B91C1C",
+    800: "#991B1B",
+    900: "#7F1D1D",
+    950: "#000000",
+  },
   amber: {
     25: "#FEFCF4",
     50: "#FFFBEB",
@@ -63,6 +77,20 @@ const colors: Readonly<Record<ColorsKey, Record<SpectrumKey, string>>> = {
     800: "#854D0E",
     900: "#734012",
     950: "#422006",
+  },
+  green: {
+    25: "#F7FFF8",
+    50: "#F0FDF1",
+    100: "#DCFCE0",
+    200: "#BBF7C2",
+    300: "#86EF94",
+    400: "#4ADE5E",
+    500: "#23C939",
+    600: "#16A329",
+    700: "#158023",
+    800: "#166522",
+    900: "#14531E",
+    950: "#052E16",
   },
   emerald: {
     25: "#F5FFFA",

@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { TagList } from "components/shared/TagList";
+import { TagList } from "components/Prompt/TagList";
 import { useNavigate } from "react-router-dom";
 import { PromptCardLegend } from "./PromptCardLegend";
 

@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
+import { TagList } from "components/Prompt/TagList";
 import { basis, rainbow } from "components/constants/colors";
-import { TagList } from "components/shared/TagList";
 import { ReactElement } from "react";
 import { ReactComponent as PinFilled } from "resources/img/PinFilled.svg";
 import { Radio } from "./CheckBoxOrRadio";

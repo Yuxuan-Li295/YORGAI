@@ -2,7 +2,15 @@ const grayKeys = ["zinc"] as const;
 
 type GrayKey = (typeof grayKeys)[number];
 
-const colorsKeys = ["amber", "yellow", "emerald", "teal", "blue"] as const;
+const colorsKeys = [
+  "red",
+  "amber",
+  "yellow",
+  "green",
+  "emerald",
+  "teal",
+  "blue",
+] as const;
 
 type ColorsKey = (typeof colorsKeys)[number];
 
