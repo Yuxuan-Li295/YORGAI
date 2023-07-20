@@ -1,8 +1,30 @@
-const colorKeys = [
+const grayKeys = ["zinc"] as const;
+
+type GrayKey = (typeof grayKeys)[number];
+
+const colorsKeys = [
+  "red",
+  "amber",
+  "yellow",
+  "green",
+  "emerald",
+  "teal",
+  "blue",
+] as const;
+
+type ColorsKey = (typeof colorsKeys)[number];
+
+const spectrumKeys = [
   25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
 ] as const;
 
-type ColorKey = (typeof colorKeys)[number];
+type SpectrumKey = (typeof spectrumKeys)[number];
+
+const percentageKeys = [
+  1, 2, 7, 10, 11, 20, 36, 40, 45, 50, 58, 86, 89, 98,
+] as const;
+
+type PercentageKey = (typeof percentageKeys)[number];
 
 const containerColorKeys = [
   "bg_subtle",
@@ -34,15 +56,23 @@ const contentColorKeys = [
   "icon_foreground",
 ] as const;
 
-const primaryKeys = [...containerColorKeys, ...contentColorKeys] as const;
+const regularKeys = [...containerColorKeys, ...contentColorKeys] as const;
 
-type PrimaryKey = (typeof primaryKeys)[number];
+type RegularKey = (typeof regularKeys)[number];
 
-const basisKeys = ["caret", ...primaryKeys] as const;
+const primaryRegularKeys = [
+  ...regularKeys.filter(
+    (key) => key !== "text_subtle" && key !== "icon_subtle",
+  ),
+] as const;
 
-type BasisKey = (typeof basisKeys)[number];
+type PrimaryRegularKey = (typeof primaryRegularKeys)[number];
 
-type BlackColorKey = (typeof basisKeys)[number];
+const basisRegularKeys = ["caret", ...regularKeys] as const;
+
+type BasisRegularKey = (typeof basisRegularKeys)[number];
+
+type OverlayColorKey = (typeof basisRegularKeys)[number];
 
 const fillBaseKey = [
   "layer",
@@ -61,17 +91,18 @@ const fillContrastKey = ["layer", "layer_on", "layer_chrome"] as const;
 
 type FillContrastKey = (typeof fillContrastKey)[number];
 
-const rainbowKeys = ["blue", "amber", "red", "green"] as const;
-
-type RainbowKey = (typeof rainbowKeys)[number];
-
 export type {
-  BasisKey,
-  BlackColorKey,
-  ColorKey,
+  BasisRegularKey,
+  ColorsKey,
   ContainerColorKey,
   FillBaseKey,
   FillContrastKey,
-  PrimaryKey,
-  RainbowKey,
+  GrayKey,
+  OverlayColorKey,
+  PercentageKey,
+  PrimaryRegularKey,
+  RegularKey,
+  SpectrumKey,
 };
+
+export { colorsKeys };

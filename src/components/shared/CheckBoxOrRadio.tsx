@@ -1,16 +1,27 @@
-import React from "react";
 import { css } from "@emotion/css";
-import Check from "resources/img/Check.svg";
-import { SizeKey, sizes, SizeValue } from "../constants/sizes";
-import DisabledCheck from "resources/img/DisabledCheck.svg";
-import { ContainerColorKey } from "../constants/colorKeys";
-import RadioPoint from "resources/img/RadioPoint.svg";
-import DisabledRadioPoint from "resources/img/DisabledRadioPoint.svg";
-import { basis, fill } from "../constants/colors";
+import { ContainerColorKey, RegularKey } from "components/constants/colorKeys";
+import { basis, fill } from "components/constants/colors";
+import { SizeKey, SizeValue, sizes } from "components/constants/sizes";
+import { ReactComponent as Check } from "resources/img/Check.svg";
+import { ReactComponent as DisabledCheck } from "resources/img/DisabledCheck.svg";
+import { ReactComponent as DisabledRadioPoint } from "resources/img/DisabledRadioPoint.svg";
+import { ReactComponent as RadioPoint } from "resources/img/RadioPoint.svg";
 
-export const CheckBoxOrRadio = ({
+type Props = {
+  size?: SizeKey;
+  colorPattern?: Record<RegularKey, string> &
+    Record<"alt", Record<ContainerColorKey, string>>;
+  value?: string;
+  checked?: boolean;
+  disabled?: boolean;
+  name?: string;
+  id?: string;
+  onChange?: (checked: boolean) => void;
+};
+
+const CheckBoxOrRadio = ({
   type,
-  size,
+  size = "xs",
   colorPattern = basis,
   value,
   checked = false,
@@ -18,28 +29,13 @@ export const CheckBoxOrRadio = ({
   name,
   id,
   onChange,
-}: {
+}: Props & {
   type: "checkbox" | "radio";
-  size: SizeKey;
-  colorPattern?: Record<ContainerColorKey, string>;
-  value?: string;
-  checked?: boolean;
-  disabled?: boolean;
-  name?: string;
-  id?: string;
-  onChange?: (checked: boolean) => void;
 }) => {
-  const bgEmphasis = colorPattern.bg_emphasis.replace("#", "");
-
-  const r = parseInt(bgEmphasis.substring(0, 2), 16);
-  const g = parseInt(bgEmphasis.substring(2, 4), 16);
-  const b = parseInt(bgEmphasis.substring(4, 6), 16);
-
   const { width, height }: SizeValue = sizes[size];
 
   const handleCheck = () => {
-    const newChecked = !checked; // Toggle the checked state
-    onChange && onChange(newChecked); // Call the callback function to update the checked state
+    onChange && onChange(!checked);
   };
 
   return (
@@ -53,12 +49,9 @@ export const CheckBoxOrRadio = ({
       `}
     >
       <input
-        type={"checkbox"}
+        type={type}
         className={css`
-          position: absolute;
-          opacity: 0;
-          width: ${width};
-          height: ${height};
+          display: none;
         `}
         disabled={disabled}
         checked={checked}
@@ -69,7 +62,6 @@ export const CheckBoxOrRadio = ({
       />
       <span
         className={css`
-          position: relative;
           display: flex;
           width: ${width};
           height: ${height};
@@ -84,39 +76,36 @@ export const CheckBoxOrRadio = ({
 
           &:hover {
             background: ${fill.base.layer_on};
-            /* dp/loop/primary/1dp-muted */
             box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32),
               0px 2px 5px -2px rgba(79, 81, 89, 0.03),
               0px 2px 14px -2px rgba(79, 81, 89, 0.12),
-              0px 0px 0px 1px rgba(${r}, ${g}, ${b}, 0.58),
+              0px 0px 0px 1px ${colorPattern.alt.border_muted},
               0px 1px 1px 0px rgba(188, 189, 194, 0.2);
           }
 
           input:checked + &:hover {
-            background: ${colorPattern.bg_emphasis_muted};
+            background: ${colorPattern.alt.bg_emphasis_muted};
             box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32),
               0px 2px 5px -2px rgba(79, 81, 89, 0.03),
-              0px 0px 0px 1px rgba(${r}, ${g}, ${b}, 0.4),
+              0px 0px 0px 1px ${colorPattern.alt.border},
               0px 1px 1px 0px rgba(188, 189, 194, 0.2);
           }
 
           input:focus + & {
             background: ${fill.base.layer_on};
-
-            /* dp/loop/primary/3dp */
             box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32),
               0px 2px 5px -2px rgba(79, 81, 89, 0.03),
-              0px 0px 0px 3px rgba(${r}, ${g}, ${b}, 0.45),
-              0px 0px 0px 1px rgba(${r}, ${g}, ${b}, 0.98),
+              0px 0px 0px 3px ${colorPattern.alt.border_subtle},
+              0px 0px 0px 1px ${colorPattern.alt.border_vibrant},
               0px 1px 1px 0px rgba(188, 189, 194, 0.2);
           }
 
           input:checked:focus + & {
-            background: ${colorPattern.bg_emphasis_muted};
+            background: ${colorPattern.alt.bg_emphasis_muted};
             box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32),
               0px 2px 5px -2px rgba(79, 81, 89, 0.03),
-              0px 0px 0px 3px rgba(${r}, ${g}, ${b}, 0.45),
-              0px 0px 0px 1px rgba(${r}, ${g}, ${b}, 0.89),
+              0px 0px 0px 3px ${colorPattern.alt.border_subtle},
+              0px 0px 0px 1px ${colorPattern.alt.bg_emphasis_vibrant},
               0px 0px 0px 1px rgba(0, 0, 0, 0.1);
           }
 
@@ -131,44 +120,25 @@ export const CheckBoxOrRadio = ({
           }
 
           input:checked + & {
-            background: ${colorPattern.bg_emphasis};
+            background: ${colorPattern.alt.bg_emphasis};
             box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32),
               0px 2px 5px -2px rgba(79, 81, 89, 0.03),
-              0px 0px 0px 1px rgba(${r}, ${g}, ${b}, 0.4),
+              0px 0px 0px 1px ${colorPattern.alt.border},
               0px 1px 1px 0px rgba(188, 189, 194, 0.2);
-
-            &::after {
-              content: "";
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              width: ${width};
-              height: ${height};
-              background-image: url(${type === "checkbox"
-                ? Check
-                : RadioPoint});
-              background-repeat: no-repeat;
-              background-size: cover;
-            }
-          }
-
-          input:checked:disabled + &::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: ${width};
-            height: ${height};
-            background-image: url(${type === "checkbox"
-              ? DisabledCheck
-              : DisabledRadioPoint});
-            background-repeat: no-repeat;
-            background-size: cover;
           }
         `}
-      ></span>
+      >
+        {checked && !disabled && type === "checkbox" && <Check />}
+        {checked && disabled && type === "checkbox" && <DisabledCheck />}
+        {checked && !disabled && type === "radio" && <RadioPoint />}
+        {checked && disabled && type === "radio" && <DisabledRadioPoint />}
+      </span>
     </label>
   );
 };
+
+export const CheckBox = (props: Props) =>
+  CheckBoxOrRadio({ ...props, type: "checkbox" });
+
+export const Radio = (props: Props) =>
+  CheckBoxOrRadio({ ...props, type: "radio" });

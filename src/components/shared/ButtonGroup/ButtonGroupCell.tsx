@@ -4,12 +4,12 @@ import React from "react";
 
 const ButtonGroupCell = ({
   children,
-  state = "rest",
+  active = false,
   size = "xs",
   onClick,
 }: {
   children: string;
-  state?: "rest" | "active";
+  active?: boolean;
   size?: "xs" | "sm";
 } & React.ButtonHTMLAttributes<{}>) => {
   return (
@@ -20,9 +20,9 @@ const ButtonGroupCell = ({
         justify-content: center;
         align-items: center;
         padding: 6px 12px;
-        color: ${state === "active" ? primary.text : basis.text};
+        color: ${active ? primary.text : basis.text};
         gap: 10px;
-        background: ${state === "active" ? basis.bg_subtle : transparent};
+        background: ${active ? basis.bg_subtle : transparent};
         border-radius: 6px;
         border: none;
         white-space: nowrap;
@@ -30,7 +30,7 @@ const ButtonGroupCell = ({
         min-width: 104px;
 
         &:hover {
-          color: ${state === "active" ? primary.text : basis.text_muted};
+          color: ${active ? primary.text : basis.text_muted};
           background: ${basis.bg};
         }
       `}

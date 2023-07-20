@@ -59,7 +59,9 @@ const PromptStatistics = ({
         <TagList tags={tags} />
       </div>
       {userAvatar && userName ? (
-        <Badge size = "sm" avatar={userAvatar}>{userName}</Badge>
+        <Badge size="sm" avatar={userAvatar}>
+          {userName}
+        </Badge>
       ) : null}
 
       <div
@@ -84,7 +86,7 @@ const PromptStatistics = ({
           {Array(5)
             .fill(0)
             .map((_, i) => (
-              <Star key={i} selected={i < Math.round(rate)} />
+              <Star key={i} filled={i < Math.round(rate)} />
             ))}
         </div>
         <span
