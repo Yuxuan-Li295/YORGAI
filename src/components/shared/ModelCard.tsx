@@ -179,6 +179,7 @@ const ModelCard = ({
             colorPattern={rainbow.teal}
             value="option1"
             checked={selected}
+            onChange={onClick}
           />
         </div>
       </div>
