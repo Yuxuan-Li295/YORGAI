@@ -22,12 +22,7 @@ const Template: StoryFn<typeof Radio> = (args) => {
   const [checked, setChecked] = useState(args.checked);
 
   return (
-    <Radio
-      {...args}
-      colorPattern={primary}
-      checked={checked}
-      onChange={() => setChecked(!checked)}
-    />
+    <Radio {...args} checked={checked} onChange={() => setChecked(!checked)} />
   );
 };
 

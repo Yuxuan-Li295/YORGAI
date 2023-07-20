@@ -1,5 +1,4 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { primary } from "components/constants/colors";
 import { CheckBox } from "components/shared/CheckBoxOrRadio";
 import { useState } from "react";
 
@@ -24,7 +23,6 @@ const Template: StoryFn<typeof CheckBox> = (args) => {
   return (
     <CheckBox
       {...args}
-      colorPattern={primary}
       checked={checked}
       onChange={() => setChecked(!checked)}
     />

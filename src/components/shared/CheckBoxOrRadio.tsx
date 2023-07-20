@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { ContainerColorKey, RegularKey } from "components/constants/colorKeys";
-import { fill } from "components/constants/colors";
+import { basis, fill } from "components/constants/colors";
 import { SizeKey, SizeValue, sizes } from "components/constants/sizes";
 import { ReactComponent as Check } from "resources/img/Check.svg";
 import { ReactComponent as DisabledCheck } from "resources/img/DisabledCheck.svg";
@@ -9,22 +9,22 @@ import { ReactComponent as RadioPoint } from "resources/img/RadioPoint.svg";
 
 type Props = {
   size?: SizeKey;
-  colorPattern: Record<RegularKey, string> &
+  colorPattern?: Record<RegularKey, string> &
     Record<"alt", Record<ContainerColorKey, string>>;
-  value: string;
-  checked: boolean;
+  value?: string;
+  checked?: boolean;
   disabled?: boolean;
-  name: string;
-  id: string;
-  onChange: (checked: boolean) => void;
+  name?: string;
+  id?: string;
+  onChange?: (checked: boolean) => void;
 };
 
 const CheckBoxOrRadio = ({
   type,
   size = "xs",
-  colorPattern,
+  colorPattern = basis,
   value,
-  checked,
+  checked = false,
   disabled = false,
   name,
   id,
@@ -35,8 +35,7 @@ const CheckBoxOrRadio = ({
   const { width, height }: SizeValue = sizes[size];
 
   const handleCheck = () => {
-    const newChecked = !checked; // Toggle the checked state
-    onChange(newChecked); // Call the callback function to update the checked state
+    onChange && onChange(!checked);
   };
 
   return (
@@ -50,7 +49,7 @@ const CheckBoxOrRadio = ({
       `}
     >
       <input
-        type={"checkbox"}
+        type={type}
         className={css`
           display: none;
         `}
