@@ -5,12 +5,11 @@ import { fill, basis, primary } from 'components/constants/colors';
 type SliderProps = {
   min: number;
   max: number;
-  defaultValue: number;
   onChange: (value: number) => void;
 };
 
-function Slider({ min, max, defaultValue, onChange }: SliderProps) {
-  const [value, setValue] = useState(defaultValue);
+function Slider({ min, max, onChange }: SliderProps) {
+  const [value, setValue] = useState(min);
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(event.target.value);
