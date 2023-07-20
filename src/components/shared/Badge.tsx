@@ -3,25 +3,25 @@ import { basis, rainbow } from "components/constants/colors";
 
 const badgeSizes = {
   xs: {
-    fontSize: '12px',
-    lineHeight: '16px',
-    borderRadius: '40px',
+    fontSize: "12px",
+    lineHeight: "16px",
+    borderRadius: "40px",
   },
   sm: {
-    fontSize: '14px',
-    lineHeight: '20px',
-    borderRadius: '50px',
+    fontSize: "14px",
+    lineHeight: "20px",
+    borderRadius: "50px",
   },
-}
+};
 
 const Badge = ({
   avatar,
   children,
   variant = "primary",
-  size = 'xs',
+  size = "xs",
 }: {
   children: string;
-  avatar: React.ReactElement;
+  avatar?: React.ReactElement;
   variant?: "primary" | "success" | "danger" | "alert";
   size?: keyof typeof badgeSizes;
 }) => {

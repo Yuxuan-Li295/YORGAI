@@ -2,7 +2,7 @@ import { css } from "@emotion/css";
 import { basis, primary } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { CheckBox } from "components/shared/CheckBoxOrRadio";
-import { Tag } from "components/shared/Tag";
+import { Badge } from "components/shared/Badge";
 import { FC } from "react";
 import { ReactComponent as CircleExportSvg } from "resources/img/CircleExport.svg";
 import { ReactComponent as EyeShowSvg } from "resources/img/EyeShow.svg";
@@ -135,7 +135,7 @@ export const FileSel: FC<{
               height={32}
               variant={idx % 2 === 0 ? "light" : "dark"}
             >
-              <Tag>{file.status}</Tag>
+              <Badge>{file.status}</Badge>
             </TableCell>
           ))}
       </TableCol>
