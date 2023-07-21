@@ -1,17 +1,12 @@
 import { css } from "@emotion/css";
-import { Button } from "components/shared/Button";
-import { Dropdown } from "components/shared/Dropdown";
-import { ReactComponent as ArrowAngleDownMd } from "resources/img/ArrowAngleDownMd.svg";
-import { ReactComponent as Star } from "resources/img/Star.svg";
-import { ReactComponent as Stars } from "resources/img/Stars.svg";
-import { ReactComponent as Clock } from "resources/img/Clock.svg";
-import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
-import { ReactComponent as Search } from "resources/img/Search.svg";
-import { basis, fill } from "components/constants/colors";
-import { ModelCard } from "components/shared/ModelCard";
-import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { DialogFooter } from "components/Chat/DialogFooter";
+import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
+import { ModelCard } from "components/shared/ModelCard";
+import { useState } from "react";
+import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
 const ChooseModelDialog = () => {
+  const [selectedModel, setSelectedModel] = useState(0);
+
   const cards = (length: number) =>
     Array(length).fill({
       title: "CHATGPT 3.5",
@@ -29,10 +24,6 @@ const ChooseModelDialog = () => {
         align-items: flex-start;
         flex: 1 0 0;
         align-self: stretch;
-        border-radius: 8px 8px 0px 0px;
-        border-top: 1px solid var(--basis-border, #d7d7db);
-        border-right: 1px solid var(--basis-border, #d7d7db);
-        border-left: 1px solid var(--basis-border, #d7d7db);
       `}
     >
       <div
@@ -84,17 +75,21 @@ const ChooseModelDialog = () => {
                   //   max-width: 1088px;
                 `}
               >
-                {cards(9).map(({ title, description, price, tags, icon }) => (
-                  <ModelCard
-                    title={title}
-                    description={description}
-                    price={price}
-                    tags={tags}
-                    icon={icon}
-                    selected={true}
-                    onClick={() => {}}
-                  />
-                ))}
+                {cards(9).map(
+                  ({ title, description, price, tags, icon }, index) => (
+                    <ModelCard
+                      title={title}
+                      description={description}
+                      price={price}
+                      tags={tags}
+                      icon={icon}
+                      selected={selectedModel === index}
+                      onClick={() => {
+                        setSelectedModel(index);
+                      }}
+                    />
+                  ),
+                )}
               </div>
             </div>
           </div>
