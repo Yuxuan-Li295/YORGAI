@@ -1,12 +1,10 @@
 import { css } from "@emotion/css";
 import React, { useState } from "react";
-import { basis } from "components/constants/colors";
 import { ReactComponent as ImageEdit } from "resources/img/ImageEdit.svg";
 import { ReactComponent as Help } from "resources/img/Help.svg";
 import { ReactComponent as ArrowDownFilled } from "resources/img/ArrowDownFilled.svg";
-import { FileUploadBox } from "components/shared/FileUploadBox";
 
-const Collapse = () => {
+const Collapse = ({ children }: { children: any }) => {
   const [isShow, setisShow] = useState(true);
 
   return (
@@ -21,7 +19,6 @@ const Collapse = () => {
           align-items: flex-start;
           gap: 20px;
           align-self: stretch;
-          background: ${basis.bg_subtle};
           margin-bottom: 15px;
         `}
       >
@@ -50,11 +47,7 @@ const Collapse = () => {
         </div>
         <ArrowDownFilled onClick={() => setisShow(!isShow)} />
       </div>
-      {isShow && (
-        <div>
-          <FileUploadBox handleFileInput={() => {}} />
-        </div>
-      )}
+      {isShow && <div>{children}</div>}
     </div>
   );
 };
