@@ -10,46 +10,72 @@ import { SideBarChatHistoryItem } from "./SideBarChatHistoryItem";
 
 let chatHistoryData = [
   {
-    day: '今天',
+    day: "今天",
     items: [
-      { title: '新的会话', rightSubtitle: 'ChatGPT4.0', itemIsSelected: false },
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
+      { title: "新的会话", rightSubtitle: "ChatGPT4.0", itemIsSelected: false },
+      {
+        title: "为什么高考在6月上旬",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
     ],
   },
   {
-    day: '昨天',
+    day: "昨天",
     items: [
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
+      {
+        title: "为什么高考在6月上旬",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
+      {
+        title: "为什么高考在6月上旬",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
     ],
   },
   {
-    day: '过去7天',
+    day: "过去7天",
     items: [
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
+      {
+        title: "为什么高考在6月上旬",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
+      {
+        title: "为什么高考在6月上旬",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
+      {
+        title: "为什么高考在6月上旬",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
     ],
   },
 ];
 
 const SideBar = ({
   isSidebarOpen,
+  toggleChooseModelDialog,
 }: {
   isSidebarOpen: boolean;
   toggleSidebar: (isSidebarOpen: boolean) => void;
+  toggleChooseModelDialog: () => void;
 }) => {
   const [chatHistory, setChatHistory] = useState(chatHistoryData);
 
   const handleItemClick = (dayIndex: number, itemIndex: number) => {
-    setChatHistory(prevChatHistory => {
-      const newChatHistory = JSON.parse(JSON.stringify(prevChatHistory)); 
+    setChatHistory((prevChatHistory) => {
+      const newChatHistory = JSON.parse(JSON.stringify(prevChatHistory));
       for (const day of newChatHistory) {
         for (const item of day.items) {
-          item.itemIsSelected = false; 
+          item.itemIsSelected = false;
         }
       }
-      newChatHistory[dayIndex].items[itemIndex].itemIsSelected = true; 
+      newChatHistory[dayIndex].items[itemIndex].itemIsSelected = true;
       return newChatHistory;
     });
   };
@@ -80,7 +106,7 @@ const SideBar = ({
           align-items: flex-start;
         `}
       >
-        {chatHistory.map(({day, items}, dayIndex) => (
+        {chatHistory.map(({ day, items }, dayIndex) => (
           <React.Fragment key={day}>
             <div
               className={css`
@@ -106,7 +132,7 @@ const SideBar = ({
               </span>
             </div>
             {items.map((item, itemIndex) => (
-              <div 
+              <div
                 key={itemIndex}
                 onClick={() => handleItemClick(dayIndex, itemIndex)}
               >
@@ -152,7 +178,9 @@ const SideBar = ({
           width: 100%;
         `}
       >
-        <SideBarButton icon={<Home />}>工具主页</SideBarButton>
+        <SideBarButton icon={<Home />} onClick={toggleChooseModelDialog}>
+          工具主页
+        </SideBarButton>
         <SideBarButton icon={<Diamond />}>管理订阅</SideBarButton>
       </div>
     </div>

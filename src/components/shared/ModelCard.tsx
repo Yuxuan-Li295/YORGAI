@@ -175,7 +175,7 @@ const ModelCard = ({
             </div>
           </div>
           <Radio
-            size="sm"
+            size="xxs"
             colorPattern={rainbow.teal}
             value="option1"
             checked={selected}
