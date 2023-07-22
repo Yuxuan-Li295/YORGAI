@@ -69,7 +69,7 @@ const SystemChatSelection = () => {
           align-items: center;
           justify-content: center;
           width: 100%;
-          max-width: 1090px;
+          max-width: 900px;
           height: 44px;
           border-bottom: 1px solid #ddd;
           padding-bottom: 12px;
