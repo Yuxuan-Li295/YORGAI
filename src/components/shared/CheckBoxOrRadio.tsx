@@ -16,7 +16,7 @@ type Props = {
   disabled?: boolean;
   name?: string;
   id?: string;
-  onChange?: (checked: boolean) => void;
+  onChange?: () => void;
 };
 
 const CheckBoxOrRadio = ({
@@ -34,10 +34,6 @@ const CheckBoxOrRadio = ({
 }) => {
   const { width, height }: SizeValue = sizes[size];
 
-  const handleCheck = () => {
-    onChange && onChange(!checked);
-  };
-
   return (
     <label
       className={css`
@@ -46,16 +42,18 @@ const CheckBoxOrRadio = ({
         align-items: center;
         cursor: pointer;
         user-select: none;
+        position: relative;
       `}
     >
       <input
         type={type}
         className={css`
-          display: none;
+          visibility: hidden;
+          position: absolute;
         `}
         disabled={disabled}
         checked={checked}
-        onChange={handleCheck}
+        onChange={onChange}
         value={value}
         name={name}
         id={id}
@@ -111,6 +109,7 @@ const CheckBoxOrRadio = ({
 
           input:disabled + &,
           input:checked:disabled + & {
+            cursor: not-allowed;
             opacity: 0.75;
             background: ${fill.base.layer_subtle};
             box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32),
@@ -128,10 +127,38 @@ const CheckBoxOrRadio = ({
           }
         `}
       >
-        {checked && !disabled && type === "checkbox" && <Check />}
-        {checked && disabled && type === "checkbox" && <DisabledCheck />}
-        {checked && !disabled && type === "radio" && <RadioPoint />}
-        {checked && disabled && type === "radio" && <DisabledRadioPoint />}
+        {checked && !disabled && type === "checkbox" && (
+          <Check
+            className={css`
+              width: ${width};
+              height: ${height};
+            `}
+          />
+        )}
+        {checked && disabled && type === "checkbox" && (
+          <DisabledCheck
+            className={css`
+              width: ${width};
+              height: ${height};
+            `}
+          />
+        )}
+        {checked && !disabled && type === "radio" && (
+          <RadioPoint
+            className={css`
+              width: ${width};
+              height: ${height};
+            `}
+          />
+        )}
+        {checked && disabled && type === "radio" && (
+          <DisabledRadioPoint
+            className={css`
+              width: ${width};
+              height: ${height};
+            `}
+          />
+        )}
       </span>
     </label>
   );
