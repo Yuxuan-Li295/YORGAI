@@ -90,6 +90,9 @@ const ComposeAutoEditSuggestBox = () => {
                   backgroundColor: `${fill.base.layer_chrome}`,
                   padding: "6px 12px",
                   width: "94.66667px",
+                  boxShadow:
+                    "0px 4px 4px -4px rgba(79, 81, 89, 0.32), 0px 2px 5px -2px rgba(79, 81, 89, 0.03), 0px 0px 0px 1px rgba(188, 189, 194, 0.25), 0px 1px 1px 0px rgba(188, 189, 194, 0.20)",
+                  paddingLeft: "0px",
                 }}
                 onClick={() => handleRadioChange("option1")}
                 prepend={
@@ -108,6 +111,9 @@ const ComposeAutoEditSuggestBox = () => {
                   backgroundColor: `${fill.base.layer_chrome}`,
                   padding: "6px 12px",
                   width: "94.66667px",
+                  boxShadow:
+                    "0px 4px 4px -4px rgba(79, 81, 89, 0.32), 0px 2px 5px -2px rgba(79, 81, 89, 0.03), 0px 0px 0px 1px rgba(188, 189, 194, 0.25), 0px 1px 1px 0px rgba(188, 189, 194, 0.20)",
+                  paddingLeft: "0px",
                 }}
                 onClick={() => handleRadioChange("option2")}
                 prepend={
@@ -126,6 +132,9 @@ const ComposeAutoEditSuggestBox = () => {
                   backgroundColor: `${fill.base.layer_chrome}`,
                   padding: "6px 12px",
                   width: "94.66667px",
+                  boxShadow:
+                    "0px 4px 4px -4px rgba(79, 81, 89, 0.32), 0px 2px 5px -2px rgba(79, 81, 89, 0.03), 0px 0px 0px 1px rgba(188, 189, 194, 0.25), 0px 1px 1px 0px rgba(188, 189, 194, 0.20)",
+                  paddingLeft: "0px",
                 }}
                 onClick={() => handleRadioChange("option3")}
                 prepend={
