@@ -1,4 +1,4 @@
-import { Collapse } from "components/shared/Collapse/Collapse";
+import { Collapse } from "components/shared/Collapse";
 import { FileUploadBox } from "components/shared/FileUploadBox";
 
 const CollapseFileUpload = () => {
