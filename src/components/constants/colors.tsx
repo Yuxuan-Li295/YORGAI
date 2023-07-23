@@ -136,7 +136,7 @@ const colors: Readonly<Record<ColorsKey, Record<SpectrumKey, string>>> = {
   },
 };
 
-const { amber, yellow, emerald, teal, blue } = colors;
+const { red, amber, yellow, green, emerald, teal, blue } = colors;
 
 const pctToHex = (pct: number) =>
   Math.round((pct / 100) * 255)
@@ -357,9 +357,11 @@ export {
   emerald,
   fill,
   functional,
+  green,
   overlays,
   primary,
   rainbow,
+  red,
   teal,
   transparent,
   white,

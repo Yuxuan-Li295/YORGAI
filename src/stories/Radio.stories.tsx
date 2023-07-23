@@ -1,5 +1,4 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { primary } from "components/constants/colors";
 import { Radio } from "components/shared/CheckBoxOrRadio";
 import { useState } from "react";
 
