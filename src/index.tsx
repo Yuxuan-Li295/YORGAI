@@ -12,6 +12,7 @@ import { TextPromptDetail } from "pages/TextPromptDetail";
 import { TextPrompts } from "pages/TextPrompts";
 import { Tools } from "pages/Tools";
 import { ToolsChat } from "pages/ToolsChat";
+import { ToolsWriting } from "pages/ToolsWriting";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
@@ -53,6 +54,7 @@ const Router = () => {
         <Route path="prompt/image/detail" element={<ImagePromptDetail />} />
         <Route path="tool/popular" element={<PopularTools />} />
         <Route path="tool/chat" element={<ToolsChat />} />
+        <Route path="tool/writing" element={<ToolsWriting />} />
         <Route path="tool" element={<Tools />} />
         <Route path="tool/detail" element={<ToolDetail />} />
         <Route path="" element={<Navigate to="prompt/popular" replace />} />

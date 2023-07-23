@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { basis, primary, white } from "components/constants/colors";
+import { basis, primary } from "components/constants/colors";
 
 export const Switch = ({
   variant = "thin",
@@ -26,12 +26,16 @@ export const Switch = ({
         user-select: none;
         transition: background 0.3s ease;
         background: ${enabled ? primary.bg_emphasis : basis.alt.bg};
+        ${variant === "thin"
+          ? css`
+              height: 16px;
+              border-radius: 8px;
+            `
+          : css`
+              height: 22px;
+              border-radius: 11px;
+            `}
       `}
-      style={
-        variant === "thin"
-          ? { height: 16, borderRadius: 8 }
-          : { height: 22, borderRadius: 11 }
-      }
       aria-roledescription="switch"
       aria-checked={enabled}
     >
@@ -53,24 +57,26 @@ export const Switch = ({
             0px 4px 12px -2px rgba(79, 81, 89, 0.09);
           transition: left 0.3s ease;
           border-radius: 50%;
+          ${variant === "thin"
+            ? css`
+                height: 20px;
+                width: 20px;
+                top: -2px;
+                left: ${enabled ? "18px" : "-2px"},
+                background: white;
+              `
+            : css`
+                height: 18px;
+                width: 18px;
+                top: 2px;
+                left: ${enabled ? "16px" : "2px"},
+                background: linear-gradient(
+                  180deg,
+                  white 0%,
+                  ${basis.bg_muted} 100%
+                );
+              `}
         `}
-        style={
-          variant === "thin"
-            ? {
-                height: 20,
-                width: 20,
-                top: -2,
-                left: enabled ? 18 : -2,
-                background: white,
-              }
-            : {
-                height: 18,
-                width: 18,
-                top: 2,
-                left: enabled ? 16 : 2,
-                background: `linear-gradient(180deg, white 0%, ${basis.bg_muted} 100%)`,
-              }
-        }
       />
     </label>
   );

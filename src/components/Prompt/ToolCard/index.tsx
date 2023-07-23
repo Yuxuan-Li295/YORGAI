@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { TagList } from "components/shared/TagList";
+import { TagList } from "components/Prompt/TagList";
 import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRightMd.svg";
 import Notion42 from "resources/img/Notion42.png";
 import { ExecuteButton } from "./ExecuteButton";
