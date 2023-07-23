@@ -1,13 +1,9 @@
 import { css } from "@emotion/css";
 import { basis, fill } from "components/constants/colors";
-import { Button } from "components/shared/Button";
 import { ReactComponent as Search } from "resources/img/Search.svg";
 
 const SearchBar = ({
   width,
-  hasButton,
-  buttonOnClick,
-  buttonText,
 }: {
   width: string;
   hasButton?: boolean;
@@ -60,18 +56,8 @@ const SearchBar = ({
           `}
         />
       </div>
-      {hasButton && (
-        <Button
-          size="sm"
-          onClick={buttonOnClick}
-        >
-          {buttonText}
-        </Button>
-      )}
     </div>
   );
 };
-
-
 
 export { SearchBar };
