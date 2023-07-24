@@ -11,6 +11,12 @@ import { useEffect, useMemo, useReducer, useState } from "react";
 import SystemAvatar from "resources/img/SystemAvatar.png";
 import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
 import { Button } from "components/shared/Button";
+import { SingleLineInputField } from "../components/shared/InputField";
+import { body } from "../components/constants/fonts";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
+import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
+import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
+import { ChatHistoryItemTrailContainer } from "../components/OnlineToolPage/ChatHistoryItemTrailContainer";
 import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
 
 declare global {
@@ -33,6 +39,7 @@ const ToolsChat = () => {
     // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2311-263056&mode=dev
     Podcast,
   }
+
   type ToolsNormalModes =
     | ToolsMode.Home
     | ToolsMode.Standard
@@ -100,6 +107,30 @@ const ToolsChat = () => {
     setChooseModelDialogVisible((prevVisible) => !prevVisible);
   };
 
+  const [selectedItem, setSelectedItem] = useState<{
+    dayIndex: number;
+    itemIndex: number;
+    title: string;
+  } | null>(null);
+  const [originalTitle, setOriginalTitle] = useState(
+    selectedItem ? selectedItem.title : "新的会话",
+  );
+  const [currentTitle, setCurrentTitle] = useState(
+    selectedItem ? selectedItem.title : "新的会话",
+  );
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSelectedItemChange = (
+    newSelectedItem: {
+      dayIndex: number;
+      itemIndex: number;
+      title: string;
+    } | null,
+  ) => {
+    setSelectedItem(newSelectedItem);
+    setCurrentTitle(newSelectedItem ? newSelectedItem.title : "新的会话");
+  };
+
   return (
     <div
       className={css`
@@ -129,6 +160,8 @@ const ToolsChat = () => {
       >
         <SideBar
           isSidebarOpen={isSidebarOpened}
+          selectedItem={selectedItem}
+          handleSelectedItemChangeCallback={handleSelectedItemChange}
           toggleSidebar={setIsSidebarOpened}
           toggleChooseModelDialog={toggleChooseModelDialog}
         />
@@ -176,21 +209,112 @@ const ToolsChat = () => {
               </span>
             ) : mode === ToolsMode.Standard ? (
               <>
-                <span
-                  className={css`
-                    flex: 100vw 0 1;
-                    text-align: center;
-                    line-height: 20px;
-                    font-family: inherit;
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 20px;
-                    color: ${basis.text_loud};
-                  `}
-                >
-                  新的对话
-                </span>
+                {!selectedItem ? (
+                  <span
+                    className={css`
+                      flex: 100vw 0 1;
+                      text-align: center;
+                      line-height: 20px;
+                      font-family: inherit;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 20px;
+                      color: ${basis.text_loud};
+                    `}
+                  >
+                    {currentTitle}
+                  </span>
+                ) : !isEditing ? (
+                  // if selectedItem is not null and is not editing, display the title and a pencil
+                  <div
+                    className={css`
+                      display: flex;
+                      flex: 100vw 0 1;
+                      text-align: center;
+                      align-items: center;
+                      justify-content: center;
+                      gap: 16px;
+                    `}
+                  >
+                    <div
+                      className={css`
+                        height: 20px;
+                      `}
+                    >
+                      <div
+                        className={css`
+                          display: inline-flex;
+                          align-items: center;
+                          gap: 16px;
+                        `}
+                      >
+                        <span
+                          className={css`
+                            color: ${basis.text_loud};
+                            text-align: center;
+                            ${body.sm.regular}
+                          `}
+                        >
+                          {currentTitle}
+                        </span>
+                        <button
+                          className={css`
+                            height: 20px;
+                            border: none;
+                            background: none;
+                            outline: none;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                          `}
+                          onClick={() => setIsEditing(!isEditing)}
+                        >
+                          <Pencil />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className={css`
+                      display: flex;
+                      flex: 100vw 0 1;
+                      text-align: center;
+                      align-items: center;
+                      justify-content: center;
+                      gap: 16px;
+                    `}
+                  >
+                    <SingleLineInputField
+                      value={currentTitle}
+                      placeholder={""}
+                      disabled={false}
+                      error={false}
+                      fontStyles={body.sm.regular}
+                      width={200}
+                      height={32}
+                      onChange={(value) => setCurrentTitle(value)}
+                    />
+                    <ChatHistoryItemTrailContainer
+                      LeftIcon={DoCheck}
+                      LeftIconOnClickHandler={() => {
+                        handleSelectedItemChange({
+                          ...selectedItem,
+                          title: currentTitle,
+                        });
+                        setOriginalTitle(currentTitle);
+                        setIsEditing(!isEditing);
+                      }}
+                      RightIcon={XLarge}
+                      RightIconOnClickHandler={() => {
+                        setCurrentTitle(originalTitle);
+                        setIsEditing(!isEditing);
+                      }}
+                    />
+                  </div>
+                )}
               </>
             ) : mode === ToolsMode.Compose ? (
               <></>

@@ -19,7 +19,7 @@ const PromptParamTag = ({
         width: 543.5px;
         height: 36px;
         border: ${basis.bg_emphasis_subtle} 1px solid;
-        background: var(--chart-layer, #fff);
+        background: white;
         border-radius: 8px;
         display: flex;
         align-items: center;
