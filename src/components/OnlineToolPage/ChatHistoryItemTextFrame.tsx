@@ -1,4 +1,3 @@
-import React from "react";
 import { css } from "@emotion/css";
 import { basis } from "../constants/colors";
 import { ReactComponent as Separator } from "../../resources/img/Separator.svg";

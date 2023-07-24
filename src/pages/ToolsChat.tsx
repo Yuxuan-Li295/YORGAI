@@ -1,21 +1,28 @@
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
+import { ChooseModelDialog } from "components/OnlineToolPage/ChooseModelDialog";
 import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
 import { UserChatItem } from "components/OnlineToolPage/UserChatItem";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
-import { useCallback, useMemo, useReducer, useState } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import SystemAvatar from "resources/img/SystemAvatar.png";
 import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
 import { Button } from "components/shared/Button";
-import { SingleLineInputField } from "../components/shared/SingleLineInputField";
+import { SingleLineInputField } from "../components/shared/InputField";
 import { body } from "../components/constants/fonts";
 import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
 import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
 import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
 import { ChatHistoryItemTrailContainer } from "../components/OnlineToolPage/ChatHistoryItemTrailContainer";
+import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
+
+declare global {
+  var debugEnableKBMode: () => void;
+  var debugDisableKBMode: () => void;
+}
 
 const ToolsChat = () => {
   enum ToolsMode {
@@ -50,7 +57,6 @@ const ToolsChat = () => {
 
   const [modeState, changeModeState] = useReducer(
     (prevState: ToolsModeState, msg: ModeMsg) => {
-      console.log(msg);
       switch (msg.cmd) {
         case "enableKnowledgeBaseMode":
           return {
@@ -87,15 +93,19 @@ const ToolsChat = () => {
     changeModeState({ cmd: "enableKnowledgeBaseMode" });
   const unsetKnowledgeBaseMode = () =>
     changeModeState({ cmd: "disableKnowledgeBaseMode" });
+  const [knowledgeBases, setKnowledgeBases] = useState();
+
+  useEffect(() => {
+    globalThis.debugEnableKBMode = setKnowledgeBaseMode;
+    globalThis.debugDisableKBMode = setKnowledgeBaseMode;
+  });
 
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
-  const switchToggleCallback = useCallback(
-    () =>
-      mode === ToolsMode.Standard
-        ? showNormalMode(ToolsMode.Compose)
-        : showNormalMode(ToolsMode.Standard),
-    [changeModeState, mode],
-  );
+  const [isChooseModelDialogVisible, setChooseModelDialogVisible] =
+    useState(false);
+  const toggleChooseModelDialog = () => {
+    setChooseModelDialogVisible((prevVisible) => !prevVisible);
+  };
 
   const [selectedItem, setSelectedItem] = useState<{
     dayIndex: number;
@@ -153,6 +163,7 @@ const ToolsChat = () => {
           selectedItem={selectedItem}
           handleSelectedItemChangeCallback={handleSelectedItemChange}
           toggleSidebar={setIsSidebarOpened}
+          toggleChooseModelDialog={toggleChooseModelDialog}
         />
         {/* TODO: chat menu */}
         <div
@@ -161,6 +172,7 @@ const ToolsChat = () => {
             display: flex;
             flex-direction: column;
             align-items: stretch;
+            overflow: hidden;
           `}
         >
           <div
@@ -311,7 +323,21 @@ const ToolsChat = () => {
             ) : mode === ToolsMode.Podcast ? (
               "podcast mode"
             ) : (
-              "kb mode"
+              <span
+                className={css`
+                  flex: 100vw 0 1;
+                  text-align: center;
+                  line-height: 20px;
+                  font-family: inherit;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: 20px;
+                  color: ${basis.text_loud};
+                `}
+              >
+                我的知识库
+              </span>
             )}
             <div
               className={css`
@@ -344,7 +370,7 @@ const ToolsChat = () => {
                   }
                 `}
               >
-                <UserChatItem>
+                {/* <UserChatItem>
                   I want you to act as a UX/UI developer. I will provide some
                   details about the design of an app, website or other digital
                   product, and it will be your job to come up with creative ways
@@ -373,9 +399,10 @@ const ToolsChat = () => {
                   modification plan. Here are the steps we can take to help
                   manage your dog's aggressions.
                 </SystemChatItem>
-                <DialogHeader />
+                <DialogHeader /> */}
+                {isChooseModelDialogVisible && <ChooseModelDialog />}
               </div>
-              <ChatInput />
+              {/* <ChatInput /> */}
             </div>
           ) : mode === ToolsMode.Compose ? (
             <>compose</>
@@ -384,7 +411,7 @@ const ToolsChat = () => {
           ) : mode === ToolsMode.Podcast ? (
             <>podcast</>
           ) : (
-            <>knowledge base</>
+            <KnowledgeBase />
           )}
         </div>
       </div>

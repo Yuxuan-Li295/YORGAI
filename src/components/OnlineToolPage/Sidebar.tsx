@@ -68,10 +68,12 @@ let chatHistoryData = [
   },
 ];
 
+
 const SideBar = ({
   isSidebarOpen,
   selectedItem,
   handleSelectedItemChangeCallback,
+  toggleChooseModelDialog,
 }: {
   isSidebarOpen: boolean;
   selectedItem: { dayIndex: number; itemIndex: number; title: string } | null;
@@ -83,6 +85,7 @@ const SideBar = ({
     } | null,
   ) => void;
   toggleSidebar: (isSidebarOpen: boolean) => void;
+  toggleChooseModelDialog: () => void;
 }) => {
   const [chatHistory, setChatHistory] = useState(chatHistoryData);
 
@@ -240,7 +243,9 @@ const SideBar = ({
           width: 100%;
         `}
       >
-        <SideBarButton icon={<Home />}>工具主页</SideBarButton>
+        <SideBarButton icon={<Home />} onClick={toggleChooseModelDialog}>
+          工具主页
+        </SideBarButton>
         <SideBarButton icon={<Diamond />}>管理订阅</SideBarButton>
       </div>
     </div>

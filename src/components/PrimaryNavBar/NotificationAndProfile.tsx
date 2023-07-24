@@ -1,7 +1,8 @@
 import { css } from "@emotion/css";
-import { basis } from "components/constants/colors";
 import { UserAvatar } from "components/shared/UserAvatar";
+import { VerticalBar } from "components/shared/VerticalBar";
 import { ReactComponent as Notification } from "resources/img/Notification.svg";
+import { Button } from "components/shared/Button";
 
 const NotificationAndProfile = () => {
   return (
@@ -14,14 +15,10 @@ const NotificationAndProfile = () => {
         width: 100px;
       `}
     >
-      <Notification />
-      <div
-        className={css`
-          height: 16px;
-          width: 1px;
-          background-color: ${basis.border_subtle};
-        `}
-      />
+      <Button variant="tertiary">
+        <Notification />
+      </Button>
+      <VerticalBar height={16} />
       <UserAvatar size={32} />
     </div>
   );

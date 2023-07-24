@@ -1,8 +1,9 @@
 import { css } from "@emotion/css";
-import { basis, white } from "components/constants/colors";
-import { TagList } from "components/shared/TagList";
-import { ReactElement, useState } from "react";
+import { TagList } from "components/Prompt/TagList";
+import { basis, rainbow } from "components/constants/colors";
+import { ReactElement } from "react";
 import { ReactComponent as PinFilled } from "resources/img/PinFilled.svg";
+import { Radio } from "./CheckBoxOrRadio";
 
 const ModelCard = ({
   title,
@@ -10,18 +11,17 @@ const ModelCard = ({
   price,
   tags,
   icon,
+  selected,
+  onClick,
 }: {
   title: string;
   description: string;
   price: number;
   tags: string[];
   icon: ReactElement;
+  selected: boolean;
+  onClick: () => void;
 }) => {
-  const [isSelected, setIsSelected] = useState(false);
-  const handleCardClick = () => {
-    setIsSelected(!isSelected);
-  };
-
   return (
     <div
       className={css`
@@ -33,11 +33,12 @@ const ModelCard = ({
         padding: 16px;
         gap: 10px;
         border-radius: 8px;
-        background-color: ${white};
-        border: 1px solid ${isSelected ? "#67cdbc" : basis.border_subtle};
+        background-color: white;
+        border: 1px solid ${selected ? "#67cdbc" : basis.border_subtle};
         max-width: 100%;
+        cursor: pointer;
       `}
-      onClick={handleCardClick}
+      onClick={onClick}
     >
       <div
         className={css`
@@ -99,7 +100,7 @@ const ModelCard = ({
                 className={css`
                   width: 14px;
                   height: 14px;
-                  fill: ${isSelected ? "#67cdbc" : "#808080"};
+                  color: ${basis.icon};
                 `}
               />
             </div>
@@ -173,7 +174,13 @@ const ModelCard = ({
               {price}元/1000字
             </div>
           </div>
-          radio
+          <Radio
+            size="xxs"
+            colorPattern={rainbow.teal}
+            value="option1"
+            checked={selected}
+            onChange={onClick}
+          />
         </div>
       </div>
     </div>

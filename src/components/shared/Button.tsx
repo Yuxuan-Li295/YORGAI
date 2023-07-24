@@ -1,8 +1,18 @@
 import { css } from "@emotion/css";
 import { basis, fill, transparent } from "components/constants/colors";
-import React, { ReactElement } from "react";
+import React, { PropsWithChildren, ReactElement } from "react";
 
-const Button = ({
+const Button: React.FC<
+  PropsWithChildren<
+    {
+      variant?: "primary" | "secondary" | "tertiary";
+      active?: boolean;
+      size?: "xs" | "sm";
+      prepend?: ReactElement;
+      append?: ReactElement;
+    } & React.ButtonHTMLAttributes<HTMLButtonElement>
+  >
+> = ({
   children,
   variant = "primary",
   active = false,
@@ -10,14 +20,7 @@ const Button = ({
   prepend,
   append,
   ...props
-}: {
-  children: ReactElement | string;
-  variant?: "primary" | "secondary" | "tertiary";
-  active?: boolean;
-  size?: "xs" | "sm";
-  prepend?: ReactElement;
-  append?: ReactElement;
-} & React.ButtonHTMLAttributes<{}>) => {
+}) => {
   const primary = (
     <button
       {...props}
@@ -57,7 +60,8 @@ const Button = ({
     >
       <div
         className={css`
-          flex: 1;
+          flex-grow: 0;
+          flex-shrink: 0;
           display: flex;
           flex-direction: row;
           justify-content: center;
