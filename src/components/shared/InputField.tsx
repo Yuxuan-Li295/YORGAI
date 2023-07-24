@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { css } from "@emotion/css";
-import { basis, fill, functional } from "../constants/colors";
+import React, { useState } from "react";
+import { basis, fill } from "../constants/colors";
 import { body } from "../constants/fonts";
 
 interface InputFieldProps {
@@ -12,6 +12,7 @@ interface InputFieldProps {
   width: number;
   height: number;
   tag: "input" | "textarea"; // Specify the input tag to render
+  onChange?: (value: string) => void;
 }
 
 const InputField = ({
@@ -23,6 +24,7 @@ const InputField = ({
   width,
   height,
   tag,
+  onChange,
 }: InputFieldProps) => {
   const [inputValue, setInputValue] = useState(value);
 
@@ -30,6 +32,7 @@ const InputField = ({
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setInputValue(event.target.value);
+    onChange && onChange(event.target.value);
   };
 
   const InputComponent = tag === "textarea" ? "textarea" : "input";

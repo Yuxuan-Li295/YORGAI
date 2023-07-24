@@ -295,7 +295,7 @@ const ToolsChat = () => {
                       fontStyles={body.sm.regular}
                       width={200}
                       height={32}
-                      onChange={(event) => setCurrentTitle(event.target.value)}
+                      onChange={(value) => setCurrentTitle(value)}
                     />
                     <ChatHistoryItemTrailContainer
                       LeftIcon={DoCheck}
