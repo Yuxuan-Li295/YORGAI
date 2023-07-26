@@ -5,7 +5,6 @@ import { ReactComponent as Error } from "resources/img/Error.svg";
 import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRightMd.svg";
 import { ReactComponent as XSquare } from "resources/img/XSquare.svg";
 
-
 const ConfigSideBarHeader = () => {
 
   const [isClicked, setIsClicked] = useState(false);
@@ -45,7 +44,6 @@ const ConfigSideBarHeader = () => {
           margin-right: 10px;
           `}
         />
-
         <div
           className={css`
           display: flex;
@@ -64,7 +62,6 @@ const ConfigSideBarHeader = () => {
         >
           未选择模版
         </div>
-
         <div
           className={css`
           display: flex;
@@ -89,7 +86,6 @@ const ConfigSideBarHeader = () => {
           >
             {isClicked ? "取消" : "选择"}
           </div>
-
           <div
             className={css`
             width: 20px;
