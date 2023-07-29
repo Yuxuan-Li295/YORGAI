@@ -68,7 +68,6 @@ let chatHistoryData = [
   },
 ];
 
-
 const SideBar = ({
   isSidebarOpen,
   selectedItem,

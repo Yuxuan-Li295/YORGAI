@@ -4,7 +4,6 @@ import { basis } from "components/constants/colors";
 import PromptParamTag from "components/Writing/PromptparamTag";
 
 const ToolsWriting = () => {
-
   return (
     <div
       className={css`
@@ -65,7 +64,12 @@ const ToolsWriting = () => {
               `}
             >
               新的对话
-              <PromptParamTag text1="参数3" text2="角色扮演生成器" text3="ChatGPT4" text4="小鱼厂是AI时代的App store，为开发者..." />
+              <PromptParamTag
+                text1="参数3"
+                text2="角色扮演生成器"
+                text3="ChatGPT4"
+                text4="小鱼厂是AI时代的App store，为开发者..."
+              />
             </span>
           </div>
         </div>

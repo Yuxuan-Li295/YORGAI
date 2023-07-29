@@ -7,7 +7,7 @@ import { ReactComponent as SquareS } from "resources/img/SquareS.svg";
 import { ReactComponent as Star } from "resources/img/Star.svg";
 import { ReactComponent as UserDouble } from "resources/img/UserDouble.svg";
 import { ButtonSection } from "./ButtonSection";
-import { SearchBar } from "./SearchBar";
+import { SearchBar } from "components/shared/SearchBar";
 
 const PromptNavBarButtons = [
   // TODO: use context
@@ -109,7 +109,11 @@ const SecondaryNavBar = ({
         `}
       />
       <ButtonSection buttons={buttons} />
-      <SearchBar />
+      <SearchBar
+        width="251px"
+        hasButton={true}
+        buttonText="分享体验"
+       />
     </div>
   );
 };
