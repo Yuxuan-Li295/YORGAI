@@ -6,7 +6,7 @@ const PromptParamTag = ({
   text1,
   text2,
   text3,
-  text4
+  text4,
 }: {
   text1: string;
   text2: string;
@@ -19,7 +19,7 @@ const PromptParamTag = ({
         width: 543.5px;
         height: 36px;
         border: ${basis.bg_emphasis_subtle} 1px solid;
-        background: var(--chart-layer, #FFF);
+        background: white;
         border-radius: 8px;
         display: flex;
         align-items: center;
@@ -40,7 +40,7 @@ const PromptParamTag = ({
         className={css`
           width: 0.5px;
           height: 12px;
-          fill: ${basis.text}
+          fill: ${basis.text};
         `}
         preserveAspectRatio="none"
       />
@@ -59,7 +59,7 @@ const PromptParamTag = ({
         className={css`
           width: 0.5px;
           height: 12px;
-          fill: ${basis.text}
+          fill: ${basis.text};
         `}
         preserveAspectRatio="none"
       />
@@ -78,7 +78,7 @@ const PromptParamTag = ({
         className={css`
           width: 0.5px;
           height: 12px;
-          fill: ${basis.text}
+          fill: ${basis.text};
         `}
         preserveAspectRatio="none"
       />
