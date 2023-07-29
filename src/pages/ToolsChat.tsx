@@ -1,6 +1,7 @@
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
 import { ChooseModelDialog } from "components/OnlineToolPage/ChooseModelDialog";
+import { ChooseTemplateDialog } from "components/OnlineToolPage/ChooseTemplateDialog";
 import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
@@ -370,7 +371,7 @@ const ToolsChat = () => {
                   }
                 `}
               >
-                {/* <UserChatItem>
+                <UserChatItem>
                   I want you to act as a UX/UI developer. I will provide some
                   details about the design of an app, website or other digital
                   product, and it will be your job to come up with creative ways
@@ -399,7 +400,8 @@ const ToolsChat = () => {
                   modification plan. Here are the steps we can take to help
                   manage your dog's aggressions.
                 </SystemChatItem>
-                <DialogHeader /> */}
+                <DialogHeader />
+                {/* <ChooseTemplateDialog/> */}
                 {isChooseModelDialogVisible && <ChooseModelDialog />}
               </div>
               {/* <ChatInput /> */}
