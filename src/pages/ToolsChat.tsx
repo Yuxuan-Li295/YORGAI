@@ -12,6 +12,7 @@ import SystemAvatar from "resources/img/SystemAvatar.png";
 import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
 import { Button } from "components/shared/Button";
 import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
+import { Pagination } from "components/Chat/PromptSuggestionDialogBody/Pagination";
 
 declare global {
   var debugEnableKBMode: () => void;
@@ -276,7 +277,13 @@ const ToolsChat = () => {
                   manage your dog's aggressions.
                 </SystemChatItem>
                 <DialogHeader /> */}
+                <div
+                  className={css`
+                    height: 50px;
+                  `}
+                ></div>
                 {isChooseModelDialogVisible && <ChooseModelDialog />}
+                <Pagination />
               </div>
               {/* <ChatInput /> */}
             </div>
