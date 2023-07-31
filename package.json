@@ -52,7 +52,10 @@
       "react-app",
       "prettier",
       "plugin:storybook/recommended"
-    ]
+    ],
+    "rules": {
+      "react-hooks/exhaustive-deps": "off"
+    }
   },
   "browserslist": {
     "production": [
