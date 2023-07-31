@@ -11,7 +11,7 @@ import { useEffect, useMemo, useReducer, useState } from "react";
 import SystemAvatar from "resources/img/SystemAvatar.png";
 import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
 import { Button } from "components/shared/Button";
-import { SingleLineInputField } from "../components/shared/InputField";
+import { SingleLineInputField } from "../components/shared/SingleLineInputField";
 import { body } from "../components/constants/fonts";
 import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
 import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
@@ -295,7 +295,7 @@ const ToolsChat = () => {
                       fontStyles={body.sm.regular}
                       width={200}
                       height={32}
-                      onChange={(value) => setCurrentTitle(value)}
+                      onChange={(event) => setCurrentTitle(event.target.value)}
                     />
                     <ChatHistoryItemTrailContainer
                       LeftIcon={DoCheck}
