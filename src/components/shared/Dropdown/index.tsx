@@ -6,12 +6,14 @@ const Dropdown = ({
   children,
   hoverable = false,
   above = false,
+  align = "left",
   menuItems,
   setValue,
 }: {
   children: ReactElement;
   hoverable?: boolean;
   above?: boolean;
+  align?: "left" | "center" | "right";
   menuItems: string[];
   setValue?: (item: string) => void;
 }) => {
@@ -23,6 +25,8 @@ const Dropdown = ({
       }
       hoverable={hoverable}
       above={above}
+      align={align}
+      fullWidth
     />
   );
 };
