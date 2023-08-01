@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
-import { ChatHistoryItemTrailContainer } from "components/OnlineToolPage/ChatHistoryItemTrailContainer";
-import { ChooseModelDialog } from "components/OnlineToolPage/ChooseModelDialog";
-import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
-import { SideBar } from "components/OnlineToolPage/Sidebar";
+import { ChatHistoryItemTrailContainer } from "components/OnlineTool/ChatHistoryItemTrailContainer";
+import { ChooseModelDialog } from "components/OnlineTool/ChooseModelDialog";
+import { KnowledgeBase } from "components/OnlineTool/KnowledgeBase";
+import { SideBar } from "components/OnlineTool/Sidebar";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
 import { body } from "components/constants/fonts";
@@ -162,7 +162,6 @@ const OnlineTool = () => {
           toggleSidebar={setIsSidebarOpened}
           toggleChooseModelDialog={toggleChooseModelDialog}
         />
-        {/* TODO: chat menu */}
         <div
           className={css`
             flex: 100vw 0 1;

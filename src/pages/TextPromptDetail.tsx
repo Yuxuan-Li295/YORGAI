@@ -6,7 +6,7 @@ import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
-} from "components/SecondaryNavBar";
+} from "components/Prompt/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { UserAvatar } from "components/shared/UserAvatar";
 import { Breadcrumb } from "components/shared/Breadcrumb";
