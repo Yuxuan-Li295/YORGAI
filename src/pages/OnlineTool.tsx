@@ -1,30 +1,25 @@
 import { css } from "@emotion/css";
-import { ChatInput } from "components/Chat/ChatInput";
+import { ChatHistoryItemTrailContainer } from "components/OnlineToolPage/ChatHistoryItemTrailContainer";
 import { ChooseModelDialog } from "components/OnlineToolPage/ChooseModelDialog";
-import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
+import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
-import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
-import { UserChatItem } from "components/OnlineToolPage/UserChatItem";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
-import { useEffect, useMemo, useReducer, useState } from "react";
-import SystemAvatar from "resources/img/SystemAvatar.png";
-import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
+import { body } from "components/constants/fonts";
 import { Button } from "components/shared/Button";
-import { SingleLineInputField } from "../components/shared/SingleLineInputField";
-import { body } from "../components/constants/fonts";
-import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
+import { SingleLineInputField } from "components/shared/SingleLineInputField";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
+import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
 import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
-import { ChatHistoryItemTrailContainer } from "../components/OnlineToolPage/ChatHistoryItemTrailContainer";
-import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
 
 declare global {
   var debugEnableKBMode: () => void;
   var debugDisableKBMode: () => void;
 }
 
-const ToolsChat = () => {
+const OnlineTool = () => {
   enum ToolsMode {
     // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2065-274657&mode=dev
     KnowledgeBase,
@@ -46,6 +41,7 @@ const ToolsChat = () => {
     | ToolsMode.Compose
     | ToolsMode.Paint
     | ToolsMode.Podcast;
+
   type ToolsModeState = {
     isKnowledgeBaseMode: boolean;
     underlyingMode: ToolsNormalModes;
@@ -87,6 +83,7 @@ const ToolsChat = () => {
         : modeState.underlyingMode,
     [modeState],
   );
+
   const showNormalMode = (mode: ToolsNormalModes) =>
     changeModeState({ cmd: "changeMode", mode });
   const setKnowledgeBaseMode = () =>
@@ -419,4 +416,4 @@ const ToolsChat = () => {
   );
 };
 
-export { ToolsChat };
+export { OnlineTool };
