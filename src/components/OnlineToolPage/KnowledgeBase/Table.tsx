@@ -1,38 +1,48 @@
 import { css } from "@emotion/css";
-import { basis } from "components/constants/colors";
-import { FC, PropsWithChildren } from "react";
+import { basis, fill } from "components/constants/colors";
+import {
+  FC,
+  DetailedHTMLProps,
+  PropsWithChildren,
+  HTMLAttributes,
+} from "react";
 
-export const TableCol: FC<PropsWithChildren<{ grow?: boolean }>> = ({
-  children,
-  grow,
-}) => (
+export const TableCol: FC<
+  PropsWithChildren<{ grow?: boolean; above?: boolean }>
+> = ({ children, grow, above = false }) => (
   <div
     className={css`
       flex: ${grow ? "fit-content 1 1" : "fit-content 0 0"};
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      overflow: hidden;
     `}
+    style={{
+      overflow: above ? "visible" : "hidden",
+      transform: above ? "translateZ(1em)" : "translateZ(-1em)",
+    }}
   >
     {children}
   </div>
 );
 
 export const TableCell: FC<
-  PropsWithChildren<{
-    variant: "light" | "dark";
-    height?: number;
-    sep?: boolean;
-  }>
-> = ({ variant, height, children, sep }) => (
+  PropsWithChildren<
+    DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
+      variant: "light" | "dark";
+      height?: number;
+      sep?: boolean;
+    }
+  >
+> = ({ variant, height, children, sep, ...props }) => (
   <div
+    {...props}
     className={css`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      background: ${variant === "dark" ? basis.alt.bg_subtle : "transparent"};
+      background: ${variant === "dark" ? "transparent" : fill.base.layer_on};
       overflow: hidden;
       white-space: nowrap;
       ${height === undefined ? "" : `height: ${height}px;`}
@@ -59,8 +69,13 @@ export const TableCell: FC<
   </div>
 );
 
-export const TabelLabel: FC<{ label: string }> = ({ label }) => (
+export const TabelLabel: FC<
+  DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> & {
+    label: string;
+  }
+> = ({ label, ...props }) => (
   <span
+    {...props}
     className={css`
       color: ${basis.text};
       font-size: 12px;

@@ -119,7 +119,6 @@ export const KnowledgeBase = () => {
         margin: 12px;
         align-self: stretch;
         border-radius: 8px;
-        background: ${fill.base.layer_on};
         overflow: hidden;
       `}
     >

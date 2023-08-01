@@ -1,4 +1,3 @@
-import React from "react";
 import { css } from "@emotion/css";
 import Check from "resources/img/Check.svg";
 import { SizeKey, sizes, SizeValue } from "../constants/sizes";
@@ -55,10 +54,7 @@ export const CheckBoxOrRadio = ({
       <input
         type={"checkbox"}
         className={css`
-          position: absolute;
-          opacity: 0;
-          width: ${width};
-          height: ${height};
+          display: none;
         `}
         disabled={disabled}
         checked={checked}
