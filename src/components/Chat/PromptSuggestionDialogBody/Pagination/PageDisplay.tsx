@@ -1,6 +1,8 @@
 import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
-import { DropButton } from "./DropButton";
+import { Dropdown } from "components/shared/Dropdown";
+import { useState } from "react";
+import { ReactComponent as ArrayAngleDownMd } from "../../../../resources/img/ArrowAngleDownMd.svg";
 
 type PageSelectProps = {
   totalNumber?: number;
@@ -15,6 +17,9 @@ const textStyles = css`
 `;
 
 const PageDisplay = ({ totalNumber = 2077 }: PageSelectProps) => {
+  const [selectedValue, setSelectedValue] = useState<number>(9);
+  const availableValues = [9, 10, 20, 50, 100, 200];
+
   return (
     <div
       className={css`
@@ -30,7 +35,39 @@ const PageDisplay = ({ totalNumber = 2077 }: PageSelectProps) => {
         每页显示：
       </span>
 
-      <DropButton />
+      <Dropdown
+        children={
+          <div
+            className={css`
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              cursor: pointer;
+              padding-left: 12px;
+            `}
+          >
+            <span
+              className={css`
+                width: auto;
+                height: 16px;
+                color: ${basis.text};
+              `}
+            >
+              {selectedValue}
+            </span>
+            <ArrayAngleDownMd />
+          </div>
+        }
+        menuItems={availableValues.map((value) => value.toString())}
+        setValue={(value: string) => setSelectedValue(Number(value))}
+        above={true}
+      />
+
+      <div
+        className={css`
+          width: 12px;
+        `}
+      ></div>
 
       <span
         className={textStyles}
@@ -43,7 +80,7 @@ const PageDisplay = ({ totalNumber = 2077 }: PageSelectProps) => {
         className={css`
           width: 28px;
           height: 16px;
-          color: ${basis.text};
+          color: ${basis.text_loud};
         `}
       >
         {totalNumber}

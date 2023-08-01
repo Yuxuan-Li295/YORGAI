@@ -1,24 +1,18 @@
 import { css } from "@emotion/css";
-import { ChatInput } from "components/Chat/ChatInput";
 import { ChooseModelDialog } from "components/OnlineToolPage/ChooseModelDialog";
-import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
+import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
-import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
-import { UserChatItem } from "components/OnlineToolPage/UserChatItem";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
-import { useEffect, useMemo, useReducer, useState } from "react";
-import SystemAvatar from "resources/img/SystemAvatar.png";
-import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
 import { Button } from "components/shared/Button";
-import { SingleLineInputField } from "../components/shared/InputField";
-import { body } from "../components/constants/fonts";
-import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
+import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
 import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
 import { ChatHistoryItemTrailContainer } from "../components/OnlineToolPage/ChatHistoryItemTrailContainer";
-import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
-import { Pagination } from "components/Chat/PromptSuggestionDialogBody/Pagination";
+import { body } from "../components/constants/fonts";
+import { SingleLineInputField } from "../components/shared/SingleLineInputField";
 
 declare global {
   var debugEnableKBMode: () => void;
@@ -296,7 +290,7 @@ const ToolsChat = () => {
                       fontStyles={body.sm.regular}
                       width={200}
                       height={32}
-                      onChange={(value) => setCurrentTitle(value)}
+                      onChange={(event) => setCurrentTitle(event.target.value)}
                     />
                     <ChatHistoryItemTrailContainer
                       LeftIcon={DoCheck}
@@ -407,7 +401,6 @@ const ToolsChat = () => {
                   `}
                 ></div>
                 {isChooseModelDialogVisible && <ChooseModelDialog />}
-                <Pagination />
               </div>
               {/* <ChatInput /> */}
             </div>
