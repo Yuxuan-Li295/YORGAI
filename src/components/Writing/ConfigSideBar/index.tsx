@@ -4,13 +4,12 @@ import { ConfigSideBarHeader } from './ConfigSideBarHeader';
 import { ConfigSideBarBadge } from './ConfigSideBarBadge';
 import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRightMd.svg";
 import { ReactComponent as ArrowAngleDownMd } from "resources/img/ArrowAngleDownMd.svg";
-import { MultiLineInputField } from 'components/shared/InputField';
-import { SingleLineInputField } from 'components/shared/InputField';
+import { MultiLineInputField } from 'components/shared/MultiLineInputField';
+import { SingleLineInputField } from 'components/shared/SingleLineInputField';
 import { Dropdown } from 'components/shared/Dropdown';
-import { ConfigSideBarTone } from './ConfigSideBarTone';
-import { ConfigSideBarLength } from './ConfigSideBarLength';
 import { Button } from 'components/shared/Button';
 import { ReactComponent as Play } from "resources/img/Play.svg";
+import { RadioButton } from './RadioButton';
 
 const ConfigSideBar = () => {
 
@@ -166,13 +165,13 @@ const ConfigSideBar = () => {
         <div className={titleStyles}>
           语气
         </div>
-        <ConfigSideBarTone />
+        <RadioButton size={2} label={["普通", "轻松"]}/>
       </div>
       <div className={sectionStyles}>
         <div className={titleStyles}>
           长度
         </div>
-        <ConfigSideBarLength />
+        <RadioButton size={3} label={["短", "中", "长"]}/>
       </div>
       <div
         className={css`
