@@ -4,7 +4,7 @@ import hippoptamus from "resources/img/hipopotamus.jpg";
 import snorlax from "resources/img/snorlax.jpg";
 import mysteryBox from "resources/img/mysteryBox.jpg";
 import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRightMd.svg";
-import { Badge } from "./Badge";
+import { Badge } from "../../shared/Badge";
 const ImageModelCard = () => {
   return (
     <div
@@ -19,7 +19,7 @@ const ImageModelCard = () => {
         height: 315px;
         box-sizing: border-box;
         border-radius: 8px;
-        border: 1px solid var(--100, #67cdbc);
+        border: 1px solid #67cdbc;
         background: ${fill.base.layer};
       `}
     >
