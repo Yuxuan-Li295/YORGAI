@@ -97,7 +97,7 @@ const OnlineToolHeader = ({
                       ${body.sm.regular}
                     `}
                   >
-                    {selectedItem?.title}
+                    {selectedItem?.title || "新的会话"}
                   </span>
                   <button
                     className={css`
