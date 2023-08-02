@@ -1,12 +1,13 @@
 import { css } from "@emotion/css";
+import { ChatGPTLogo } from "components/constants/SideBarChatHistoryItemLogos";
 import { basis, zinc } from "components/constants/colors";
 import React, { useEffect, useState } from "react";
 import { ReactComponent as AddSquare } from "resources/img/AddSquare.svg";
 import { ReactComponent as Diamond } from "resources/img/Diamond.svg";
 import { ReactComponent as Home } from "resources/img/Home.svg";
-import { SideBarButton } from "./SideBarButton";
 import { SideBarChatHistoryItem } from "./SideBarChatHistoryItem";
-import { ChatGPTLogo } from "../constants/SideBarChatHistoryItemLogos";
+import { SideBarButton } from "./SideBarButton";
+import { ToolsMode, ToolsNormalModes } from "types/OnlineToolTypes";
 
 let chatHistoryData = [
   {
@@ -68,11 +69,13 @@ let chatHistoryData = [
   },
 ];
 
-const SideBar = ({
+const OnlineToolSideBar = ({
   isSidebarOpen,
   selectedItem,
   handleSelectedItemChangeCallback,
   toggleChooseModelDialog,
+  showNormalMode,
+  unsetKnowledgeBaseMode,
 }: {
   isSidebarOpen: boolean;
   selectedItem: { dayIndex: number; itemIndex: number; title: string } | null;
@@ -83,8 +86,9 @@ const SideBar = ({
       title: string;
     } | null,
   ) => void;
-  toggleSidebar: (isSidebarOpen: boolean) => void;
   toggleChooseModelDialog: () => void;
+  showNormalMode: (mode: ToolsNormalModes) => void;
+  unsetKnowledgeBaseMode: () => void;
 }) => {
   const [chatHistory, setChatHistory] = useState(chatHistoryData);
 
@@ -242,7 +246,13 @@ const SideBar = ({
           width: 100%;
         `}
       >
-        <SideBarButton icon={<Home />} onClick={toggleChooseModelDialog}>
+        <SideBarButton
+          icon={<Home />}
+          onClick={() => {
+            unsetKnowledgeBaseMode();
+            showNormalMode(ToolsMode.Home);
+          }}
+        >
           工具主页
         </SideBarButton>
         <SideBarButton icon={<Diamond />}>管理订阅</SideBarButton>
@@ -251,4 +261,4 @@ const SideBar = ({
   );
 };
 
-export { SideBar };
+export { OnlineToolSideBar };

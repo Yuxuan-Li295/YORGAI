@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
-import { basis } from "../constants/colors";
-import { ReactComponent as Separator } from "../../resources/img/Separator.svg";
+import { basis } from "components/constants/colors";
+import { ReactComponent as Separator } from "resources/img/Separator.svg";
 
 export const ChatHistoryItemTextFrame = ({
   title,
