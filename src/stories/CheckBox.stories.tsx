@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { CheckBox } from "components/shared/CheckBoxOrRadio";
 import { useState } from "react";
+import { basis, primary } from "components/constants/colors";
 
 const meta = {
   title: "Components/CheckBox",
@@ -11,6 +12,10 @@ const meta = {
       control: {
         disable: true,
       },
+    },
+    colorPattern: {
+      options: ["basis", "primary"],
+      mapping: { basis: basis, primary: primary },
     },
   },
 } satisfies Meta<typeof CheckBox>;

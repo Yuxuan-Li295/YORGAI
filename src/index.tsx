@@ -54,7 +54,7 @@ const Router = () => {
         <Route path="prompt/image/detail" element={<ImagePromptDetail />} />
         <Route path="tool/popular" element={<PopularTools />} />
         <Route path="tool/chat" element={<ToolsChat />} />
-        <Route path="tool/writing" element = {<ToolsWriting />} />
+        <Route path="tool/writing" element={<ToolsWriting />} />
         <Route path="tool" element={<Tools />} />
         <Route path="tool/detail" element={<ToolDetail />} />
         <Route path="" element={<Navigate to="prompt/popular" replace />} />

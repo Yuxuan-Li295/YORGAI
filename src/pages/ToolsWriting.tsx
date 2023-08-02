@@ -5,7 +5,6 @@ import PromptParamTag from "components/Writing/PromptparamTag";
 import { ConfigSideBar } from "components/Writing/ConfigSideBar";
 
 const ToolsWriting = () => {
-
   return (
     <div
       className={css`
@@ -111,7 +110,12 @@ const ToolsWriting = () => {
                   color: ${basis.text_loud};
                 `}
               >
-                <PromptParamTag text1="参数3" text2="角色扮演生成器" text3="ChatGPT4" text4="小鱼厂是AI时代的App store，为开发者..." />
+                <PromptParamTag
+                  text1="参数3"
+                  text2="角色扮演生成器"
+                  text3="ChatGPT4"
+                  text4="小鱼厂是AI时代的App store，为开发者..."
+                />
               </div>
             </div>
           </div>
