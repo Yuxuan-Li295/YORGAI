@@ -2,7 +2,10 @@ import { css } from "@emotion/css";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { PromptFilterBar } from "components/Prompt/PromptFilterBar";
 import { ToolCard } from "components/Prompt/ToolCard";
-import { SecondaryNavBar, ToolNavBarButtons } from "components/SecondaryNavBar";
+import {
+  SecondaryNavBar,
+  ToolNavBarButtons,
+} from "components/Prompt/SecondaryNavBar";
 import { Button } from "components/shared/Button";
 import { Dropdown } from "components/shared/Dropdown";
 import { Footer } from "components/shared/Footer";

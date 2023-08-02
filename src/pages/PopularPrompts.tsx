@@ -8,7 +8,7 @@ import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
-} from "components/SecondaryNavBar";
+} from "components/Prompt/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";

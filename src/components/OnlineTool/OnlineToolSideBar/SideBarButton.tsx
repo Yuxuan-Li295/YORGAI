@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { basis, fill, zinc } from "components/constants/colors";
+import { basis, fill } from "components/constants/colors";
 import { ReactElement } from "react";
 
 const SideBarButton = ({

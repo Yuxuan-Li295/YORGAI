@@ -49,7 +49,7 @@ const ToolNavBarButtons = [
   {
     icon: <SquareS />,
     label: "在线应用",
-    url: "/tool/chat",
+    url: "/online-tool",
   },
   {
     icon: <List />,
