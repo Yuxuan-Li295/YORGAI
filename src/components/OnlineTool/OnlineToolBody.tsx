@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
-import { ChooseTemplateDialog } from "components/Chat/ChooseTemplateDialog";
+import { ChooseTemplateDialog } from "components/Writing/ChooseTemplateDialog";
 import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SystemChatItem } from "components/Chat/SystemChatItem";
 import { UserChatItem } from "components/Chat/UserChatItem";
