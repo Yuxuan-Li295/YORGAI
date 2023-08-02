@@ -1,18 +1,12 @@
 import { css } from "@emotion/css";
-import { ChatHistoryItemTrailContainer } from "components/OnlineTool/ChatHistoryItemTrailContainer";
 import { ChooseModelDialog } from "components/OnlineTool/ChooseModelDialog";
 import { KnowledgeBase } from "components/OnlineTool/KnowledgeBase";
-import { SideBar } from "components/OnlineTool/Sidebar";
+import { OnlineToolHeader } from "components/OnlineTool/OnlineToolHeader";
+import { OnlineToolSideBar } from "components/OnlineTool/OnlineToolSideBar";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
-import { body } from "components/constants/fonts";
-import { Button } from "components/shared/Button";
-import { SingleLineInputField } from "components/shared/SingleLineInputField";
 import { useEffect, useMemo, useReducer, useState } from "react";
-import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
-import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
-import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
-import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
+import { ToolsMode } from "types/OnlineToolTypes";
 
 declare global {
   var debugEnableKBMode: () => void;
@@ -20,24 +14,9 @@ declare global {
 }
 
 const OnlineTool = () => {
-  enum ToolsMode {
-    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2065-274657&mode=dev
-    KnowledgeBase,
-    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=1454-279891&mode=dev
-    Home,
-    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=1401-277631&mode=dev
-    Standard,
-    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=1440-277813&mode=dev
-    Compose,
-    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2217-300497&mode=dev
-    Paint,
-    // https://www.figma.com/file/PiWfPFbMoq5k2fDJvF2lxG/%E5%B0%8F%E9%B1%BC%E6%96%B0%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F?type=design&node-id=2311-263056&mode=dev
-    Podcast,
-  }
-
   type ToolsNormalModes =
     | ToolsMode.Home
-    | ToolsMode.Standard
+    | ToolsMode.Chat
     | ToolsMode.Compose
     | ToolsMode.Paint
     | ToolsMode.Podcast;
@@ -73,7 +52,7 @@ const OnlineTool = () => {
               };
       }
     },
-    { isKnowledgeBaseMode: false, underlyingMode: ToolsMode.Standard },
+    { isKnowledgeBaseMode: false, underlyingMode: ToolsMode.Chat },
   );
 
   const mode = useMemo(
@@ -86,10 +65,13 @@ const OnlineTool = () => {
 
   const showNormalMode = (mode: ToolsNormalModes) =>
     changeModeState({ cmd: "changeMode", mode });
+
   const setKnowledgeBaseMode = () =>
     changeModeState({ cmd: "enableKnowledgeBaseMode" });
+
   const unsetKnowledgeBaseMode = () =>
     changeModeState({ cmd: "disableKnowledgeBaseMode" });
+
   const [knowledgeBases, setKnowledgeBases] = useState();
 
   useEffect(() => {
@@ -97,9 +79,10 @@ const OnlineTool = () => {
     globalThis.debugDisableKBMode = setKnowledgeBaseMode;
   });
 
-  const [isSidebarOpened, setIsSidebarOpened] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isChooseModelDialogVisible, setChooseModelDialogVisible] =
     useState(false);
+
   const toggleChooseModelDialog = () => {
     setChooseModelDialogVisible((prevVisible) => !prevVisible);
   };
@@ -109,13 +92,6 @@ const OnlineTool = () => {
     itemIndex: number;
     title: string;
   } | null>(null);
-  const [originalTitle, setOriginalTitle] = useState(
-    selectedItem ? selectedItem.title : "新的会话",
-  );
-  const [currentTitle, setCurrentTitle] = useState(
-    selectedItem ? selectedItem.title : "新的会话",
-  );
-  const [isEditing, setIsEditing] = useState(false);
 
   const handleSelectedItemChange = (
     newSelectedItem: {
@@ -125,7 +101,6 @@ const OnlineTool = () => {
     } | null,
   ) => {
     setSelectedItem(newSelectedItem);
-    setCurrentTitle(newSelectedItem ? newSelectedItem.title : "新的会话");
   };
 
   return (
@@ -155,11 +130,10 @@ const OnlineTool = () => {
           background-color: ${basis.bg_muted};
         `}
       >
-        <SideBar
-          isSidebarOpen={isSidebarOpened}
+        <OnlineToolSideBar
+          isSidebarOpen={isSidebarOpen}
           selectedItem={selectedItem}
           handleSelectedItemChangeCallback={handleSelectedItemChange}
-          toggleSidebar={setIsSidebarOpened}
           toggleChooseModelDialog={toggleChooseModelDialog}
         />
         <div
@@ -171,180 +145,16 @@ const OnlineTool = () => {
             overflow: hidden;
           `}
         >
-          <div
-            className={css`
-              display: flex;
-              flex-direction: row;
-              border-bottom: 1px solid ${basis.alt.border};
-              background-color: ${basis.bg_subtle};
-              padding: 14px 24px;
-              align-items: center;
-            `}
-          >
-            <Button
-              variant="tertiary"
-              onClick={() => setIsSidebarOpened(!isSidebarOpened)}
-            >
-              <SidebarLeftDark />
-            </Button>
-            {mode === ToolsMode.Home ? (
-              <span
-                className={css`
-                  flex: 100vw 0 1;
-                  text-align: center;
-                  line-height: 20px;
-                  font-family: inherit;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 500;
-                  line-height: 20px;
-                  color: ${basis.text_loud};
-                `}
-              >
-                请选择一个模型
-              </span>
-            ) : mode === ToolsMode.Standard ? (
-              <>
-                {!selectedItem ? (
-                  <span
-                    className={css`
-                      flex: 100vw 0 1;
-                      text-align: center;
-                      line-height: 20px;
-                      font-family: inherit;
-                      font-size: 14px;
-                      font-style: normal;
-                      font-weight: 400;
-                      line-height: 20px;
-                      color: ${basis.text_loud};
-                    `}
-                  >
-                    {currentTitle}
-                  </span>
-                ) : !isEditing ? (
-                  // if selectedItem is not null and is not editing, display the title and a pencil
-                  <div
-                    className={css`
-                      display: flex;
-                      flex: 100vw 0 1;
-                      text-align: center;
-                      align-items: center;
-                      justify-content: center;
-                      gap: 16px;
-                    `}
-                  >
-                    <div
-                      className={css`
-                        height: 20px;
-                      `}
-                    >
-                      <div
-                        className={css`
-                          display: inline-flex;
-                          align-items: center;
-                          gap: 16px;
-                        `}
-                      >
-                        <span
-                          className={css`
-                            color: ${basis.text_loud};
-                            text-align: center;
-                            ${body.sm.regular}
-                          `}
-                        >
-                          {currentTitle}
-                        </span>
-                        <button
-                          className={css`
-                            height: 20px;
-                            border: none;
-                            background: none;
-                            outline: none;
-                            cursor: pointer;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                          `}
-                          onClick={() => setIsEditing(!isEditing)}
-                        >
-                          <Pencil />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div
-                    className={css`
-                      display: flex;
-                      flex: 100vw 0 1;
-                      text-align: center;
-                      align-items: center;
-                      justify-content: center;
-                      gap: 16px;
-                    `}
-                  >
-                    <SingleLineInputField
-                      value={currentTitle}
-                      placeholder={""}
-                      disabled={false}
-                      error={false}
-                      fontStyles={body.sm.regular}
-                      width={200}
-                      height={32}
-                      onChange={(event) => setCurrentTitle(event.target.value)}
-                    />
-                    <ChatHistoryItemTrailContainer
-                      LeftIcon={DoCheck}
-                      LeftIconOnClickHandler={() => {
-                        handleSelectedItemChange({
-                          ...selectedItem,
-                          title: currentTitle,
-                        });
-                        setOriginalTitle(currentTitle);
-                        setIsEditing(!isEditing);
-                      }}
-                      RightIcon={XLarge}
-                      RightIconOnClickHandler={() => {
-                        setCurrentTitle(originalTitle);
-                        setIsEditing(!isEditing);
-                      }}
-                    />
-                  </div>
-                )}
-              </>
-            ) : mode === ToolsMode.Compose ? (
-              <></>
-            ) : mode === ToolsMode.Paint ? (
-              <></>
-            ) : mode === ToolsMode.Podcast ? (
-              "podcast mode"
-            ) : (
-              <span
-                className={css`
-                  flex: 100vw 0 1;
-                  text-align: center;
-                  line-height: 20px;
-                  font-family: inherit;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 500;
-                  line-height: 20px;
-                  color: ${basis.text_loud};
-                `}
-              >
-                我的知识库
-              </span>
-            )}
-            <div
-              className={css`
-                width: 32px;
-                min-width: 32px;
-              `}
-            />
-          </div>
+          <OnlineToolHeader
+            mode={mode}
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+            selectedItem={selectedItem}
+            handleSelectedItemChange={handleSelectedItemChange}
+          />
           {mode === ToolsMode.Home ? (
             <>home</>
-          ) : mode === ToolsMode.Standard ? (
+          ) : mode === ToolsMode.Chat ? (
             <div
               className={css`
                 display: flex;

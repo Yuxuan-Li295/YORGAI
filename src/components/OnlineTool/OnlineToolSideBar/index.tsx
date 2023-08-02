@@ -1,12 +1,12 @@
 import { css } from "@emotion/css";
+import { ChatGPTLogo } from "components/constants/SideBarChatHistoryItemLogos";
 import { basis, zinc } from "components/constants/colors";
 import React, { useEffect, useState } from "react";
 import { ReactComponent as AddSquare } from "resources/img/AddSquare.svg";
 import { ReactComponent as Diamond } from "resources/img/Diamond.svg";
 import { ReactComponent as Home } from "resources/img/Home.svg";
-import { SideBarButton } from "./SideBarButton";
 import { SideBarChatHistoryItem } from "./SideBarChatHistoryItem";
-import { ChatGPTLogo } from "../constants/SideBarChatHistoryItemLogos";
+import { SideBarButton } from "./SideBarButton";
 
 let chatHistoryData = [
   {
@@ -68,7 +68,7 @@ let chatHistoryData = [
   },
 ];
 
-const SideBar = ({
+const OnlineToolSideBar = ({
   isSidebarOpen,
   selectedItem,
   handleSelectedItemChangeCallback,
@@ -83,7 +83,6 @@ const SideBar = ({
       title: string;
     } | null,
   ) => void;
-  toggleSidebar: (isSidebarOpen: boolean) => void;
   toggleChooseModelDialog: () => void;
 }) => {
   const [chatHistory, setChatHistory] = useState(chatHistoryData);
@@ -251,4 +250,4 @@ const SideBar = ({
   );
 };
 
-export { SideBar };
+export { OnlineToolSideBar };
