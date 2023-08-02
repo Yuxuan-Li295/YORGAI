@@ -5,7 +5,7 @@ import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import {
   PromptNavBarButtons,
   SecondaryNavBar,
-} from "components/SecondaryNavBar";
+} from "components/Prompt/SecondaryNavBar";
 import { Button } from "components/shared/Button";
 import { Dropdown } from "components/shared/Dropdown";
 import { Footer } from "components/shared/Footer";
