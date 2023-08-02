@@ -7,15 +7,12 @@ export const ChatHistoryItemInputContainer = ({
   handleInputChange,
 }: {
   title: string;
-  handleInputChange: (event: {
-    preventDefault: () => void;
-    target: { value: React.SetStateAction<string> };
-  }) => void;
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
   return (
     <div
       className={css`
-        width: 138px;
+        width: 126px;
         height: 36px;
         display: flex;
         align-items: center;
@@ -52,13 +49,12 @@ export const ChatHistoryItemInputContainer = ({
         >
           <input
             className={css`
-              width: 114px;
+              width: 102px;
               height: 20px;
               border: none;
               outline: none;
               display: flex;
               align-items: center;
-              height: 20px;
               flex-direction: column;
               justify-content: center;
               flex: 1 0 0;

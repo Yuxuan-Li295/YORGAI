@@ -1,13 +1,13 @@
 import { css } from "@emotion/css";
 import { basis, fill, primary } from "components/constants/colors";
 import { Button } from "components/shared/Button";
-import { Tag } from "components/shared/Tag";
+import { CheckBox } from "components/shared/CheckBoxOrRadio";
+import { Badge } from "components/shared/Badge";
 import { ReactComponent as CircleExportSvg } from "resources/img/CircleExport.svg";
 import { ReactComponent as EyeShowSvg } from "resources/img/EyeShow.svg";
-import { TableCol, TableCell, TabelLabel } from "../Table";
+import { TabelLabel, TableCell, TableCol } from "../Table";
 import { KB } from "../types";
 import React, { FC, createRef, useState } from "react";
-import { CheckBoxOrRadio } from "components/shared/CheckBoxOrRadio";
 import { Header } from "./Header";
 
 export const FileSel: FC<{
@@ -111,8 +111,7 @@ export const FileSel: FC<{
       >
         <TableCol>
           <TableCell variant="dark" sep>
-            <CheckBoxOrRadio
-              type="checkbox"
+            <CheckBox
               size="xs"
               colorPattern={primary}
               checked={selected.files.length === selected.selectedCount}
@@ -134,8 +133,7 @@ export const FileSel: FC<{
                 height={32}
                 variant={idx % 2 === 0 ? "light" : "dark"}
               >
-                <CheckBoxOrRadio
-                  type="checkbox"
+                <CheckBox
                   colorPattern={primary}
                   size="xs"
                   checked={file.selected}
@@ -207,7 +205,7 @@ export const FileSel: FC<{
                     height={32}
                     variant={idx % 2 === 0 ? "light" : "dark"}
                   >
-                    <Tag>{file.status}</Tag>
+                    <Badge>{file.status}</Badge>
                   </TableCell>
                 ))}
             </TableCol>

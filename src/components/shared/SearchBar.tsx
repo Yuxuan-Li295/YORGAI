@@ -2,13 +2,21 @@ import { css } from "@emotion/css";
 import { basis, fill } from "components/constants/colors";
 import { ReactComponent as Search } from "resources/img/Search.svg";
 
-const SearchBar = () => {
+const SearchBar = ({
+  width,
+}: {
+  width: string;
+  hasButton?: boolean;
+  buttonOnClick?: () => void;
+  buttonText?: string;
+}) => {
   return (
     <div
       className={css`
         display: flex;
         align-items: center;
         gap: 11px;
+        width: ${width};
         height: 32px;
       `}
     >

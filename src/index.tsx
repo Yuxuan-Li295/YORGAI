@@ -12,7 +12,8 @@ import { TextPromptDetail } from "pages/TextPromptDetail";
 import { TextPrompts } from "pages/TextPrompts";
 import { Tools } from "pages/Tools";
 import { ToolsChat } from "pages/ToolsChat";
-import { useCallback, useEffect, useState } from "react";
+import { ToolsWriting } from "pages/ToolsWriting";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -113,6 +114,8 @@ const Router = () => {
         <Route path="prompt/image/detail" element={<ImagePromptDetail />} />
         <Route path="tool/popular" element={<PopularTools />} />
         <Route path="tool/chat" element={<ToolsChat />} />
+        <Route path="tool/writing" element={<ToolsWriting />} />
+        <Route path="tool" element={<Tools />} />
         <Route path="tool/detail" element={<ToolDetail />} />
         <Route path="tool" element={<Tools />} />
         <Route path="" element={<Navigate to="prompt/popular" replace />} />

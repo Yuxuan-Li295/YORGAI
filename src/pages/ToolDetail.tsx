@@ -6,7 +6,7 @@ import { SecondaryNavBar, ToolNavBarButtons } from "components/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { Breadcrumb } from "components/shared/Breadcrumb";
 import { Button } from "components/shared/Button";
-import Carousel from "components/shared/Carousel";
+import { Carousel } from "components/shared/Carousel";
 import { Footer } from "components/shared/Footer";
 import { ReactComponent as Execute } from "resources/img/Execute.svg";
 import { ReactComponent as Globe } from "resources/img/Globe.svg";

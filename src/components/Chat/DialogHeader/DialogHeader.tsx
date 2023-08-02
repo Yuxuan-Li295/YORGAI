@@ -7,7 +7,7 @@ import { ReactComponent as Clock } from "resources/img/Clock.svg";
 import { ReactComponent as Star } from "resources/img/Star.svg";
 import { ReactComponent as Stars } from "resources/img/Stars.svg";
 import { PromptFilterBar } from "./PromptFilterBar";
-import { SearchBar } from "./SearchBar";
+import { SearchBar } from "components/shared/SearchBar";
 
 const DialogHeader = () => {
   return (
@@ -85,7 +85,7 @@ const DialogHeader = () => {
             align-items: center;
           `}
         >
-          <SearchBar />
+          <SearchBar width="160px" />
         </div>
       </div>
     </div>

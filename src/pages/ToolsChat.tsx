@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
+import { ChooseModelDialog } from "components/OnlineToolPage/ChooseModelDialog";
 import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SideBar } from "components/OnlineToolPage/Sidebar";
 import { SystemChatItem } from "components/OnlineToolPage/SystemChatItem";
@@ -10,6 +11,12 @@ import { useEffect, useMemo, useReducer, useState } from "react";
 import SystemAvatar from "resources/img/SystemAvatar.png";
 import { ReactComponent as SidebarLeftDark } from "resources/img/SidebarLeftDark.svg";
 import { Button } from "components/shared/Button";
+import { SingleLineInputField } from "../components/shared/SingleLineInputField";
+import { body } from "../components/constants/fonts";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
+import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
+import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
+import { ChatHistoryItemTrailContainer } from "../components/OnlineToolPage/ChatHistoryItemTrailContainer";
 import { KnowledgeBase } from "components/OnlineToolPage/KnowledgeBase";
 
 declare global {
@@ -94,6 +101,35 @@ const ToolsChat = () => {
     globalThis.debugEnableKBMode = setKnowledgeBaseMode;
     globalThis.debugDisableKBMode = setKnowledgeBaseMode;
   });
+  const [isChooseModelDialogVisible, setChooseModelDialogVisible] =
+    useState(false);
+  const toggleChooseModelDialog = () => {
+    setChooseModelDialogVisible((prevVisible) => !prevVisible);
+  };
+
+  const [selectedItem, setSelectedItem] = useState<{
+    dayIndex: number;
+    itemIndex: number;
+    title: string;
+  } | null>(null);
+  const [originalTitle, setOriginalTitle] = useState(
+    selectedItem ? selectedItem.title : "新的会话",
+  );
+  const [currentTitle, setCurrentTitle] = useState(
+    selectedItem ? selectedItem.title : "新的会话",
+  );
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSelectedItemChange = (
+    newSelectedItem: {
+      dayIndex: number;
+      itemIndex: number;
+      title: string;
+    } | null,
+  ) => {
+    setSelectedItem(newSelectedItem);
+    setCurrentTitle(newSelectedItem ? newSelectedItem.title : "新的会话");
+  };
 
   return (
     <div
@@ -124,7 +160,10 @@ const ToolsChat = () => {
       >
         <SideBar
           isSidebarOpen={isSidebarOpened}
+          selectedItem={selectedItem}
+          handleSelectedItemChangeCallback={handleSelectedItemChange}
           toggleSidebar={setIsSidebarOpened}
+          toggleChooseModelDialog={toggleChooseModelDialog}
         />
         <div
           className={css`
@@ -169,7 +208,7 @@ const ToolsChat = () => {
                   请选择一个模型
                 </span>
               ) : mode === ToolsMode.Standard ? (
-                <>
+                !selectedItem ? (
                   <span
                     className={css`
                       flex: 100vw 0 1;
@@ -183,9 +222,98 @@ const ToolsChat = () => {
                       color: ${basis.text_loud};
                     `}
                   >
-                    新的对话
+                    {currentTitle}
                   </span>
-                </>
+                ) : !isEditing ? (
+                  // if selectedItem is not null and is not editing, display the title and a pencil
+                  <div
+                    className={css`
+                      display: flex;
+                      flex: 100vw 0 1;
+                      text-align: center;
+                      align-items: center;
+                      justify-content: center;
+                      gap: 16px;
+                    `}
+                  >
+                    <div
+                      className={css`
+                        height: 20px;
+                      `}
+                    >
+                      <div
+                        className={css`
+                          display: inline-flex;
+                          align-items: center;
+                          gap: 16px;
+                        `}
+                      >
+                        <span
+                          className={css`
+                            color: ${basis.text_loud};
+                            text-align: center;
+                            ${body.sm.regular}
+                          `}
+                        >
+                          {currentTitle}
+                        </span>
+                        <button
+                          className={css`
+                            height: 20px;
+                            border: none;
+                            background: none;
+                            outline: none;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                          `}
+                          onClick={() => setIsEditing(!isEditing)}
+                        >
+                          <Pencil />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className={css`
+                      display: flex;
+                      flex: 100vw 0 1;
+                      text-align: center;
+                      align-items: center;
+                      justify-content: center;
+                      gap: 16px;
+                    `}
+                  >
+                    <SingleLineInputField
+                      value={currentTitle}
+                      placeholder={""}
+                      disabled={false}
+                      error={false}
+                      fontStyles={body.sm.regular}
+                      width={200}
+                      height={32}
+                      onChange={(event) => setCurrentTitle(event.target.value)}
+                    />
+                    <ChatHistoryItemTrailContainer
+                      LeftIcon={DoCheck}
+                      LeftIconOnClickHandler={() => {
+                        handleSelectedItemChange({
+                          ...selectedItem,
+                          title: currentTitle,
+                        });
+                        setOriginalTitle(currentTitle);
+                        setIsEditing(!isEditing);
+                      }}
+                      RightIcon={XLarge}
+                      RightIconOnClickHandler={() => {
+                        setCurrentTitle(originalTitle);
+                        setIsEditing(!isEditing);
+                      }}
+                    />
+                  </div>
+                )
               ) : mode === ToolsMode.Compose ? (
                 <></>
               ) : mode === ToolsMode.Paint ? (
@@ -227,7 +355,7 @@ const ToolsChat = () => {
                   }
                 `}
               >
-                <UserChatItem>
+                {/* <UserChatItem>
                   I want you to act as a UX/UI developer. I will provide some
                   details about the design of an app, website or other digital
                   product, and it will be your job to come up with creative ways
@@ -256,9 +384,10 @@ const ToolsChat = () => {
                   modification plan. Here are the steps we can take to help
                   manage your dog's aggressions.
                 </SystemChatItem>
-                <DialogHeader />
+                <DialogHeader /> */}
+                {isChooseModelDialogVisible && <ChooseModelDialog />}
               </div>
-              <ChatInput />
+              {/* <ChatInput /> */}
             </div>
           ) : mode === ToolsMode.Compose ? (
             <>compose</>

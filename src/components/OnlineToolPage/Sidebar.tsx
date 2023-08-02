@@ -1,55 +1,141 @@
 import { css } from "@emotion/css";
 import { basis, zinc } from "components/constants/colors";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as AddSquare } from "resources/img/AddSquare.svg";
-import ChatGPT from "resources/img/ChatGPT.png";
 import { ReactComponent as Diamond } from "resources/img/Diamond.svg";
 import { ReactComponent as Home } from "resources/img/Home.svg";
 import { SideBarButton } from "./SideBarButton";
 import { SideBarChatHistoryItem } from "./SideBarChatHistoryItem";
+import { ChatGPTLogo } from "../constants/SideBarChatHistoryItemLogos";
 
 let chatHistoryData = [
   {
-    day: '今天',
+    day: "今天",
     items: [
-      { title: '新的会话', rightSubtitle: 'ChatGPT4.0', itemIsSelected: false },
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
+      {
+        title: "新的会话",
+        leftSubtitle: "对话",
+        rightSubtitle: "ChatGPT4.0",
+        itemIsSelected: false,
+      },
+      {
+        title: "为什么高考在6月上旬",
+        leftSubtitle: "对话",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
     ],
   },
   {
-    day: '昨天',
+    day: "昨天",
     items: [
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
+      {
+        title: "为什么高考在6月上旬",
+        leftSubtitle: "对话",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
+      {
+        title: "为什么高考在6月上旬",
+        leftSubtitle: "对话",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
     ],
   },
   {
-    day: '过去7天',
+    day: "过去7天",
     items: [
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
-      { title: '为什么高考在6月上旬', rightSubtitle: 'ChatGPT3.5', itemIsSelected: false },
+      {
+        title: "为什么高考在6月上旬",
+        leftSubtitle: "对话",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
+      {
+        title: "为什么高考在6月上旬",
+        leftSubtitle: "对话",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
+      {
+        title: "为什么高考在6月上旬",
+        leftSubtitle: "对话",
+        rightSubtitle: "ChatGPT3.5",
+        itemIsSelected: false,
+      },
     ],
   },
 ];
 
 const SideBar = ({
   isSidebarOpen,
+  selectedItem,
+  handleSelectedItemChangeCallback,
+  toggleChooseModelDialog,
 }: {
   isSidebarOpen: boolean;
+  selectedItem: { dayIndex: number; itemIndex: number; title: string } | null;
+  handleSelectedItemChangeCallback: (
+    newSelectedItem: {
+      dayIndex: number;
+      itemIndex: number;
+      title: string;
+    } | null,
+  ) => void;
   toggleSidebar: (isSidebarOpen: boolean) => void;
+  toggleChooseModelDialog: () => void;
 }) => {
   const [chatHistory, setChatHistory] = useState(chatHistoryData);
 
+  useEffect(() => {
+    if (selectedItem) {
+      setChatHistory((prevChatHistory) => {
+        const newChatHistory = [...prevChatHistory];
+        const { dayIndex, itemIndex, title } = selectedItem;
+        newChatHistory[dayIndex].items[itemIndex].title = title;
+        return newChatHistory;
+      });
+    }
+  }, [selectedItem]);
+
   const handleItemClick = (dayIndex: number, itemIndex: number) => {
-    setChatHistory(prevChatHistory => {
-      const newChatHistory = JSON.parse(JSON.stringify(prevChatHistory)); 
+    setChatHistory((prevChatHistory) => {
+      const newChatHistory = JSON.parse(JSON.stringify(prevChatHistory));
       for (const day of newChatHistory) {
         for (const item of day.items) {
-          item.itemIsSelected = false; 
+          item.itemIsSelected = false;
         }
       }
-      newChatHistory[dayIndex].items[itemIndex].itemIsSelected = true; 
+      newChatHistory[dayIndex].items[itemIndex].itemIsSelected = true;
+      const selectedItem = {
+        dayIndex: dayIndex,
+        itemIndex: itemIndex,
+        title: newChatHistory[dayIndex].items[itemIndex].title,
+      };
+      handleSelectedItemChangeCallback(selectedItem);
+      return newChatHistory;
+    });
+  };
+
+  const handleTitleChange = (
+    dayIndex: number,
+    itemIndex: number,
+    newTitle: string,
+  ) => {
+    setChatHistory((prevChatHistory) => {
+      const newChatHistory = [...prevChatHistory];
+      newChatHistory[dayIndex].items[itemIndex].title = newTitle;
+      return newChatHistory;
+    });
+  };
+
+  const handleDeleteChange = (dayIndex: number, itemIndex: number) => {
+    handleSelectedItemChangeCallback(null);
+
+    setChatHistory((prevChatHistory) => {
+      const newChatHistory = [...prevChatHistory];
+      newChatHistory[dayIndex].items.splice(itemIndex, 1);
       return newChatHistory;
     });
   };
@@ -80,7 +166,7 @@ const SideBar = ({
           align-items: flex-start;
         `}
       >
-        {chatHistory.map(({day, items}, dayIndex) => (
+        {chatHistory.map(({ day, items }, dayIndex) => (
           <React.Fragment key={day}>
             <div
               className={css`
@@ -106,19 +192,23 @@ const SideBar = ({
               </span>
             </div>
             {items.map((item, itemIndex) => (
-              <div 
-                key={itemIndex}
-                onClick={() => handleItemClick(dayIndex, itemIndex)}
-              >
-                <SideBarChatHistoryItem
-                  itemIsSelected={item.itemIsSelected}
-                  displayedLogo={ChatGPT}
-                  logoBackground={"#80A99D"}
-                  title={item.title}
-                  leftSubtitle="对话"
-                  rightSubtitle={item.rightSubtitle}
-                />
-              </div>
+              <SideBarChatHistoryItem
+                itemIsSelected={item.itemIsSelected}
+                displayedLogo={ChatGPTLogo.displayedLogo}
+                logoBackground={ChatGPTLogo.logoBackground}
+                title={item.title}
+                leftSubtitle={item.leftSubtitle}
+                rightSubtitle={item.rightSubtitle}
+                onTitleChangeCallback={(newTitle: string) =>
+                  handleTitleChange(dayIndex, itemIndex, newTitle)
+                }
+                handleDeleteChangeCallback={() =>
+                  handleDeleteChange(dayIndex, itemIndex)
+                }
+                handleItemClickCallback={() =>
+                  handleItemClick(dayIndex, itemIndex)
+                }
+              />
             ))}
           </React.Fragment>
         ))}
@@ -152,7 +242,9 @@ const SideBar = ({
           width: 100%;
         `}
       >
-        <SideBarButton icon={<Home />}>工具主页</SideBarButton>
+        <SideBarButton icon={<Home />} onClick={toggleChooseModelDialog}>
+          工具主页
+        </SideBarButton>
         <SideBarButton icon={<Diamond />}>管理订阅</SideBarButton>
       </div>
     </div>

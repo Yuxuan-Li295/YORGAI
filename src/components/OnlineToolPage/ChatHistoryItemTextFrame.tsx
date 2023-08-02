@@ -1,4 +1,3 @@
-import React from "react";
 import { css } from "@emotion/css";
 import { basis } from "../constants/colors";
 import { ReactComponent as Separator } from "../../resources/img/Separator.svg";
@@ -15,7 +14,7 @@ export const ChatHistoryItemTextFrame = ({
   return (
     <div
       className={css`
-        width: 138px;
+        width: 126px;
         height: 36px;
         display: flex;
         align-items: center;
@@ -41,7 +40,7 @@ export const ChatHistoryItemTextFrame = ({
         >
           <span
             className={css`
-              width: 138px;
+              width: 126px;
               flex: 1 0 0;
               display: inline-block;
               height: 20px;

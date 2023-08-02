@@ -55,6 +55,9 @@ export const SideBarChatHistoryItem = ({
   title,
   leftSubtitle,
   rightSubtitle,
+  onTitleChangeCallback,
+  handleDeleteChangeCallback,
+  handleItemClickCallback,
 }: {
   itemIsSelected: boolean;
   displayedLogo: string;
@@ -62,8 +65,10 @@ export const SideBarChatHistoryItem = ({
   title: string;
   leftSubtitle: string;
   rightSubtitle: string;
+  onTitleChangeCallback: (newTitle: string) => void;
+  handleDeleteChangeCallback: () => void;
+  handleItemClickCallback: () => void;
 }) => {
-  const [displayItem, setDisplayItem] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [toDelete, setToDelete] = useState(false);
@@ -76,16 +81,14 @@ export const SideBarChatHistoryItem = ({
   // and has not clicked the "edit" or "delete" button, this is to show the pencil and trash
   // buttons
 
-  const handleInputChange = (event: {
-    preventDefault: () => void;
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    event.preventDefault();
-    setCurrentTitle(event.target.value);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newTitle = event.target.value;
+    setCurrentTitle(newTitle);
   };
 
   const handleSubmit = () => {
     setOriginalTitle(currentTitle);
+    onTitleChangeCallback(currentTitle);
     setIsEditing(!isEditing);
   };
 
@@ -100,10 +103,6 @@ export const SideBarChatHistoryItem = ({
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-  };
-
-  const handleDelete = () => {
-    setDisplayItem(!displayItem);
   };
 
   useEffect(() => {
@@ -123,81 +122,84 @@ export const SideBarChatHistoryItem = ({
     }
   }, [toDelete, isHovered, isEditing]);
 
-  if (displayItem) {
-    return (
+  useEffect(() => {
+    setOriginalTitle(title);
+    setCurrentTitle(title);
+  }, [title]);
+
+  return (
+    <div
+      className={itemIsSelected ? SelectedStyles : RestStyles}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={!toDelete ? handleItemClickCallback : undefined}
+    >
+      {/* Container */}
       <div
-        className={itemIsSelected ? SelectedStyles : RestStyles}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className={css`
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex: 1 0 0;
+        `}
       >
-        {/* Container */}
-        <div
-          className={css`
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex: 1 0 0;
-          `}
-        >
-          {/* Lead container */}
-          <ChatHistoryItemLogoContainer
-            logoBackground={currentBackground}
-            logo={currentLogo}
+        {/* Lead container */}
+        <ChatHistoryItemLogoContainer
+          logoBackground={currentBackground}
+          logo={currentLogo}
+        />
+
+        {/* Middle container */}
+        {isEditing ? (
+          <ChatHistoryItemInputContainer
+            title={currentTitle}
+            handleInputChange={handleInputChange}
           />
+        ) : (
+          <ChatHistoryItemTextFrame
+            title={toDelete ? "删除该对话？" : currentTitle}
+            leftSubtitle={leftSubtitle}
+            rightSubtitle={rightSubtitle}
+          />
+        )}
 
-          {/* Middle container */}
-          {isEditing ? (
-            <ChatHistoryItemInputContainer
-              title={currentTitle}
-              handleInputChange={handleInputChange}
-            />
-          ) : (
-            <ChatHistoryItemTextFrame
-              title={toDelete ? "删除该对话？" : currentTitle}
-              leftSubtitle={leftSubtitle}
-              rightSubtitle={rightSubtitle}
-            />
-          )}
+        {/* Right container */}
+        {isOnlyHovered && (
+          <ChatHistoryItemTrailContainer
+            LeftIcon={Pencil}
+            LeftIconOnClickHandler={() => {
+              setIsEditing(!isEditing);
+            }}
+            RightIcon={Trash}
+            RightIconOnClickHandler={() => setToDelete(!toDelete)}
+          />
+        )}
 
-          {/* Right container */}
-          {isOnlyHovered && (
-            <ChatHistoryItemTrailContainer
-              LeftIcon={Pencil}
-              LeftIconOnClickHandler={() => {
-                setIsEditing(!isEditing);
-              }}
-              RightIcon={Trash}
-              RightIconOnClickHandler={() => setToDelete(!toDelete)}
-            />
-          )}
+        {isEditing && (
+          <ChatHistoryItemTrailContainer
+            LeftIcon={DoCheck}
+            LeftIconOnClickHandler={() => {
+              handleSubmit();
+            }}
+            RightIcon={XLarge}
+            RightIconOnClickHandler={() => {
+              handleCancel();
+            }}
+          />
+        )}
 
-          {isEditing && (
-            <ChatHistoryItemTrailContainer
-              LeftIcon={DoCheck}
-              LeftIconOnClickHandler={() => {
-                handleSubmit();
-              }}
-              RightIcon={XLarge}
-              RightIconOnClickHandler={() => {
-                handleCancel();
-              }}
-            />
-          )}
-
-          {toDelete && (
-            <ChatHistoryItemTrailContainer
-              LeftIcon={DoCheck}
-              LeftIconOnClickHandler={() => {
-                handleDelete();
-              }}
-              RightIcon={XLarge}
-              RightIconOnClickHandler={() => setToDelete(!toDelete)}
-            />
-          )}
-        </div>
+        {toDelete && (
+          <ChatHistoryItemTrailContainer
+            LeftIcon={DoCheck}
+            LeftIconOnClickHandler={() => {
+              handleDeleteChangeCallback();
+              setToDelete(!toDelete);
+            }}
+            RightIcon={XLarge}
+            RightIconOnClickHandler={() => setToDelete(!toDelete)}
+          />
+        )}
       </div>
-    );
-  } else {
-    return <></>;
-  }
+    </div>
+  );
 };
