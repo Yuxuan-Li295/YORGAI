@@ -5,7 +5,7 @@ import { OnlineToolSideBar } from "components/OnlineTool/OnlineToolSideBar";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
 import { useEffect, useMemo, useReducer, useState } from "react";
-import { ToolsMode } from "types/OnlineToolTypes";
+import { ToolsMode, ToolsNormalModes } from "types/OnlineToolTypes";
 
 declare global {
   var debugEnableKBMode: () => void;
@@ -13,13 +13,6 @@ declare global {
 }
 
 const OnlineTool = () => {
-  type ToolsNormalModes =
-    | ToolsMode.Home
-    | ToolsMode.Chat
-    | ToolsMode.Compose
-    | ToolsMode.Paint
-    | ToolsMode.Podcast;
-
   type ToolsModeState = {
     isKnowledgeBaseMode: boolean;
     underlyingMode: ToolsNormalModes;
@@ -51,7 +44,7 @@ const OnlineTool = () => {
               };
       }
     },
-    { isKnowledgeBaseMode: false, underlyingMode: ToolsMode.Chat },
+    { isKnowledgeBaseMode: false, underlyingMode: ToolsMode.Home },
   );
 
   const mode = useMemo(
@@ -134,6 +127,8 @@ const OnlineTool = () => {
           selectedItem={selectedItem}
           handleSelectedItemChangeCallback={handleSelectedItemChange}
           toggleChooseModelDialog={toggleChooseModelDialog}
+          showNormalMode={showNormalMode}
+          unsetKnowledgeBaseMode={unsetKnowledgeBaseMode}
         />
         <div
           className={css`
@@ -151,7 +146,11 @@ const OnlineTool = () => {
             selectedItem={selectedItem}
             handleSelectedItemChange={handleSelectedItemChange}
           />
-          <OnlineToolBody mode={mode} />
+          <OnlineToolBody
+            mode={mode}
+            showNormalMode={showNormalMode}
+            setKnowledgeBaseMode={setKnowledgeBaseMode}
+          />
         </div>
       </div>
     </div>

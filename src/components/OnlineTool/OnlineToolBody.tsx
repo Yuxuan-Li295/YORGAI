@@ -1,14 +1,48 @@
 import { css } from "@emotion/css";
 import { KnowledgeBase } from "components/OnlineTool/KnowledgeBase";
 import { basis } from "components/constants/colors";
+import { Button } from "components/shared/Button";
 import { Fragment } from "react";
-import { ToolsMode } from "types/OnlineToolTypes";
+import { ToolsMode, ToolsNormalModes } from "types/OnlineToolTypes";
 
-const OnlineToolBody = ({ mode }: { mode: ToolsMode }) => {
+const OnlineToolBody = ({
+  mode,
+  showNormalMode,
+  setKnowledgeBaseMode,
+}: {
+  mode: ToolsMode;
+  showNormalMode: (mode: ToolsNormalModes) => void;
+  setKnowledgeBaseMode: () => void;
+}) => {
   return (
     <Fragment>
       {mode === ToolsMode.Home ? (
-        <>home</>
+        <div
+          className={css`
+            flex: 1;
+            border-radius: 8px;
+            border: 1px solid ${basis.border};
+            margin: 12px;
+          `}
+        >
+          <div
+            className={css`
+              display: flex;
+              & > * {
+                margin: 20px;
+              }
+            `}
+          >
+            <Button onClick={() => showNormalMode(ToolsMode.Chat)}>对话</Button>
+            <Button onClick={() => showNormalMode(ToolsMode.Compose)}>
+              写作
+            </Button>
+            <Button onClick={() => showNormalMode(ToolsMode.Paint)}>
+              绘画
+            </Button>
+            <Button onClick={() => setKnowledgeBaseMode()}>知识库</Button>
+          </div>
+        </div>
       ) : mode === ToolsMode.Chat ? (
         <div
           className={css`

@@ -7,6 +7,7 @@ import { ReactComponent as Diamond } from "resources/img/Diamond.svg";
 import { ReactComponent as Home } from "resources/img/Home.svg";
 import { SideBarChatHistoryItem } from "./SideBarChatHistoryItem";
 import { SideBarButton } from "./SideBarButton";
+import { ToolsMode, ToolsNormalModes } from "types/OnlineToolTypes";
 
 let chatHistoryData = [
   {
@@ -73,6 +74,8 @@ const OnlineToolSideBar = ({
   selectedItem,
   handleSelectedItemChangeCallback,
   toggleChooseModelDialog,
+  showNormalMode,
+  unsetKnowledgeBaseMode,
 }: {
   isSidebarOpen: boolean;
   selectedItem: { dayIndex: number; itemIndex: number; title: string } | null;
@@ -84,6 +87,8 @@ const OnlineToolSideBar = ({
     } | null,
   ) => void;
   toggleChooseModelDialog: () => void;
+  showNormalMode: (mode: ToolsNormalModes) => void;
+  unsetKnowledgeBaseMode: () => void;
 }) => {
   const [chatHistory, setChatHistory] = useState(chatHistoryData);
 
@@ -241,7 +246,13 @@ const OnlineToolSideBar = ({
           width: 100%;
         `}
       >
-        <SideBarButton icon={<Home />} onClick={toggleChooseModelDialog}>
+        <SideBarButton
+          icon={<Home />}
+          onClick={() => {
+            unsetKnowledgeBaseMode();
+            showNormalMode(ToolsMode.Home);
+          }}
+        >
           工具主页
         </SideBarButton>
         <SideBarButton icon={<Diamond />}>管理订阅</SideBarButton>
