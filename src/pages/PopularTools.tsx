@@ -5,7 +5,10 @@ import { SectionTitle } from "components/Prompt/SectionTitle";
 import { ToolCard } from "components/Prompt/ToolCard";
 import { ToolCategoryCard } from "components/Prompt/ToolCategoryCard";
 import { PromptSearchBar } from "components/Prompt/PromptSearchBar";
-import { SecondaryNavBar, ToolNavBarButtons } from "components/SecondaryNavBar";
+import {
+  SecondaryNavBar,
+  ToolNavBarButtons,
+} from "components/Prompt/SecondaryNavBar";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Footer } from "components/shared/Footer";

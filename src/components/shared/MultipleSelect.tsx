@@ -13,28 +13,23 @@ interface MultipleSelectProps {
   options?: Option[];
 }
 
-const MultipleSelect: React.FC<MultipleSelectProps> = () => {
-  const options = [
+const MultipleSelect: React.FC<MultipleSelectProps> = ({ options }) => {
+  const defaultOptions = [
     {
       label: "知识库",
       value: "知识库",
-      children: [
-        { label: "Suboption 1-1", value: "suboption1-1" },
-        { label: "Suboption 1-2", value: "suboption1-2" },
-      ],
     },
     {
       label: "火星电台3.0",
       value: "火星电台3.0",
-      children: [
-        { label: "Suboption 2-1", value: "suboption2-1" },
-        { label: "Suboption 2-2", value: "suboption2-2" },
-      ],
     },
     { label: "Option 3", value: "option3" },
     { label: "Option 4", value: "option4" },
     { label: "Option 5", value: "option5" },
   ];
+
+  // 使用传入的options或默认options
+  const mergedOptions = options || defaultOptions;
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -174,7 +169,7 @@ const MultipleSelect: React.FC<MultipleSelectProps> = () => {
       <div>
         {isOpen && (
           <div>
-            {options.map((option) => (
+            {mergedOptions.map((option) => (
               <div
                 key={option.value}
                 className={`option ${

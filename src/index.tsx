@@ -6,18 +6,17 @@ import emotionReset from "emotion-reset";
 import { ImagePromptDetail } from "pages/ImagePromptDetail";
 import { ImagePrompts } from "pages/ImagePrompts";
 import { Login } from "pages/Login";
+import { OnlineTool } from "pages/OnlineTool";
 import { PopularPrompts } from "pages/PopularPrompts";
 import { PopularTools } from "pages/PopularTools";
 import { TextPromptDetail } from "pages/TextPromptDetail";
 import { TextPrompts } from "pages/TextPrompts";
+import { ToolDetail } from "pages/ToolDetail";
 import { Tools } from "pages/Tools";
-import { ToolsChat } from "pages/ToolsChat";
-import { ToolsWriting } from "pages/ToolsWriting";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { ToolDetail } from "pages/ToolDetail";
 
 const App = () => {
   return (
@@ -53,10 +52,9 @@ const Router = () => {
         <Route path="prompt/image" element={<ImagePrompts />} />
         <Route path="prompt/image/detail" element={<ImagePromptDetail />} />
         <Route path="tool/popular" element={<PopularTools />} />
-        <Route path="tool/chat" element={<ToolsChat />} />
-        <Route path="tool/writing" element = {<ToolsWriting />} />
         <Route path="tool" element={<Tools />} />
         <Route path="tool/detail" element={<ToolDetail />} />
+        <Route path="online-tool" element={<OnlineTool />} />
         <Route path="" element={<Navigate to="prompt/popular" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

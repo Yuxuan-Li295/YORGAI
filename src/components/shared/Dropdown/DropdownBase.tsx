@@ -15,22 +15,35 @@ const DropdownBase = ({
   dropdownMenu,
   hoverable = false,
   above = false,
+  align = "left",
+  fullWidth = false,
 }: {
   dropdownToggle: ReactElement;
   dropdownMenu: ReactElement;
   hoverable?: boolean;
   above?: boolean;
+  align?: "left" | "center" | "right";
+  fullWidth?: boolean;
 }) => {
   const [expand, setExpand] = useState(false);
-  const [offset, setOffset] = useState<number>();
+  const [verticalOffset, setVerticalOffset] = useState<number>();
+  const [horizontalOffset, setHorizontalOffset] = useState(0);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (dropdownRef.current !== null) {
-      setOffset(dropdownRef.current.clientHeight);
+    if (dropdownRef.current !== null && dropdownMenuRef.current !== null) {
+      setVerticalOffset(dropdownRef.current.clientHeight);
+      if (align !== "left") {
+        setHorizontalOffset(
+          (dropdownRef.current.clientWidth -
+            dropdownMenuRef.current.clientWidth) /
+            (align === "center" ? 2 : 1),
+        );
+      }
     }
-  }, [dropdownRef]);
+  }, [dropdownRef, dropdownMenuRef, expand]);
 
   const onMouseEnter = () => {
     if (hoverable) {
@@ -79,14 +92,15 @@ const DropdownBase = ({
         <div
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
+          ref={dropdownMenuRef}
           className={css`
             position: absolute;
-            bottom: ${above ? offset + "px" : "unset"};
-            left: 1px;
+            bottom: ${above ? verticalOffset + "px" : "unset"};
+            left: ${horizontalOffset}px;
             padding: 8px 0;
             animation: ${fadeIn} 0.3s ease-in-out;
-            min-width: 100%;
             z-index: 10;
+            min-width: ${fullWidth ? "100%" : "unset"};
           `}
           onClick={() => {
             setExpand(false);

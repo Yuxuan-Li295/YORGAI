@@ -2,13 +2,9 @@ import { css } from "@emotion/css";
 import { DialogFooter } from "components/Chat/DialogFooter";
 import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
-import { basis } from "components/constants/colors";
-import { Button } from "components/shared/Button";
-import { useState } from "react";
 import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
-const ChooseTemplateDialog = () => {
-  const [selectedModel, setSelectedModel] = useState(0);
 
+const ChooseTemplateDialog = () => {
   const cards = (length: number) =>
     Array(length).fill({
       title: "角色扮演生成器",
@@ -112,41 +108,7 @@ const ChooseTemplateDialog = () => {
               </div>
             </div>
           </div>
-          <div
-            className={css`
-              display: flex;
-              padding: 12px 24px;
-              justify-content: space-between;
-              align-items: center;
-              align-self: stretch;
-              border-top: 1px solid ${basis.border_subtle};
-            `}
-          >
-            <div
-              className={css`
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: ${basis.text_loud};
-                font-family: PingFang SC;
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 20px;
-              `}
-            ></div>
-            <div
-              className={css`
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                gap: 12px;
-              `}
-            >
-              <Button variant="secondary">取消</Button>
-              <Button variant="primary">选择</Button>
-            </div>
-          </div>
+          <DialogFooter />
         </div>
       </div>
     </div>
