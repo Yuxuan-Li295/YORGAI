@@ -4,6 +4,8 @@ import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { ModelCard } from "components/shared/ModelCard";
 import { useState } from "react";
 import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
+import { basis } from "components/constants/colors";
+
 const ChooseModelDialog = () => {
   const [selectedModel, setSelectedModel] = useState(0);
 
@@ -38,6 +40,11 @@ const ChooseModelDialog = () => {
         <DialogHeader />
         <div
           className={css`
+            border-top: 1px solid ${basis.border_subtle};
+          `}
+        ></div>
+        <div
+          className={css`
             display: flex;
             padding-top: 24px;
             flex-direction: column;
@@ -46,7 +53,7 @@ const ChooseModelDialog = () => {
             gap: 10px;
             flex: 1 0 0;
             align-self: stretch;
-            border-radius: 6px;
+            border-radius: 0px 0px 6px 6px;
           `}
         >
           <div
@@ -77,17 +84,24 @@ const ChooseModelDialog = () => {
               >
                 {cards(9).map(
                   ({ title, description, price, tags, icon }, index) => (
-                    <ModelCard
-                      title={title}
-                      description={description}
-                      price={price}
-                      tags={tags}
-                      icon={icon}
-                      selected={selectedModel === index}
-                      onClick={() => {
-                        setSelectedModel(index);
-                      }}
-                    />
+                    <div
+                      className={css`
+                        width: 300px;
+                        height: 108px;
+                      `}
+                    >
+                      <ModelCard
+                        title={title}
+                        description={description}
+                        price={price}
+                        tags={tags}
+                        icon={icon}
+                        selected={selectedModel === index}
+                        onClick={() => {
+                          setSelectedModel(index);
+                        }}
+                      />
+                    </div>
                   ),
                 )}
               </div>
