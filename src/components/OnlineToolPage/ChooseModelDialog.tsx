@@ -40,11 +40,6 @@ const ChooseModelDialog = () => {
         <DialogHeader />
         <div
           className={css`
-            border-top: 1px solid ${basis.border_subtle};
-          `}
-        ></div>
-        <div
-          className={css`
             display: flex;
             padding-top: 24px;
             flex-direction: column;
