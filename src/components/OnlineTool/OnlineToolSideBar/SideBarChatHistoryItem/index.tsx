@@ -1,17 +1,17 @@
 import { css } from "@emotion/css";
+import { fill } from "components/constants/colors";
 import React, { useEffect, useState } from "react";
-import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
-import { ReactComponent as Trash } from "resources/img/GreyTrash.svg";
 import { ReactComponent as DoCheck } from "resources/img/DoCheck.svg";
-import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
-import WhiteChatBubble from "resources/img/WhiteChatBubble.svg";
 import GreyChatBubble from "resources/img/GreyChatBubble.svg";
+import { ReactComponent as Trash } from "resources/img/GreyTrash.svg";
+import { ReactComponent as Pencil } from "resources/img/Pencil.svg";
 import RedTrash from "resources/img/RedTrash.svg";
-import { ChatHistoryItemTrailContainer } from "./ChatHistoryItemTrailContainer";
+import WhiteChatBubble from "resources/img/WhiteChatBubble.svg";
+import { ReactComponent as XLarge } from "resources/img/XLarge.svg";
+import { ChatHistoryItemInputContainer } from "./ChatHistoryItemInputContainer";
 import { ChatHistoryItemLogoContainer } from "./ChatHistoryItemLogoContainer";
 import { ChatHistoryItemTextFrame } from "./ChatHistoryItemTextFrame";
-import { ChatHistoryItemInputContainer } from "./ChatHistoryItemInputContainer";
-import { fill } from "../constants/colors";
+import { ChatHistoryItemTrailContainer } from "./ChatHistoryItemTrailContainer";
 
 const BaseStyles = css`
   display: flex;
