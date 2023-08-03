@@ -52,7 +52,7 @@ const Badge = ({
   return (
     <div
       className={css`
-        display: flex;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
         background: ${palette.alt.bg};
@@ -68,7 +68,7 @@ const Badge = ({
       {avatar}
       <span
         className={css`
-          padding: 2px 8px 2px 4px;
+          padding: 2px 8px 2px 8px;
         `}
       >
         {children}
