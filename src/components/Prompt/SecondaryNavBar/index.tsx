@@ -49,7 +49,7 @@ const ToolNavBarButtons = [
   {
     icon: <SquareS />,
     label: "在线应用",
-    url: "/tool/chat",
+    url: "/online-tool",
   },
   {
     icon: <List />,
@@ -109,11 +109,7 @@ const SecondaryNavBar = ({
         `}
       />
       <ButtonSection buttons={buttons} />
-      <SearchBar
-        width="251px"
-        hasButton={true}
-        buttonText="分享体验"
-       />
+      <SearchBar width="251px" hasButton={true} buttonText="分享体验" />
     </div>
   );
 };
