@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/css";
-import { basis, fill } from "../constants/colors";
+import { basis, fill } from "components/constants/colors";
 
 export const ChatHistoryItemInputContainer = ({
   title,
