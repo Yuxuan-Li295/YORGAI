@@ -89,6 +89,7 @@ const DialogHeader = () => {
           >
             <SearchBar width="160px" />
           </div>
+          <SearchBar width="160px" />
         </div>
       </div>
       <div
