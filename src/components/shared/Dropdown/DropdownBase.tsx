@@ -16,6 +16,7 @@ const DropdownBase = ({
   hoverable = false,
   above = false,
   align = "left",
+  closeOnClick = true,
   fullWidth = false,
 }: {
   dropdownToggle: ReactElement;
@@ -23,6 +24,7 @@ const DropdownBase = ({
   hoverable?: boolean;
   above?: boolean;
   align?: "left" | "center" | "right";
+  closeOnClick?: boolean;
   fullWidth?: boolean;
 }) => {
   const [expand, setExpand] = useState(false);
@@ -81,13 +83,7 @@ const DropdownBase = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div
-        onClick={() => {
-          setExpand(!expand);
-        }}
-      >
-        {dropdownToggle}
-      </div>
+      <div onClick={() => setExpand(!expand)}>{dropdownToggle}</div>
       {expand && (
         <div
           onMouseEnter={onMouseEnter}
@@ -102,9 +98,7 @@ const DropdownBase = ({
             z-index: 10;
             min-width: ${fullWidth ? "100%" : "unset"};
           `}
-          onClick={() => {
-            setExpand(false);
-          }}
+          onClick={() => closeOnClick && setExpand(false)}
         >
           {dropdownMenu}
         </div>

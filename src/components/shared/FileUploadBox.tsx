@@ -8,6 +8,7 @@ const FileUploadBox = ({
 }: {
   handleFileInput: (file: File) => void;
 }) => {
+  // FIXME: Was this state required?
   const [dragActive, setDragActive] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const handleDrag = (event: React.DragEvent<HTMLLabelElement>) => {

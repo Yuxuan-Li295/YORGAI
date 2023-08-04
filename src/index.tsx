@@ -12,8 +12,6 @@ import { PopularTools } from "pages/PopularTools";
 import { TextPromptDetail } from "pages/TextPromptDetail";
 import { TextPrompts } from "pages/TextPrompts";
 import { Tools } from "pages/Tools";
-import { ToolsChat } from "pages/ToolsChat";
-import { ToolsWriting } from "pages/ToolsWriting";
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
