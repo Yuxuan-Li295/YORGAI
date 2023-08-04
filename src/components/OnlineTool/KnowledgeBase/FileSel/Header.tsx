@@ -124,7 +124,7 @@ export const Header = () => (
                 0px 0.5px 0px 0px rgba(255, 255, 255, 0.06) inset;
             `}
           >
-            <div
+            {/* <div
               className={css`
                 display: flex;
                 padding: 12px 24px;
@@ -140,7 +140,7 @@ export const Header = () => (
               `}
             >
               上传
-            </div>
+            </div> */}
             <div
               className={css`
                 display: flex;
