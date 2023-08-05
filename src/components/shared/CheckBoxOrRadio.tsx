@@ -48,8 +48,7 @@ const CheckBoxOrRadio = ({
       <input
         type={type}
         className={css`
-          visibility: hidden;
-          position: absolute;
+          display: none;
         `}
         disabled={disabled}
         checked={checked}

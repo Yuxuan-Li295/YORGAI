@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
-import { DialogFooter } from "components/Chat/DialogFooter";
-import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
+import { DialogFooter } from "components/OnlineTool/DialogFooter";
+import { DialogHeader } from "components/OnlineTool/DialogHeader";
 import { ModelCard } from "components/shared/ModelCard";
 import { useState } from "react";
 import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
