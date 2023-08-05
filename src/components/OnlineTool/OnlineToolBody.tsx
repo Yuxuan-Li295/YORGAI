@@ -1,10 +1,11 @@
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
-import { ChooseTemplateDialog } from "components/Writing/ChooseTemplateDialog";
 import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SystemChatItem } from "components/Chat/SystemChatItem";
 import { UserChatItem } from "components/Chat/UserChatItem";
 import { KnowledgeBase } from "components/OnlineTool/KnowledgeBase";
+import { ImageResultCard } from "components/Painting/ImageResultCard";
+import { ChooseTemplateDialog } from "components/Writing/ChooseTemplateDialog";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Fragment } from "react";
@@ -117,7 +118,10 @@ const OnlineToolBody = ({
           <ChooseTemplateDialog />
         </div>
       ) : mode === ToolsMode.Paint ? (
-        <>paint</>
+        <>
+          paint
+          <ImageResultCard />
+        </>
       ) : mode === ToolsMode.Podcast ? (
         <>podcast</>
       ) : (
