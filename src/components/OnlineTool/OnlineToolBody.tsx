@@ -1,11 +1,11 @@
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
-import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
 import { SystemChatItem } from "components/Chat/SystemChatItem";
+import { SystemChatSelection } from "components/Chat/SystemChatSelection";
 import { UserChatItem } from "components/Chat/UserChatItem";
-import { KnowledgeBase } from "components/OnlineTool/KnowledgeBase";
-import { ImageResultCard } from "components/Painting/ImageResultCard";
-import { ChooseTemplateDialog } from "components/Writing/ChooseTemplateDialog";
+import { ChooseTemplateDialog } from "components/Compose/ChooseTemplateDialog";
+import { KnowledgeBase } from "components/KnowledgeBase";
+import { ImageResultCard } from "components/Paint/ImageResultCard";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import { Fragment } from "react";
@@ -100,7 +100,7 @@ const OnlineToolBody = ({
               root cause before implementing a behavior modification plan. Here
               are the steps we can take to help manage your dog's aggressions.
             </SystemChatItem>
-            <DialogHeader />
+            <SystemChatSelection />
           </div>
           <ChatInput />
         </div>

@@ -1,16 +1,17 @@
 import { css } from "@emotion/css";
-import { DialogFooter } from "components/Chat/DialogFooter";
-import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
-import { ModelCard } from "components/shared/ModelCard";
-import { useState } from "react";
+import { DialogFooter } from "components/OnlineTool/DialogFooter";
+import { DialogHeader } from "components/OnlineTool/DialogHeader";
+import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
-const ChooseModelDialog = () => {
-  const [selectedModel, setSelectedModel] = useState(0);
 
+const ChooseTemplateDialog = () => {
   const cards = (length: number) =>
     Array(length).fill({
-      title: "CHATGPT 3.5",
-      description: "官方GPT3.5",
+      title: "角色扮演生成器",
+      description:
+        "对接GPT3，200万人在用的写作助手。\
+      对接GPT3，200万人在用的写作助手。 \
+      对接GPT3，200万人在用的写作助手。",
       price: [0.004],
       tags: ["大语言模型"],
       icon: <OpenAI />,
@@ -69,27 +70,41 @@ const ChooseModelDialog = () => {
             >
               <div
                 className={css`
-                  display: grid;
-                  grid-template-columns: repeat(3, 1fr);
+                  display: flex;
+                  padding: 0px 24px;
+                  flex-direction: column;
+                  align-items: flex-start;
                   gap: 24px;
-                  //   max-width: 1088px;
+                  align-self: stretch;
                 `}
               >
-                {cards(9).map(
-                  ({ title, description, price, tags, icon }, index) => (
-                    <ModelCard
-                      title={title}
-                      description={description}
-                      price={price}
-                      tags={tags}
-                      icon={icon}
-                      selected={selectedModel === index}
-                      onClick={() => {
-                        setSelectedModel(index);
-                      }}
-                    />
-                  ),
-                )}
+                <div
+                  className={css`
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    row-gap: 16px;
+                    column-gap: 16px;
+                    width: 100%;
+                  `}
+                >
+                  {cards(9).map(
+                    ({ title, description, price, tags, icon }, index) => (
+                      <div
+                        style={{ width: "300px", height: "206px" }}
+                        key={index}
+                      >
+                        <TextPromptCard
+                          title={title}
+                          intro={description}
+                          tags={tags}
+                          likeCount={255}
+                          runCount={55}
+                        />
+                      </div>
+                    ),
+                  )}
+                </div>
+                pagination
               </div>
             </div>
           </div>
@@ -99,4 +114,4 @@ const ChooseModelDialog = () => {
     </div>
   );
 };
-export { ChooseModelDialog };
+export { ChooseTemplateDialog };
