@@ -39,7 +39,8 @@ const OnlineToolHeader = ({
         flex-direction: row;
         border-bottom: 1px solid ${basis.alt.border};
         background-color: ${basis.bg_subtle};
-        padding: 14px 24px;
+        height: 48px;
+        padding: 0 18px;
         align-items: center;
       `}
     >
@@ -55,12 +56,8 @@ const OnlineToolHeader = ({
             flex: 100vw 0 1;
             text-align: center;
             line-height: 20px;
-            font-family: inherit;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 20px;
             color: ${basis.text_loud};
+            ${body.sm.regular};
           `}
         >
           在线工具主页
