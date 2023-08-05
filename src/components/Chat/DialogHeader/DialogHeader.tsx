@@ -24,6 +24,7 @@ const DialogHeader = () => {
           box-sizing: border-box;
           border-top-left-radius: 8px;
           border-top-right-radius: 8px;
+          border-bottom: 1px solid ${basis.border_subtle};
         `}
       >
         <div
