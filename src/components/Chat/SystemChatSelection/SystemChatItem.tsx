@@ -35,12 +35,12 @@ const SystemChatItem = ({
     <div
       className={css`
         display: flex;
-        justify-content: center;  
-        align-items: flex-start;   
+        justify-content: center;
+        align-items: flex-start;
         padding: 20px;
         border-bottom: 1px solid ${basis.alt.border_subtle};
         box-sizing: border-box;
-        border: 1px solid #ddd
+        border: 1px solid #ddd;
         border-right-color: ${basis.alt.border_subtle};
         backdrop-filter: blur(30px);
         overflow: hidden;
