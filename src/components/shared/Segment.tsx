@@ -42,12 +42,11 @@ export const Segment = <T extends string>({
                 ? {
                     borderRadius: 6,
                     background: fill.base.layer_on,
-                    boxShadow:
-                      "box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32), \
+                    boxShadow: `box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32), \
                       0px 2px 5px -2px rgba(79, 81, 89, 0.03), \
                       0px 2px 14px -2px rgba(79, 81, 89, 0.12), \
                       0px 0px 0px 1px rgba(188, 189, 194, 0.22), \
-                      0px 1px 1px 0px rgba(188, 189, 194, 0.20)",
+                      0px 1px 1px 0px rgba(188, 189, 194, 0.20)`,
                   }
                 : {}
             }
