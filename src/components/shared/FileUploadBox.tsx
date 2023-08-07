@@ -8,6 +8,7 @@ const FileUploadBox = ({
 }: {
   handleFileInput: (file: File) => void;
 }) => {
+  // FIXME: Was this state required?
   const [dragActive, setDragActive] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const handleDrag = (event: React.DragEvent<HTMLLabelElement>) => {
@@ -34,37 +35,34 @@ const FileUploadBox = ({
     }
   };
 
-  const getDisplayText = () => {
-    if (uploadedFile) {
-      return uploadedFile.name;
-    } else {
-      return (
-        <div>
-          <a
-            href="#"
-            className={css`
-              color: ${primary.text};
-              text-decoration: none;
-              margin-right: 4px;
-            `}
-          >
-            上传图片
-          </a>
-          <text
-            className={css`
-              color: ${basis.text_muted};
-              font-size: 14px;
-              font-style: normal;
-              font-weight: 500;
-              line-height: 20px;
-            `}
-          >
-            或将图片拖动到这里
-          </text>
-        </div>
-      );
-    }
-  };
+  const getDisplayText = () =>
+    uploadedFile ? (
+      uploadedFile.name
+    ) : (
+      <div>
+        <a
+          href="#"
+          className={css`
+            color: ${primary.text};
+            text-decoration: none;
+            margin-right: 4px;
+          `}
+        >
+          上传图片
+        </a>
+        <text
+          className={css`
+            color: ${basis.text_muted};
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+          `}
+        >
+          或将图片拖动到这里
+        </text>
+      </div>
+    );
 
   return (
     <label

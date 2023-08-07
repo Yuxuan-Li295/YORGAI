@@ -1,9 +1,9 @@
 import { css } from "@emotion/css";
-import { fill } from "components/constants/colors";
+import { FileStatus } from "contexts/UploadContext";
 import { useReducer } from "react";
-import { FileStatus, ToolMsg, ToolState, KB } from "./types";
-import { KnowledgeBaseSel } from "./KnowledgeBaseSel";
 import { FileSel } from "./FileSel";
+import { KnowledgeBaseSel } from "./KnowledgeBaseSel";
+import { KB, ToolMsg, ToolState } from "./types";
 
 export const KnowledgeBase = () => {
   const [state, changeState] = useReducer(
@@ -112,13 +112,12 @@ export const KnowledgeBase = () => {
   return (
     <div
       className={css`
-        flex: calc(100vh - 64px - 1px - 48px - 1px - 12px * 2) 0 1;
+        flex: calc(100vh - 64px - 1px - 12px * 2) 0 1;
         display: flex;
         flex-direction: row;
         margin: 12px;
         align-self: stretch;
         border-radius: 8px;
-        background: ${fill.base.layer_on};
         overflow: hidden;
       `}
     >
