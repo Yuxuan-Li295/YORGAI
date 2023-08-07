@@ -1,8 +1,9 @@
 import { css } from "@emotion/css";
-import { DialogFooter } from "components/Chat/DialogFooter";
-import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
+import { DialogFooter } from "components/OnlineTool/DialogFooter";
+import { DialogHeader } from "components/OnlineTool/DialogHeader";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
+import { Pagination } from "components/Chat/PromptSuggestionDialogBody/Pagination";
 
 const ChooseTemplateDialog = () => {
   const cards = (length: number) =>
@@ -104,7 +105,7 @@ const ChooseTemplateDialog = () => {
                     ),
                   )}
                 </div>
-                pagination
+                <Pagination />
               </div>
             </div>
           </div>

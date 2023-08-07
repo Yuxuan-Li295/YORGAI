@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SystemChatSelection } from "components/OnlineTool/SystemChatSelection/SystemChatSelection";
+import { SystemChatSelection } from "components/Chat/SystemChatSelection";
 
 const meta: Meta = {
   title: "Chats/SystemChatSelection",
