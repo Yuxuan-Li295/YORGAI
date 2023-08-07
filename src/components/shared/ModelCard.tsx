@@ -25,7 +25,6 @@ const ModelCard = ({
   return (
     <div
       className={css`
-        width: 300px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

@@ -30,7 +30,6 @@ const TextPromptCard = ({
         padding: 0px;
         border-radius: 8px;
         cursor: pointer;
-        height: 206px;
         background-color: white;
         border: 1px solid ${basis.border_subtle};
       `}
@@ -61,18 +60,15 @@ const TextPromptCard = ({
         </h3>
         <p
           className={css`
-            flex-grow: 1;
+            align-self: stretch;
+            overflow: hidden;
             color: ${basis.text};
             font-size: 12px;
             font-family: inherit;
             line-height: 16px;
-            display: flex;
-            flex-direction: column;
-            align-content: start;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2; /* Show up to 2 lines of text */
             -webkit-box-orient: vertical;
-            overflow: hidden;
           `}
         >
           {intro}
