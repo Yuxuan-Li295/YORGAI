@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
-import { DialogFooter } from "components/Chat/DialogFooter";
-import { DialogHeader } from "components/Chat/DialogHeader/DialogHeader";
+import { DialogFooter } from "./DialogFooter";
+import { DialogHeader } from "./DialogHeader";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";

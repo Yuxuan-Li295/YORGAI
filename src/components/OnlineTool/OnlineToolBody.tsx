@@ -12,8 +12,8 @@ import { Button } from "components/shared/Button";
 import { Fragment } from "react";
 import SystemAvatar from "resources/img/SystemAvatar.png";
 import { ToolsMode, ToolsNormalModes } from "types/OnlineToolTypes";
-import { ConfigSideBar } from "components/Writing/ConfigSideBar";
-import { DefaultOutputBox } from "components/Writing/DefaultOutputBox";
+import { ConfigSideBar } from "components/Compose/ConfigSideBar";
+import { DefaultOutputBox } from "components/Compose/DefaultOutputBox";
 
 const OnlineToolBody = ({
   mode,
