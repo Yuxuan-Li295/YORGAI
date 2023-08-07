@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { css } from '@emotion/css';
+import React, { useState } from "react";
+import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
 import { ReactComponent as Error } from "resources/img/Error.svg";
 import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRightMd.svg";
@@ -20,80 +20,80 @@ const ConfigSideBarHeader: React.FC<ConfigSideBarHeaderProps> = ({ handleIsClick
   return (
     <div
       className={css`
-      display: flex;
-      width: 308px;
-      height: 24px;
-      padding: 20px 24px;
-      align-items: center;
-      align-self: stretch;
-      border-bottom: 1px solid ${basis.border};
-      background: ${basis.bg};
-      position: relative;
-      z-index: 2;
+        display: flex;
+        width: 308px;
+        height: 24px;
+        padding: 20px 24px;
+        align-items: center;
+        align-self: stretch;
+        border-bottom: 1px solid ${basis.border};
+        background: ${basis.bg};
+        position: relative;
+        z-index: 2;
       `}
     >
       <div
         className={css`
-        display: flex;
-        width: 308px;
-        padding: 4px 8px;
-        align-items: center;
+          display: flex;
+          width: 308px;
+          padding: 4px 8px;
+          align-items: center;
         `}
       >
         <Error
           className={css`
-          width: 20px;
-          height: 20px;
-          flex-shrink: 0;
-          margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-right: 10px;
           `}
         />
         <div
           className={css`
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-right: 140px;
-          color: ${basis.text_muted};
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 140px;
+            color: ${basis.text_muted};
 
-          /* Pingfang SC/body/sm/500 - medium */
-          font-family: PingFang SC;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 20px; /* 142.857% */
+            /* Pingfang SC/body/sm/500 - medium */
+            font-family: PingFang SC;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px; /* 142.857% */
           `}
         >
           未选择模版
         </div>
         <div
           className={css`
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
           `}
           onClick={handleGroupClick}
         >
           <div
             className={css`
-            color: ${basis.text};
-            text-align: right;
+              color: ${basis.text};
+              text-align: right;
 
-            /* Pingfang SC/body/xs/500 - medium */
-            font-family: PingFang SC;
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 16px; /* 133.333% */
+              /* Pingfang SC/body/xs/500 - medium */
+              font-family: PingFang SC;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 16px; /* 133.333% */
             `}
           >
             {isClicked ? "取消" : "选择"}
           </div>
           <div
             className={css`
-            width: 20px;
-            height: 20px;
+              width: 20px;
+              height: 20px;
             `}
           >
             {isClicked ? <XSquare /> : <ArrowAngleRightMd />}
@@ -113,7 +113,7 @@ const ConfigSideBarHeader: React.FC<ConfigSideBarHeaderProps> = ({ handleIsClick
           `}
         />
       )}
-    </div >
+    </div>
   );
 };
 
