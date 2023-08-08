@@ -9,10 +9,9 @@ const ChooseTemplateDialog = () => {
   const cards = (length: number) =>
     Array(length).fill({
       title: "角色扮演生成器",
-      description:
-        "对接GPT3，200万人在用的写作助手。\
-      对接GPT3，200万人在用的写作助手。 \
-      对接GPT3，200万人在用的写作助手。",
+      description: `对接GPT3，200万人在用的写作助手。\
+        对接GPT3，200万人在用的写作助手。 \
+        对接GPT3，200万人在用的写作助手。`,
       price: [0.004],
       tags: ["大语言模型"],
       icon: <OpenAI />,
