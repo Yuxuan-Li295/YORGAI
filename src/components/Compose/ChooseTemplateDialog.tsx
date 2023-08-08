@@ -1,18 +1,17 @@
 import { css } from "@emotion/css";
+import { Pagination } from "components/Chat/PromptSuggestionDialogBody/Pagination";
 import { DialogFooter } from "components/OnlineTool/DialogFooter";
 import { DialogHeader } from "components/OnlineTool/DialogHeader";
 import { TextPromptCard } from "components/Prompt/TextPromptCard";
 import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
-import { Pagination } from "components/Chat/PromptSuggestionDialogBody/Pagination";
 
 const ChooseTemplateDialog = () => {
   const cards = (length: number) =>
     Array(length).fill({
       title: "角色扮演生成器",
-      description:
-        "对接GPT3，200万人在用的写作助手。\
-      对接GPT3，200万人在用的写作助手。 \
-      对接GPT3，200万人在用的写作助手。",
+      description: `对接GPT3，200万人在用的写作助手。\
+        对接GPT3，200万人在用的写作助手。 \
+        对接GPT3，200万人在用的写作助手。`,
       price: [0.004],
       tags: ["大语言模型"],
       icon: <OpenAI />,
@@ -48,7 +47,7 @@ const ChooseTemplateDialog = () => {
             gap: 10px;
             flex: 1 0 0;
             align-self: stretch;
-            border-radius: 6px;
+            border-radius: 0px 0px 6px 6px;
           `}
         >
           <div
@@ -83,27 +82,26 @@ const ChooseTemplateDialog = () => {
                   className={css`
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
-                    row-gap: 16px;
-                    column-gap: 16px;
-                    width: 100%;
+                    gap: 24px;
                   `}
                 >
-                  {cards(9).map(
-                    ({ title, description, price, tags, icon }, index) => (
-                      <div
-                        style={{ width: "300px", height: "206px" }}
-                        key={index}
-                      >
-                        <TextPromptCard
-                          title={title}
-                          intro={description}
-                          tags={tags}
-                          likeCount={255}
-                          runCount={55}
-                        />
-                      </div>
-                    ),
-                  )}
+                  {cards(9).map(({ title, description, tags }, index) => (
+                    <div
+                      className={css`
+                        width: 300px;
+                        height: 180px;
+                      `}
+                      key={index}
+                    >
+                      <TextPromptCard
+                        title={title}
+                        intro={description}
+                        tags={tags}
+                        likeCount={255}
+                        runCount={55}
+                      />
+                    </div>
+                  ))}
                 </div>
                 <Pagination />
               </div>
