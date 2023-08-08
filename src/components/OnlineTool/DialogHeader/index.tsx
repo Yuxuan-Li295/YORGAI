@@ -90,14 +90,8 @@ const DialogHeader = () => {
           >
             <SearchBar width="160px" />
           </div>
-          <SearchBar width="160px" />
         </div>
       </div>
-      <div
-        className={css`
-          border-top: 1px solid ${basis.border_subtle};
-        `}
-      ></div>
     </div>
   );
 };
