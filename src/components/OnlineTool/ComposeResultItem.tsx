@@ -108,7 +108,7 @@ const ComposeResultItem = () => {
               font-size: 14px;
               font-style: normal;
               font-weight: 400;
-              line-height: 20px;
+              line-height: 24px;
             `}
           >
             {SampleText}
@@ -206,11 +206,19 @@ const ComposeResultItem = () => {
               flex: 1 0 0;
               font-size: 16px;
               font-weight: 400;
-              line-height: 20px;
+              line-height: 24px;
             `}
           >
             {SampleText2}
           </div>
+          <div
+            className={css`
+              display: flex;
+              width: 16px;
+              height: 20px;
+              align-items: flex-start;
+            `}
+          ></div>
         </div>
         <div
           className={css`
