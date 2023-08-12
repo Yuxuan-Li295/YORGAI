@@ -4,6 +4,7 @@ import { rainbow } from "components/constants/colors";
 import { ReactComponent as DoneFilled } from "resources/img/DoneFilled.svg";
 import { ReactComponent as Loading } from "resources/img/Loading.svg";
 import { ReactComponent as ErrorFilled } from "resources/img/ErrorFilled.svg";
+import { body } from "components/constants/fonts";
 
 export const AgentTaskStatusBadge = ({
   status,
@@ -59,10 +60,7 @@ export const AgentTaskStatusBadge = ({
               ${status === "loading" && `var(--rainbow-sky-text-loud, #0284C7)`}
               ${status === "error" && `var(--rainbow-pink-text-loud, #DB2777)`};
             text-align: center;
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 16px; /* 133.333% */
+            ${body.xs.medium};
           `}
         >
           {rate}
