@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { css } from "@emotion/css";
 import { basis, fill } from "components/constants/colors";
 import { ConfigSideBarHeader } from "./ConfigSideBarHeader";
@@ -11,8 +12,12 @@ import { Button } from "components/shared/Button";
 import { ReactComponent as Play } from "resources/img/Play.svg";
 import { RadioButton } from "./RadioButton";
 
-const ConfigSideBar = () => {
-  const sectionStyles = css`
+interface ConfigSideBarProps {
+  handleIsClicked: (value: boolean) => void;
+}
+
+const ConfigSideBar: React.FC<ConfigSideBarProps> = ({ handleIsClicked }) => {
+    const sectionStyles = css`
     display: flex;
     padding: 16px 24px;
     flex-direction: column;
@@ -87,7 +92,7 @@ const ConfigSideBar = () => {
         background: ${basis.bg};
       `}
     >
-      <ConfigSideBarHeader />
+      <ConfigSideBarHeader handleIsClicked={handleIsClicked}/>
       <div className={sectionStyles}>
         <div className={titleStyles}>模型</div>
         <div className={optionBoxStyles}>

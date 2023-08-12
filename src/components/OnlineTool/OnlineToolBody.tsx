@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
 import { SystemChatItem } from "components/Chat/SystemChatItem";
@@ -11,6 +12,8 @@ import { Button } from "components/shared/Button";
 import { Fragment } from "react";
 import SystemAvatar from "resources/img/SystemAvatar.png";
 import { ToolsMode, ToolsNormalModes } from "types/OnlineToolTypes";
+import { ConfigSideBar } from "components/Compose/ConfigSideBar";
+import { DefaultOutputBox } from "components/Compose/DefaultOutputBox";
 
 const OnlineToolBody = ({
   mode,
@@ -21,6 +24,13 @@ const OnlineToolBody = ({
   showNormalMode: (mode: ToolsNormalModes) => void;
   setKnowledgeBaseMode: () => void;
 }) => {
+
+  const [isClicked, setIsClicked] = React.useState(false);
+
+  const handleIsClicked = (value: boolean) => {
+    setIsClicked(value);
+  };
+
   return (
     <Fragment>
       {mode === ToolsMode.Home ? (
@@ -108,14 +118,17 @@ const OnlineToolBody = ({
         <div
           className={css`
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             flex: 1;
             border-radius: 8px;
             border: 1px solid ${basis.border};
             margin: 12px;
           `}
         >
-          <ChooseTemplateDialog />
+          <div className={css`width: 356px`}>
+            <ConfigSideBar handleIsClicked={handleIsClicked} />
+          </div>
+          {isClicked ? <ChooseTemplateDialog /> : <DefaultOutputBox />}
         </div>
       ) : mode === ToolsMode.Paint ? (
         <>
