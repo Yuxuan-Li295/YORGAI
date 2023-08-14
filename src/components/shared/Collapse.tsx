@@ -1,10 +1,15 @@
 import { css } from "@emotion/css";
 import React, { useState } from "react";
-import { ReactComponent as ImageEdit } from "resources/img/ImageEdit.svg";
-import { ReactComponent as Help } from "resources/img/Help.svg";
 import { ReactComponent as ArrowDownFilled } from "resources/img/ArrowDownFilled.svg";
 
-const Collapse = ({ children }: { children: any }) => {
+export interface CollapseProps {
+  title?: string;
+  icon?: React.ReactElement;
+  helpIcon?: React.ReactElement;
+  children: any;
+}
+
+const Collapse = ({ title = "Title", icon, helpIcon, children }: CollapseProps) => {
   const [isShow, setisShow] = useState(true);
 
   return (
@@ -22,7 +27,7 @@ const Collapse = ({ children }: { children: any }) => {
           margin-bottom: 15px;
         `}
       >
-        <ImageEdit />
+        {icon}
         <div
           className={css`
             display: flex;
@@ -41,9 +46,9 @@ const Collapse = ({ children }: { children: any }) => {
               align-items: center;
             `}
           >
-            参考图
+            {title}
           </div>
-          <Help />
+          {helpIcon}
         </div>
         <ArrowDownFilled onClick={() => setisShow(!isShow)} />
       </div>
