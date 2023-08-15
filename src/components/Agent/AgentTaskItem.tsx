@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { fill, basis } from "components/constants/colors";
-import { ReactComponent as Separator } from "resources/img/Separator.svg";
+import { ReactComponent as SeparatorMd } from "resources/img/SeparatorMd.svg";
 import { AgentTaskStatusBadge } from "./AgentTaskStatusBadge";
 
 interface AgentTaskItemProps {
@@ -17,6 +17,9 @@ const AgentTaskItem: React.FC<AgentTaskItemProps> = (
     <div
       className={css`
         display: flex;
+        width: 220px;
+        height: 38px;
+        display: flex;
         padding: 8px 12px;
         align-items: center;
         gap: 8px;
@@ -29,11 +32,12 @@ const AgentTaskItem: React.FC<AgentTaskItemProps> = (
       <div
         className={css`
           display: flex;
+          width: 100%;
         `}
       >
         <div
           className={css`
-            margin-right: 8px;
+            flex: 1;
           `}
         >
           <div
@@ -75,7 +79,7 @@ const AgentTaskItem: React.FC<AgentTaskItemProps> = (
             >
               {date}
             </div>
-            <Separator style={{ height: "8px", width: "0.5px" }} />
+            <SeparatorMd />
             <div
               className={css`
                 color: ${basis.text};
@@ -94,11 +98,8 @@ const AgentTaskItem: React.FC<AgentTaskItemProps> = (
         <div
           className={css`
             display: flex;
-            width: 57px;
-            padding: 0px 5.5px;
             justify-content: center;
             align-items: center;
-            gap: 8px;
           `}
         >
           <AgentTaskStatusBadge
