@@ -1,10 +1,14 @@
 import { css } from "@emotion/css";
 import { body } from "components/constants/fonts";
 import { basis } from "components/constants/colors";
+import { useState } from "react";
 import { ReactComponent as DoneGreen } from "resources/img/DoneGreen.svg";
 import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRightMd.svg";
+import { ReactComponent as ArrowAngleDownMd } from "resources/img/ArrowAngleDownMd.svg";
 
 const AgentTaskDetail = () => {
+  const [isDisplayb, setDisplayb] = useState(true);
+  const [isDisplaya, setDisplaya] = useState(true);
   return (
     <div
       className={css`
@@ -59,7 +63,17 @@ const AgentTaskDetail = () => {
           background: ${basis.bg_muted};
         `}
       >
-        <ArrowAngleRightMd />
+        {isDisplaya ? (
+          <ArrowAngleRightMd
+            style={{ color: "#707480", width: "16px ", height: "16px" }}
+            onClick={() => setDisplaya(false)}
+          />
+        ) : (
+          <ArrowAngleDownMd
+            style={{ color: "#707480", width: "16px ", height: "16px" }}
+            onClick={() => setDisplaya(true)}
+          />
+        )}
         <div
           className={css`
             color: ${basis.text};
@@ -82,7 +96,18 @@ const AgentTaskDetail = () => {
           background: ${basis.bg_muted};
         `}
       >
-        <ArrowAngleRightMd />
+        {isDisplayb ? (
+          <ArrowAngleRightMd
+            style={{ color: "#707480", width: "16px ", height: "16px" }}
+            onClick={() => setDisplayb(false)}
+          />
+        ) : (
+          <ArrowAngleDownMd
+            style={{ color: "#707480", width: "16px ", height: "16px" }}
+            onClick={() => setDisplayb(true)}
+          />
+        )}
+
         <div
           className={css`
             color: ${basis.text};
