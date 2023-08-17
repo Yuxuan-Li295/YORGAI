@@ -1,58 +1,19 @@
-import { css } from "@emotion/css";
-import React, { useState } from "react";
-import { ReactComponent as ArrowDownFilled } from "resources/img/ArrowDownFilled.svg";
+import React from 'react';
 
 export interface CollapseProps {
-  title?: string;
-  icon?: React.ReactElement;
-  helpIcon?: React.ReactElement;
-  children: any;
+  collapseHeader: React.ReactElement;
+  collapseBody: React.ReactElement;
+  isShow: boolean;
+  onToggle: () => void;
 }
 
-const Collapse = ({ title = "Title", icon, helpIcon, children }: CollapseProps) => {
-  const [isShow, setisShow] = useState(true);
-
+const Collapse = ({ collapseHeader, collapseBody, isShow, onToggle }: CollapseProps) => {
   return (
     <div>
-      <div
-        className={css`
-          display: flex;
-          width: 308px;
-          height: 20px;
-          box-sizing: border-box;
-          padding-bottom: 0px;
-          align-items: flex-start;
-          gap: 20px;
-          align-self: stretch;
-          margin-bottom: 15px;
-        `}
-      >
-        {icon}
-        <div
-          className={css`
-            display: flex;
-            width: 228px;
-            height: 20px;
-            box-sizing: border-box;
-            align-items: center;
-            gap: 8px;
-            flex: 1 0 0;
-          `}
-        >
-          <div
-            className={css`
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            `}
-          >
-            {title}
-          </div>
-          {helpIcon}
-        </div>
-        <ArrowDownFilled onClick={() => setisShow(!isShow)} />
+      <div onClick={onToggle}>
+        {collapseHeader}
       </div>
-      {isShow && <div>{children}</div>}
+      {isShow && <div>{collapseBody}</div>}
     </div>
   );
 };
