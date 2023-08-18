@@ -101,23 +101,98 @@ const ChatInputMenu = ({ FileMenu = false }: { FileMenu?: boolean }) => {
     <div
       className={css`
         display: flex;
-        padding: 8px;
+        width: 180px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
-        align-self: stretch;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0px 8px 12px -6px rgba(79, 81, 89, 0.16),
+          0px 16px 24px -8px rgba(79, 81, 89, 0.2),
+          0px 0px 0px 1px rgba(188, 189, 194, 0.2),
+          0px 1px 0px 0px rgba(255, 255, 255, 0.06) inset,
+          0px 0.5px 0px 0px rgba(255, 255, 255, 0.06) inset;
       `}
     >
-      {uploadedFiles.map((file, index) => (
-        <div
-          key={index}
+      <div
+        className={css`
+          display: flex;
+          padding: 8px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          align-self: stretch;
+        `}
+      >
+        {uploadedFiles.map((file, index) => (
+          <div
+            key={index}
+            className={css`
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              align-self: stretch;
+            `}
+          >
+            <div
+              className={css`
+                display: flex;
+                padding: 6px 12px;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                border-radius: 6px;
+                background: ${basis.bg};
+              `}
+            >
+              {getDisplayIcon(file)}
+              <div
+                className={css`
+                  color: ${basis.text_muted};
+                  text-align: center;
+                  ${body.xs.medium}
+                  max-width: 90px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                `}
+              >
+                {file.name}
+              </div>
+            </div>
+            <XSmRed
+              className={css`
+                cursor: pointer;
+              `}
+              onClick={() => handleRemoveFile(index)}
+            />
+          </div>
+        ))}
+      </div>
+      <div
+        className={css`
+          display: flex;
+          padding: 8px 4px 4px 4px;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 12px;
+          align-self: stretch;
+          border-radius: 6px;
+        `}
+      >
+        <label
+          htmlFor="fileAdd"
           className={css`
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            align-self: stretch;
+            cursor: pointer;
           `}
         >
+          <input
+            id="fileAdd"
+            className={css`
+              display: none;
+            `}
+            type="file"
+            onChange={handleFileInputChange}
+          />
           <div
             className={css`
               display: flex;
@@ -125,33 +200,20 @@ const ChatInputMenu = ({ FileMenu = false }: { FileMenu?: boolean }) => {
               justify-content: center;
               align-items: center;
               gap: 10px;
-              border-radius: 6px;
-              background: ${basis.bg};
             `}
           >
-            {getDisplayIcon(file)}
             <div
               className={css`
-                color: ${basis.text_muted};
+                color: ${rainbow.teal.text};
                 text-align: center;
                 ${body.xs.medium}
-                max-width: 90px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
               `}
             >
-              {file.name}
+              添加文件
             </div>
           </div>
-          <XSmRed
-            className={css`
-              cursor: pointer;
-            `}
-            onClick={() => handleRemoveFile(index)}
-          />
-        </div>
-      ))}
+        </label>
+      </div>
     </div>
   );
 
@@ -159,71 +221,9 @@ const ChatInputMenu = ({ FileMenu = false }: { FileMenu?: boolean }) => {
     <div>
       <DropdownBase
         FileMenu={FileMenu}
-        dropdownMenu={
-          <div
-            className={css`
-              display: flex;
-              width: 180px;
-              flex-direction: column;
-              align-items: flex-start;
-              border-radius: 8px;
-              background: #fff;
-              box-shadow: 0px 8px 12px -6px rgba(79, 81, 89, 0.16),
-                0px 16px 24px -8px rgba(79, 81, 89, 0.2),
-                0px 0px 0px 1px rgba(188, 189, 194, 0.2),
-                0px 1px 0px 0px rgba(255, 255, 255, 0.06) inset,
-                0px 0.5px 0px 0px rgba(255, 255, 255, 0.06) inset;
-            `}
-          >
-            {btnItem}
-            <div
-              className={css`
-                display: flex;
-                padding: 8px 4px 4px 4px;
-                justify-content: flex-end;
-                align-items: center;
-                gap: 12px;
-                align-self: stretch;
-                border-radius: 6px;
-              `}
-            >
-              <label
-                htmlFor="fileAdd"
-                className={css`
-                  cursor: pointer;
-                `}
-              >
-                <input
-                  id="fileAdd"
-                  className={css`
-                    display: none;
-                  `}
-                  type="file"
-                  onChange={handleFileInputChange}
-                />
-                <div
-                  className={css`
-                    display: flex;
-                    padding: 6px 12px;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 10px;
-                  `}
-                >
-                  <div
-                    className={css`
-                      color: ${rainbow.teal.text};
-                      text-align: center;
-                      ${body.xs.medium}
-                    `}
-                  >
-                    添加文件
-                  </div>
-                </div>
-              </label>
-            </div>
-          </div>
-        }
+        above={true}
+        align="center"
+        dropdownMenu={btnItem}
         dropdownToggle={btn}
       />
     </div>
