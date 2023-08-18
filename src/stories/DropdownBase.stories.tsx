@@ -42,7 +42,7 @@ const Template: StoryFn<typeof DropdownBase> = (args) => {
             触发按钮
           </div>
         }
-      ></DropdownBase>
+      />
     </div>
   );
 };
