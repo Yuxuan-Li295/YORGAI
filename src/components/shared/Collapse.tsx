@@ -1,19 +1,20 @@
-import React from 'react';
+import { ReactElement } from "react";
 
-export interface CollapseProps {
-  collapseHeader: React.ReactElement;
-  collapseBody: React.ReactElement;
-  isShow: boolean;
-  onToggle: () => void;
-}
-
-const Collapse = ({ collapseHeader, collapseBody, isShow, onToggle }: CollapseProps) => {
+const Collapse = ({
+  collapseHeader,
+  collapseBody,
+  expand,
+  setExpand,
+}: {
+  collapseHeader: ReactElement;
+  collapseBody: ReactElement;
+  expand: boolean;
+  setExpand: (expand: boolean) => void;
+}) => {
   return (
     <div>
-      <div onClick={onToggle}>
-        {collapseHeader}
-      </div>
-      {isShow && <div>{collapseBody}</div>}
+      <div onClick={() => setExpand(!expand)}>{collapseHeader}</div>
+      {expand && <div>{collapseBody}</div>}
     </div>
   );
 };
