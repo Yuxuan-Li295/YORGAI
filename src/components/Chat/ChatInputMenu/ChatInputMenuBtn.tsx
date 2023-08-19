@@ -11,7 +11,7 @@ import { ReactComponent as XSmRed } from "resources/img/XSmRed.svg";
 import { ReactComponent as PaperIcon } from "resources/img/fileIcon/Paper.svg";
 import { DropdownBase } from "components/shared/Dropdown";
 
-const ChatInputMenu = ({ FileMenu = false }: { FileMenu?: boolean }) => {
+const ChatInputMenuBtn = ({ FileMenu = false }: { FileMenu?: boolean }) => {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [Uploaded, setIsUploaded] = useState(false);
 
@@ -220,14 +220,14 @@ const ChatInputMenu = ({ FileMenu = false }: { FileMenu?: boolean }) => {
   return (
     <div>
       <DropdownBase
-        FileMenu={FileMenu}
         above={true}
         align="center"
         dropdownMenu={btnItem}
         dropdownToggle={btn}
+        closeOnClick={false}
       />
     </div>
   );
 };
 
-export { ChatInputMenu };
+export { ChatInputMenuBtn };

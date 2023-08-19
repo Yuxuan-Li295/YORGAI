@@ -18,7 +18,6 @@ const DropdownBase = ({
   align = "left",
   closeOnClick = true,
   fullWidth = false,
-  FileMenu = false,
 }: {
   dropdownToggle: ReactElement;
   dropdownMenu: ReactElement;
@@ -27,7 +26,6 @@ const DropdownBase = ({
   align?: "left" | "center" | "right";
   closeOnClick?: boolean;
   fullWidth?: boolean;
-  FileMenu?: boolean;
 }) => {
   const [expand, setExpand] = useState(false);
   const [verticalOffset, setVerticalOffset] = useState<number>();
@@ -100,7 +98,7 @@ const DropdownBase = ({
             z-index: 10;
             min-width: ${fullWidth ? "100%" : "unset"};
           `}
-          onClick={() => closeOnClick && !FileMenu && setExpand(false)}
+          onClick={() => closeOnClick && setExpand(false)}
         >
           {dropdownMenu}
         </div>
