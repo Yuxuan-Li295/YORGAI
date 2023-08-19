@@ -218,15 +218,13 @@ const ChatInputMenuBtn = ({ FileMenu = false }: { FileMenu?: boolean }) => {
   );
 
   return (
-    <div>
-      <DropdownBase
-        above={true}
-        align="center"
-        dropdownMenu={btnItem}
-        dropdownToggle={btn}
-        closeOnClick={false}
-      />
-    </div>
+    <DropdownBase
+      above={true}
+      align="center"
+      dropdownMenu={btnItem}
+      dropdownToggle={btn}
+      closeOnClick={false}
+    />
   );
 };
 
