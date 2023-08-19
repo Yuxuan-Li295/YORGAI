@@ -22,10 +22,8 @@ export const AgentTaskStatusBadge = ({
         align-items: center;
         border-radius: 108px;
         background: ${status === "done" && rainbow.emerald.alt.bg}
-          ${status === "loading" &&
-          `var(--rainbow-sky-alt-bg, rgba(56, 189, 248, 0.11))`}
-          ${status === "error" &&
-          `var(--rainbow-pink-alt-bg, rgba(244, 114, 182, 0.11))`};
+          ${status === "loading" && rainbow.sky.text_loud}
+          ${status === "error" && rainbow.pink.alt.bg};
       `}
     >
       {/* Lead container */}
@@ -57,8 +55,8 @@ export const AgentTaskStatusBadge = ({
         <span
           className={css`
             color: ${status === "done" && rainbow.emerald.text_loud}
-              ${status === "loading" && `var(--rainbow-sky-text-loud, #0284C7)`}
-              ${status === "error" && `var(--rainbow-pink-text-loud, #DB2777)`};
+              ${status === "loading" && rainbow.sky.text_loud}
+              ${status === "error" && rainbow.pink.text_loud};
             text-align: center;
             ${body.xs.medium};
           `}

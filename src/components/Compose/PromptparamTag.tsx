@@ -32,6 +32,8 @@ const PromptParamTag = ({
           height: auto;
           color: ${basis.text_loud};
           margin-left: 12px;
+          white-space: nowrap;
+          font-size: 14px;
         `}
       >
         {text1}
@@ -51,6 +53,8 @@ const PromptParamTag = ({
           color: ${basis.text};
           text-align: center;
           line-height: 20px;
+          white-space: nowrap;
+          font-size: 14px;
         `}
       >
         {text2}
@@ -70,6 +74,8 @@ const PromptParamTag = ({
           color: ${basis.text};
           text-align: center;
           line-height: 20px;
+          white-space: nowrap;
+          font-size: 14px;
         `}
       >
         {text3}
@@ -89,6 +95,8 @@ const PromptParamTag = ({
           color: ${basis.text};
           text-align: center;
           line-height: 20px;
+          white-space: nowrap;
+          font-size: 14px;
         `}
       >
         {text4}
