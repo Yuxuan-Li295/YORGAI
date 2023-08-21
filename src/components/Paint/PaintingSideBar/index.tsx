@@ -1,10 +1,13 @@
 import { css } from "@emotion/css";
 import { basis, zinc } from "components/constants/colors";
+import { body } from "components/constants/fonts";
 import { Button } from "components/shared/Button";
 import { Collapse } from "components/shared/Collapse";
 import { FileUploadBox } from "components/shared/FileUploadBox";
-import React from "react";
+import React, { useState } from "react";
+import { ReactComponent as ArrowDownFilled } from "resources/img/ArrowDownFilled.svg";
 import { ReactComponent as Help } from "resources/img/Help.svg";
+import { ReactComponent as ImageEdit } from "resources/img/ImageEdit.svg";
 import { ReactComponent as KeyBoardBots } from "resources/img/KeyboardBots.svg";
 import { ReactComponent as Message } from "resources/img/Message.svg";
 import { ReactComponent as Offline } from "resources/img/Offline.svg";
@@ -15,6 +18,8 @@ import { ConfigSideBarPrompt } from "./ConfigSideBarPrompt";
 import { ConfigSideBarSetting } from "./ConfigSideBarSetting";
 import { GraphSetting } from "./GraphSetting";
 import { PromptSetting } from "./PromptSetting";
+
+const referenceImageStyle = body.sm.medium;
 
 const PatingSideBar = ({
   isSidebarOpen = true,
@@ -35,10 +40,75 @@ const PatingSideBar = ({
     border-radius: 8px 0 0 8px;
   `;
 
+  const [isShow, setisShow] = useState(false);
+
+  const handleIsClicked = (value: boolean) => {
+    console.log(value);
+  };
+
   const collapseWrapperStyles = css`
     padding-left: 24px;
     margin-bottom: 24px;
+    border-bottom: 1px solid ${basis.border};
+    padding-bottom: 16px;
   `;
+
+  const [expand, setExpand] = useState(false);
+
+  const collapseHeader = (
+    <div
+      style={{
+        display: "flex",
+        width: "308px",
+        height: "20px",
+        boxSizing: "border-box",
+        padding: "0",
+        alignItems: "flex-start",
+        gap: "20px",
+        alignSelf: "stretch",
+        marginBottom: "15px",
+      }}
+    >
+      <div>
+        <ImageEdit />
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          width: "228px",
+          height: "20px",
+          boxSizing: "border-box",
+          alignItems: "center",
+          gap: "8px",
+          flex: "1 0 0",
+        }}
+      >
+        <div
+          className={referenceImageStyle}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          参考图
+        </div>
+        <Help />
+      </div>
+      <div
+        onClick={() => setisShow(!isShow)}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
+        <ArrowDownFilled />
+      </div>
+    </div>
+  );
 
   const [promptSliderValue, setPromptSliderValue] = React.useState(0);
   const [imageSliderValue, setImageSliderValue] = React.useState(0);
@@ -47,9 +117,15 @@ const PatingSideBar = ({
     console.log(file);
   };
 
+  const collapseBody = (
+    <div>
+      <FileUploadBox handleFileInput={handleFileInput} />
+    </div>
+  );
+
   return (
     <div className={sidebarStyles}>
-      <ConfigSideBarHeader />
+      <ConfigSideBarHeader handleIsClicked={handleIsClicked} />
       <ConfigSideBarPrompt Icon1={Message} Icon2="*" placeholder="Placeholder">
         提示词
       </ConfigSideBarPrompt>
@@ -68,11 +144,12 @@ const PatingSideBar = ({
         onChange={setImageSliderValue}
       />
       <div className={collapseWrapperStyles}>
-        <Collapse>
-          <div>
-            <FileUploadBox handleFileInput={handleFileInput} />
-          </div>
-        </Collapse>
+        <Collapse
+          collapseHeader={collapseHeader}
+          collapseBody={collapseBody}
+          expand={expand}
+          setExpand={setExpand}
+        />
       </div>
 
       <div className={collapseWrapperStyles}>

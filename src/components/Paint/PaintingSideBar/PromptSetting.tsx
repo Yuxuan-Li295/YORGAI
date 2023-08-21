@@ -1,6 +1,8 @@
 import { css } from "@emotion/css";
-import { Slider } from "components/shared/Slider";
+import { basis } from "components/constants/colors";
+import { body } from "components/constants/fonts";
 import { MultiLineInputField } from "components/shared/MultiLineInputField";
+import { Slider } from "components/shared/Slider";
 import { ReactComponent as Help } from "resources/img/Help.svg";
 
 interface PromptSettingProps {
@@ -22,39 +24,27 @@ const PromptSetting = ({ min, max, value, onChange }: PromptSettingProps) => {
         align-items: flex-start;
         gap: 10px;
         align-self: stretch;
-        border-right: 1px solid var(--basis-border, #d7d7db);
-        background: var(--basis-bg, #f9f9fa);
+        border-right: ${basis.border};
+        background: ${basis.bg};
+        border-bottom: 1px solid ${basis.border};
+        margin-bottom: 16px;
       `}
     >
       <div
         className={css`
           display: flex;
           align-items: center;
-          gap: 28px; /* 调整间隙 */
+          gap: 28px;
         `}
       >
-        <div
-          style={{
-            width: "auto",
-            height: "20px",
-            color: "var(--basis-text-loud, #18181B)",
-            fontFamily: "PingFang SC",
-            fontSize: "14px",
-            fontStyle: "normal",
-            fontWeight: 400,
-            lineHeight: "20px",
-          }}
-        >
-          提示词权重
-        </div>{" "}
-        {/* text-container */}
+        <div className={body.sm.regular}>提示词权重</div>{" "}
         <Help width="16px" height="16px" />
       </div>
       <div
         className={css`
           display: flex;
           align-items: center;
-          margin-left: -24px; /* 添加此行以匹配SVG图标的位置 */
+          margin-left: -24px;
         `}
       >
         <Slider min={min} max={max} value={value} onChange={onChange} />
@@ -64,7 +54,7 @@ const PromptSetting = ({ min, max, value, onChange }: PromptSettingProps) => {
           `}
         >
           <MultiLineInputField
-            width={80}
+            width={75}
             height={32}
             value=""
             placeholder="1"

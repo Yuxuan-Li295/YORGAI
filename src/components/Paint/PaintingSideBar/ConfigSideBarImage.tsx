@@ -1,4 +1,5 @@
 import { css } from "@emotion/css";
+import { basis } from "components/constants/colors";
 import { MultiLineInputField } from "components/shared/MultiLineInputField";
 import { Slider } from "components/shared/Slider";
 import React from "react";
@@ -23,12 +24,14 @@ const ConfigSideBarImage = ({
       className={css`
         width: 356px;
         height: auto;
-        padding: 16px 24px;
+        padding: 16px 24px 16px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
         align-self: stretch;
+        border-bottom: 1px solid ${basis.border};
+        margin-bottom: 24px;
       `}
     >
       <div
@@ -66,7 +69,7 @@ const ConfigSideBarImage = ({
           `}
         >
           <MultiLineInputField
-            width={70}
+            width={67}
             height={32}
             value=""
             placeholder="1"
