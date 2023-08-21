@@ -5,11 +5,18 @@ import { ReactComponent as Error } from "resources/img/Error.svg";
 import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRightMd.svg";
 import { ReactComponent as XSquare } from "resources/img/XSquare.svg";
 
-const ConfigSideBarHeader = () => {
+interface ConfigSideBarHeaderProps {
+  handleIsClicked: (value: boolean) => void;
+}
+
+const ConfigSideBarHeader: React.FC<ConfigSideBarHeaderProps> = ({
+  handleIsClicked,
+}) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleGroupClick = () => {
     setIsClicked(!isClicked);
+    handleIsClicked(!isClicked);
   };
 
   return (
