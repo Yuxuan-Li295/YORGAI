@@ -9,15 +9,18 @@ import { ReactComponent as KeyBoardBots } from "resources/img/KeyboardBots.svg";
 import { ReactComponent as Message } from "resources/img/Message.svg";
 import { ReactComponent as Offline } from "resources/img/Offline.svg";
 import { ReactComponent as Play } from "resources/img/Play.svg";
-import { ConfigSideBarHeader } from "../ConfigSideBar/ConfigSideBarHeader";
+import { ConfigSideBarHeader } from "../../Compose/ConfigSideBar/ConfigSideBarHeader";
 import { ConfigSideBarImage } from "./ConfigSideBarImage";
 import { ConfigSideBarPrompt } from "./ConfigSideBarPrompt";
 import { ConfigSideBarSetting } from "./ConfigSideBarSetting";
 import { GraphSetting } from "./GraphSetting";
 import { PromptSetting } from "./PromptSetting";
 
-const PatingSideBar = ({ isSidebarOpen = true }: { isSidebarOpen?: boolean }) => {
-
+const PatingSideBar = ({
+  isSidebarOpen = true,
+}: {
+  isSidebarOpen?: boolean;
+}) => {
   const sidebarStyles = css`
     position: relative;
     display: flex;
@@ -29,7 +32,7 @@ const PatingSideBar = ({ isSidebarOpen = true }: { isSidebarOpen?: boolean }) =>
     overflow-y: auto;
     transition: flex-basis 0.3s ease-in-out;
     box-sizing: border-box;
-    border-radius: 8px 0 0 8px; 
+    border-radius: 8px 0 0 8px;
   `;
 
   const collapseWrapperStyles = css`
@@ -50,7 +53,11 @@ const PatingSideBar = ({ isSidebarOpen = true }: { isSidebarOpen?: boolean }) =>
       <ConfigSideBarPrompt Icon1={Message} Icon2="*" placeholder="Placeholder">
         提示词
       </ConfigSideBarPrompt>
-      <ConfigSideBarPrompt Icon1={Offline} Icon2={Help} placeholder="Placeholder">
+      <ConfigSideBarPrompt
+        Icon1={Offline}
+        Icon2={Help}
+        placeholder="Placeholder"
+      >
         反向提示词
       </ConfigSideBarPrompt>
       <ConfigSideBarImage

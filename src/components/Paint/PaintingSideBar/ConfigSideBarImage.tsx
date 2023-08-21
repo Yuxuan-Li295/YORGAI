@@ -19,40 +19,52 @@ const ConfigSideBarImage = ({
   onChange,
 }: ConfigSideBarImageProps) => {
   return (
-    <div className={css`
-      width: 356px;
-      height: auto;
-      padding: 16px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      align-self: stretch;
-    `}>
-      <div className={css`
+    <div
+      className={css`
+        width: 356px;
+        height: auto;
+        padding: 16px 24px;
         display: flex;
-        align-items: center;
-        gap: 20px;
-      `}>
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+      `}
+    >
+      <div
+        className={css`
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        `}
+      >
         <Icon width="20px" height="20px" />
-        <div className={css`
-          width: 84px;
-          height: 20px;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 20px;
-        `}>生成图片数量</div>
+        <div
+          className={css`
+            width: 84px;
+            height: 20px;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+          `}
+        >
+          生成图片数量
+        </div>
       </div>
-      <div className={css`
+      <div
+        className={css`
         display: flex;
         align-items: center;
         margin-left: -24px;=
-      `}>
+      `}
+      >
         <Slider min={min} max={max} value={value} onChange={onChange} />
-        <div className={css`
-          margin-left: 10px;
-        `}>
+        <div
+          className={css`
+            margin-left: 10px;
+          `}
+        >
           <MultiLineInputField
             width={70}
             height={32}

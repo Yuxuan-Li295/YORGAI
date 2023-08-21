@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { PatingSideBar } from "components/Compose/PaintingSideBar";
+import { PatingSideBar } from "components/Paint/PaintingSideBar";
 import { OnlineToolBody } from "components/OnlineTool/OnlineToolBody";
 import { OnlineToolHeader } from "components/OnlineTool/OnlineToolHeader";
 import { OnlineToolSideBar } from "components/OnlineTool/OnlineToolSideBar";
@@ -45,9 +45,9 @@ const OnlineTool = () => {
           return prevState.isKnowledgeBaseMode
             ? prevState
             : {
-              ...prevState,
-              underlyingMode: msg.mode,
-            };
+                ...prevState,
+                underlyingMode: msg.mode,
+              };
       }
     },
     { isKnowledgeBaseMode: false, underlyingMode: ToolsMode.Home },
@@ -131,7 +131,9 @@ const OnlineTool = () => {
         {mode === ToolsMode.Paint ? (
           <div
             className={css`
-              ${isSidebarOpen ? configSidebarWrapperStyle : 'width: 0; overflow: hidden;'};
+              ${isSidebarOpen
+                ? configSidebarWrapperStyle
+                : "width: 0; overflow: hidden;"};
               transition: width 0.3s ease-in-out;
             `}
           >

@@ -15,7 +15,6 @@ const ConfigSideBarPrompt = ({
   placeholder = "Placeholder",
   children,
 }: ConfigSideBarPromptProps) => {
-
   const renderIcon2 = () => {
     if (typeof Icon2 === "string") {
       return (
@@ -23,7 +22,7 @@ const ConfigSideBarPrompt = ({
           className={css`
             width: 6.496px;
             height: 6.202px;
-            font-size: 14px; 
+            font-size: 14px;
           `}
         >
           {Icon2}
@@ -36,31 +35,39 @@ const ConfigSideBarPrompt = ({
   };
 
   return (
-    <div className={css`
-      display: flex;
-      width: 356px;
-      height: auto;
-      padding: 24px 24px 16px 24px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      align-self: stretch;
-    `}>
-      <div className={css`
+    <div
+      className={css`
         display: flex;
-        align-items: center;
-        gap: 20px;
-      `}>
+        width: 356px;
+        height: auto;
+        padding: 24px 24px 16px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+      `}
+    >
+      <div
+        className={css`
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        `}
+      >
         <Icon1 width="20px" height="20px" />
-        <div className={css`
-          height: 20px;
-          width: auto;
-          max-width: 100%;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 20px;
-        `}>{children}</div>
+        <div
+          className={css`
+            height: 20px;
+            width: auto;
+            max-width: 100%;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+          `}
+        >
+          {children}
+        </div>
         {renderIcon2()}
       </div>
       <MultiLineInputField

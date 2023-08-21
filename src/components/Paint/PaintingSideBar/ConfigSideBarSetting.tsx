@@ -40,7 +40,7 @@ const ConfigSideBarSetting = ({ children }: { children: any }) => {
               align-items: center;
               font-size: 14px;
               font-weight: 500;
-              line-height: 20px; 
+              line-height: 20px;
             `}
           >
             高级设置 （可选）
