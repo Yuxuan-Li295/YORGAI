@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { fill, basis } from "components/constants/colors";
+import { basis, fill } from "components/constants/colors";
 import { ReactComponent as SeparatorMd } from "resources/img/SeparatorMd.svg";
 import { AgentTaskStatusBadge } from "./AgentTaskStatusBadge";
 
