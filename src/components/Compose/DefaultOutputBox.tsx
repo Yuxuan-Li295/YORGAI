@@ -1,5 +1,5 @@
-import { css } from '@emotion/css';
-import { basis } from 'components/constants/colors';
+import { css } from "@emotion/css";
+import { basis } from "components/constants/colors";
 import { ReactComponent as MagicWand } from "resources/img/MagicWand.svg";
 
 const DefaultOutputBox = () => {
