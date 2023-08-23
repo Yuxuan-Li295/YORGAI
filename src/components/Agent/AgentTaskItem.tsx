@@ -1,9 +1,9 @@
 import { css } from "@emotion/css";
-import { fill, basis } from "components/constants/colors";
+import { basis, fill } from "components/constants/colors";
 import { ReactComponent as SeparatorMd } from "resources/img/SeparatorMd.svg";
 import { AgentTaskStatusBadge } from "./AgentTaskStatusBadge";
 
-interface AgentTaskItemProps {
+export interface AgentTaskItemProps {
   title: string;
   date: string;
   category: string;
@@ -11,8 +11,13 @@ interface AgentTaskItemProps {
   badgeRate: string;
 }
 
-const AgentTaskItem: React.FC<AgentTaskItemProps> = (
-  { title, date, category, badgeStatus, badgeRate }) => {
+const AgentTaskItem: React.FC<AgentTaskItemProps> = ({
+  title,
+  date,
+  category,
+  badgeStatus,
+  badgeRate,
+}) => {
   return (
     <div
       className={css`
@@ -26,8 +31,12 @@ const AgentTaskItem: React.FC<AgentTaskItemProps> = (
         flex: 1 0 0;
         border-radius: 8px;
         background: ${fill.base.layer_on};
-        box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32), 0px 2px 5px -2px rgba(79, 81, 89, 0.03), 0px 2px 14px -2px rgba(79, 81, 89, 0.12), 0px 0px 0px 1px rgba(188, 189, 194, 0.22), 0px 1px 1px 0px rgba(188, 189, 194, 0.20);
-    `}
+        box-shadow: 0px 4px 4px -4px rgba(79, 81, 89, 0.32),
+          0px 2px 5px -2px rgba(79, 81, 89, 0.03),
+          0px 2px 14px -2px rgba(79, 81, 89, 0.12),
+          0px 0px 0px 1px rgba(188, 189, 194, 0.22),
+          0px 1px 1px 0px rgba(188, 189, 194, 0.2);
+      `}
     >
       <div
         className={css`
@@ -102,10 +111,7 @@ const AgentTaskItem: React.FC<AgentTaskItemProps> = (
             align-items: center;
           `}
         >
-          <AgentTaskStatusBadge
-            status={badgeStatus}
-            rate={badgeRate}
-          />
+          <AgentTaskStatusBadge status={badgeStatus} rate={badgeRate} />
         </div>
       </div>
     </div>

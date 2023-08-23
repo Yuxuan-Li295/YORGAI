@@ -22,7 +22,7 @@ export const AgentTaskStatusBadge = ({
         align-items: center;
         border-radius: 108px;
         background: ${status === "done" && rainbow.emerald.alt.bg}
-          ${status === "loading" && rainbow.sky.text_loud}
+          ${status === "loading" && rainbow.sky.alt.bg}
           ${status === "error" && rainbow.pink.alt.bg};
       `}
     >
