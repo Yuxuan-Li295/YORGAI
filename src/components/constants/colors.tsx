@@ -476,20 +476,14 @@ const fill: Readonly<
     >
 > = {
   base: {
-    layer: `linear-gradient(180deg, ${zinc[900] + pctToHex(99)} 0%, ${
-      zinc[900] + pctToHex(100)
-    } 100%)`,
-    layer_subtle: zinc[900] + pctToHex(93),
-    layer_muted: black + pctToHex(20),
+    layer: white,
+    layer_subtle: zinc[25],
+    layer_muted: zinc[950] + pctToHex(2),
     layer_on: white,
-    layer_chrome: `linear-gradient(180deg, ${zinc[800] + pctToHex(100)} 0%, ${
-      zinc[800] + pctToHex(98)
-    } 100%)`,
-    layer_overlay_subtle: white + pctToHex(2),
-    layer_overlay_muted: white + pctToHex(9),
-    layer_gradient: `linear-gradient(180deg, ${zinc[900] + pctToHex(89)} 0%, ${
-      zinc[800] + pctToHex(78)
-    } 100%)`,
+    layer_chrome: white,
+    layer_overlay_subtle: black + pctToHex(2),
+    layer_overlay_muted: black + pctToHex(10),
+    layer_gradient: `linear-gradient(180deg, #F5F5F5 0%, #FDFDFD 100%)`,
     mask: black + pctToHex(50),
     alpha: {
       layer_01: zinc[900] + pctToHex(1),

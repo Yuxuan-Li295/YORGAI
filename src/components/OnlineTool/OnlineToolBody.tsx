@@ -1,19 +1,18 @@
-import React, { useState } from "react";
 import { css } from "@emotion/css";
 import { ChatInput } from "components/Chat/ChatInput";
 import { SystemChatItem } from "components/Chat/SystemChatItem";
 import { SystemChatSelection } from "components/Chat/SystemChatSelection";
 import { UserChatItem } from "components/Chat/UserChatItem";
 import { ChooseTemplateDialog } from "components/Compose/ChooseTemplateDialog";
+import { ConfigSideBar } from "components/Compose/ConfigSideBar";
+import { DefaultOutputBox } from "components/Compose/DefaultOutputBox";
 import { KnowledgeBase } from "components/KnowledgeBase";
 import { ImageResultCard } from "components/Paint/ImageResultCard";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import SystemAvatar from "resources/img/SystemAvatar.png";
 import { ToolsMode, ToolsNormalModes } from "types/OnlineToolTypes";
-import { ConfigSideBar } from "components/Compose/ConfigSideBar";
-import { DefaultOutputBox } from "components/Compose/DefaultOutputBox";
 
 const OnlineToolBody = ({
   mode,
@@ -24,7 +23,6 @@ const OnlineToolBody = ({
   showNormalMode: (mode: ToolsNormalModes) => void;
   setKnowledgeBaseMode: () => void;
 }) => {
-
   const [isClicked, setIsClicked] = React.useState(false);
 
   const handleIsClicked = (value: boolean) => {
@@ -125,9 +123,7 @@ const OnlineToolBody = ({
             margin: 12px;
           `}
         >
-          <div className={css`width: 356px`}>
-            <ConfigSideBar handleIsClicked={handleIsClicked} />
-          </div>
+          <ConfigSideBar handleIsClicked={handleIsClicked} />
           {isClicked ? <ChooseTemplateDialog /> : <DefaultOutputBox />}
         </div>
       ) : mode === ToolsMode.Paint ? (

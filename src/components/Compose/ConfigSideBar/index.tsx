@@ -17,7 +17,7 @@ interface ConfigSideBarProps {
 }
 
 const ConfigSideBar: React.FC<ConfigSideBarProps> = ({ handleIsClicked }) => {
-    const sectionStyles = css`
+  const sectionStyles = css`
     display: flex;
     padding: 16px 24px;
     flex-direction: column;
@@ -82,7 +82,7 @@ const ConfigSideBar: React.FC<ConfigSideBarProps> = ({ handleIsClicked }) => {
     <div
       className={css`
         display: flex;
-        width: 356px;
+        min-width: 356px;
         flex-direction: column;
         align-items: flex-start;
         align-self: stretch;
@@ -92,7 +92,7 @@ const ConfigSideBar: React.FC<ConfigSideBarProps> = ({ handleIsClicked }) => {
         background: ${basis.bg};
       `}
     >
-      <ConfigSideBarHeader handleIsClicked={handleIsClicked}/>
+      <ConfigSideBarHeader handleIsClicked={handleIsClicked} />
       <div className={sectionStyles}>
         <div className={titleStyles}>模型</div>
         <div className={optionBoxStyles}>
