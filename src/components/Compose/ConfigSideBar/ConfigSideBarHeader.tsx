@@ -9,7 +9,9 @@ interface ConfigSideBarHeaderProps {
   handleIsClicked: (value: boolean) => void;
 }
 
-const ConfigSideBarHeader: React.FC<ConfigSideBarHeaderProps> = ({ handleIsClicked }) => {
+const ConfigSideBarHeader: React.FC<ConfigSideBarHeaderProps> = ({
+  handleIsClicked,
+}) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleGroupClick = () => {

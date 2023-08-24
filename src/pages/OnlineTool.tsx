@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { ComposeResultItem } from "components/OnlineTool/ComposeResultItem";
+import { PatingSideBar } from "components/Paint/PaintingSideBar";
 import { OnlineToolBody } from "components/OnlineTool/OnlineToolBody";
 import { OnlineToolHeader } from "components/OnlineTool/OnlineToolHeader";
 import { OnlineToolSideBar } from "components/OnlineTool/OnlineToolSideBar";
@@ -12,6 +13,11 @@ declare global {
   var debugEnableKBMode: () => void;
   var debugDisableKBMode: () => void;
 }
+
+const configSidebarWrapperStyle = css`
+  width: 462px;
+  overflow: auto;
+`;
 
 const OnlineTool = () => {
   type ToolsModeState = {
@@ -123,14 +129,28 @@ const OnlineTool = () => {
           background-color: ${basis.bg_muted};
         `}
       >
-        <OnlineToolSideBar
-          isSidebarOpen={isSidebarOpen}
-          selectedItem={selectedItem}
-          handleSelectedItemChangeCallback={handleSelectedItemChange}
-          toggleChooseModelDialog={toggleChooseModelDialog}
-          showNormalMode={showNormalMode}
-          unsetKnowledgeBaseMode={unsetKnowledgeBaseMode}
-        />
+        {mode === ToolsMode.Paint ? (
+          <div
+            className={css`
+              ${isSidebarOpen
+                ? configSidebarWrapperStyle
+                : "width: 0; overflow: hidden;"};
+              transition: width 0.3s ease-in-out;
+            `}
+          >
+            <PatingSideBar />
+          </div>
+        ) : (
+          <OnlineToolSideBar
+            isSidebarOpen={isSidebarOpen}
+            selectedItem={selectedItem}
+            handleSelectedItemChangeCallback={handleSelectedItemChange}
+            toggleChooseModelDialog={toggleChooseModelDialog}
+            showNormalMode={showNormalMode}
+            unsetKnowledgeBaseMode={unsetKnowledgeBaseMode}
+          />
+        )}
+
         <div
           className={css`
             flex: 100vw 0 1;
