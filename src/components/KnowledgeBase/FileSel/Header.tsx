@@ -8,7 +8,7 @@ import { ReactComponent as TransferSvg } from "resources/img/Transfers.svg";
 import { ReactComponent as TrashSvg } from "resources/img/Trash.svg";
 import { ReactComponent as UploadSvg } from "resources/img/Upload.svg";
 import { DropdownBase } from "components/shared/Dropdown";
-import { Segment } from "components/shared/Segment";
+import { Segment } from "components/KnowledgeBase/FileSel/Segment";
 import { FileUploadBox } from "components/shared/FileUploadBox";
 
 export const Header = () => (

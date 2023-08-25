@@ -15,7 +15,8 @@ import { ReactComponent as ZipSvg } from "resources/img/fileIcon/Csv.svg";
 export const UploadWidget = () => {
   const { files, removeFile, visibility, setVisibility } =
     useContext(UploadContext);
-  const [collpased, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
     <>
       {visibility && (
@@ -42,7 +43,7 @@ export const UploadWidget = () => {
             transition: max-height 0.3s ease-in-out;
           `}
           style={{
-            maxHeight: collpased ? 36 : 319,
+            maxHeight: collapsed ? 36 : 319,
           }}
         >
           <div
@@ -56,7 +57,7 @@ export const UploadWidget = () => {
             <span
               className={css`
                 color: ${black};
-                ont-size: 16px;
+                font-size: 16px;
                 font-style: normal;
                 font-weight: 500;
                 line-height: 24px;
@@ -73,19 +74,26 @@ export const UploadWidget = () => {
                 align-self: stretch;
               `}
             >
-              <Button variant="tertiary" size="xs">
+              <Button
+                variant="tertiary"
+                size="xs"
+                onClick={() => setCollapsed(!collapsed)}
+              >
                 <ArrowAngleDownMdSvg
                   height={16}
                   width={16}
-                  onClick={() => setCollapsed(!collpased)}
                   style={{
-                    transform: collpased ? "rotate(180deg)" : "rotate(0deg)",
+                    transform: collapsed ? "rotate(180deg)" : "rotate(0deg)",
                     transition: "transform 0.3s ease-in-out",
                   }}
                 />
               </Button>
-              <Button variant="tertiary" size="xs">
-                <XSvg onClick={() => setVisibility(false)} />
+              <Button
+                variant="tertiary"
+                size="xs"
+                onClick={() => setVisibility(false)}
+              >
+                <XSvg />
               </Button>
             </span>
           </div>
@@ -99,7 +107,7 @@ export const UploadWidget = () => {
               padding-right: 12px;
             `}
             style={{
-              flexGrow: collpased ? "0.0001" : "1",
+              flexGrow: collapsed ? "0.0001" : "1",
             }}
           >
             {Object.entries(files).map(([key, { name, type }]) => (

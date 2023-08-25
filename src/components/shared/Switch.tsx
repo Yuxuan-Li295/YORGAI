@@ -4,11 +4,11 @@ import { basis, primary } from "components/constants/colors";
 export const Switch = ({
   variant = "thin",
   enabled,
-  onToggle,
+  setEnabled,
 }: {
   variant?: "thin" | "fat";
   enabled: boolean;
-  onToggle: () => void;
+  setEnabled: (enabled: boolean) => void;
 }) => {
   return (
     <label
@@ -42,7 +42,7 @@ export const Switch = ({
       <input
         type="checkbox"
         checked={enabled}
-        onChange={onToggle}
+        onChange={() => setEnabled(!enabled)}
         className={css`
           display: none;
         `}
@@ -62,14 +62,14 @@ export const Switch = ({
                 height: 20px;
                 width: 20px;
                 top: -2px;
-                left: ${enabled ? "18px" : "-2px"},
+                left: ${enabled ? "18px" : "-2px"};
                 background: white;
               `
             : css`
                 height: 18px;
                 width: 18px;
                 top: 2px;
-                left: ${enabled ? "16px" : "2px"},
+                left: ${enabled ? "16px" : "2px"};
                 background: linear-gradient(
                   180deg,
                   white 0%,
