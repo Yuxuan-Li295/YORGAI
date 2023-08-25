@@ -20,16 +20,7 @@ export default meta;
 const Template: StoryFn<typeof Switch> = (args) => {
   const [enabled, setEnabled] = useState(args.enabled);
 
-  return (
-    <Switch
-      {...args}
-      enabled={enabled}
-      onToggle={() => {
-        args.onToggle();
-        setEnabled(!enabled);
-      }}
-    />
-  );
+  return <Switch {...args} enabled={enabled} setEnabled={setEnabled} />;
 };
 
 export const Thin = Template.bind({});

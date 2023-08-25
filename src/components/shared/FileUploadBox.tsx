@@ -40,8 +40,7 @@ const FileUploadBox = ({
       uploadedFile.name
     ) : (
       <div>
-        <a
-          href="#"
+        <text
           className={css`
             color: ${primary.text};
             text-decoration: none;
@@ -49,7 +48,7 @@ const FileUploadBox = ({
           `}
         >
           上传图片
-        </a>
+        </text>
         <text
           className={css`
             color: ${basis.text_muted};
@@ -98,6 +97,7 @@ const FileUploadBox = ({
           max-width: 308px;
           height: 64px;
           box-sizing: border-box;
+          cursor: pointer;
         `}
       >
         <div
