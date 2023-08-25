@@ -2,7 +2,7 @@ import { css } from "@emotion/css";
 import { basis } from "components/constants/colors";
 import { Dropdown } from "components/shared/Dropdown";
 import { useState } from "react";
-import { ReactComponent as ArrayAngleDownMd } from "../../../../resources/img/ArrowAngleDownMd.svg";
+import { ReactComponent as ArrayAngleDownMd } from "resources/img/ArrowAngleDownMd.svg";
 
 type PageSelectProps = {
   totalNumber?: number;

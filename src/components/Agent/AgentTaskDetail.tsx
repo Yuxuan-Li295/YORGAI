@@ -8,6 +8,12 @@ import { ReactComponent as ArrowAngleRightMd } from "resources/img/ArrowAngleRig
 import { ReactComponent as Avatar } from "resources/img/Avatar.svg";
 import { ReactComponent as DoneGreen } from "resources/img/DoneGreen.svg";
 
+const iconStyle = css`
+  color: ${basis.icon};
+  width: 16px;
+  height: 16px;
+`;
+
 const AgentTaskDetail = () => {
   const [displayProcess, setDisplayProcess] = useState(false);
   const [displayResult, setDisplayResult] = useState(false);
@@ -64,13 +70,9 @@ const AgentTaskDetail = () => {
             `}
           >
             {displayProcess ? (
-              <ArrowAngleDownMd
-                style={{ color: "#707480", width: "16px ", height: "16px" }}
-              />
+              <ArrowAngleDownMd className={iconStyle} />
             ) : (
-              <ArrowAngleRightMd
-                style={{ color: "#707480", width: "16px ", height: "16px" }}
-              />
+              <ArrowAngleRightMd className={iconStyle} />
             )}
             <div
               className={css`
@@ -164,13 +166,9 @@ const AgentTaskDetail = () => {
             `}
           >
             {displayResult ? (
-              <ArrowAngleDownMd
-                style={{ color: "#707480", width: "16px ", height: "16px" }}
-              />
+              <ArrowAngleDownMd className={iconStyle} />
             ) : (
-              <ArrowAngleRightMd
-                style={{ color: "#707480", width: "16px ", height: "16px" }}
-              />
+              <ArrowAngleRightMd className={iconStyle} />
             )}
             <div
               className={css`
