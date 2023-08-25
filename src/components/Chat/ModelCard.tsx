@@ -3,7 +3,7 @@ import { TagList } from "components/Prompt/TagList";
 import { basis, rainbow } from "components/constants/colors";
 import { ReactElement } from "react";
 import { ReactComponent as PinFilled } from "resources/img/PinFilled.svg";
-import { Radio } from "./CheckBoxOrRadio";
+import { Radio } from "../shared/CheckBoxOrRadio";
 
 const ModelCard = ({
   title,

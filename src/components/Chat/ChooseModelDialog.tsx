@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { DialogFooter } from "components/OnlineTool/DialogFooter";
 import { DialogHeader } from "components/OnlineTool/DialogHeader";
-import { ModelCard } from "components/shared/ModelCard";
+import { ModelCard } from "components/Chat/ModelCard";
 import { useState } from "react";
 import { ReactComponent as OpenAI } from "resources/img/OpenAI.svg";
 import { basis } from "components/constants/colors";

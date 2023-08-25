@@ -2,6 +2,13 @@
 
 import { Global, css } from "@emotion/react";
 import { white } from "components/constants/colors";
+import { UploadWidget } from "components/shared/UploadWidget";
+import {
+  FileMeta,
+  FileStatus,
+  UploadContext,
+  UploadContextType,
+} from "contexts/UploadContext";
 import emotionReset from "emotion-reset";
 import { ImagePromptDetail } from "pages/ImagePromptDetail";
 import { ImagePrompts } from "pages/ImagePrompts";
@@ -11,24 +18,12 @@ import { PopularPrompts } from "pages/PopularPrompts";
 import { PopularTools } from "pages/PopularTools";
 import { TextPromptDetail } from "pages/TextPromptDetail";
 import { TextPrompts } from "pages/TextPrompts";
+import { ToolDetail } from "pages/ToolDetail";
 import { Tools } from "pages/Tools";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { ToolDetail } from "pages/ToolDetail";
-import {
-  FileMeta,
-  FileStatus,
-  UploadContext,
-  UploadContextType,
-} from "contexts/UploadContext";
-import { UploadWidget } from "components/shared/UploadWidget";
-
-declare global {
-  var debugEnableWidget: () => void;
-  var debugDisableWidget: () => void;
-}
 
 const App = () => {
   const [uploadWidgetVisibility, setUploadWidgetVisibility] =
@@ -48,11 +43,6 @@ const App = () => {
       ]),
     ),
   );
-
-  useEffect(() => {
-    globalThis.debugEnableWidget = () => setUploadWidgetVisibility(true);
-    globalThis.debugDisableWidget = () => setUploadWidgetVisibility(false);
-  });
 
   const uploadCtxVal: UploadContextType = {
     visibility: uploadWidgetVisibility,
@@ -76,6 +66,7 @@ const App = () => {
       setUploadFiles(rest);
     },
   };
+
   return (
     <>
       <Helmet>
@@ -115,7 +106,7 @@ const Router = () => {
         <Route path="tool" element={<Tools />} />
         <Route path="tool/detail" element={<ToolDetail />} />
         <Route path="online-tool" element={<OnlineTool />} />
-        <Route path="" element={<Navigate to="prompt/popular" replace />} />
+        <Route path="" element={<Navigate to="online-tool" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
