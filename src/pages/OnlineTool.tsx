@@ -1,5 +1,4 @@
 import { css } from "@emotion/css";
-import { ComposeResultItem } from "components/OnlineTool/ComposeResultItem";
 import { PatingSideBar } from "components/Paint/PaintingSideBar";
 import { OnlineToolBody } from "components/OnlineTool/OnlineToolBody";
 import { OnlineToolHeader } from "components/OnlineTool/OnlineToolHeader";
@@ -172,7 +171,6 @@ const OnlineTool = () => {
             showNormalMode={showNormalMode}
             setKnowledgeBaseMode={setKnowledgeBaseMode}
           />
-          {/* <ComposeResultItem/> */}
         </div>
       </div>
     </div>
