@@ -22,16 +22,17 @@ import { PromptSetting } from "./PromptSetting";
 const referenceImageStyle = body.sm.medium;
 
 const PatingSideBar = ({
-  isSidebarOpen = true,
+  isPaintbarOpen = true,
 }: {
-  isSidebarOpen?: boolean;
+  isPaintbarOpen?: boolean;
 }) => {
   const sidebarStyles = css`
     position: relative;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 64px - 1px);
-    flex: ${isSidebarOpen ? "280px" : "0px"} 0 0;
+    width: ${isPaintbarOpen ? "356px" : "0px"};
+    flex: none;
     background: ${zinc[25]};
     border-right: 1px solid ${basis.border_subtle};
     overflow-y: auto;

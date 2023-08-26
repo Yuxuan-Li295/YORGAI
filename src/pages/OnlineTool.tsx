@@ -1,8 +1,7 @@
 import { css } from "@emotion/css";
-import { PatingSideBar } from "components/Paint/PaintingSideBar";
 import { OnlineToolBody } from "components/OnlineTool/OnlineToolBody";
-import { OnlineToolHeader } from "components/OnlineTool/OnlineToolHeader";
 import { OnlineToolSideBar } from "components/OnlineTool/OnlineToolSideBar";
+import { PaintingHeader } from "components/Paint/PaintingSideBar/PaintingHeader";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
 import { useEffect, useMemo, useReducer, useState } from "react";
@@ -78,6 +77,7 @@ const OnlineTool = () => {
   });
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isPaintbarOpen, setIsPaintbarOpen] = useState(true);
   const [isChooseModelDialogVisible, setChooseModelDialogVisible] =
     useState(false);
 
@@ -131,14 +131,12 @@ const OnlineTool = () => {
         {mode === ToolsMode.Paint ? (
           <div
             className={css`
-              ${isSidebarOpen
+              ${!isSidebarOpen
                 ? configSidebarWrapperStyle
                 : "width: 0; overflow: hidden;"};
               transition: width 0.3s ease-in-out;
             `}
-          >
-            <PatingSideBar />
-          </div>
+          ></div>
         ) : (
           <OnlineToolSideBar
             isSidebarOpen={isSidebarOpen}
@@ -159,14 +157,16 @@ const OnlineTool = () => {
             overflow: hidden;
           `}
         >
-          <OnlineToolHeader
+          <PaintingHeader
             mode={mode}
-            isSidebarOpen={isSidebarOpen}
-            setIsSidebarOpen={setIsSidebarOpen}
+            isPaintbarOpen={isPaintbarOpen}
+            setIsPaintbarOpen={setIsPaintbarOpen}
             selectedItem={selectedItem}
             handleSelectedItemChange={handleSelectedItemChange}
           />
+
           <OnlineToolBody
+            isPaintbarOpen={isPaintbarOpen}
             mode={mode}
             showNormalMode={showNormalMode}
             setKnowledgeBaseMode={setKnowledgeBaseMode}
