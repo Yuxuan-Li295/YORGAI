@@ -5,7 +5,7 @@ import { ConfigSideBar } from "components/Compose/ConfigSideBar";
 import { DefaultOutputBox } from "components/Compose/DefaultOutputBox";
 import { KnowledgeBase } from "components/KnowledgeBase";
 import { ImageResultCard } from "components/Paint/ImageResultCard";
-import { PatingSideBar } from "components/Paint/PaintingSideBar";
+import { PaintSideBar } from "components/Paint/PaintSideBar";
 import { basis } from "components/constants/colors";
 import { Button } from "components/shared/Button";
 import React, { Fragment } from "react";
@@ -15,12 +15,10 @@ const OnlineToolBody = ({
   mode,
   showNormalMode,
   setKnowledgeBaseMode,
-  isPaintbarOpen,
 }: {
   mode: ToolsMode;
   showNormalMode: (mode: ToolsNormalModes) => void;
   setKnowledgeBaseMode: () => void;
-  isPaintbarOpen: boolean;
 }) => {
   const [isClicked, setIsClicked] = React.useState(false);
   const handleIsClicked = (value: boolean) => {
@@ -82,26 +80,12 @@ const OnlineToolBody = ({
             margin: 12px;
           `}
         >
+          <PaintSideBar />
           <div
             className={css`
-              ${isPaintbarOpen
-                ? `width: 356px;`
-                : "width: 0px; overflow: hidden;"};
-              transition: width 0.3s ease-in-out;
-              flex-shrink: 0;
+              padding: 12px;
             `}
           >
-            <PatingSideBar isPaintbarOpen={isPaintbarOpen} />
-          </div>
-          <div
-            className={css`
-              margin-left: ${isPaintbarOpen ? "85px" : "0px"};
-              flex: 1;
-              display: flex;
-              flex-direction: column;
-            `}
-          >
-            paint
             <ImageResultCard />
           </div>
         </div>

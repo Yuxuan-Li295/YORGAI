@@ -21,17 +21,13 @@ import { PromptSetting } from "./PromptSetting";
 
 const referenceImageStyle = body.sm.medium;
 
-const PatingSideBar = ({
-  isPaintbarOpen = true,
-}: {
-  isPaintbarOpen?: boolean;
-}) => {
+const PaintSideBar = () => {
   const sidebarStyles = css`
     position: relative;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 64px - 1px);
-    width: ${isPaintbarOpen ? "356px" : "0px"};
+    width: 356px;
     flex: none;
     background: ${zinc[25]};
     border-right: 1px solid ${basis.border_subtle};
@@ -203,4 +199,4 @@ const PatingSideBar = ({
   );
 };
 
-export { PatingSideBar };
+export { PaintSideBar };

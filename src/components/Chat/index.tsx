@@ -5,13 +5,8 @@ import { ChatInput } from "./ChatInput";
 import { SystemChatItem } from "./SystemChatItem";
 import { SystemChatSelection } from "./SystemChatSelection";
 import { UserChatItem } from "./UserChatItem";
-import { Button } from "components/shared/Button";
-import { useContext } from "react";
-import { UploadContext } from "contexts/UploadContext";
 
 const Chat = () => {
-  const { setVisibility } = useContext(UploadContext);
-
   return (
     <div
       className={css`
@@ -23,11 +18,6 @@ const Chat = () => {
         margin: 12px;
       `}
     >
-      <Button
-        onClick={() => {
-          setVisibility(true);
-        }}
-      />
       <div
         className={css`
           display: flex;

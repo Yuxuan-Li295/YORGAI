@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { OnlineToolBody } from "components/OnlineTool/OnlineToolBody";
+import { OnlineToolHeader } from "components/OnlineTool/OnlineToolHeader";
 import { OnlineToolSideBar } from "components/OnlineTool/OnlineToolSideBar";
-import { PaintingHeader } from "components/Paint/PaintingSideBar/PaintingHeader";
 import { PrimaryNavBar } from "components/PrimaryNavBar";
 import { basis } from "components/constants/colors";
 import { useEffect, useMemo, useReducer, useState } from "react";
@@ -11,11 +11,6 @@ declare global {
   var debugEnableKBMode: () => void;
   var debugDisableKBMode: () => void;
 }
-
-const configSidebarWrapperStyle = css`
-  width: 462px;
-  overflow: auto;
-`;
 
 const OnlineTool = () => {
   type ToolsModeState = {
@@ -128,26 +123,14 @@ const OnlineTool = () => {
           background-color: ${basis.bg_muted};
         `}
       >
-        {mode === ToolsMode.Paint ? (
-          <div
-            className={css`
-              ${!isSidebarOpen
-                ? configSidebarWrapperStyle
-                : "width: 0; overflow: hidden;"};
-              transition: width 0.3s ease-in-out;
-            `}
-          ></div>
-        ) : (
-          <OnlineToolSideBar
-            isSidebarOpen={isSidebarOpen}
-            selectedItem={selectedItem}
-            handleSelectedItemChangeCallback={handleSelectedItemChange}
-            toggleChooseModelDialog={toggleChooseModelDialog}
-            showNormalMode={showNormalMode}
-            unsetKnowledgeBaseMode={unsetKnowledgeBaseMode}
-          />
-        )}
-
+        <OnlineToolSideBar
+          isSidebarOpen={isSidebarOpen}
+          selectedItem={selectedItem}
+          handleSelectedItemChangeCallback={handleSelectedItemChange}
+          toggleChooseModelDialog={toggleChooseModelDialog}
+          showNormalMode={showNormalMode}
+          unsetKnowledgeBaseMode={unsetKnowledgeBaseMode}
+        />
         <div
           className={css`
             flex: 100vw 0 1;
@@ -157,16 +140,14 @@ const OnlineTool = () => {
             overflow: hidden;
           `}
         >
-          <PaintingHeader
+          <OnlineToolHeader
             mode={mode}
-            isPaintbarOpen={isPaintbarOpen}
-            setIsPaintbarOpen={setIsPaintbarOpen}
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
             selectedItem={selectedItem}
             handleSelectedItemChange={handleSelectedItemChange}
           />
-
           <OnlineToolBody
-            isPaintbarOpen={isPaintbarOpen}
             mode={mode}
             showNormalMode={showNormalMode}
             setKnowledgeBaseMode={setKnowledgeBaseMode}

@@ -57,10 +57,10 @@ const ConfigSideBarImage = ({
       </div>
       <div
         className={css`
-        display: flex;
-        align-items: center;
-        margin-left: -24px;=
-      `}
+          display: flex;
+          align-items: center;
+          margin-left: -24px;
+        `}
       >
         <Slider min={min} max={max} value={value} onChange={onChange} />
         <div
